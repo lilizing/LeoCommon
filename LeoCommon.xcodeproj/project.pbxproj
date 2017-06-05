@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		010C49A58347A535114B7096 /* Pods_LeoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */; };
+		22C251131EE50054007A46BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C251121EE50054007A46BC /* AppDelegate.swift */; };
+		22C251151EE50054007A46BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C251141EE50054007A46BC /* ViewController.swift */; };
+		22C251181EE50054007A46BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C251161EE50054007A46BC /* Main.storyboard */; };
+		22C2511A1EE50054007A46BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C251191EE50054007A46BC /* Assets.xcassets */; };
+		22C2511D1EE50054007A46BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C2511B1EE50054007A46BC /* LaunchScreen.storyboard */; };
+		22C251261EE501EC007A46BC /* LeoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C251251EE501EC007A46BC /* LeoResult.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22C2510F1EE50054007A46BC /* LeoCommon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeoCommon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C251121EE50054007A46BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22C251141EE50054007A46BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22C251171EE50054007A46BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22C251191EE50054007A46BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22C2511C1EE50054007A46BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22C2511E1EE50054007A46BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22C251251EE501EC007A46BC /* LeoResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeoResult.swift; sourceTree = "<group>"; };
+		3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeoCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F6F38EDE034399EE60CAB2 /* Pods-LeoCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoCommon.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon.release.xcconfig"; sourceTree = "<group>"; };
+		BB8FA73E236EDF363EA111FC /* Pods-LeoCommon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoCommon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22C2510C1EE50054007A46BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010C49A58347A535114B7096 /* Pods_LeoCommon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22C251061EE50054007A46BC = {
+			isa = PBXGroup;
+			children = (
+				22C251111EE50054007A46BC /* LeoCommon */,
+				22C251101EE50054007A46BC /* Products */,
+				78F6452D71AF918CB0C72488 /* Pods */,
+				C92F5F524531C47F01AC44BA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		22C251101EE50054007A46BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22C2510F1EE50054007A46BC /* LeoCommon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22C251111EE50054007A46BC /* LeoCommon */ = {
+			isa = PBXGroup;
+			children = (
+				22C251241EE501D6007A46BC /* LeoCommon */,
+				22C251121EE50054007A46BC /* AppDelegate.swift */,
+				22C251141EE50054007A46BC /* ViewController.swift */,
+				22C251161EE50054007A46BC /* Main.storyboard */,
+				22C251191EE50054007A46BC /* Assets.xcassets */,
+				22C2511B1EE50054007A46BC /* LaunchScreen.storyboard */,
+				22C2511E1EE50054007A46BC /* Info.plist */,
+			);
+			path = LeoCommon;
+			sourceTree = "<group>";
+		};
+		22C251241EE501D6007A46BC /* LeoCommon */ = {
+			isa = PBXGroup;
+			children = (
+				22C251251EE501EC007A46BC /* LeoResult.swift */,
+			);
+			path = LeoCommon;
+			sourceTree = "<group>";
+		};
+		78F6452D71AF918CB0C72488 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB8FA73E236EDF363EA111FC /* Pods-LeoCommon.debug.xcconfig */,
+				B1F6F38EDE034399EE60CAB2 /* Pods-LeoCommon.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C92F5F524531C47F01AC44BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22C2510E1EE50054007A46BC /* LeoCommon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22C251211EE50054007A46BC /* Build configuration list for PBXNativeTarget "LeoCommon" */;
+			buildPhases = (
+				641E4BF4FFCC248E309072C0 /* [CP] Check Pods Manifest.lock */,
+				22C2510B1EE50054007A46BC /* Sources */,
+				22C2510C1EE50054007A46BC /* Frameworks */,
+				22C2510D1EE50054007A46BC /* Resources */,
+				887500FB6460E80B23A22A74 /* [CP] Embed Pods Frameworks */,
+				8DDF07791768E0DD0C92F2C4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LeoCommon;
+			productName = LeoCommon;
+			productReference = 22C2510F1EE50054007A46BC /* LeoCommon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22C251071EE50054007A46BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "李理";
+				TargetAttributes = {
+					22C2510E1EE50054007A46BC = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 6SXXMB346X;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 22C2510A1EE50054007A46BC /* Build configuration list for PBXProject "LeoCommon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22C251061EE50054007A46BC;
+			productRefGroup = 22C251101EE50054007A46BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22C2510E1EE50054007A46BC /* LeoCommon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22C2510D1EE50054007A46BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C2511D1EE50054007A46BC /* LaunchScreen.storyboard in Resources */,
+				22C2511A1EE50054007A46BC /* Assets.xcassets in Resources */,
+				22C251181EE50054007A46BC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		641E4BF4FFCC248E309072C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		887500FB6460E80B23A22A74 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DDF07791768E0DD0C92F2C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22C2510B1EE50054007A46BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C251151EE50054007A46BC /* ViewController.swift in Sources */,
+				22C251261EE501EC007A46BC /* LeoResult.swift in Sources */,
+				22C251131EE50054007A46BC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		22C251161EE50054007A46BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22C251171EE50054007A46BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22C2511B1EE50054007A46BC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22C2511C1EE50054007A46BC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22C2511F1EE50054007A46BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22C251201EE50054007A46BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22C251221EE50054007A46BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB8FA73E236EDF363EA111FC /* Pods-LeoCommon.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6SXXMB346X;
+				INFOPLIST_FILE = LeoCommon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LeoCommon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		22C251231EE50054007A46BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1F6F38EDE034399EE60CAB2 /* Pods-LeoCommon.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6SXXMB346X;
+				INFOPLIST_FILE = LeoCommon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LeoCommon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22C2510A1EE50054007A46BC /* Build configuration list for PBXProject "LeoCommon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C2511F1EE50054007A46BC /* Debug */,
+				22C251201EE50054007A46BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22C251211EE50054007A46BC /* Build configuration list for PBXNativeTarget "LeoCommon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C251221EE50054007A46BC /* Debug */,
+				22C251231EE50054007A46BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22C251071EE50054007A46BC /* Project object */;
+}
