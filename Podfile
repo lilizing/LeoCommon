@@ -8,7 +8,7 @@ target 'LeoCommon' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
   pod 'ReactiveCocoa', '~> 5.0.0'
-  pod 'UIColor_Hex_Swift', '~> 3.0.2'
+  pod 'HEXColor', podspec: 'Local Podspecs/HEXColor.podspec'
   pod 'SwiftRichString'
   pod "SnapKit/SnapKit", '~> 3.2.0'
 end
