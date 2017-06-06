@@ -10,5 +10,7 @@ target 'LeoCommon' do
   pod 'ReactiveCocoa', '~> 5.0.0'
   pod 'HEXColor', podspec: 'Local Podspecs/HEXColor.podspec'
   pod 'SwiftRichString'
-  pod "SnapKit", '~> 3.2.0'
+  pod 'SnapKit', '~> 3.2.0'
+  pod 'Alamofire', '~> 4.4'
+  pod 'ObjectMapper', '~> 2.2'
 end
