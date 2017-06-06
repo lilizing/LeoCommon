@@ -138,5 +138,8 @@ Pod::Spec.new do |s|
   # s.dependency "BLMediator"
   s.dependency 'ReactiveCocoa', '~> 5.0.0' 
   s.dependency 'UIColor_Hex_Swift', '~> 3.0.2'
+  s.dependency 'ObjectMapper', '~> 2.2'
+  s.dependency 'Alamofire', '~> 4.4'
+  s.dependency 'SnapKit', '~> 3.2.0'
   s.dependency 'SwiftRichString'
 end

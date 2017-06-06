@@ -10,4 +10,5 @@ target 'LeoCommon' do
   pod 'ReactiveCocoa', '~> 5.0.0'
   pod 'UIColor_Hex_Swift', '~> 3.0.2'
   pod 'SwiftRichString'
+  pod "SnapKit/SnapKit", '~> 3.2.0'
 end
