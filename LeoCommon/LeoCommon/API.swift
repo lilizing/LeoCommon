@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import ObjectMapper
 import ReactiveSwift
-import LeoCommon
 
 var API_MANAGERS:Dictionary<String, Alamofire.SessionManager> = [:]
 var API_REQUESTS:Dictionary<String, Alamofire.DataRequest> = [:]

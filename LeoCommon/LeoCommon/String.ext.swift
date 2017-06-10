@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import HEXColor
+import UIColor_Hex_Swift
 import SwiftRichString
 
 extension String {
