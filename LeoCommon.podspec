@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LeoCommon"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "LeoCommon."
 
   # This description is used to generate tags and improve search results.
@@ -142,4 +142,5 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '~> 4.4'
   s.dependency 'SnapKit', '~> 3.2.0'
   s.dependency 'SwiftRichString'
+  s.dependency 'Presentr'
 end
