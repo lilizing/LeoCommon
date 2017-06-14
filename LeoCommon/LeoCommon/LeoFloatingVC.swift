@@ -11,10 +11,10 @@ import ReactiveSwift
 import ReactiveCocoa
 import Presentr
 
-class LeoFloatingVC:UIViewController {
+open class LeoFloatingVC:UIViewController {
     var disposable:Disposable?
     
-    func show(container: UIViewController,
+    public func show(container: UIViewController,
               presenter:Presentr,
               keep: TimeInterval,
               animated: Bool,
@@ -32,7 +32,7 @@ class LeoFloatingVC:UIViewController {
         }
     }
     
-    func hide(animated: Bool, completion: (() -> Void)?) {
+    public func hide(animated: Bool, completion: (() -> Void)?) {
         self.disposable?.dispose()
         self.presentingViewController?.dismiss(animated: animated, completion: completion)
     }

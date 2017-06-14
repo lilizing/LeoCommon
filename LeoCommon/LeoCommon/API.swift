@@ -7,18 +7,22 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
-import ReactiveSwift
+import Alamofire
 
-var API_MANAGERS:Dictionary<String, Alamofire.SessionManager> = [:]
-var API_REQUESTS:Dictionary<String, Alamofire.DataRequest> = [:]
+private var API_MANAGERS:Dictionary<String, Alamofire.SessionManager> = [:]
+private var API_REQUESTS:Dictionary<String, Alamofire.DataRequest> = [:]
 
 public typealias HTTPMethod = Alamofire.HTTPMethod
 public typealias Parameters = Alamofire.Parameters
 public typealias HTTPHeaders = Alamofire.HTTPHeaders
 
-private func resultMap<T:BaseMappable>(json:[String: Any]) -> LeoResult<T> {
+public enum APICachePolicy {
+    case server
+    case local(maxAge:Int)
+}
+
+internal func resultMap<T:BaseMappable>(json:[String: Any]) -> LeoResult<T> {
     do {
         let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let JSONString = String(data: data, encoding: .utf8)
@@ -85,6 +89,7 @@ open class API:Alamofire.SessionManager {
                       parameters: Parameters? = nil,
                       headers: HTTPHeaders? = nil,
                       timeoutInterval: TimeInterval? = 30,
+                      cacheMaxAge: APICachePolicy = .server,
                       resultMap: @escaping ([String : Any]) -> (LeoResult<T>),
                       errorHandler: @escaping (LeoResult<T>) -> Void = { _ in },
                       callback: @escaping (LeoResult<T>) -> Void = { _ in }) -> String {
@@ -109,7 +114,7 @@ open class API:Alamofire.SessionManager {
         let requestID = UUID().uuidString
         do {
             let encodedURLRequest = try URLEncoding.default.encode(request, with: tParams)
-            let task = self.createManager().request(encodedURLRequest).responseJSON(completionHandler: { response in
+            let completionHandler: (DataResponse<Any>) -> Void = { response in
                 var result:LeoResult<T>? = nil
                 if let error = response.error {
                     result = .failure(LeoAnyError(error))
@@ -118,7 +123,17 @@ open class API:Alamofire.SessionManager {
                 }
                 errorHandler(result!)
                 callback(result!)
-            })
+            }
+            
+            let task = self.createManager().request(encodedURLRequest)
+            
+            switch cacheMaxAge {
+            case let .local(maxAge):
+                task.responseJSON(completionHandler: completionHandler, autoClearCache: true).cache(maxAge: maxAge)
+            default:
+                task.responseJSON(completionHandler: completionHandler)
+            }
+            
             self.queue.sync {
                 API_REQUESTS[requestID] = task
             }
@@ -126,38 +141,6 @@ open class API:Alamofire.SessionManager {
             callback(.failure(LeoAnyError(error)))
         }
         return requestID
-    }
-    
-    public func action<T:BaseMappable>(_ type:T.Type, enabledIf: Property<Bool>,
-                       url: String,
-                       method: HTTPMethod = .get,
-                       headers: HTTPHeaders? = nil,
-                       timeoutInterval: TimeInterval? = 30,
-                       resultMap: @escaping ([String : Any]) -> (LeoResult<T>) = resultMap,
-                       errorHandler: @escaping (LeoResult<T>) -> Void = { _ in }) -> Action<[String: Any], T, LeoAnyError> {
-        return Action(enabledIf: enabledIf, { [weak self] params in
-            return SignalProducer<T, LeoAnyError> { observer, disposable in
-                if let sSelf = self {
-                    let requestID = sSelf.fetch(url,
-                                               method: method,
-                                               parameters: params,
-                                               headers: headers,
-                                               timeoutInterval: timeoutInterval,
-                                               resultMap: resultMap,
-                                               errorHandler: errorHandler) { (result:LeoResult<T>) in
-                                                result.analysis(ifSuccess: { value in
-                                                    observer.send(value: value)
-                                                    observer.sendCompleted()
-                                                }, ifFailure: { error in
-                                                    observer.send(error: error)
-                                                })
-                    }
-                    disposable += ActionDisposable(action: {
-                        sSelf.cancel(requestID: requestID)
-                    })
-                }
-            }
-        })
     }
     
     public func cancel(requestID:String) {

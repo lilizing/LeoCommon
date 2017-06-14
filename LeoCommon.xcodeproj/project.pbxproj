@@ -27,6 +27,9 @@
 		22DADB421EEB854E00C90D30 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DADB401EEB854E00C90D30 /* Config.swift */; };
 		22DADB441EEB855D00C90D30 /* LeoFloatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DADB431EEB855D00C90D30 /* LeoFloatingVC.swift */; };
 		22DADB461EEB85A800C90D30 /* LeoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DADB451EEB85A800C90D30 /* LeoError.swift */; };
+		22DD971E1EF13A75000B3463 /* API.cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD971D1EF13A75000B3463 /* API.cache.swift */; };
+		22DD97201EF13E55000B3463 /* API.rac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD971F1EF13E55000B3463 /* API.rac.swift */; };
+		22DD97221EF14B46000B3463 /* AuthAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DD97211EF14B46000B3463 /* AuthAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		22DADB431EEB855D00C90D30 /* LeoFloatingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeoFloatingVC.swift; sourceTree = "<group>"; };
 		22DADB451EEB85A800C90D30 /* LeoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeoError.swift; sourceTree = "<group>"; };
 		22DADB471EEB863A00C90D30 /* LeoCommon.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LeoCommon.podspec; sourceTree = "<group>"; };
+		22DD971D1EF13A75000B3463 /* API.cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.cache.swift; sourceTree = "<group>"; };
+		22DD971F1EF13E55000B3463 /* API.rac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.rac.swift; sourceTree = "<group>"; };
+		22DD97211EF14B46000B3463 /* AuthAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
 		3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeoCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F6F38EDE034399EE60CAB2 /* Pods-LeoCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoCommon.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon.release.xcconfig"; sourceTree = "<group>"; };
 		BB8FA73E236EDF363EA111FC /* Pods-LeoCommon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoCommon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,13 +111,16 @@
 		22C251241EE501D6007A46BC /* LeoCommon */ = {
 			isa = PBXGroup;
 			children = (
+				22DD97211EF14B46000B3463 /* AuthAPIService.swift */,
+				223BF1DC1EE6B9BD003E8720 /* API.swift */,
+				22DD971F1EF13E55000B3463 /* API.rac.swift */,
+				22DD971D1EF13A75000B3463 /* API.cache.swift */,
+				223BF1DD1EE6B9BD003E8720 /* APIService.swift */,
 				22DADB451EEB85A800C90D30 /* LeoError.swift */,
 				22DADB431EEB855D00C90D30 /* LeoFloatingVC.swift */,
 				22DADB3F1EEB854E00C90D30 /* Storage.swift */,
 				22DADB401EEB854E00C90D30 /* Config.swift */,
 				22C251251EE501EC007A46BC /* LeoResult.swift */,
-				223BF1DC1EE6B9BD003E8720 /* API.swift */,
-				223BF1DD1EE6B9BD003E8720 /* APIService.swift */,
 				223BF1DE1EE6B9BD003E8720 /* Cell.swift */,
 				223BF1DF1EE6B9BD003E8720 /* Object.ext.swift */,
 				223BF1E01EE6B9BD003E8720 /* PageHeaderView.swift */,
@@ -268,11 +277,14 @@
 				22C251151EE50054007A46BC /* ViewController.swift in Sources */,
 				223BF1E61EE6B9BD003E8720 /* APIService.swift in Sources */,
 				22DADB461EEB85A800C90D30 /* LeoError.swift in Sources */,
+				22DD97221EF14B46000B3463 /* AuthAPIService.swift in Sources */,
 				22DADB421EEB854E00C90D30 /* Config.swift in Sources */,
 				22C251261EE501EC007A46BC /* LeoResult.swift in Sources */,
+				22DD97201EF13E55000B3463 /* API.rac.swift in Sources */,
 				223BF1E51EE6B9BD003E8720 /* API.swift in Sources */,
 				223BF1E81EE6B9BD003E8720 /* Object.ext.swift in Sources */,
 				22C251131EE50054007A46BC /* AppDelegate.swift in Sources */,
+				22DD971E1EF13A75000B3463 /* API.cache.swift in Sources */,
 				223BF1EA1EE6B9BD003E8720 /* PageVC.swift in Sources */,
 				223BF1E71EE6B9BD003E8720 /* Cell.swift in Sources */,
 				22DADB441EEB855D00C90D30 /* LeoFloatingVC.swift in Sources */,
