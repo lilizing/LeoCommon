@@ -18,22 +18,29 @@ public protocol ViewProtocol {
 
 open class View<ViewModel>:UIView, ViewProtocol {
     
-    public convenience init(viewModel:ViewModel) {
-        self.init(frame: .zero)
-        self.viewModel = viewModel
-        self.initSubviews()
-        self.relayout()
-        self.set()
-        self.binding()
-    }
-    
     public var viewModel:ViewModel? {
         didSet {
-            self.initSubviews()
             self.relayout()
             self.set()
             self.binding()
         }
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.initSubviews()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    public convenience init(viewModel:ViewModel?) {
+        self.init(frame: .zero)
+        self.viewModel = viewModel
+        self.relayout()
+        self.set()
+        self.binding()
     }
     
     open func initSubviews() -> Void {}

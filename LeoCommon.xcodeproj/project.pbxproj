@@ -17,6 +17,9 @@
 		223BF1EB1EE6B9BD003E8720 /* String.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BF1E21EE6B9BD003E8720 /* String.ext.swift */; };
 		223BF1EC1EE6B9BD003E8720 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BF1E31EE6B9BD003E8720 /* View.swift */; };
 		223BF1ED1EE6B9BD003E8720 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BF1E41EE6B9BD003E8720 /* ViewModel.swift */; };
+		22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D621F0007A700BA0892 /* debug.xcconfig */; };
+		22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D631F0007A700BA0892 /* release.xcconfig */; };
+		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
 		22C251131EE50054007A46BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C251121EE50054007A46BC /* AppDelegate.swift */; };
 		22C251151EE50054007A46BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C251141EE50054007A46BC /* ViewController.swift */; };
 		22C251181EE50054007A46BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C251161EE50054007A46BC /* Main.storyboard */; };
@@ -42,6 +45,32 @@
 		223BF1E21EE6B9BD003E8720 /* String.ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.ext.swift; sourceTree = "<group>"; };
 		223BF1E31EE6B9BD003E8720 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		223BF1E41EE6B9BD003E8720 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		22AD6D621F0007A700BA0892 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		22AD6D631F0007A700BA0892 /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
+		22AD6D641F0007A700BA0892 /* common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
+		22AD6D681F0007D000BA0892 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		22AD6D691F0007D000BA0892 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = SOURCE_ROOT; };
+		22AD6D6A1F0007D000BA0892 /* cpod.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = cpod.sh; sourceTree = SOURCE_ROOT; };
+		22AD6D6B1F0007D000BA0892 /* LeoCommon.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LeoCommon.podspec; sourceTree = SOURCE_ROOT; };
+		22AD6D6C1F0007D000BA0892 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		22AD6D6D1F0007D000BA0892 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = SOURCE_ROOT; };
+		22AD6D6F1F0007D000BA0892 /* upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = upload.sh; sourceTree = SOURCE_ROOT; };
+		22AD6D7E1F00091A00BA0892 /* Alamofire.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Alamofire.podspec; sourceTree = "<group>"; };
+		22AD6D7F1F00091A00BA0892 /* AlamofireURLCache.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AlamofireURLCache.podspec; sourceTree = "<group>"; };
+		22AD6D801F00091A00BA0892 /* ObjectMapper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ObjectMapper.podspec; sourceTree = "<group>"; };
+		22AD6D811F00091A00BA0892 /* Presentr.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Presentr.podspec; sourceTree = "<group>"; };
+		22AD6D821F00091A00BA0892 /* ReactiveCocoa.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReactiveCocoa.podspec; sourceTree = "<group>"; };
+		22AD6D831F00091A00BA0892 /* ReactiveSwift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReactiveSwift.podspec; sourceTree = "<group>"; };
+		22AD6D841F00091A00BA0892 /* Result.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Result.podspec; sourceTree = "<group>"; };
+		22AD6D851F00091A00BA0892 /* SDWebImage.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SDWebImage.podspec; sourceTree = "<group>"; };
+		22AD6D861F00091A00BA0892 /* SnapKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SnapKit.podspec; sourceTree = "<group>"; };
+		22AD6D871F00091A00BA0892 /* Starscream.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Starscream.podspec; sourceTree = "<group>"; };
+		22AD6D881F00091A00BA0892 /* SwiftRichString.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftRichString.podspec; sourceTree = "<group>"; };
+		22AD6D891F00091A00BA0892 /* SwiftyJSON.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftyJSON.podspec; sourceTree = "<group>"; };
+		22AD6D8A1F00091A00BA0892 /* Template.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Template.podspec; sourceTree = "<group>"; };
+		22AD6D8B1F00091A00BA0892 /* UIColor_Hex_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIColor_Hex_Swift.podspec; sourceTree = "<group>"; };
+		22AD6D9B1F0009AF00BA0892 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = SOURCE_ROOT; };
+		22AD6D9D1F000C1500BA0892 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		22C2510F1EE50054007A46BC /* LeoCommon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeoCommon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C251121EE50054007A46BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C251141EE50054007A46BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +83,6 @@
 		22DADB401EEB854E00C90D30 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		22DADB431EEB855D00C90D30 /* LeoFloatingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeoFloatingVC.swift; sourceTree = "<group>"; };
 		22DADB451EEB85A800C90D30 /* LeoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeoError.swift; sourceTree = "<group>"; };
-		22DADB471EEB863A00C90D30 /* LeoCommon.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LeoCommon.podspec; sourceTree = "<group>"; };
 		22DD971D1EF13A75000B3463 /* API.cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.cache.swift; sourceTree = "<group>"; };
 		22DD971F1EF13E55000B3463 /* API.rac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.rac.swift; sourceTree = "<group>"; };
 		22DD97211EF14B46000B3463 /* AuthAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
@@ -75,10 +103,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22AD6D611F0007A700BA0892 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				22AD6D9A1F00097500BA0892 /* Docs */,
+				22AD6D7C1F0008DA00BA0892 /* Config */,
+				22AD6D7A1F00080800BA0892 /* Script */,
+				22AD6D781F0007E300BA0892 /* Carthage */,
+				22AD6D791F0007F000BA0892 /* CocoaPods */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		22AD6D781F0007E300BA0892 /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				22AD6D681F0007D000BA0892 /* Cartfile */,
+				22AD6D9B1F0009AF00BA0892 /* Cartfile.private */,
+				22AD6D691F0007D000BA0892 /* Cartfile.resolved */,
+			);
+			name = Carthage;
+			sourceTree = "<group>";
+		};
+		22AD6D791F0007F000BA0892 /* CocoaPods */ = {
+			isa = PBXGroup;
+			children = (
+				22AD6D7D1F00091A00BA0892 /* Local Podspecs */,
+				22AD6D6B1F0007D000BA0892 /* LeoCommon.podspec */,
+				22AD6D6C1F0007D000BA0892 /* Podfile */,
+				22AD6D6D1F0007D000BA0892 /* Podfile.lock */,
+			);
+			name = CocoaPods;
+			sourceTree = "<group>";
+		};
+		22AD6D7A1F00080800BA0892 /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				22AD6D6A1F0007D000BA0892 /* cpod.sh */,
+				22AD6D6F1F0007D000BA0892 /* upload.sh */,
+			);
+			name = Script;
+			sourceTree = "<group>";
+		};
+		22AD6D7C1F0008DA00BA0892 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				22AD6D621F0007A700BA0892 /* debug.xcconfig */,
+				22AD6D631F0007A700BA0892 /* release.xcconfig */,
+				22AD6D641F0007A700BA0892 /* common.xcconfig */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		22AD6D7D1F00091A00BA0892 /* Local Podspecs */ = {
+			isa = PBXGroup;
+			children = (
+				22AD6D7E1F00091A00BA0892 /* Alamofire.podspec */,
+				22AD6D7F1F00091A00BA0892 /* AlamofireURLCache.podspec */,
+				22AD6D801F00091A00BA0892 /* ObjectMapper.podspec */,
+				22AD6D811F00091A00BA0892 /* Presentr.podspec */,
+				22AD6D821F00091A00BA0892 /* ReactiveCocoa.podspec */,
+				22AD6D831F00091A00BA0892 /* ReactiveSwift.podspec */,
+				22AD6D841F00091A00BA0892 /* Result.podspec */,
+				22AD6D851F00091A00BA0892 /* SDWebImage.podspec */,
+				22AD6D861F00091A00BA0892 /* SnapKit.podspec */,
+				22AD6D871F00091A00BA0892 /* Starscream.podspec */,
+				22AD6D881F00091A00BA0892 /* SwiftRichString.podspec */,
+				22AD6D891F00091A00BA0892 /* SwiftyJSON.podspec */,
+				22AD6D8A1F00091A00BA0892 /* Template.podspec */,
+				22AD6D8B1F00091A00BA0892 /* UIColor_Hex_Swift.podspec */,
+			);
+			path = "Local Podspecs";
+			sourceTree = SOURCE_ROOT;
+		};
+		22AD6D9A1F00097500BA0892 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				22AD6D9D1F000C1500BA0892 /* README.md */,
+			);
+			path = Docs;
+			sourceTree = SOURCE_ROOT;
+		};
 		22C251061EE50054007A46BC = {
 			isa = PBXGroup;
 			children = (
-				22DADB471EEB863A00C90D30 /* LeoCommon.podspec */,
+				22AD6D611F0007A700BA0892 /* Configuration */,
 				22C251111EE50054007A46BC /* LeoCommon */,
 				22C251101EE50054007A46BC /* Products */,
 				78F6452D71AF918CB0C72488 /* Pods */,
@@ -184,7 +293,8 @@
 				TargetAttributes = {
 					22C2510E1EE50054007A46BC = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 6SXXMB346X;
+						DevelopmentTeam = RAT66XNVSW;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -212,9 +322,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */,
 				22C2511D1EE50054007A46BC /* LaunchScreen.storyboard in Resources */,
+				22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */,
 				22C2511A1EE50054007A46BC /* Assets.xcassets in Resources */,
 				22C251181EE50054007A46BC /* Main.storyboard in Resources */,
+				22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,11 +528,13 @@
 			baseConfigurationReference = BB8FA73E236EDF363EA111FC /* Pods-LeoCommon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6SXXMB346X;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = RAT66XNVSW;
 				INFOPLIST_FILE = LeoCommon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeoCommon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -429,7 +544,8 @@
 			baseConfigurationReference = B1F6F38EDE034399EE60CAB2 /* Pods-LeoCommon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6SXXMB346X;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = RAT66XNVSW;
 				INFOPLIST_FILE = LeoCommon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeoCommon;

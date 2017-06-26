@@ -1,0 +1,15 @@
+github "yeahdongcn/UIColor-Hex-Swift" >= 3.0.2
+github "SnapKit/SnapKit" ~> 3.2.0
+github "malcommac/SwiftRichString"
+github "ReactiveCocoa/ReactiveCocoa" ~> 5.0
+github "tristanhimmelman/AlamofireObjectMapper" ~> 4.0
+github "mxcl/PromiseKit" ~> 4.0
+github "ReactiveX/RxSwift" ~> 3.0
+github "daltoniam/Starscream" >= 2.0.3
+github "malcommac/SwiftDate" ~> 4.0
+github "SwiftyJSON/SwiftyJSON"
+github "rs/SDWebImage"
+github "Orderella/PopupDialog" ~> 0.5
+github "IcaliaLabs/Presentr"
+github "SVProgressHUD/SVProgressHUD"
+github "kenshincui/AlamofireURLCache"

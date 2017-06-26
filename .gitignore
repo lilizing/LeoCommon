@@ -126,7 +126,7 @@ playground.xcworkspace
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGONRE THE LOCK FILE
 
 ### Swift.Carthage Stack ###
-# Carthage
+Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts

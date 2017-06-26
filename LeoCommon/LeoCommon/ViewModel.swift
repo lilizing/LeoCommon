@@ -15,9 +15,14 @@ public protocol ViewModelProtocol {
 }
 
 open class ViewModel<Model>:ViewModelProtocol {
-    public var model: Model
+    public var model: Model? {
+        didSet {
+            self.set()
+            self.binding()
+        }
+    }
     
-    public init(model: Model) {
+    public init(model: Model?) {
         self.model = model
         
         self.set()

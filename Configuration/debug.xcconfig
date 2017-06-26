@@ -1,0 +1,6 @@
+#include "common.xcconfig"
+
+//Reveal相关配置
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
+
+OTHER_LDFLAGS = -ObjC -weak_framework RevealServer
