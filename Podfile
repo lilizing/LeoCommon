@@ -17,6 +17,9 @@ abstract_target 'Leo' do
   pod 'Alamofire', '~> 4.4'
   pod 'ObjectMapper', '~> 2.2'
   pod 'Presentr'
+  
+  #  pod 'RxSwift',    '~> 3.0'
+  #  pod 'RxCocoa',    '~> 3.0'
 
   target 'LeoCommon'
 end
