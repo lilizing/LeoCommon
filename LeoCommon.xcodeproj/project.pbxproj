@@ -8,16 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		010C49A58347A535114B7096 /* Pods_LeoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */; };
-		223BF1E81EE6B9BD003E8720 /* Object+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BF1DF1EE6B9BD003E8720 /* Object+Ext.swift */; };
-		223BF1EB1EE6B9BD003E8720 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BF1E21EE6B9BD003E8720 /* String+Ext.swift */; };
-		2275B2911F395A27005A2B11 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275B2901F395A27005A2B11 /* Dictionary+Ext.swift */; };
 		22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D621F0007A700BA0892 /* debug.xcconfig */; };
 		22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D631F0007A700BA0892 /* release.xcconfig */; };
 		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
-		22B5C4B81F3AE1D700C89688 /* API+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4B41F3AE1D700C89688 /* API+Cache.swift */; };
-		22B5C4B91F3AE1D700C89688 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4B51F3AE1D700C89688 /* API.swift */; };
-		22B5C4BA1F3AE1D700C89688 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4B61F3AE1D700C89688 /* APIService.swift */; };
-		22B5C4BF1F3AECF800C89688 /* API+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4BE1F3AECF800C89688 /* API+Rx.swift */; };
+		22B5C4CD1F3B125000C89688 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C41F3B125000C89688 /* API.swift */; };
+		22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C51F3B125000C89688 /* API+Cache.swift */; };
+		22B5C4D01F3B125000C89688 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C71F3B125000C89688 /* APIService.swift */; };
+		22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C81F3B125000C89688 /* Button.Ext.swift */; };
+		22B5C4D21F3B125000C89688 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C91F3B125000C89688 /* Const.swift */; };
+		22B5C4D31F3B125000C89688 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */; };
+		22B5C4D41F3B125000C89688 /* Object+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4CB1F3B125000C89688 /* Object+Ext.swift */; };
+		22B5C4D51F3B125000C89688 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4CC1F3B125000C89688 /* String+Ext.swift */; };
+		22B5C4D71F3B129D00C89688 /* API+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4D61F3B129D00C89688 /* API+Rx.swift */; };
 		22C251131EE50054007A46BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C251121EE50054007A46BC /* AppDelegate.swift */; };
 		22C251151EE50054007A46BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C251141EE50054007A46BC /* ViewController.swift */; };
 		22C251181EE50054007A46BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C251161EE50054007A46BC /* Main.storyboard */; };
@@ -27,9 +29,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		223BF1DF1EE6B9BD003E8720 /* Object+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Object+Ext.swift"; sourceTree = "<group>"; };
-		223BF1E21EE6B9BD003E8720 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		2275B2901F395A27005A2B11 /* Dictionary+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
 		22AD6D621F0007A700BA0892 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		22AD6D631F0007A700BA0892 /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
 		22AD6D641F0007A700BA0892 /* common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
@@ -55,10 +54,15 @@
 		22AD6D8B1F00091A00BA0892 /* UIColor_Hex_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIColor_Hex_Swift.podspec; sourceTree = "<group>"; };
 		22AD6D9B1F0009AF00BA0892 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = SOURCE_ROOT; };
 		22AD6D9D1F000C1500BA0892 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		22B5C4B41F3AE1D700C89688 /* API+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Cache.swift"; sourceTree = "<group>"; };
-		22B5C4B51F3AE1D700C89688 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		22B5C4B61F3AE1D700C89688 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		22B5C4BE1F3AECF800C89688 /* API+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Rx.swift"; sourceTree = "<group>"; };
+		22B5C4C41F3B125000C89688 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		22B5C4C51F3B125000C89688 /* API+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Cache.swift"; sourceTree = "<group>"; };
+		22B5C4C71F3B125000C89688 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		22B5C4C81F3B125000C89688 /* Button.Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.Ext.swift; sourceTree = "<group>"; };
+		22B5C4C91F3B125000C89688 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
+		22B5C4CB1F3B125000C89688 /* Object+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Object+Ext.swift"; sourceTree = "<group>"; };
+		22B5C4CC1F3B125000C89688 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		22B5C4D61F3B129D00C89688 /* API+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Rx.swift"; sourceTree = "<group>"; };
 		22C2510F1EE50054007A46BC /* LeoCommon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeoCommon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C251121EE50054007A46BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C251141EE50054007A46BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -203,13 +207,15 @@
 		22C251241EE501D6007A46BC /* LeoCommon */ = {
 			isa = PBXGroup;
 			children = (
-				22B5C4B51F3AE1D700C89688 /* API.swift */,
-				22B5C4BE1F3AECF800C89688 /* API+Rx.swift */,
-				22B5C4B41F3AE1D700C89688 /* API+Cache.swift */,
-				22B5C4B61F3AE1D700C89688 /* APIService.swift */,
-				223BF1DF1EE6B9BD003E8720 /* Object+Ext.swift */,
-				223BF1E21EE6B9BD003E8720 /* String+Ext.swift */,
-				2275B2901F395A27005A2B11 /* Dictionary+Ext.swift */,
+				22B5C4C41F3B125000C89688 /* API.swift */,
+				22B5C4D61F3B129D00C89688 /* API+Rx.swift */,
+				22B5C4C51F3B125000C89688 /* API+Cache.swift */,
+				22B5C4C71F3B125000C89688 /* APIService.swift */,
+				22B5C4C81F3B125000C89688 /* Button.Ext.swift */,
+				22B5C4C91F3B125000C89688 /* Const.swift */,
+				22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */,
+				22B5C4CB1F3B125000C89688 /* Object+Ext.swift */,
+				22B5C4CC1F3B125000C89688 /* String+Ext.swift */,
 			);
 			path = LeoCommon;
 			sourceTree = "<group>";
@@ -362,15 +368,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B5C4BA1F3AE1D700C89688 /* APIService.swift in Sources */,
+				22B5C4D41F3B125000C89688 /* Object+Ext.swift in Sources */,
+				22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */,
 				22C251151EE50054007A46BC /* ViewController.swift in Sources */,
-				223BF1E81EE6B9BD003E8720 /* Object+Ext.swift in Sources */,
+				22B5C4CD1F3B125000C89688 /* API.swift in Sources */,
+				22B5C4D31F3B125000C89688 /* Dictionary+Ext.swift in Sources */,
 				22C251131EE50054007A46BC /* AppDelegate.swift in Sources */,
-				2275B2911F395A27005A2B11 /* Dictionary+Ext.swift in Sources */,
-				22B5C4B81F3AE1D700C89688 /* API+Cache.swift in Sources */,
-				223BF1EB1EE6B9BD003E8720 /* String+Ext.swift in Sources */,
-				22B5C4BF1F3AECF800C89688 /* API+Rx.swift in Sources */,
-				22B5C4B91F3AE1D700C89688 /* API.swift in Sources */,
+				22B5C4D21F3B125000C89688 /* Const.swift in Sources */,
+				22B5C4D01F3B125000C89688 /* APIService.swift in Sources */,
+				22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */,
+				22B5C4D71F3B129D00C89688 /* API+Rx.swift in Sources */,
+				22B5C4D51F3B125000C89688 /* String+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -142,5 +142,6 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '~> 4.4'
   s.dependency 'SnapKit', '~> 3.2.0'
   s.dependency 'SwiftRichString'
+  s.dependency 'RxSwift'
   #s.dependency 'Presentr'
 end
