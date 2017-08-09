@@ -11,7 +11,7 @@ import UIColor_Hex_Swift
 import SwiftRichString
 
 extension String {
-    public func string(name:String? = FontName.HelveticaNeue.rawValue, size:Int? = 15, hex:String? = "#000000") -> NSMutableAttributedString {
+    public func string(name:String? = FontName.PingFangSC_Regular.rawValue, size:Int? = 15, hex:String? = "#000000") -> NSMutableAttributedString {
         let style = Style.init { style in
             style.font = FontAttribute.init(name!, size: Float(size!))
             style.color = UIColor(hex!)
@@ -19,7 +19,7 @@ extension String {
         return self.set(style: style)
     }
     
-    public func string(name:String? = FontName.HelveticaNeue.rawValue, size:Int? = 15, color:UIColor? = .black) -> NSMutableAttributedString {
+    public func string(name:String? = FontName.PingFangSC_Regular.rawValue, size:Int? = 15, color:UIColor? = .black) -> NSMutableAttributedString {
         let style = Style.init { style in
             style.font = FontAttribute.init(name!, size: Float(size!))
             style.color = color!
