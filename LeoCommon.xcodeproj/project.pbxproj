@@ -13,7 +13,6 @@
 		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
 		22B5C4CD1F3B125000C89688 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C41F3B125000C89688 /* API.swift */; };
 		22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C51F3B125000C89688 /* API+Cache.swift */; };
-		22B5C4D01F3B125000C89688 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C71F3B125000C89688 /* APIService.swift */; };
 		22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C81F3B125000C89688 /* Button.Ext.swift */; };
 		22B5C4D21F3B125000C89688 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C91F3B125000C89688 /* Const.swift */; };
 		22B5C4D31F3B125000C89688 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */; };
@@ -56,7 +55,6 @@
 		22AD6D9D1F000C1500BA0892 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		22B5C4C41F3B125000C89688 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		22B5C4C51F3B125000C89688 /* API+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Cache.swift"; sourceTree = "<group>"; };
-		22B5C4C71F3B125000C89688 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		22B5C4C81F3B125000C89688 /* Button.Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.Ext.swift; sourceTree = "<group>"; };
 		22B5C4C91F3B125000C89688 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				22B5C4C41F3B125000C89688 /* API.swift */,
 				22B5C4D61F3B129D00C89688 /* API+Rx.swift */,
 				22B5C4C51F3B125000C89688 /* API+Cache.swift */,
-				22B5C4C71F3B125000C89688 /* APIService.swift */,
 				22B5C4C81F3B125000C89688 /* Button.Ext.swift */,
 				22B5C4C91F3B125000C89688 /* Const.swift */,
 				22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */,
@@ -375,7 +372,6 @@
 				22B5C4D31F3B125000C89688 /* Dictionary+Ext.swift in Sources */,
 				22C251131EE50054007A46BC /* AppDelegate.swift in Sources */,
 				22B5C4D21F3B125000C89688 /* Const.swift in Sources */,
-				22B5C4D01F3B125000C89688 /* APIService.swift in Sources */,
 				22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */,
 				22B5C4D71F3B129D00C89688 /* API+Rx.swift in Sources */,
 				22B5C4D51F3B125000C89688 /* String+Ext.swift in Sources */,

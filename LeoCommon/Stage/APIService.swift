@@ -17,8 +17,7 @@ open class APIService:APIDelegate {
     
     public func api(_ basePath: String) -> API {
         guard self.apis[basePath] == nil else { return self.apis[basePath]! }
-        let api = API(basePath: basePath)
-        api.apiDelegate = self
+        let api = API(basePath: basePath, delegate: self)
         self.apis[basePath] = api
         return api
     }

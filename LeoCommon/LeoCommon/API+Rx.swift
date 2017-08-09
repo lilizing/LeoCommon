@@ -18,10 +18,10 @@ extension Reactive where Base: API {
                       method: HTTPMethod = .get,
                       parameters: Parameters? = nil,
                       headers: HTTPHeaders? = nil,
-                      timeoutInterval: TimeInterval? = 30,
+                      timeoutInterval: TimeInterval? = 60,
                       cacheMaxAge: APICachePolicy = .server,
                       responseMap: @escaping ([String : Any]) -> (Result<T>) = responseMap,
-                      errorHandler: @escaping (Result<T>) -> Void = { _ in }) -> Observable<T> {
+                      errorHandler: @escaping (Result<T>) -> Result<T> = errorHandler) -> Observable<T> {
         return Observable.create{ [weak api = self.base] observer in
             let requestID = api?.fetch(type,
                                        url: url,

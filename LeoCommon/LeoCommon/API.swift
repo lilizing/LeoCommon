@@ -33,6 +33,10 @@ internal func responseMap<T:BaseMappable>(json:[String: Any]) -> Result<T> {
     }
 }
 
+internal func errorHandler<T:BaseMappable>(result: Result<T>) -> Result<T> {
+    return result
+}
+
 @objc public protocol APIDelegate:class {
     @objc optional func defaultHTTPHeaders() -> HTTPHeaders?
     @objc optional func defaultParameters() -> Parameters?
@@ -40,9 +44,9 @@ internal func responseMap<T:BaseMappable>(json:[String: Any]) -> Result<T> {
 
 open class API: NSObject {
     
-    static let shared:API = API(basePath: "")
+    static public let shared:API = API(basePath: "", delegate: nil)
     
-    public var basePath:String = ""
+    public var basePath:String
     
     private var manager:Alamofire.SessionManager?
     
@@ -50,8 +54,9 @@ open class API: NSObject {
     
     private let queue = DispatchQueue(label: "com.leo.api.queue")
     
-    public init(basePath:String) {
+    public init(basePath:String = "", delegate: APIDelegate?) {
         self.basePath = basePath
+        self.apiDelegate = delegate
         super.init()
     }
     
@@ -113,7 +118,7 @@ open class API: NSObject {
                       timeoutInterval: TimeInterval? = 60,
                       cacheMaxAge: APICachePolicy = .server,
                       responseMap: @escaping ([String : Any]) -> (Result<T>) = responseMap,
-                      errorHandler: @escaping (Result<T>) -> Void = { _ in },
+                      errorHandler: @escaping (Result<T>) -> Result<T> = errorHandler,
                       callback: @escaping (Result<T>) -> Void = { _ in }) -> String {
         
         var tUrl = url
@@ -147,7 +152,7 @@ open class API: NSObject {
                     result = responseMap(reponseJSON)
                 }
                 API_REQUESTS.removeValue(forKey: requestID)
-                errorHandler(result)
+                result = errorHandler(result)
                 callback(result)
             }
             
