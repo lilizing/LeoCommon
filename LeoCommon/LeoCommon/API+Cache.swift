@@ -1,9 +1,9 @@
 //
-//  AlamofireURLCache.swift
-//  AlamofireURLCache
+//  API.swift
+//  LeoCommon
 //
-//  Created by Kenshin Cui on 2017/5/23.
-//  Copyright © 2017年 CMJStudio. All rights reserved.
+//  Created by  on 2017/4/12.
+//  Copyright © 2017年 . All rights reserved.
 //
 
 import Foundation

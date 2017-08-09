@@ -9,6 +9,6 @@
 import Foundation
 import Result
 
-public typealias LeoAnyError = AnyError
-public typealias LeoNoError = NoError
-public typealias LeoResult<T> = Result<T, LeoAnyError>
+//public typealias LeoAnyError = Error
+//public typealias LeoNoError = NoError
+//public typealias LeoResult<T> = Result<T, Swift.Error>

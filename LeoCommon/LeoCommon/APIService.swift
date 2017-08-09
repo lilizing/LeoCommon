@@ -26,4 +26,8 @@ open class APIService:APIDelegate {
     public func defaultHTTPHeaders() -> HTTPHeaders? {
         return nil
     }
+    
+    public func defaultParameters() -> Parameters? {
+        return nil
+    }
 }

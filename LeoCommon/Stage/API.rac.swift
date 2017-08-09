@@ -18,7 +18,7 @@ public extension API {
                        headers: HTTPHeaders? = nil,
                        timeoutInterval: TimeInterval? = 30,
                        cacheMaxAge: APICachePolicy = .server,
-                       resultMap: @escaping ([String : Any]) -> (LeoResult<T>) = resultMap,
+                       responseMap: @escaping ([String : Any]) -> (LeoResult<T>) = responseMap,
                        errorHandler: @escaping (LeoResult<T>) -> Void = { _ in }) -> Action<[String: Any], T, LeoAnyError> {
         return Action(enabledIf: enabledIf, { [weak self] params in
             return SignalProducer<T, LeoAnyError> { observer, disposable in
@@ -29,7 +29,7 @@ public extension API {
                                                 headers: headers,
                                                 timeoutInterval: timeoutInterval,
                                                 cacheMaxAge: cacheMaxAge,
-                                                resultMap: resultMap,
+                                                responseMap: responseMap,
                                                 errorHandler: errorHandler) { (result:LeoResult<T>) in
                                                     result.analysis(ifSuccess: { value in
                                                         observer.send(value: value)

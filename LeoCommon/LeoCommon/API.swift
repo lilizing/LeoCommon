@@ -22,24 +22,27 @@ public enum APICachePolicy {
     case local(maxAge:Int)
 }
 
-internal func resultMap<T:BaseMappable>(json:[String: Any]) -> LeoResult<T> {
+internal func responseMap<T:BaseMappable>(json:[String: Any]) -> Result<T> {
     do {
-        let data = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let data = try JSONSerialization.data(withJSONObject: json)
         let JSONString = String(data: data, encoding: .utf8)
         let value:T = T(JSONString: JSONString!)!
         return .success(value)
     } catch {
-        return .failure(LeoAnyError(error))
+        return .failure(error)
     }
 }
 
-public protocol APIDelegate:class {
-    func defaultHTTPHeaders() -> HTTPHeaders?
+@objc public protocol APIDelegate:class {
+    @objc optional func defaultHTTPHeaders() -> HTTPHeaders?
+    @objc optional func defaultParameters() -> Parameters?
 }
 
-open class API:Alamofire.SessionManager {
+open class API: NSObject {
     
-    public let basePath:String
+    static let shared:API = API(basePath: "")
+    
+    public var basePath:String = ""
     
     private var manager:Alamofire.SessionManager?
     
@@ -58,7 +61,7 @@ open class API:Alamofire.SessionManager {
                 self.manager = API_MANAGERS[self.basePath]!
             } else {
                 let configuration = URLSessionConfiguration.default
-                configuration.timeoutIntervalForRequest = 30
+                configuration.timeoutIntervalForRequest = 60
                 configuration.httpAdditionalHeaders = self.buildHeaders()
                 self.manager = Alamofire.SessionManager(configuration: configuration)
                 API_MANAGERS[basePath] = self.manager
@@ -69,9 +72,12 @@ open class API:Alamofire.SessionManager {
     
     private func buildHeaders(_ headers:HTTPHeaders? = nil) -> HTTPHeaders {
         var httpHeaders = SessionManager.defaultHTTPHeaders
-        if let defaultHeaders = self.apiDelegate!.defaultHTTPHeaders() {
-            for (key, value) in defaultHeaders {
-                httpHeaders[key] = value
+        
+        if let defaultHeaders = self.apiDelegate?.defaultHTTPHeaders {
+            if let ths = defaultHeaders() {
+                for (key, value) in ths {
+                    httpHeaders[key] = value
+                }
             }
         }
         
@@ -84,15 +90,31 @@ open class API:Alamofire.SessionManager {
         return httpHeaders
     }
     
-    public func fetch<T:BaseMappable>(_ url: String,
+    private func buildParameters(_ parameters:Parameters? = nil) -> Parameters {
+        if let defaultParameters = self.apiDelegate?.defaultParameters {
+            if var ths = defaultParameters() {
+                if let parms = parameters {
+                    for (key, value) in parms {
+                        ths[key] = value
+                    }
+                }
+                return ths
+            }
+        }
+        
+        return parameters ?? [:]
+    }
+    
+    public func fetch<T:BaseMappable>(_ type: T.Type,
+                      url: String = "",
                       method: HTTPMethod = .get,
                       parameters: Parameters? = nil,
                       headers: HTTPHeaders? = nil,
-                      timeoutInterval: TimeInterval? = 30,
+                      timeoutInterval: TimeInterval? = 60,
                       cacheMaxAge: APICachePolicy = .server,
-                      resultMap: @escaping ([String : Any]) -> (LeoResult<T>),
-                      errorHandler: @escaping (LeoResult<T>) -> Void = { _ in },
-                      callback: @escaping (LeoResult<T>) -> Void = { _ in }) -> String {
+                      responseMap: @escaping ([String : Any]) -> (Result<T>) = responseMap,
+                      errorHandler: @escaping (Result<T>) -> Void = { _ in },
+                      callback: @escaping (Result<T>) -> Void = { _ in }) -> String {
         
         var tUrl = url
         var tParams = parameters
@@ -106,6 +128,8 @@ open class API:Alamofire.SessionManager {
             }
         }
         
+        tParams = self.buildParameters(tParams)
+        
         let absURL = self.basePath + tUrl
         
         var request:URLRequest = URLRequest(url: URL(string: absURL)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: timeoutInterval!)
@@ -115,14 +139,16 @@ open class API:Alamofire.SessionManager {
         do {
             let encodedURLRequest = try URLEncoding.default.encode(request, with: tParams)
             let completionHandler: (DataResponse<Any>) -> Void = { response in
-                var result:LeoResult<T>? = nil
+                var result:Result<T>! = nil
                 if let error = response.error {
-                    result = .failure(LeoAnyError(error))
+                    result = .failure(error)
                 } else {
-                    result = resultMap(response.value! as! [String : Any])
+                    let reponseJSON = (response.value ?? [:]) as! [String : Any]
+                    result = responseMap(reponseJSON)
                 }
-                errorHandler(result!)
-                callback(result!)
+                API_REQUESTS.removeValue(forKey: requestID)
+                errorHandler(result)
+                callback(result)
             }
             
             let task = self.createManager().request(encodedURLRequest)
@@ -138,7 +164,7 @@ open class API:Alamofire.SessionManager {
                 API_REQUESTS[requestID] = task
             }
         } catch {
-            callback(.failure(LeoAnyError(error)))
+            callback(.failure(error))
         }
         return requestID
     }

@@ -10,16 +10,17 @@ abstract_target 'Leo' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
   
-  pod 'ReactiveCocoa', '~> 5.0.0'
+  #  pod 'ReactiveCocoa', '~> 5.0.0'
   pod 'UIColor_Hex_Swift', '~> 3.0.2'
   pod 'SwiftRichString'
   pod 'SnapKit', '~> 3.2.0'
-  pod 'Alamofire', '~> 4.4'
+  pod 'Alamofire', '~> 4.5'
   pod 'ObjectMapper', '~> 2.2'
   pod 'Presentr'
+  pod 'Result', '~> 3.0.0'
   
-  #  pod 'RxSwift',    '~> 3.0'
-  #  pod 'RxCocoa',    '~> 3.0'
+  pod 'RxSwift',    '~> 3.0'
+  pod 'RxCocoa',    '~> 3.0'
 
   target 'LeoCommon'
 end
