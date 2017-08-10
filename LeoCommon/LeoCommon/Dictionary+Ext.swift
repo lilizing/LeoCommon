@@ -15,4 +15,18 @@ extension Dictionary {
         }
         return nil
     }
+    
+    mutating func merge(with dictionary: Dictionary) {
+        dictionary.forEach { updateValue($1, forKey: $0) }
+    }
+    
+    public func merged(with dictionary: Dictionary) -> Dictionary {
+        var dict = self
+        dict.merge(with: dictionary)
+        return dict
+    }
+    
+    public static func +=(lhs: inout [String: Any], rhs: [String: Any]) {
+        rhs.forEach({ lhs[$0] = $1})
+    }
 }
