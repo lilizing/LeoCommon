@@ -20,6 +20,7 @@ extension Reactive where Base: API {
                       headers: HTTPHeaders? = nil,
                       timeoutInterval: TimeInterval? = 60,
                       cacheMaxAge: APICachePolicy = .server,
+                      loggerHandler: @escaping (URLRequest, Result<[String: Any]>) -> Void = { _,_ in },
                       responseMap: @escaping ([String : Any]) -> (Result<T>) = responseMap,
                       errorHandler: @escaping (Result<T>) -> Result<T> = errorHandler) -> Observable<T> {
         return Observable.create{ [weak api = self.base] observer in
@@ -30,6 +31,7 @@ extension Reactive where Base: API {
                                        headers: headers,
                                        timeoutInterval: timeoutInterval,
                                        cacheMaxAge: cacheMaxAge,
+                                       loggerHandler: loggerHandler,
                                        responseMap: responseMap,
                                        errorHandler: errorHandler) { (result:Result<T>) in
                                         if let error = result.error {

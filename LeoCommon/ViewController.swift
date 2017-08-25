@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import ObjectMapper
 import Alamofire
+import RxCocoa
 
 //https://apitest.ichuanyi.com/icyapi.php?appId=3&deviceType=1&fromPageId=0&method=icy.getIconCategoryList&session=BwsIDQNSAAcBDUUDXwABAAQCWgcDCQIHW1cICQ8HBlYPWghcBlMIAgcMXEsIAwNUBVhVAQ0I&userId=1384038328&version=1.7
 
@@ -102,38 +103,37 @@ class CategoryModel: Mappable {
 
 
 class ViewController: UIViewController, APIDelegate {
-
+    
     private var api:API!
+    
+    private var button:UIButton! = nil;
+    
+    private var disposeBag = DisposeBag()
+    
+    private var models = Variable<[Int]>([])
+    
+    private var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.button = UIButton.init(type: .custom)
+//        self.button.backgroundColor = .red
+//        self.button.frame = CGRect.init(x: 100, y: 100, width: 100, height: 100);
+//        self.button.setTitle("点击我", for: .normal)
+//        self.view.addSubview(self.button)
+        
+        self.models.asObservable().subscribe(onNext: { (value) in
+            debugPrint(value)
+        }).addDisposableTo(self.disposeBag)
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super .touchesBegan(touches, with: event)
+        super.touchesBegan(touches, with: event)
         
-        self.api = API(basePath: "https://apitest.ichuanyi.com/icyapi.php")
-        self.api.apiDelegate = self
-//        appId=3&deviceType=1&fromPageId=0&method=icy.getIconCategoryList&session=BwsIDQNSAAcBDUUDXwABAAQCWgcDCQIHW1cICQ8HBlYPWghcBlMIAgcMXEsIAwNUBVhVAQ0I&userId=1384038328&version=1.7
         
-        let params:[String : Any] = ["appId": 3, "deviceType": 1, "fromPageId": 0, "method": "icy.getIconCategoryList", "session": "BwsIDQNSAAcBDUUDXwABAAQCWgcDCQIHW1cICQ8HBlYPWghcBlMIAgcMXEsIAwNUBVhVAQ0I&userId=1384038328", "userId": 1384038328, "version": 1.7]
+        self.index += 1
         
-//        _ = self.api.fetch(APIResponse<CateroryDataModel>.self, url: "icyapi.php", parameters: params) { (result) in
-//            if let error = result.error {
-//                debugPrint(error)
-//            } else {
-//                let value = result.value!
-//                debugPrint(value)
-//            }
-//        }
-        
-        _ = self.api.rx.fetch(APIResponse<CateroryDataModel>.self, parameters: params).subscribe(onNext: { (response) in
-            debugPrint(response)
-        }, onError: { (error) in
-            debugPrint(error)
-        }, onCompleted: {
-            debugPrint("Completed!")
-        })
     }
     
     public func defaultParameters() -> Parameters? {

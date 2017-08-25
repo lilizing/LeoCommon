@@ -117,6 +117,7 @@ open class API: NSObject {
                       headers: HTTPHeaders? = nil,
                       timeoutInterval: TimeInterval? = 60,
                       cacheMaxAge: APICachePolicy = .server,
+                      loggerHandler: @escaping (URLRequest, Result<[String: Any]>) -> Void = { _,_ in },
                       responseMap: @escaping ([String : Any]) -> (Result<T>) = responseMap,
                       errorHandler: @escaping (Result<T>) -> Result<T> = errorHandler,
                       callback: @escaping (Result<T>) -> Void = { _ in }) -> String {
@@ -147,10 +148,13 @@ open class API: NSObject {
                 var result:Result<T>! = nil
                 if let error = response.error {
                     result = .failure(error)
+                    loggerHandler(encodedURLRequest, .failure(error))
                 } else {
                     let reponseJSON = (response.value ?? [:]) as! [String : Any]
+                    loggerHandler(encodedURLRequest, .success(reponseJSON))
                     result = responseMap(reponseJSON)
                 }
+                
                 API_REQUESTS.removeValue(forKey: requestID)
                 result = errorHandler(result)
                 callback(result)
