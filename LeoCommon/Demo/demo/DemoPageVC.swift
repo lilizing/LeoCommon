@@ -73,7 +73,7 @@ class DemoPageVC:UIViewController {
             let vc = DemoFeedVC()
             vc.name = "页面 - \(self.pageVC.viewControllers.count)"
             vc.view.backgroundColor = generateRandomColor()
-            self.pageVC.insert(newElement: vc, at: self.pageVC.viewControllers.count)
+            self.pageVC.insert(newElement: vc, at: max(0, self.pageVC.viewControllers.count - 1))
         }
         
         self.pageVC = PageVC()

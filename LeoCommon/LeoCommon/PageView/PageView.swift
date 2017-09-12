@@ -20,7 +20,11 @@ class PageView:UIView {
     
     var items:[UIView] = []
     
-    var selectedIndex:Int = 0
+    var selectedIndex:Int = 0 {
+        didSet {
+            Utils.debugLog("选中索引：\(selectedIndex)")
+        }
+    }
     
     var isMoving:Bool = false
     
@@ -34,6 +38,17 @@ class PageView:UIView {
         let cellVM = FeedViewCellViewModel.init()
         
         self.feedView.insert(newElement: cellVM, at: at, section: 0, reload:true)
+        
+        if (at <= self.selectedIndex && self.items.count > 1) {
+            self.selectedIndex += 1;
+            if #available(iOS 9, *) {
+                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
+                    self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+                })
+            }
+        }
     }
     
     func insert(contentsOf: [UIView], at: Int) {
@@ -47,6 +62,17 @@ class PageView:UIView {
         }
         
         self.feedView.reloadData()
+        
+        if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
+            self.selectedIndex += 1;
+            if #available(iOS 9, *) {
+                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
+                    self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+                })
+            }
+        }
     }
     
     override init(frame: CGRect) {
