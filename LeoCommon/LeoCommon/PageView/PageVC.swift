@@ -14,6 +14,30 @@ import SnapKit
 import ObjectMapper
 
 extension PageVC {
+    func show(index:Int) {
+        guard index < self.viewControllers.count && self.viewControllers.count > 1 else { return }
+        
+        let toVC = self.viewControllers[index]
+        let flag = toVC.parent == nil
+        
+        let fromVC = self.viewControllers[self.selectedIndex]
+        fromVC.beginAppearanceTransition(false, animated: true)
+        
+        if flag {
+            self.addChildViewController(toVC)
+        }
+        
+        self.pageView.show(index: index)
+        
+        if flag {
+            toVC.didMove(toParentViewController: self)
+        }
+        
+        toVC.beginAppearanceTransition(true, animated: true)
+        fromVC.endAppearanceTransition()
+        toVC.endAppearanceTransition()
+    }
+    
     func insert(newElement: UIViewController, at: Int) {
         guard at <= viewControllers.count else { return }
         
@@ -29,6 +53,8 @@ extension PageVC {
         
         if flag {
             newElement.didMove(toParentViewController: self)
+            newElement.beginAppearanceTransition(true, animated: true)
+            newElement.endAppearanceTransition()
         }
     }
     
@@ -52,6 +78,8 @@ extension PageVC {
         
         if flag {
             contentsOf[0].didMove(toParentViewController: self)
+            contentsOf[0].beginAppearanceTransition(true, animated: true)
+            contentsOf[0].endAppearanceTransition()
         }
     }
 }
@@ -103,7 +131,7 @@ class PageVC:UIViewController {
     
     func startMoving(index:Int) {
         self.selectedViewController = self.viewControllers[self.pageView.selectedIndex];
-        let toViewController = self.viewControllers[self.pageView.toIndex];
+        let toViewController = self.viewControllers[index];
         
         if toViewController.parent == nil {
             self.addChildViewController(toViewController)

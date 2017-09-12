@@ -74,6 +74,8 @@ class DemoPageVC:UIViewController {
             vc.name = "页面 - \(self.pageVC.viewControllers.count)"
             vc.view.backgroundColor = generateRandomColor()
             self.pageVC.insert(newElement: vc, at: max(0, self.pageVC.viewControllers.count - 1))
+            
+            self.pageVC.show(index: max(0, self.pageVC.viewControllers.count - 2))
         }
         
         self.pageVC = PageVC()

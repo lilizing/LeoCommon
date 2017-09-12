@@ -30,6 +30,20 @@ class PageView:UIView {
     
     weak var viewController:PageVC?
     
+    func show(index:Int) {
+        guard index < items.count else { return }
+        
+        self.selectedIndex = index
+        
+        if #available(iOS 9, *) {
+            self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
+                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+            })
+        }
+    }
+    
     func insert(newElement: UIView, at: Int) {
         guard at <= items.count else { return }
         
