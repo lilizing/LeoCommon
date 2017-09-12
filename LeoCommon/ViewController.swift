@@ -117,7 +117,8 @@ class ViewController: UIViewController, APIDelegate, UIGestureRecognizerDelegate
         
         _ = view.tapGesture().bind { (_) in
 //            self.sections[0].items.append(Item())
-            self.items.append(1)
+//            self.items.append(1)
+            self.items.insert(self.items.count, at: self.items.count)
             print("点击子视图")
         }
         

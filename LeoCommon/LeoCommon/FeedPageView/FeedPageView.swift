@@ -13,8 +13,6 @@ import RxCocoa
 import SnapKit
 
 class FeedPageView:UIView {
-    private var upScrollView:UICollectionView!
-    private var downScrollView:UICollectionView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
