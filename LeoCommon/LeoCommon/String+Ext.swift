@@ -28,6 +28,17 @@ extension String {
     }
 }
 
+extension String {
+    subscript (r: Range<Int>) -> String {
+        get {
+            let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.index(self.startIndex, offsetBy: r.upperBound)
+            return self.substring(with: startIndex..<endIndex)
+        }
+    }
+}
+
+
 extension NSAttributedString {
     static public func += (left: inout NSAttributedString, right: NSAttributedString) {
         let ns = left is NSMutableAttributedString ? (left as! NSMutableAttributedString) : NSMutableAttributedString(attributedString: left)
@@ -35,3 +46,4 @@ extension NSAttributedString {
         left = ns
     }
 }
+

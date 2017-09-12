@@ -16,7 +16,15 @@ import ObjectMapper
 class PageView:UIView {
     var feedView:FeedViewForPage!
     
+    var toIndex:Int = -1
+    
     var items:[UIView] = []
+    
+    var selectedIndex:Int = 0
+    
+    var isMoving:Bool = false
+    
+    weak var viewController:PageVC?
     
     func insert(newElement: UIView, at: Int) {
         guard at <= items.count else { return }
@@ -72,7 +80,7 @@ protocol FeedViewForPageDataSource:class {
 }
 
 class FeedViewForPage:FeedView {
-    weak var dataSource:FeedViewForPageDataSource!
+    weak var dataSource:PageView!
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellVM = self.sectionViewModels[indexPath.section].items[indexPath.row]

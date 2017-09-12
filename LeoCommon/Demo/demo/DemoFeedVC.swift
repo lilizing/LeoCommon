@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class DemoFeedVC:UIViewController {
+class DemoFeedVC:DemoVC {
     
     private var feedView:FeedView!
     
@@ -94,8 +94,10 @@ class DemoFeedVC:UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)   
-        self.feedView.headerBeginRefreshing()
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+        if parent != nil {
+            self.feedView.headerBeginRefreshing()
+        }
     }
 }

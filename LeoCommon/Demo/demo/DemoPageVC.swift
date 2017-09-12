@@ -12,9 +12,52 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+class DemoVC:UIViewController {
+    var name:String!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Utils.debugLog(self.name + " - *将要显示*")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Utils.debugLog(self.name + " - /显示/")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Utils.debugLog(self.name + " - *将要消失*")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        Utils.debugLog(self.name + " - /消失/")
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        
+        if parent != nil {
+            Utils.debugLog(self.name + " - *将要添加*")
+        } else {
+            Utils.debugLog(self.name + " - *将要移除*")
+        }
+    }
+    
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+        if parent != nil {
+            Utils.debugLog(self.name + " - /添加/")
+        } else {
+            Utils.debugLog(self.name + " - /移除/")
+        }
+    }
+}
+
 class DemoPageVC:UIViewController {
 
-    var pageView:PageView!
+    var pageVC:PageVC!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +70,23 @@ class DemoPageVC:UIViewController {
         }
         
         _ = view.tapGesture().bind { (_) in
-            let view = UIView()
-            view.backgroundColor = generateRandomColor()
-            self.pageView.insert(newElement: view, at: self.pageView.items.count)
+            let vc = DemoFeedVC()
+            vc.name = "页面 - \(self.pageVC.viewControllers.count)"
+            vc.view.backgroundColor = generateRandomColor()
+            self.pageVC.insert(newElement: vc, at: self.pageVC.viewControllers.count)
         }
         
-        self.pageView = PageView()
-        self.view.addSubview(self.pageView)
-        self.pageView.snp.makeConstraints { (make) in
+        self.pageVC = PageVC()
+        
+        self.addChildViewController(self.pageVC)
+        
+        self.view.addSubview(self.pageVC.view)
+        self.pageVC.view.snp.makeConstraints { (make) in
             make.top.equalTo(64)
             make.left.right.bottom.equalTo(self.view)
         }
+        
+        self.pageVC.didMove(toParentViewController: self)
     }
     
     func bind() {

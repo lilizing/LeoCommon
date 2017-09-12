@@ -69,15 +69,6 @@ class Section {
     var items:ObservableArray<Item> = []
 }
 
-extension UIView {
-    func tapGesture() -> Observable<UITapGestureRecognizer> {
-        let result = self.rx.tapGesture{ (gestureRecognizer, delegate) in
-            delegate.simultaneousRecognitionPolicy = .never
-        }.when(UIGestureRecognizerState.recognized)
-        return result
-    }
-}
-
 class ViewController: UIViewController, APIDelegate, UIGestureRecognizerDelegate {
     
     private var api:API!
