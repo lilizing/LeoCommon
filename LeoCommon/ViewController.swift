@@ -11,133 +11,125 @@ import RxSwift
 import ObjectMapper
 import Alamofire
 import RxCocoa
+import RxGesture
 
-//https://apitest.ichuanyi.com/icyapi.php?appId=3&deviceType=1&fromPageId=0&method=icy.getIconCategoryList&session=BwsIDQNSAAcBDUUDXwABAAQCWgcDCQIHW1cICQ8HBlYPWghcBlMIAgcMXEsIAwNUBVhVAQ0I&userId=1384038328&version=1.7
-
-//Result = {
-//    data =     {
-//        bottomInfo =         {
-//        };
-//        list =         (
-//            {
-//                categoryId = 0;
-//                categoryName = "\U5168\U90e8";
-//        },
-//            {
-//                categoryId = 1483600067;
-//                categoryName = "\U65f6\U5c1a\U535a\U4e3b";
-//        },
-//            {
-//                categoryId = 1483600072;
-//                categoryName = "\U4f18\U8d28icon";
-//        },
-//            {
-//                categoryId = 1483600071;
-//                categoryName = "\U660e\U661f";
-//        },
-//            {
-//                categoryId = 1483600069;
-//                categoryName = origin;
-//        },
-//            {
-//                categoryId = 1483600066;
-//                categoryName = "\U54c6\U5566\U68a6";
-//        },
-//            {
-//                categoryId = 1483600068;
-//                categoryName = "icon\U5206\U7c7b";
-//        }
-//        );
-//    };
-//    method = "icy.getIconCategoryList";
-//    msg =     {
-//    };
-//    result = 0;
-//}
-
-class APIResponse<Model: Mappable>: Mappable {
-    var result: Int!
-    var method: String!
-    var msg: Dictionary<String, Any>!
-    var data: Model!
-    
-    required init?(map: Map){
-        
-    }
-    
-    func mapping(map: Map) {
-        result <- map["result"]
-        data <- map["data"]
-        msg <- map["msg"]
-        data <- map["data"]
+extension UIView {
+    func tap() -> Observable<UITapGestureRecognizer> {
+        let result = self.rx.tapGesture{ (gestureRecognizer, delegate) in
+            delegate.simultaneousRecognitionPolicy = .never
+        }.when(UIGestureRecognizerState.recognized)
+        return result
     }
 }
 
-class CateroryDataModel: Mappable {
-    var bottomInfo: Dictionary<String, Any>!
-    var list: Array<CategoryModel>!
-    
-    required init?(map: Map){
-        
+public class SYDApi<Base> {
+    public let base: Base //等升级Swift4.0以后，请把这里可以改为private，extension中依然可以访问，但其他外部无法访问
+    public init(_ base: Base) {
+        self.base = base
     }
-    
-    func mapping(map: Map) {
-        bottomInfo <- map["bottomInfo"]
-        list <- map["list"]
+    deinit {
+        print("SYDApi释放罗...")
     }
 }
 
-class CategoryModel: Mappable {
-    var categoryId: Int!
-    var categoryName: String!
-    
-    required init?(map: Map){
-        
+extension SYDApi where Base: SYDDemo {
+    func sayHello() {
+        print("Hello")
     }
-    
-    func mapping(map: Map) {
-        categoryId <- map["categoryId"]
-        categoryName <- map["categoryName"]
+}
+
+extension SYDDemo {
+    public var syd: SYDApi<SYDDemo> {
+        return SYDApi(self)
     }
 }
 
 
-class ViewController: UIViewController, APIDelegate {
+class SYDDemo {
+    deinit {
+        print("Demo释放罗...")
+    }
+}
+
+extension SYDDemo {
+    public func rx_autoUpdater(source: Observable<ArrayChangeEvent>) -> Disposable {
+        return source.scan((0, nil)) { (a: (Int, ArrayChangeEvent?), ev) in
+            return (a.0 + ev.insertedIndices.count - ev.deletedIndices.count, ev)
+        }.observeOn(MainScheduler.instance).bind(onNext: { sourceCount, event in
+            print("===")
+        })
+    }
+}
+
+class Item {
+    
+}
+
+class Section {
+    var items:ObservableArray<Item> = []
+}
+
+extension UIView {
+    func tapGesture() -> Observable<UITapGestureRecognizer> {
+        let result = self.rx.tapGesture{ (gestureRecognizer, delegate) in
+            delegate.simultaneousRecognitionPolicy = .never
+        }.when(UIGestureRecognizerState.recognized)
+        return result
+    }
+}
+
+class ViewController: UIViewController, APIDelegate, UIGestureRecognizerDelegate {
     
     private var api:API!
     
-    private var button:UIButton! = nil;
+    var button:UIButton = UIButton();
     
     private var disposeBag = DisposeBag()
+    private var sectionInnerDisposeBag = DisposeBag()
     
-    private var models = Variable<[Int]>([])
+    var sections:ObservableArray<Section> = []
     
-    private var index = 0
+    var items:[Int] = [] {
+        didSet {
+            print("----------")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.button = UIButton.init(type: .custom)
-//        self.button.backgroundColor = .red
-//        self.button.frame = CGRect.init(x: 100, y: 100, width: 100, height: 100);
-//        self.button.setTitle("点击我", for: .normal)
-//        self.view.addSubview(self.button)
+        self.sections.rx_elements().bind { (sectionVMS) in
+            self.sectionInnerDisposeBag = DisposeBag()
+            
+            for sectionVM in sectionVMS {
+                sectionVM.items.rx_elements().skip(1).bind(onNext: { (cellVMS) in
+                    print("某个Section发生改变...")
+                }).addDisposableTo(self.sectionInnerDisposeBag)
+            }
+            
+            print("发生改变...")
+        }.addDisposableTo(self.disposeBag)
         
-        self.models.asObservable().subscribe(onNext: { (value) in
-            debugPrint(value)
-        }).addDisposableTo(self.disposeBag)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
+        let view = UIView()
+        view.backgroundColor = .red
+        view.frame = .init(x: 100, y: 100, width: 100, height: 100)
+        self.view.addSubview(view)
         
+        _ = view.tapGesture().bind { (_) in
+//            self.sections[0].items.append(Item())
+            self.items.append(1)
+            print("点击子视图")
+        }
         
-        self.index += 1
+        _ = self.view.tapGesture().bind { (_) in
+//            self.sections.append(Section())
+            if self.items.count > 0 {
+//                self.items.remove(at: 0)
+                self.items[0] = 2
+            }
+            print("点击父视图")
+        }
         
-    }
-    
-    public func defaultParameters() -> Parameters? {
-        return ["hello": "world"]
     }
 }
 

@@ -21,6 +21,8 @@ abstract_target 'Leo' do
   
   pod 'RxSwift',    '~> 3.0'
   pod 'RxCocoa',    '~> 3.0'
+  
+  pod 'RxGesture', :git=>'https://github.com/RxSwiftCommunity/RxGesture.git'
 
   target 'LeoCommon'
 end

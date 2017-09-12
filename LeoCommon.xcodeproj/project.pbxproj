@@ -7,7 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		010C49A58347A535114B7096 /* Pods_LeoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */; };
+		220BD2BF1F5D4C0400FCB3B4 /* ObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220BD2BE1F5D4C0400FCB3B4 /* ObservableArray.swift */; };
+		221EADD61F6782E400FEDC08 /* FeedPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EADD51F6782E400FEDC08 /* FeedPageView.swift */; };
+		221EAE2F1F678E4200FEDC08 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE281F678E4200FEDC08 /* FeedView.swift */; };
+		221EAE301F678E4200FEDC08 /* FeedView+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE291F678E4200FEDC08 /* FeedView+Refresh.swift */; };
+		221EAE311F678E4200FEDC08 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE2A1F678E4200FEDC08 /* FeedViewCell.swift */; };
+		221EAE321F678E4200FEDC08 /* FeedViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE2B1F678E4200FEDC08 /* FeedViewCellViewModel.swift */; };
+		221EAE331F678E4200FEDC08 /* FeedViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE2C1F678E4200FEDC08 /* FeedViewSection.swift */; };
+		221EAE341F678E4200FEDC08 /* FeedViewSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE2D1F678E4200FEDC08 /* FeedViewSectionViewModel.swift */; };
+		221EAE351F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE2E1F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift */; };
+		221EAE3B1F678F7800FEDC08 /* SYDRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE381F678F7800FEDC08 /* SYDRefreshFooter.m */; };
+		221EAE3C1F678F7800FEDC08 /* SYDRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE3A1F678F7800FEDC08 /* SYDRefreshHeader.m */; };
+		221EAE6C1F678FE100FEDC08 /* LEORefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE401F678FE000FEDC08 /* LEORefreshAutoFooter.m */; };
+		221EAE6D1F678FE100FEDC08 /* LEORefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE421F678FE000FEDC08 /* LEORefreshBackFooter.m */; };
+		221EAE6E1F678FE100FEDC08 /* LEORefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE441F678FE000FEDC08 /* LEORefreshComponent.m */; };
+		221EAE6F1F678FE100FEDC08 /* LEORefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE461F678FE000FEDC08 /* LEORefreshFooter.m */; };
+		221EAE701F678FE100FEDC08 /* LEORefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE481F678FE000FEDC08 /* LEORefreshHeader.m */; };
+		221EAE711F678FE100FEDC08 /* LEORefreshAutoGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE4D1F678FE000FEDC08 /* LEORefreshAutoGifFooter.m */; };
+		221EAE721F678FE100FEDC08 /* LEORefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE4F1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.m */; };
+		221EAE731F678FE100FEDC08 /* LEORefreshAutoStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE511F678FE000FEDC08 /* LEORefreshAutoStateFooter.m */; };
+		221EAE741F678FE100FEDC08 /* LEORefreshBackGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE541F678FE000FEDC08 /* LEORefreshBackGifFooter.m */; };
+		221EAE751F678FE100FEDC08 /* LEORefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE561F678FE000FEDC08 /* LEORefreshBackNormalFooter.m */; };
+		221EAE761F678FE100FEDC08 /* LEORefreshBackStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE581F678FE000FEDC08 /* LEORefreshBackStateFooter.m */; };
+		221EAE771F678FE100FEDC08 /* LEORefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE5B1F678FE000FEDC08 /* LEORefreshGifHeader.m */; };
+		221EAE781F678FE100FEDC08 /* LEORefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE5D1F678FE000FEDC08 /* LEORefreshNormalHeader.m */; };
+		221EAE791F678FE100FEDC08 /* LEORefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE5F1F678FE000FEDC08 /* LEORefreshStateHeader.m */; };
+		221EAE7A1F678FE100FEDC08 /* LEORefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 221EAE601F678FE000FEDC08 /* LEORefresh.bundle */; };
+		221EAE7B1F678FE100FEDC08 /* LEORefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE631F678FE000FEDC08 /* LEORefreshConst.m */; };
+		221EAE7C1F678FE100FEDC08 /* NSBundle+LEORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE651F678FE100FEDC08 /* NSBundle+LEORefresh.m */; };
+		221EAE7D1F678FE100FEDC08 /* UIScrollView+LEOExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE671F678FE100FEDC08 /* UIScrollView+LEOExtension.m */; };
+		221EAE7E1F678FE100FEDC08 /* UIScrollView+LEORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE691F678FE100FEDC08 /* UIScrollView+LEORefresh.m */; };
+		221EAE7F1F678FE100FEDC08 /* UIView+LEOExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE6B1F678FE100FEDC08 /* UIView+LEOExtension.m */; };
+		221EAE901F67935400FEDC08 /* DemoCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE851F67935400FEDC08 /* DemoCellThree.swift */; };
+		221EAE911F67935400FEDC08 /* DemoFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE861F67935400FEDC08 /* DemoFeedVC.swift */; };
+		221EAE921F67935400FEDC08 /* DemoOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE871F67935400FEDC08 /* DemoOneCell.swift */; };
+		221EAE931F67935400FEDC08 /* DemoOneCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE881F67935400FEDC08 /* DemoOneCellViewModel.swift */; };
+		221EAE941F67935400FEDC08 /* DemoSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE891F67935400FEDC08 /* DemoSectionFooter.swift */; };
+		221EAE951F67935400FEDC08 /* DemoSectionFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE8A1F67935400FEDC08 /* DemoSectionFooterViewModel.swift */; };
+		221EAE961F67935400FEDC08 /* DemoSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE8B1F67935400FEDC08 /* DemoSectionHeader.swift */; };
+		221EAE971F67935400FEDC08 /* DemoSectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE8C1F67935400FEDC08 /* DemoSectionHeaderViewModel.swift */; };
+		221EAE981F67935400FEDC08 /* DemoThreeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE8D1F67935400FEDC08 /* DemoThreeCellViewModel.swift */; };
+		221EAE991F67935400FEDC08 /* DemoTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE8E1F67935400FEDC08 /* DemoTwoCell.swift */; };
+		221EAE9A1F67935400FEDC08 /* DemoTwoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE8F1F67935400FEDC08 /* DemoTwoCellViewModel.swift */; };
+		221EAE9C1F67A16E00FEDC08 /* FeedView+SYD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE9B1F67A16E00FEDC08 /* FeedView+SYD.swift */; };
 		22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D621F0007A700BA0892 /* debug.xcconfig */; };
 		22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D631F0007A700BA0892 /* release.xcconfig */; };
 		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
@@ -24,10 +66,76 @@
 		22C251181EE50054007A46BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C251161EE50054007A46BC /* Main.storyboard */; };
 		22C2511A1EE50054007A46BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C251191EE50054007A46BC /* Assets.xcassets */; };
 		22C2511D1EE50054007A46BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C2511B1EE50054007A46BC /* LaunchScreen.storyboard */; };
-		5A04C3DD9A1254A631CC28D4 /* Pods_Leo_LeoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B19F27B4D803DB40601468 /* Pods_Leo_LeoCommon.framework */; };
+		CE4232C35B046E400A7A9A7C /* Pods_Leo_LeoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ECB9B1B09821DAF10B166C /* Pods_Leo_LeoCommon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220BD2BE1F5D4C0400FCB3B4 /* ObservableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableArray.swift; sourceTree = "<group>"; };
+		221EADD51F6782E400FEDC08 /* FeedPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPageView.swift; sourceTree = "<group>"; };
+		221EAE281F678E4200FEDC08 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		221EAE291F678E4200FEDC08 /* FeedView+Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedView+Refresh.swift"; sourceTree = "<group>"; };
+		221EAE2A1F678E4200FEDC08 /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
+		221EAE2B1F678E4200FEDC08 /* FeedViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCellViewModel.swift; sourceTree = "<group>"; };
+		221EAE2C1F678E4200FEDC08 /* FeedViewSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewSection.swift; sourceTree = "<group>"; };
+		221EAE2D1F678E4200FEDC08 /* FeedViewSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewSectionViewModel.swift; sourceTree = "<group>"; };
+		221EAE2E1F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEOCollectionViewDelegateWaterfallLayout.swift; sourceTree = "<group>"; };
+		221EAE371F678F7800FEDC08 /* SYDRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDRefreshFooter.h; sourceTree = "<group>"; };
+		221EAE381F678F7800FEDC08 /* SYDRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDRefreshFooter.m; sourceTree = "<group>"; };
+		221EAE391F678F7800FEDC08 /* SYDRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDRefreshHeader.h; sourceTree = "<group>"; };
+		221EAE3A1F678F7800FEDC08 /* SYDRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDRefreshHeader.m; sourceTree = "<group>"; };
+		221EAE3F1F678FE000FEDC08 /* LEORefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoFooter.h; sourceTree = "<group>"; };
+		221EAE401F678FE000FEDC08 /* LEORefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoFooter.m; sourceTree = "<group>"; };
+		221EAE411F678FE000FEDC08 /* LEORefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackFooter.h; sourceTree = "<group>"; };
+		221EAE421F678FE000FEDC08 /* LEORefreshBackFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackFooter.m; sourceTree = "<group>"; };
+		221EAE431F678FE000FEDC08 /* LEORefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshComponent.h; sourceTree = "<group>"; };
+		221EAE441F678FE000FEDC08 /* LEORefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshComponent.m; sourceTree = "<group>"; };
+		221EAE451F678FE000FEDC08 /* LEORefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshFooter.h; sourceTree = "<group>"; };
+		221EAE461F678FE000FEDC08 /* LEORefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshFooter.m; sourceTree = "<group>"; };
+		221EAE471F678FE000FEDC08 /* LEORefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshHeader.h; sourceTree = "<group>"; };
+		221EAE481F678FE000FEDC08 /* LEORefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshHeader.m; sourceTree = "<group>"; };
+		221EAE4C1F678FE000FEDC08 /* LEORefreshAutoGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoGifFooter.h; sourceTree = "<group>"; };
+		221EAE4D1F678FE000FEDC08 /* LEORefreshAutoGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoGifFooter.m; sourceTree = "<group>"; };
+		221EAE4E1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoNormalFooter.h; sourceTree = "<group>"; };
+		221EAE4F1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoNormalFooter.m; sourceTree = "<group>"; };
+		221EAE501F678FE000FEDC08 /* LEORefreshAutoStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoStateFooter.h; sourceTree = "<group>"; };
+		221EAE511F678FE000FEDC08 /* LEORefreshAutoStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoStateFooter.m; sourceTree = "<group>"; };
+		221EAE531F678FE000FEDC08 /* LEORefreshBackGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackGifFooter.h; sourceTree = "<group>"; };
+		221EAE541F678FE000FEDC08 /* LEORefreshBackGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackGifFooter.m; sourceTree = "<group>"; };
+		221EAE551F678FE000FEDC08 /* LEORefreshBackNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackNormalFooter.h; sourceTree = "<group>"; };
+		221EAE561F678FE000FEDC08 /* LEORefreshBackNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackNormalFooter.m; sourceTree = "<group>"; };
+		221EAE571F678FE000FEDC08 /* LEORefreshBackStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackStateFooter.h; sourceTree = "<group>"; };
+		221EAE581F678FE000FEDC08 /* LEORefreshBackStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackStateFooter.m; sourceTree = "<group>"; };
+		221EAE5A1F678FE000FEDC08 /* LEORefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshGifHeader.h; sourceTree = "<group>"; };
+		221EAE5B1F678FE000FEDC08 /* LEORefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshGifHeader.m; sourceTree = "<group>"; };
+		221EAE5C1F678FE000FEDC08 /* LEORefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshNormalHeader.h; sourceTree = "<group>"; };
+		221EAE5D1F678FE000FEDC08 /* LEORefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshNormalHeader.m; sourceTree = "<group>"; };
+		221EAE5E1F678FE000FEDC08 /* LEORefreshStateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshStateHeader.h; sourceTree = "<group>"; };
+		221EAE5F1F678FE000FEDC08 /* LEORefreshStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshStateHeader.m; sourceTree = "<group>"; };
+		221EAE601F678FE000FEDC08 /* LEORefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LEORefresh.bundle; sourceTree = "<group>"; };
+		221EAE611F678FE000FEDC08 /* LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefresh.h; sourceTree = "<group>"; };
+		221EAE621F678FE000FEDC08 /* LEORefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshConst.h; sourceTree = "<group>"; };
+		221EAE631F678FE000FEDC08 /* LEORefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshConst.m; sourceTree = "<group>"; };
+		221EAE641F678FE000FEDC08 /* NSBundle+LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LEORefresh.h"; sourceTree = "<group>"; };
+		221EAE651F678FE100FEDC08 /* NSBundle+LEORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LEORefresh.m"; sourceTree = "<group>"; };
+		221EAE661F678FE100FEDC08 /* UIScrollView+LEOExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LEOExtension.h"; sourceTree = "<group>"; };
+		221EAE671F678FE100FEDC08 /* UIScrollView+LEOExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LEOExtension.m"; sourceTree = "<group>"; };
+		221EAE681F678FE100FEDC08 /* UIScrollView+LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LEORefresh.h"; sourceTree = "<group>"; };
+		221EAE691F678FE100FEDC08 /* UIScrollView+LEORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LEORefresh.m"; sourceTree = "<group>"; };
+		221EAE6A1F678FE100FEDC08 /* UIView+LEOExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LEOExtension.h"; sourceTree = "<group>"; };
+		221EAE6B1F678FE100FEDC08 /* UIView+LEOExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LEOExtension.m"; sourceTree = "<group>"; };
+		221EAE831F67903D00FEDC08 /* LeoCommon-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LeoCommon-Bridge-Header.h"; sourceTree = "<group>"; };
+		221EAE851F67935400FEDC08 /* DemoCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCellThree.swift; sourceTree = "<group>"; };
+		221EAE861F67935400FEDC08 /* DemoFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedVC.swift; sourceTree = "<group>"; };
+		221EAE871F67935400FEDC08 /* DemoOneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoOneCell.swift; sourceTree = "<group>"; };
+		221EAE881F67935400FEDC08 /* DemoOneCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoOneCellViewModel.swift; sourceTree = "<group>"; };
+		221EAE891F67935400FEDC08 /* DemoSectionFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoSectionFooter.swift; sourceTree = "<group>"; };
+		221EAE8A1F67935400FEDC08 /* DemoSectionFooterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoSectionFooterViewModel.swift; sourceTree = "<group>"; };
+		221EAE8B1F67935400FEDC08 /* DemoSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoSectionHeader.swift; sourceTree = "<group>"; };
+		221EAE8C1F67935400FEDC08 /* DemoSectionHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoSectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		221EAE8D1F67935400FEDC08 /* DemoThreeCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoThreeCellViewModel.swift; sourceTree = "<group>"; };
+		221EAE8E1F67935400FEDC08 /* DemoTwoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTwoCell.swift; sourceTree = "<group>"; };
+		221EAE8F1F67935400FEDC08 /* DemoTwoCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTwoCellViewModel.swift; sourceTree = "<group>"; };
+		221EAE9B1F67A16E00FEDC08 /* FeedView+SYD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedView+SYD.swift"; sourceTree = "<group>"; };
 		22AD6D621F0007A700BA0892 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		22AD6D631F0007A700BA0892 /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
 		22AD6D641F0007A700BA0892 /* common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
@@ -68,12 +176,9 @@
 		22C251191EE50054007A46BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22C2511C1EE50054007A46BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22C2511E1EE50054007A46BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeoCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CF139A2B2B02F399B60CF74 /* Pods-Leo-LeoCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoCommon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Leo-LeoCommon/Pods-Leo-LeoCommon.release.xcconfig"; sourceTree = "<group>"; };
-		6896A20A2F9A3AF74AA04C96 /* Pods-Leo-LeoCommon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoCommon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Leo-LeoCommon/Pods-Leo-LeoCommon.debug.xcconfig"; sourceTree = "<group>"; };
-		97B19F27B4D803DB40601468 /* Pods_Leo_LeoCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Leo_LeoCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F6F38EDE034399EE60CAB2 /* Pods-LeoCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoCommon.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon.release.xcconfig"; sourceTree = "<group>"; };
-		BB8FA73E236EDF363EA111FC /* Pods-LeoCommon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeoCommon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeoCommon/Pods-LeoCommon.debug.xcconfig"; sourceTree = "<group>"; };
+		50ECB9B1B09821DAF10B166C /* Pods_Leo_LeoCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Leo_LeoCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55FD8169260DD6F60BDEE426 /* Pods-Leo-LeoCommon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoCommon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Leo-LeoCommon/Pods-Leo-LeoCommon.debug.xcconfig"; sourceTree = "<group>"; };
+		F6A0C1E16040FABA470AF93F /* Pods-Leo-LeoCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leo-LeoCommon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Leo-LeoCommon/Pods-Leo-LeoCommon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +186,153 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				010C49A58347A535114B7096 /* Pods_LeoCommon.framework in Frameworks */,
-				5A04C3DD9A1254A631CC28D4 /* Pods_Leo_LeoCommon.framework in Frameworks */,
+				CE4232C35B046E400A7A9A7C /* Pods_Leo_LeoCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		221EAE271F678E1E00FEDC08 /* FeedView */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE281F678E4200FEDC08 /* FeedView.swift */,
+				221EAE291F678E4200FEDC08 /* FeedView+Refresh.swift */,
+				221EAE2A1F678E4200FEDC08 /* FeedViewCell.swift */,
+				221EAE2B1F678E4200FEDC08 /* FeedViewCellViewModel.swift */,
+				221EAE2C1F678E4200FEDC08 /* FeedViewSection.swift */,
+				221EAE2D1F678E4200FEDC08 /* FeedViewSectionViewModel.swift */,
+				221EAE2E1F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift */,
+			);
+			path = FeedView;
+			sourceTree = "<group>";
+		};
+		221EAE361F678F7000FEDC08 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE841F67935400FEDC08 /* demo */,
+				221EAE371F678F7800FEDC08 /* SYDRefreshFooter.h */,
+				221EAE381F678F7800FEDC08 /* SYDRefreshFooter.m */,
+				221EAE391F678F7800FEDC08 /* SYDRefreshHeader.h */,
+				221EAE3A1F678F7800FEDC08 /* SYDRefreshHeader.m */,
+				221EAE9B1F67A16E00FEDC08 /* FeedView+SYD.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		221EAE3D1F678FE000FEDC08 /* LEORefresh */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE3E1F678FE000FEDC08 /* Base */,
+				221EAE491F678FE000FEDC08 /* Custom */,
+				221EAE601F678FE000FEDC08 /* LEORefresh.bundle */,
+				221EAE611F678FE000FEDC08 /* LEORefresh.h */,
+				221EAE621F678FE000FEDC08 /* LEORefreshConst.h */,
+				221EAE631F678FE000FEDC08 /* LEORefreshConst.m */,
+				221EAE641F678FE000FEDC08 /* NSBundle+LEORefresh.h */,
+				221EAE651F678FE100FEDC08 /* NSBundle+LEORefresh.m */,
+				221EAE661F678FE100FEDC08 /* UIScrollView+LEOExtension.h */,
+				221EAE671F678FE100FEDC08 /* UIScrollView+LEOExtension.m */,
+				221EAE681F678FE100FEDC08 /* UIScrollView+LEORefresh.h */,
+				221EAE691F678FE100FEDC08 /* UIScrollView+LEORefresh.m */,
+				221EAE6A1F678FE100FEDC08 /* UIView+LEOExtension.h */,
+				221EAE6B1F678FE100FEDC08 /* UIView+LEOExtension.m */,
+			);
+			path = LEORefresh;
+			sourceTree = "<group>";
+		};
+		221EAE3E1F678FE000FEDC08 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE3F1F678FE000FEDC08 /* LEORefreshAutoFooter.h */,
+				221EAE401F678FE000FEDC08 /* LEORefreshAutoFooter.m */,
+				221EAE411F678FE000FEDC08 /* LEORefreshBackFooter.h */,
+				221EAE421F678FE000FEDC08 /* LEORefreshBackFooter.m */,
+				221EAE431F678FE000FEDC08 /* LEORefreshComponent.h */,
+				221EAE441F678FE000FEDC08 /* LEORefreshComponent.m */,
+				221EAE451F678FE000FEDC08 /* LEORefreshFooter.h */,
+				221EAE461F678FE000FEDC08 /* LEORefreshFooter.m */,
+				221EAE471F678FE000FEDC08 /* LEORefreshHeader.h */,
+				221EAE481F678FE000FEDC08 /* LEORefreshHeader.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		221EAE491F678FE000FEDC08 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE4A1F678FE000FEDC08 /* Footer */,
+				221EAE591F678FE000FEDC08 /* Header */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		221EAE4A1F678FE000FEDC08 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE4B1F678FE000FEDC08 /* Auto */,
+				221EAE521F678FE000FEDC08 /* Back */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		221EAE4B1F678FE000FEDC08 /* Auto */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE4C1F678FE000FEDC08 /* LEORefreshAutoGifFooter.h */,
+				221EAE4D1F678FE000FEDC08 /* LEORefreshAutoGifFooter.m */,
+				221EAE4E1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.h */,
+				221EAE4F1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.m */,
+				221EAE501F678FE000FEDC08 /* LEORefreshAutoStateFooter.h */,
+				221EAE511F678FE000FEDC08 /* LEORefreshAutoStateFooter.m */,
+			);
+			path = Auto;
+			sourceTree = "<group>";
+		};
+		221EAE521F678FE000FEDC08 /* Back */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE531F678FE000FEDC08 /* LEORefreshBackGifFooter.h */,
+				221EAE541F678FE000FEDC08 /* LEORefreshBackGifFooter.m */,
+				221EAE551F678FE000FEDC08 /* LEORefreshBackNormalFooter.h */,
+				221EAE561F678FE000FEDC08 /* LEORefreshBackNormalFooter.m */,
+				221EAE571F678FE000FEDC08 /* LEORefreshBackStateFooter.h */,
+				221EAE581F678FE000FEDC08 /* LEORefreshBackStateFooter.m */,
+			);
+			path = Back;
+			sourceTree = "<group>";
+		};
+		221EAE591F678FE000FEDC08 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE5A1F678FE000FEDC08 /* LEORefreshGifHeader.h */,
+				221EAE5B1F678FE000FEDC08 /* LEORefreshGifHeader.m */,
+				221EAE5C1F678FE000FEDC08 /* LEORefreshNormalHeader.h */,
+				221EAE5D1F678FE000FEDC08 /* LEORefreshNormalHeader.m */,
+				221EAE5E1F678FE000FEDC08 /* LEORefreshStateHeader.h */,
+				221EAE5F1F678FE000FEDC08 /* LEORefreshStateHeader.m */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		221EAE841F67935400FEDC08 /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				221EAE851F67935400FEDC08 /* DemoCellThree.swift */,
+				221EAE861F67935400FEDC08 /* DemoFeedVC.swift */,
+				221EAE871F67935400FEDC08 /* DemoOneCell.swift */,
+				221EAE881F67935400FEDC08 /* DemoOneCellViewModel.swift */,
+				221EAE891F67935400FEDC08 /* DemoSectionFooter.swift */,
+				221EAE8A1F67935400FEDC08 /* DemoSectionFooterViewModel.swift */,
+				221EAE8B1F67935400FEDC08 /* DemoSectionHeader.swift */,
+				221EAE8C1F67935400FEDC08 /* DemoSectionHeaderViewModel.swift */,
+				221EAE8D1F67935400FEDC08 /* DemoThreeCellViewModel.swift */,
+				221EAE8E1F67935400FEDC08 /* DemoTwoCell.swift */,
+				221EAE8F1F67935400FEDC08 /* DemoTwoCellViewModel.swift */,
+			);
+			path = demo;
+			sourceTree = "<group>";
+		};
 		22AD6D611F0007A700BA0892 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +435,8 @@
 		22C251111EE50054007A46BC /* LeoCommon */ = {
 			isa = PBXGroup;
 			children = (
+				221EAE3D1F678FE000FEDC08 /* LEORefresh */,
+				221EAE361F678F7000FEDC08 /* Demo */,
 				22C251241EE501D6007A46BC /* LeoCommon */,
 				22C251121EE50054007A46BC /* AppDelegate.swift */,
 				22C251141EE50054007A46BC /* ViewController.swift */,
@@ -198,6 +444,8 @@
 				22C251191EE50054007A46BC /* Assets.xcassets */,
 				22C2511B1EE50054007A46BC /* LaunchScreen.storyboard */,
 				22C2511E1EE50054007A46BC /* Info.plist */,
+				220BD2BE1F5D4C0400FCB3B4 /* ObservableArray.swift */,
+				221EAE831F67903D00FEDC08 /* LeoCommon-Bridge-Header.h */,
 			);
 			path = LeoCommon;
 			sourceTree = "<group>";
@@ -205,6 +453,7 @@
 		22C251241EE501D6007A46BC /* LeoCommon */ = {
 			isa = PBXGroup;
 			children = (
+				221EAE271F678E1E00FEDC08 /* FeedView */,
 				22B5C4C41F3B125000C89688 /* API.swift */,
 				22B5C4D61F3B129D00C89688 /* API+Rx.swift */,
 				22B5C4C51F3B125000C89688 /* API+Cache.swift */,
@@ -213,6 +462,7 @@
 				22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */,
 				22B5C4CB1F3B125000C89688 /* Object+Ext.swift */,
 				22B5C4CC1F3B125000C89688 /* String+Ext.swift */,
+				221EADD51F6782E400FEDC08 /* FeedPageView.swift */,
 			);
 			path = LeoCommon;
 			sourceTree = "<group>";
@@ -220,10 +470,8 @@
 		78F6452D71AF918CB0C72488 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB8FA73E236EDF363EA111FC /* Pods-LeoCommon.debug.xcconfig */,
-				B1F6F38EDE034399EE60CAB2 /* Pods-LeoCommon.release.xcconfig */,
-				6896A20A2F9A3AF74AA04C96 /* Pods-Leo-LeoCommon.debug.xcconfig */,
-				5CF139A2B2B02F399B60CF74 /* Pods-Leo-LeoCommon.release.xcconfig */,
+				55FD8169260DD6F60BDEE426 /* Pods-Leo-LeoCommon.debug.xcconfig */,
+				F6A0C1E16040FABA470AF93F /* Pods-Leo-LeoCommon.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -231,8 +479,7 @@
 		C92F5F524531C47F01AC44BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3EF372CF2960C2475AD7E530 /* Pods_LeoCommon.framework */,
-				97B19F27B4D803DB40601468 /* Pods_Leo_LeoCommon.framework */,
+				50ECB9B1B09821DAF10B166C /* Pods_Leo_LeoCommon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -307,6 +554,7 @@
 				22C2511A1EE50054007A46BC /* Assets.xcassets in Resources */,
 				22C251181EE50054007A46BC /* Main.storyboard in Resources */,
 				22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */,
+				221EAE7A1F678FE100FEDC08 /* LEORefresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,16 +613,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221EAE931F67935400FEDC08 /* DemoOneCellViewModel.swift in Sources */,
+				221EAE7D1F678FE100FEDC08 /* UIScrollView+LEOExtension.m in Sources */,
+				221EAE3B1F678F7800FEDC08 /* SYDRefreshFooter.m in Sources */,
+				221EAE711F678FE100FEDC08 /* LEORefreshAutoGifFooter.m in Sources */,
+				221EAE941F67935400FEDC08 /* DemoSectionFooter.swift in Sources */,
+				221EAE6F1F678FE100FEDC08 /* LEORefreshFooter.m in Sources */,
+				221EAE981F67935400FEDC08 /* DemoThreeCellViewModel.swift in Sources */,
+				221EAE341F678E4200FEDC08 /* FeedViewSectionViewModel.swift in Sources */,
+				221EAE751F678FE100FEDC08 /* LEORefreshBackNormalFooter.m in Sources */,
 				22B5C4D41F3B125000C89688 /* Object+Ext.swift in Sources */,
+				221EAE781F678FE100FEDC08 /* LEORefreshNormalHeader.m in Sources */,
+				221EAE771F678FE100FEDC08 /* LEORefreshGifHeader.m in Sources */,
+				221EAE761F678FE100FEDC08 /* LEORefreshBackStateFooter.m in Sources */,
+				221EADD61F6782E400FEDC08 /* FeedPageView.swift in Sources */,
+				221EAE351F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift in Sources */,
+				221EAE9A1F67935400FEDC08 /* DemoTwoCellViewModel.swift in Sources */,
 				22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */,
+				221EAE911F67935400FEDC08 /* DemoFeedVC.swift in Sources */,
+				221EAE961F67935400FEDC08 /* DemoSectionHeader.swift in Sources */,
 				22C251151EE50054007A46BC /* ViewController.swift in Sources */,
+				221EAE731F678FE100FEDC08 /* LEORefreshAutoStateFooter.m in Sources */,
+				221EAE331F678E4200FEDC08 /* FeedViewSection.swift in Sources */,
+				221EAE6C1F678FE100FEDC08 /* LEORefreshAutoFooter.m in Sources */,
+				221EAE951F67935400FEDC08 /* DemoSectionFooterViewModel.swift in Sources */,
+				221EAE921F67935400FEDC08 /* DemoOneCell.swift in Sources */,
 				22B5C4CD1F3B125000C89688 /* API.swift in Sources */,
+				221EAE6E1F678FE100FEDC08 /* LEORefreshComponent.m in Sources */,
 				22B5C4D31F3B125000C89688 /* Dictionary+Ext.swift in Sources */,
 				22C251131EE50054007A46BC /* AppDelegate.swift in Sources */,
 				22B5C4D21F3B125000C89688 /* Const.swift in Sources */,
+				221EAE311F678E4200FEDC08 /* FeedViewCell.swift in Sources */,
+				221EAE2F1F678E4200FEDC08 /* FeedView.swift in Sources */,
 				22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */,
+				221EAE7C1F678FE100FEDC08 /* NSBundle+LEORefresh.m in Sources */,
+				221EAE721F678FE100FEDC08 /* LEORefreshAutoNormalFooter.m in Sources */,
+				221EAE741F678FE100FEDC08 /* LEORefreshBackGifFooter.m in Sources */,
+				220BD2BF1F5D4C0400FCB3B4 /* ObservableArray.swift in Sources */,
+				221EAE7E1F678FE100FEDC08 /* UIScrollView+LEORefresh.m in Sources */,
+				221EAE971F67935400FEDC08 /* DemoSectionHeaderViewModel.swift in Sources */,
+				221EAE9C1F67A16E00FEDC08 /* FeedView+SYD.swift in Sources */,
 				22B5C4D71F3B129D00C89688 /* API+Rx.swift in Sources */,
+				221EAE6D1F678FE100FEDC08 /* LEORefreshBackFooter.m in Sources */,
 				22B5C4D51F3B125000C89688 /* String+Ext.swift in Sources */,
+				221EAE991F67935400FEDC08 /* DemoTwoCell.swift in Sources */,
+				221EAE7F1F678FE100FEDC08 /* UIView+LEOExtension.m in Sources */,
+				221EAE7B1F678FE100FEDC08 /* LEORefreshConst.m in Sources */,
+				221EAE3C1F678F7800FEDC08 /* SYDRefreshHeader.m in Sources */,
+				221EAE791F678FE100FEDC08 /* LEORefreshStateHeader.m in Sources */,
+				221EAE701F678FE100FEDC08 /* LEORefreshHeader.m in Sources */,
+				221EAE301F678E4200FEDC08 /* FeedView+Refresh.swift in Sources */,
+				221EAE321F678E4200FEDC08 /* FeedViewCellViewModel.swift in Sources */,
+				221EAE901F67935400FEDC08 /* DemoCellThree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +785,7 @@
 		};
 		22C251221EE50054007A46BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6896A20A2F9A3AF74AA04C96 /* Pods-Leo-LeoCommon.debug.xcconfig */;
+			baseConfigurationReference = 55FD8169260DD6F60BDEE426 /* Pods-Leo-LeoCommon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -504,6 +794,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeoCommon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/LeoCommon/LeoCommon-Bridge-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -511,7 +802,7 @@
 		};
 		22C251231EE50054007A46BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CF139A2B2B02F399B60CF74 /* Pods-Leo-LeoCommon.release.xcconfig */;
+			baseConfigurationReference = F6A0C1E16040FABA470AF93F /* Pods-Leo-LeoCommon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -520,6 +811,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeoCommon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/LeoCommon/LeoCommon-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

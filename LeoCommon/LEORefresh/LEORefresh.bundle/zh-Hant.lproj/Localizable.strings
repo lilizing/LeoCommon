@@ -1,0 +1,16 @@
+"LEORefreshHeaderIdleText" = "下拉可以刷新";
+"LEORefreshHeaderPullingText" = "鬆開立即刷新";
+"LEORefreshHeaderRefreshingText" = "正在刷新數據中...";
+
+"LEORefreshAutoFooterIdleText" = "點擊或上拉加載更多";
+"LEORefreshAutoFooterRefreshingText" = "正在加載更多的數據...";
+"LEORefreshAutoFooterNoMoreDataText" = "已經全部加載完畢";
+
+"LEORefreshBackFooterIdleText" = "上拉可以加載更多";
+"LEORefreshBackFooterPullingText" = "鬆開立即加載更多";
+"LEORefreshBackFooterRefreshingText" = "正在加載更多的數據...";
+"LEORefreshBackFooterNoMoreDataText" = "已經全部加載完畢";
+
+"LEORefreshHeaderLastTimeText" = "最後更新：";
+"LEORefreshHeaderDateTodayText" = "今天";
+"LEORefreshHeaderNoneLastDateText" = "無記錄";
