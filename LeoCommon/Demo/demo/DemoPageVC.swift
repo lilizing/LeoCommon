@@ -101,9 +101,9 @@ class DemoPageVC:UIViewController {
             
             self.pageVC.insert(newElement: vc, at: max(0, self.pageVC.viewControllers.count - 1))
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
-                self.pageVC.show(at: max(0, self.pageVC.viewControllers.count - 2))
-            })
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
+//                self.pageVC.show(at: max(0, self.pageVC.viewControllers.count - 2))
+//            })
             
         }.addDisposableTo(self.disposeBag)
         
@@ -123,6 +123,10 @@ class DemoPageVC:UIViewController {
         }.addDisposableTo(self.disposeBag)
         
         self.pageTabView = PageTabView()
+        self.pageTabView.lineView.backgroundColor = .red
+        self.pageTabView.lineHeight = 2
+        self.pageTabView.lineSpacing = 20
+        
         self.view.addSubview(self.pageTabView)
         self.pageTabView.snp.makeConstraints { (make) in
             make.top.equalTo(64)

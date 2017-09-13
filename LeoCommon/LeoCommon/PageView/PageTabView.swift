@@ -29,6 +29,14 @@ class PageTabItemView:UIView {
 class PageTabView:UIView {
     var feedView:FeedViewForPageTab!
     
+    var lineScrollView:UIScrollView!
+    var lineView:UIView!
+    
+    var lineHeight:CGFloat = 2
+    var lineBottomOffset:CGFloat = 0
+    var lineSpacing:CGFloat = 0
+    var lineMinWidth:CGFloat = 10
+    
     var disposeBag = DisposeBag()
     
     var items:[PageTabItemView] = []
@@ -64,6 +72,18 @@ class PageTabView:UIView {
             }
             
             self.feedView.collectionView.setContentOffset(.init(x: contentOffsetX, y: 0), animated: true)
+            self.lineScrollView.contentSize = .init(width: self.feedView.collectionView.contentSize.width, height: self.lineHeight)
+            
+            self.layoutIfNeeded()
+            UIView.animate(withDuration: 0.3, animations: { 
+                self.lineView.snp.remakeConstraints { (make) in
+                    make.centerX.equalTo(selectedTabCenterX)
+                    make.top.equalTo(0)
+                    make.height.equalTo(self.lineHeight)
+                    make.width.equalTo(max(self.lineMinWidth, selectedTab.width() - self.lineSpacing * 2))
+                }
+                self.layoutIfNeeded()
+            })
             
             self.selectedIndexObservable.value = self.selectedIndex
         }
@@ -153,6 +173,18 @@ class PageTabView:UIView {
         self.feedView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
+        
+        self.lineScrollView = UIScrollView()
+        self.lineScrollView.isUserInteractionEnabled = false
+        self.addSubview(self.lineScrollView)
+        self.lineScrollView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(self)
+            make.bottom.equalTo(self).offset(-self.lineBottomOffset)
+            make.height.equalTo(self.lineHeight)
+        }
+        
+        self.lineView = UIView()
+        self.lineScrollView.addSubview(self.lineView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -204,15 +236,18 @@ class FeedViewForPageTab:FeedView {
                 make.edges.equalTo(cell)
             }
         }
+        self.dataSource.lineScrollView.contentSize = .init(width: collectionView.contentSize.width, height: self.dataSource.lineHeight)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        self.dataSource.lineScrollView.contentSize = .init(width: collectionView.contentSize.width, height: self.dataSource.lineHeight)
         let view = self.dataSource.items[indexPath.row]
         return CGSize.init(width: view.width(), height: self.bounds.size.height)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        Utils.debugLog("Offset:\(scrollView.contentOffset)")
+        self.dataSource.lineScrollView.contentSize = .init(width: scrollView.contentSize.width, height: self.dataSource.lineHeight)
+        self.dataSource.lineScrollView.contentOffset = scrollView.contentOffset
     }
 }
