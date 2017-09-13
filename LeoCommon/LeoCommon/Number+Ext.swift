@@ -10,11 +10,11 @@ import Foundation
 
 infix operator ==~ : AssignmentPrecedence
 public func ==~ (left: Double, right: Double) -> Bool {
-    return fabs(left.distance(to: right)) <= 1e-15
+    return fabs(left.distance(to: right)) <= 1e-6
 }
 
 public func ==~ (left: CGFloat, right: CGFloat) -> Bool {
-    return fabs(left.distance(to: right)) <= 1e-15
+    return fabs(left.distance(to: right)) <= 1e-6
 }
 
 infix operator !=~ : AssignmentPrecedence
@@ -46,18 +46,18 @@ public func >=~ (left: CGFloat, right: CGFloat) -> Bool {
 
 infix operator <~ : AssignmentPrecedence
 public func <~ (left: Double, right: Double) -> Bool {
-    return left.distance(to: right) > 1e-15
+    return left.distance(to: right) > 1e-6
 }
 
 public func <~ (left: CGFloat, right: CGFloat) -> Bool {
-    return left.distance(to: right) > 1e-15
+    return left.distance(to: right) > 1e-6
 }
 
 infix operator >~ : AssignmentPrecedence
 public func >~ (left: Double, right: Double) -> Bool {
-    return left.distance(to: right) < -1e-15
+    return left.distance(to: right) < -1e-6
 }
 
 public func >~ (left: CGFloat, right: CGFloat) -> Bool {
-    return left.distance(to: right) < -1e-15
+    return left.distance(to: right) < -1e-6
 }
