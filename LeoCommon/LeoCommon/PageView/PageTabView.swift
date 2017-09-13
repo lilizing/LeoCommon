@@ -39,7 +39,7 @@ class PageTabView:UIView {
         didSet {
             Utils.debugLog("Tab - 选中索引：\(selectedIndex)")
             
-            guard self.items.count > 0, self.selectedIndex > -1 else { return }
+            guard self.selectedIndex > -1 else { return }
             
             var width:CGFloat = 0
             var index = 0
@@ -88,6 +88,8 @@ class PageTabView:UIView {
         
         if self.items.count == 0 {
             self.selectedIndex = -1
+        } else if self.items.count == 1 {
+            self.selectedIndex = 0
         } else if (index <= self.selectedIndex && self.selectedIndex > 0) {
             self.selectedIndex -= 1;
         }
