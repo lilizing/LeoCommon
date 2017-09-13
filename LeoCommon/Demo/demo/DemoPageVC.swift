@@ -72,6 +72,8 @@ class DemoPageVC:UIViewController {
 
     var pageVC:PageVC!
     
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let view = UILabel()
@@ -92,7 +94,7 @@ class DemoPageVC:UIViewController {
             self.pageVC.insert(newElement: vc, at: max(0, self.pageVC.viewControllers.count - 1))
             
             self.pageVC.show(at: max(0, self.pageVC.viewControllers.count - 2))
-        }
+        }.addDisposableTo(self.disposeBag)
         
         let view2 = UILabel()
         view2.text = "删除"
@@ -106,7 +108,7 @@ class DemoPageVC:UIViewController {
         
         _ = view2.tapGesture().bind { (_) in
             self.pageVC.remove(at: max(0, self.pageVC.viewControllers.count - 2))
-        }
+        }.addDisposableTo(self.disposeBag)
         
         
         self.pageVC = PageVC()
@@ -120,6 +122,10 @@ class DemoPageVC:UIViewController {
         }
         
         self.pageVC.didMove(toParentViewController: self)
+        
+        Observable.just(self.pageVC.pageView.selectedIndex).bind { (index) in
+            Utils.debugLog("-----------选中:\(index)----------------")
+        }.addDisposableTo(self.disposeBag)
     }
     
     func bind() {

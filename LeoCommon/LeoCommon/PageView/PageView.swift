@@ -20,9 +20,18 @@ class PageView:UIView {
     
     var toIndex:Int = -1
     
+    private var _innerSelectedIndexObservable:Variable<Int> = Variable(-1)
+    var selectedIndexObservable:Variable<Int> {
+        get {
+            return _innerSelectedIndexObservable
+        }
+    }
+    
     var selectedIndex:Int = -1 {
         didSet {
-            Utils.debugLog("选中索引：\(selectedIndex)")
+            Utils.debugLog("Page - 选中索引：\(selectedIndex)")
+            
+            _innerSelectedIndexObservable.value = self.selectedIndex
         }
     }
     
@@ -49,7 +58,9 @@ class PageView:UIView {
         
         self.items.remove(at: index)
         
-        if (index <= self.selectedIndex) {
+        if self.items.count == 0 {
+            self.selectedIndex = -1
+        } else if (index <= self.selectedIndex && self.selectedIndex > 0) {
             self.selectedIndex -= 1;
         }
         

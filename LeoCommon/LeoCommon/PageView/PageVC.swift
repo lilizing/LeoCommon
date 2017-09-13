@@ -80,17 +80,15 @@ extension PageVC {
             removeVC.removeFromParentViewController()
         }
         
+        if let vc = nextVC {
+            if nextFlag {
+                vc.didMove(toParentViewController: self)
+            }
+            vc.beginAppearanceTransition(true, animated: true)
+            vc.endAppearanceTransition()
+        }
+        
         self.viewControllers.remove(at: index)
-        
-        guard let vc = nextVC else {
-            return
-        }
-        
-        if nextFlag {
-            vc.didMove(toParentViewController: self)
-        }
-        vc.beginAppearanceTransition(true, animated: true)
-        vc.endAppearanceTransition()
     }
     
     func insert(newElement: UIViewController, at: Int) {
@@ -152,6 +150,12 @@ extension PageVC {
 class PageVC:UIViewController {
     var viewControllers:[UIViewController] = []
     var selectedViewController:UIViewController!
+    
+    var selectedIndexObservable:Variable<Int> {
+        get {
+            return self.pageView.selectedIndexObservable
+        }
+    }
     
     var selectedIndex:Int {
         get {
