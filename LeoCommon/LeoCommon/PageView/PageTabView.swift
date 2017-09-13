@@ -47,6 +47,8 @@ class PageTabView:UIView {
         didSet {
             Utils.debugLog("Tab - 选中索引：\(selectedIndex)")
             
+            self.lineView.isHidden = self.selectedIndex < 0
+            
             guard self.selectedIndex > -1 else { return }
             
             var width:CGFloat = 0
@@ -95,7 +97,6 @@ class PageTabView:UIView {
     
     func show(at index:Int) {
         guard index < items.count else { return }
-        
         self.selectedIndex = index
     }
     
