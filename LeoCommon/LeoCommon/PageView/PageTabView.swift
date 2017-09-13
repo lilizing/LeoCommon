@@ -15,6 +15,12 @@ import ObjectMapper
 
 
 class PageTabItemView:UIView {
+    var selected:Bool = false {
+        didSet {
+            self.backgroundColor = self.selected ? .black : .orange
+        }
+    }
+    
     func width() -> CGFloat {
         return 0
     }
@@ -22,6 +28,8 @@ class PageTabItemView:UIView {
 
 class PageTabView:UIView {
     var feedView:FeedViewForPageTab!
+    
+    var disposeBag = DisposeBag()
     
     var items:[PageTabItemView] = []
     
@@ -43,6 +51,7 @@ class PageTabView:UIView {
                     selectedTabLeft = width
                     selectedTab = tab
                 }
+                tab.selected = index == self.selectedIndex
                 width += tab.width()
                 index += 1
             }
@@ -51,7 +60,7 @@ class PageTabView:UIView {
             
             var contentOffsetX:CGFloat = 0
             if self.feedView.collectionView.contentSize.width > self.bounds.size.width {
-                contentOffsetX = min(max((selectedTabCenterX - self.bounds.size.width) / 2, 0), self.feedView.collectionView.contentSize.width - self.bounds.size.width)
+                contentOffsetX = min(max(selectedTabCenterX - self.bounds.size.width / 2, 0), self.feedView.collectionView.contentSize.width - self.bounds.size.width)
             }
             
             self.feedView.collectionView.setContentOffset(.init(x: contentOffsetX, y: 0), animated: true)
@@ -75,16 +84,12 @@ class PageTabView:UIView {
         
         self.items.remove(at: index)
         
+        self.feedView.remove(section: 0, at: index, reload:true)
+        
         if self.items.count == 0 {
             self.selectedIndex = -1
         } else if (index <= self.selectedIndex && self.selectedIndex > 0) {
             self.selectedIndex -= 1;
-        }
-        
-        self.feedView.remove(section: 0, at: index, reload:true)
-        
-        guard self.selectedIndex > -1 else {
-            return
         }
     }
     
@@ -104,6 +109,14 @@ class PageTabView:UIView {
         if (at <= self.selectedIndex && self.items.count > 1) {
             self.selectedIndex += 1;
         }
+        
+        newElement.tapGesture().bind { [weak self, weak newElement] (_) in
+            guard let sSelf = self, let sEle = newElement else { return }
+            
+            if let index = sSelf.items.index(of: sEle) {
+                sSelf.selectedIndex = index
+            }
+        }.addDisposableTo(self.disposeBag)
     }
     
     func insert(contentsOf: [PageTabItemView], at: Int) {
@@ -195,5 +208,9 @@ class FeedViewForPageTab:FeedView {
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let view = self.dataSource.items[indexPath.row]
         return CGSize.init(width: view.width(), height: self.bounds.size.height)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        Utils.debugLog("Offset:\(scrollView.contentOffset)")
     }
 }

@@ -53,8 +53,8 @@ class DemoFeedVC:DemoVC {
                         }
                         
                         let headerVM = DemoSectionHeaderViewModel()
-                        let index = self.pageVC.viewControllers.index(of: self)!
-                        headerVM.text  = "------页面【\(String(describing: index))】-------"
+//                        let index = self.pageVC.viewControllers.index(of: self)!
+                        headerVM.text  = "------页面【\(String(describing: self.name))】-------"
                         //                        headerVM.text = "我是第【一】个Section的【头部】"
                         
                         let footerVM = DemoSectionFooterViewModel()
