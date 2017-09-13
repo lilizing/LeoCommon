@@ -12,66 +12,9 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class DemoVC:UIViewController {
-    var name:String!
-    weak var pageVC:PageVC!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        let index = self.pageVC.viewControllers.index(of: self)!
-//        self.name = "页面【\(String(describing: index))】"
-        Utils.debugLog(self.name + " - *将要显示*")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        let index = self.pageVC.viewControllers.index(of: self)!
-//        self.name = "页面【\(String(describing: index))】"
-        Utils.debugLog(self.name + " - /显示/")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        let index = self.pageVC.viewControllers.index(of: self)!
-//        self.name = "页面【\(String(describing: index))】"
-        Utils.debugLog(self.name + " - *将要消失*")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        let index = self.pageVC.viewControllers.index(of: self)!
-//        self.name = "页面【\(String(describing: index))】"
-        Utils.debugLog(self.name + " - /消失/")
-    }
-    
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        
-//        let index = self.pageVC.viewControllers.index(of: self)!
-//        self.name = "页面【\(String(describing: index))】"
-        if parent != nil {
-            Utils.debugLog(self.name + " - *将要添加*")
-        } else {
-            Utils.debugLog(self.name + " - *将要移除*")
-        }
-    }
-    
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-//        let index = self.pageVC.viewControllers.index(of: self)!
-//        self.name = "页面【\(String(describing: index))】"
-        if parent != nil {
-            Utils.debugLog(self.name + " - /添加/")
-        } else {
-            Utils.debugLog(self.name + " - /移除/")
-        }
-    }
-}
-
 class DemoPageVC:UIViewController {
 
-    var pageVC:PageVC!
-    var pageTabView:PageTabView!
+    var pageTabVC:PageTabVC!
     
     var disposeBag = DisposeBag()
     
@@ -89,22 +32,18 @@ class DemoPageVC:UIViewController {
         _ = view.tapGesture().bind { (_) in
             
             let tab = DemoPageTabItemView()
-            tab.text = "Tab - \(self.pageVC.viewControllers.count)"
+            tab.text = "Tab - \(self.pageTabVC.pageVC.viewControllers.count)"
             
             
             let vc = DemoFeedVC()
-            vc.name = "页面 - \(self.pageVC.viewControllers.count)"
-            vc.pageVC = self.pageVC
+            vc.name = "页面 - \(self.pageTabVC.pageVC.viewControllers.count)"
             vc.view.backgroundColor = generateRandomColor()
             
-            self.pageTabView.insert(newElement: tab, at: max(0, self.pageVC.viewControllers.count - 1))
-            
-            self.pageVC.insert(newElement: vc, at: max(0, self.pageVC.viewControllers.count - 1))
+            self.pageTabVC.insert(tab: tab, vc:vc, at: max(0, self.pageTabVC.pageVC.viewControllers.count - 1))
             
 //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
-//                self.pageVC.show(at: max(0, self.pageVC.viewControllers.count - 2))
+//                self.pageTabView.show(at: max(0, self.pageVC.viewControllers.count - 2))
 //            })
-            
         }.addDisposableTo(self.disposeBag)
         
         let view2 = UILabel()
@@ -118,63 +57,22 @@ class DemoPageVC:UIViewController {
         }
         
         _ = view2.tapGesture().bind { (_) in
-            self.pageTabView.remove(at: max(0, self.pageVC.viewControllers.count - 2))
-            self.pageVC.remove(at: max(0, self.pageVC.viewControllers.count - 2))
+            self.pageTabVC.remove(at: max(0, self.pageTabVC.pageVC.viewControllers.count - 2))
         }.addDisposableTo(self.disposeBag)
         
-        self.pageTabView = PageTabView()
-        self.pageTabView.lineView.backgroundColor = .red
-        self.pageTabView.lineHeight = 2
-        self.pageTabView.lineSpacing = 20
         
-        self.view.addSubview(self.pageTabView)
-        self.pageTabView.snp.makeConstraints { (make) in
+        self.pageTabVC = PageTabVC()
+        self.pageTabVC.tabView.lineView.backgroundColor = .red
+        self.pageTabVC.tabView.lineHeight = 2
+        self.pageTabVC.tabView.lineSpacing = 20
+        
+        self.addChildViewController(self.pageTabVC)
+        self.view.addSubview(self.pageTabVC.view)
+        self.pageTabVC.view.snp.makeConstraints { (make) in
             make.top.equalTo(64)
-            make.left.right.equalTo(self.view)
-            make.height.equalTo(44)
-        }
-        
-        self.pageVC = PageVC()
-        
-        self.addChildViewController(self.pageVC)
-        
-        self.view.addSubview(self.pageVC.view)
-        self.pageVC.view.snp.makeConstraints { (make) in
-            make.top.equalTo(108)
             make.left.right.bottom.equalTo(self.view)
         }
-        
-        self.pageVC.didMove(toParentViewController: self)
-        
-        Observable.just(self.pageVC.pageView.selectedIndex).bind { (index) in
-            Utils.debugLog("-----------选中:\(index)----------------")
-        }.addDisposableTo(self.disposeBag)
-        
-        
-        self.pageTabView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
-            guard
-                let sSelf = self,
-                index > -1,
-                sSelf.pageVC.viewControllers.count > index
-            else {
-                return
-            }
-            
-            sSelf.pageVC.show(at: index)
-            
-        }.addDisposableTo(self.disposeBag)
-
-        self.pageVC.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
-            guard
-                let sSelf = self,
-                index > -1,
-                sSelf.pageTabView.items.count > index
-            else {
-                return
-            }
-            
-            sSelf.pageTabView.show(at: index)
-        }.addDisposableTo(self.disposeBag)
+        self.pageTabVC.didMove(toParentViewController: self)
     }
     
     func bind() {

@@ -12,7 +12,8 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class DemoFeedVC:DemoVC {
+class DemoFeedVC:UIViewController {
+    var name:String!
     
     private var feedView:FeedView!
     
@@ -53,7 +54,6 @@ class DemoFeedVC:DemoVC {
                         }
                         
                         let headerVM = DemoSectionHeaderViewModel()
-//                        let index = self.pageVC.viewControllers.index(of: self)!
                         headerVM.text  = "------页面【\(String(describing: self.name))】-------"
                         //                        headerVM.text = "我是第【一】个Section的【头部】"
                         
@@ -103,5 +103,42 @@ class DemoFeedVC:DemoVC {
         if parent != nil {
             self.feedView.headerBeginRefreshing()
         }
+        
+        if parent != nil {
+            Utils.debugLog(self.name + " - /添加/")
+        } else {
+            Utils.debugLog(self.name + " - /移除/")
+        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Utils.debugLog(self.name + " - *将要显示*")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Utils.debugLog(self.name + " - /显示/")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Utils.debugLog(self.name + " - *将要消失*")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        Utils.debugLog(self.name + " - /消失/")
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        
+        if parent != nil {
+            Utils.debugLog(self.name + " - *将要添加*")
+        } else {
+            Utils.debugLog(self.name + " - *将要移除*")
+        }
+    }
+    
 }
