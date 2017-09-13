@@ -14,7 +14,7 @@ import SnapKit
 import ObjectMapper
 
 extension PageVC {
-    func show(index:Int) {
+    func show(at index:Int) {
         guard index < self.viewControllers.count && self.viewControllers.count > 1 else { return }
         
         let toVC = self.viewControllers[index]
@@ -27,7 +27,7 @@ extension PageVC {
             self.addChildViewController(toVC)
         }
         
-        self.pageView.show(index: index)
+        self.pageView.show(at: index)
         
         if flag {
             toVC.didMove(toParentViewController: self)
@@ -36,6 +36,61 @@ extension PageVC {
         toVC.beginAppearanceTransition(true, animated: true)
         fromVC.endAppearanceTransition()
         toVC.endAppearanceTransition()
+    }
+    
+    func remove(at index:Int) {
+        guard index < self.viewControllers.count && self.viewControllers.count > 0 else { return }
+        
+        let removeVC = self.viewControllers[index]
+        let flag = removeVC.parent == nil
+        
+        let currentIndex = self.selectedIndex
+        var nextIndex = currentIndex
+        
+        if (index <= currentIndex) {
+            nextIndex -= 1;
+        }
+        
+        var nextVC:UIViewController?
+        if nextIndex > -1 {
+            nextVC = self.viewControllers[nextIndex]
+        }
+        
+        var nextFlag = false
+        
+        if !flag {
+            if index == currentIndex {
+                removeVC.willMove(toParentViewController: nil)
+                removeVC.beginAppearanceTransition(false, animated: true)
+                if let vc = nextVC {
+                    if vc.parent == nil {
+                        nextFlag = true
+                        self.addChildViewController(vc)
+                    }
+                }
+            }
+        }
+        
+        self.pageView.remove(at: index)
+        
+        if !flag {
+            if index == currentIndex {
+                removeVC.endAppearanceTransition()
+            }
+            removeVC.removeFromParentViewController()
+        }
+        
+        self.viewControllers.remove(at: index)
+        
+        guard let vc = nextVC else {
+            return
+        }
+        
+        if nextFlag {
+            vc.didMove(toParentViewController: self)
+        }
+        vc.beginAppearanceTransition(true, animated: true)
+        vc.endAppearanceTransition()
     }
     
     func insert(newElement: UIViewController, at: Int) {

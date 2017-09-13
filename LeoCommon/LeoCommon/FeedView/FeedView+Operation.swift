@@ -34,6 +34,9 @@ protocol FeedViewOperation {
     
     func insert(contentsOf: [FeedViewCellViewModel], at: Int, section: Int, reload:Bool)
     
+    func remove(section:Int, at:Int, reload:Bool)
+    
+    func remove(section:Int, reload:Bool)
 }
 
 extension FeedView:FeedViewOperation {
@@ -139,6 +142,32 @@ extension FeedView:FeedViewOperation {
             }
             self.sectionViewModels[section].items.insert(contentsOf: contentsOf, at: at)
         }
+        if reload {
+            self.reloadData()
+        }
+    }
+    
+    func remove(section:Int, at:Int, reload:Bool = false) {
+        guard section <= self.sectionViewModels.count else {
+            assert(section <= self.sectionViewModels.count, "下标越界...")
+            return
+        }
+        guard at <= self.sectionViewModels[section].items.count else {
+            assert(at <= self.sectionViewModels[section].items.count, "下标越界...")
+            return
+        }
+        self.sectionViewModels[section].items.remove(at: at)
+        if reload {
+            self.reloadData()
+        }
+    }
+    
+    func remove(section:Int, reload:Bool = false) {
+        guard section <= self.sectionViewModels.count else {
+            assert(section <= self.sectionViewModels.count, "下标越界...")
+            return
+        }
+        self.sectionViewModels.remove(at: section)
         if reload {
             self.reloadData()
         }

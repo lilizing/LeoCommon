@@ -42,6 +42,8 @@ class DemoFeedVC:DemoVC {
                             if i % 2 == 0 {
                                 let vm = DemoOneCellViewModel()
                                 vm.model = "我是第【一】个Section第【一】种Cell \(i)"
+                                
+                                
                                 items.append(vm)
                             } else {
                                 let vm = DemoTwoCellViewModel()
@@ -51,7 +53,9 @@ class DemoFeedVC:DemoVC {
                         }
                         
                         let headerVM = DemoSectionHeaderViewModel()
-                        headerVM.text = "我是第【一】个Section的【头部】"
+                        let index = self.pageVC.viewControllers.index(of: self)!
+                        headerVM.text  = "------页面【\(String(describing: index))】-------"
+                        //                        headerVM.text = "我是第【一】个Section的【头部】"
                         
                         let footerVM = DemoSectionFooterViewModel()
                         footerVM.text = "我是第【一】个Section的【尾部】"

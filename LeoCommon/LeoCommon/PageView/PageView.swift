@@ -16,11 +16,11 @@ import ObjectMapper
 class PageView:UIView {
     var feedView:FeedViewForPage!
     
-    var toIndex:Int = -1
-    
     var items:[UIView] = []
     
-    var selectedIndex:Int = 0 {
+    var toIndex:Int = -1
+    
+    var selectedIndex:Int = -1 {
         didSet {
             Utils.debugLog("选中索引：\(selectedIndex)")
         }
@@ -30,10 +30,34 @@ class PageView:UIView {
     
     weak var viewController:PageVC?
     
-    func show(index:Int) {
+    func show(at index:Int) {
         guard index < items.count else { return }
         
         self.selectedIndex = index
+        
+        if #available(iOS 9, *) {
+            self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
+                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+            })
+        }
+    }
+    
+    func remove(at index: Int) {
+        guard index < items.count && self.feedView.sectionViewModels.count > 0 else { return }
+        
+        self.items.remove(at: index)
+        
+        if (index <= self.selectedIndex) {
+            self.selectedIndex -= 1;
+        }
+        
+        self.feedView.remove(section: 0, at: index, reload:true)
+        
+        guard self.selectedIndex > -1 else {
+            return
+        }
         
         if #available(iOS 9, *) {
             self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
@@ -52,6 +76,10 @@ class PageView:UIView {
         let cellVM = FeedViewCellViewModel.init()
         
         self.feedView.insert(newElement: cellVM, at: at, section: 0, reload:true)
+        
+        if self.items.count == 1 {
+            self.selectedIndex = 0
+        }
         
         if (at <= self.selectedIndex && self.items.count > 1) {
             self.selectedIndex += 1;
@@ -76,6 +104,10 @@ class PageView:UIView {
         }
         
         self.feedView.reloadData()
+        
+        if self.items.count == contentsOf.count {
+            self.selectedIndex = 0
+        }
         
         if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
             self.selectedIndex += 1;

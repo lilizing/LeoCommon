@@ -75,7 +75,6 @@ extension FeedViewForPage {
         }
         if (self.dataSource.toIndex > -1 && self.dataSource.toIndex < self.dataSource.items.count) {
             self.startMoving(index: self.dataSource.toIndex)
-            
         }
     }
     

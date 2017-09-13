@@ -14,30 +14,41 @@ import SnapKit
 
 class DemoVC:UIViewController {
     var name:String!
+    weak var pageVC:PageVC!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let index = self.pageVC.viewControllers.index(of: self)!
+        self.name = "页面【\(String(describing: index))】"
         Utils.debugLog(self.name + " - *将要显示*")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let index = self.pageVC.viewControllers.index(of: self)!
+        self.name = "页面【\(String(describing: index))】"
         Utils.debugLog(self.name + " - /显示/")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        let index = self.pageVC.viewControllers.index(of: self)!
+        self.name = "页面【\(String(describing: index))】"
         Utils.debugLog(self.name + " - *将要消失*")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        let index = self.pageVC.viewControllers.index(of: self)!
+        self.name = "页面【\(String(describing: index))】"
         Utils.debugLog(self.name + " - /消失/")
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
         
+        let index = self.pageVC.viewControllers.index(of: self)!
+        self.name = "页面【\(String(describing: index))】"
         if parent != nil {
             Utils.debugLog(self.name + " - *将要添加*")
         } else {
@@ -47,6 +58,8 @@ class DemoVC:UIViewController {
     
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)
+        let index = self.pageVC.viewControllers.index(of: self)!
+        self.name = "页面【\(String(describing: index))】"
         if parent != nil {
             Utils.debugLog(self.name + " - /添加/")
         } else {
@@ -61,22 +74,40 @@ class DemoPageVC:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = UIView()
+        let view = UILabel()
+        view.text = "添加"
         view.backgroundColor = .orange
         self.view.addSubview(view)
         view.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(self.view)
-            make.height.equalTo(64)
+            make.top.left.equalTo(self.view).offset(20)
+            make.height.equalTo(34)
         }
         
         _ = view.tapGesture().bind { (_) in
             let vc = DemoFeedVC()
-            vc.name = "页面 - \(self.pageVC.viewControllers.count)"
+            //            vc.name = "页面 - \(self.pageVC.viewControllers.count)"
+            vc.pageVC = self.pageVC
             vc.view.backgroundColor = generateRandomColor()
+            
             self.pageVC.insert(newElement: vc, at: max(0, self.pageVC.viewControllers.count - 1))
             
-            self.pageVC.show(index: max(0, self.pageVC.viewControllers.count - 2))
+            self.pageVC.show(at: max(0, self.pageVC.viewControllers.count - 2))
         }
+        
+        let view2 = UILabel()
+        view2.text = "删除"
+        view2.backgroundColor = .blue
+        self.view.addSubview(view2)
+        view2.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(20)
+            make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(34)
+        }
+        
+        _ = view2.tapGesture().bind { (_) in
+            self.pageVC.remove(at: max(0, self.pageVC.viewControllers.count - 2))
+        }
+        
         
         self.pageVC = PageVC()
         
