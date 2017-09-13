@@ -13,8 +13,8 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-extension PageVC {
-    func show(at index:Int) {
+public extension PageVC {
+    public func show(at index:Int) {
         guard index < self.viewControllers.count && self.viewControllers.count > 1 else { return }
         
         let toVC = self.viewControllers[index]
@@ -38,7 +38,7 @@ extension PageVC {
         toVC.endAppearanceTransition()
     }
     
-    func remove(at index:Int) {
+    public func remove(at index:Int) {
         guard index < self.viewControllers.count && self.viewControllers.count > 0 else { return }
         
         let removeVC = self.viewControllers[index]
@@ -91,7 +91,7 @@ extension PageVC {
         self.viewControllers.remove(at: index)
     }
     
-    func insert(newElement: UIViewController, at: Int) {
+    public func insert(newElement: UIViewController, at: Int) {
         guard at <= viewControllers.count else { return }
         
         let flag = self.viewControllers.count == 0
@@ -111,7 +111,7 @@ extension PageVC {
         }
     }
     
-    func insert(contentsOf: [UIViewController], at: Int) {
+    public func insert(contentsOf: [UIViewController], at: Int) {
         guard at <= viewControllers.count, contentsOf.count > 0 else { return }
         
         let flag = self.viewControllers.count == 0
@@ -138,16 +138,16 @@ extension PageVC {
 }
 
 extension PageVC {
-    override var shouldAutomaticallyForwardAppearanceMethods: Bool {
+    override open var shouldAutomaticallyForwardAppearanceMethods: Bool {
         return false
     }
     
-    override func shouldAutomaticallyForwardRotationMethods() -> Bool {
+    override open func shouldAutomaticallyForwardRotationMethods() -> Bool {
         return false
     }
 }
 
-class PageVC:UIViewController {
+open class PageVC:UIViewController {
     var viewControllers:[UIViewController] = []
     var selectedViewController:UIViewController!
     
@@ -177,7 +177,7 @@ class PageVC:UIViewController {
     
     var pageView:PageView!
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         self.pageView = PageView()

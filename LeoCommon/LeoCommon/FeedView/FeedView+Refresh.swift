@@ -15,7 +15,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-protocol FeedViewPage {
+public protocol FeedViewPage {
     
     var page:Int { get set }
     var pageSize:Int { get set }
@@ -31,10 +31,6 @@ protocol FeedViewPage {
     func refresh()
     func loadMore(_ page:Int)
     func stopLoading(_ page:Int?, hasMore: (Void) -> (Bool), callback: @escaping (Void)->(Void))
-}
-
-extension FeedView {
-    
 }
 
 extension FeedView:FeedViewPage {
@@ -80,7 +76,7 @@ extension FeedView:FeedViewPage {
         }
     }
     
-    var hasMore: Bool {
+    public var hasMore: Bool {
         get {
             if let value = objc_getAssociatedObject(self, &AssociatedKeys.FeedHasMoreKey) {
                 return value as! Bool
@@ -97,7 +93,7 @@ extension FeedView:FeedViewPage {
         }
     }
     
-    var isLoading: Bool {
+    public var isLoading: Bool {
         get {
             if self.showHeader && self.showFooter {
                 return self.collectionView.leo_header.isRefreshing() || self.collectionView.leo_footer.isRefreshing()
@@ -111,7 +107,7 @@ extension FeedView:FeedViewPage {
         }
     }
     
-    var pageSize: Int {
+    public var pageSize: Int {
         get {
             if let value = objc_getAssociatedObject(self, &AssociatedKeys.FeedPageSizeKey) {
                 return value as! Int
@@ -128,7 +124,7 @@ extension FeedView:FeedViewPage {
         }
     }
     
-    var page: Int {
+    public var page: Int {
         get {
             if let value = objc_getAssociatedObject(self, &AssociatedKeys.FeedPageKey) {
                 return value as! Int
@@ -145,7 +141,7 @@ extension FeedView:FeedViewPage {
         }
     }
     
-    func addRefreshHeader(_ refreshHeaderType:LEORefreshHeader.Type = LEORefreshHeader.self, callback:(LEORefreshHeader?) -> (Void) = { _ in }) {
+    open func addRefreshHeader(_ refreshHeaderType:LEORefreshHeader.Type = LEORefreshHeader.self, callback:(LEORefreshHeader?) -> (Void) = { _ in }) {
         let header = refreshHeaderType.init { [weak self] in
             guard let sSelf = self else { return }
             sSelf.refresh()
@@ -158,7 +154,7 @@ extension FeedView:FeedViewPage {
         self.showHeader = true
     }
     
-    func addRefreshFooter(_ refreshFooterType:LEORefreshFooter.Type = LEORefreshFooter.self, callback:(LEORefreshFooter?) -> (Void) = { _ in }) {
+    open func addRefreshFooter(_ refreshFooterType:LEORefreshFooter.Type = LEORefreshFooter.self, callback:(LEORefreshFooter?) -> (Void) = { _ in }) {
         let footer = refreshFooterType.init { [weak self] in
             guard let sSelf = self else { return }
             sSelf.loadMore(sSelf.page + 1)
@@ -171,20 +167,20 @@ extension FeedView:FeedViewPage {
         self.showFooter = true
     }
     
-    func headerBeginRefreshing() {
+    open func headerBeginRefreshing() {
         self.collectionView.leo_header.beginRefreshing()
     }
     
-    func footerBeginRefreshing() {
+    open func footerBeginRefreshing() {
         self.collectionView.leo_footer.beginRefreshing()
     }
     
-    func refresh() {
+    open func refresh() {
         self.hasMore = true
         self.loadMore(1)
     }
     
-    func loadMore(_ page:Int) {
+    open func loadMore(_ page:Int) {
         if !self.hasMore {
             if self.showHeader && self.collectionView.leo_header.isRefreshing() {
                 self.collectionView.leo_header.endRefreshing()
@@ -198,7 +194,7 @@ extension FeedView:FeedViewPage {
         self.loader(page, self.pageSize)
     }
     
-    func stopLoading(_ page:Int? = nil,
+    open func stopLoading(_ page:Int? = nil,
                      hasMore: (Void) -> (Bool) = { return true },
                      callback: @escaping (Void)->(Void) = {}) {
         if self.showHeader && self.collectionView.leo_header.isRefreshing() {

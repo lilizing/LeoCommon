@@ -14,34 +14,34 @@ import SnapKit
 import ObjectMapper
 
 
-class PageTabItemView:UIView {
-    var selected:Bool = false {
+open class PageTabItemView:UIView {
+    public var selected:Bool = false {
         didSet {
             self.backgroundColor = self.selected ? .black : .orange
         }
     }
     
-    func width() -> CGFloat {
+    public func width() -> CGFloat {
         return 0
     }
 }
 
-class PageTabView:UIView {
-    var feedView:FeedViewForPageTab!
+open class PageTabView:UIView {
+    public var feedView:FeedViewForPageTab!
     
-    var lineScrollView:UIScrollView!
-    var lineView:UIView!
+    public var lineScrollView:UIScrollView!
+    public var lineView:UIView!
     
-    var lineHeight:CGFloat = 2
+    public var lineHeight:CGFloat = 2
     var lineBottomOffset:CGFloat = 0
-    var lineSpacing:CGFloat = 0
-    var lineMinWidth:CGFloat = 10
+    public var lineSpacing:CGFloat = 0
+    public var lineMinWidth:CGFloat = 10
     
-    var disposeBag = DisposeBag()
+    public var disposeBag = DisposeBag()
     
-    var items:[PageTabItemView] = []
+    public var items:[PageTabItemView] = []
     
-    var selectedIndexObservable:Variable<Int> = Variable(-1)
+    public var selectedIndexObservable:Variable<Int> = Variable(-1)
     
     private var selectedIndex:Int = -1 {
         didSet {
@@ -91,16 +91,16 @@ class PageTabView:UIView {
         }
     }
     
-    var isMoving:Bool = false
+    public var isMoving:Bool = false
     
-    weak var viewController:PageVC?
+    public weak var viewController:PageVC?
     
-    func show(at index:Int) {
+    public func show(at index:Int) {
         guard index < items.count else { return }
         self.selectedIndex = index
     }
     
-    func remove(at index: Int) {
+    public func remove(at index: Int) {
         guard index < items.count && self.feedView.sectionViewModels.count > 0 else { return }
         
         self.items.remove(at: index)
@@ -116,7 +116,7 @@ class PageTabView:UIView {
         }
     }
     
-    func insert(newElement: PageTabItemView, at: Int) {
+    public func insert(newElement: PageTabItemView, at: Int) {
         guard at <= items.count else { return }
         
         self.items.insert(newElement, at: at)
@@ -142,7 +142,7 @@ class PageTabView:UIView {
         }.addDisposableTo(self.disposeBag)
     }
     
-    func insert(contentsOf: [PageTabItemView], at: Int) {
+    public func insert(contentsOf: [PageTabItemView], at: Int) {
         guard at <= items.count else { return }
         
         self.items.insert(contentsOf: contentsOf, at: at)
@@ -163,7 +163,7 @@ class PageTabView:UIView {
         }
     }
     
-    override init(frame: CGRect) {
+    override public  init(frame: CGRect) {
         super.init(frame: frame)
         
         self.feedView = FeedViewForPageTab.init(frame: .zero, layoutType: .flow, scrollDirection: .horizontal)
@@ -188,27 +188,27 @@ class PageTabView:UIView {
         self.lineScrollView.addSubview(self.lineView)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public  init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension PageTabView:FeedViewForPageTabDataSource {
-    func feedView(viewForCellAt index: Int) -> UIView {
+    public func feedView(viewForCellAt index: Int) -> UIView {
         return self.items[index]
     }
 }
 
 private let FeedPageCellViewTag = 1000
 
-protocol FeedViewForPageTabDataSource:class {
+public protocol FeedViewForPageTabDataSource:class {
     func feedView(viewForCellAt index: Int) -> UIView
 }
 
-class FeedViewForPageTab:FeedView {
-    weak var dataSource:PageTabView!
+open class FeedViewForPageTab:FeedView {
+    public weak var dataSource:PageTabView!
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellVM = self.sectionViewModels[indexPath.section].items[indexPath.row]
         let reuseIdentifier = String(describing: cellVM.cellClass(nil))
         
@@ -241,7 +241,7 @@ class FeedViewForPageTab:FeedView {
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         self.dataSource.lineScrollView.contentSize = .init(width: collectionView.contentSize.width, height: self.dataSource.lineHeight)
         let view = self.dataSource.items[indexPath.row]
         return CGSize.init(width: view.width(), height: self.bounds.size.height)

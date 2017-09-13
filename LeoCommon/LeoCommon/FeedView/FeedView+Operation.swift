@@ -13,7 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-protocol FeedViewOperation {
+public protocol FeedViewOperation {
     
     func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool)
     
@@ -41,21 +41,21 @@ protocol FeedViewOperation {
 
 extension FeedView:FeedViewOperation {
     
-    func clear(reload:Bool = false) {
+    public func clear(reload:Bool = false) {
         self.sectionViewModels.removeAll()
         if reload {
             self.reloadData()
         }
     }
     
-    func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool = false) {
+    public func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool = false) {
         self.sectionViewModels.append(contentsOf: sectionViewModels)
         if reload {
             self.reloadData()
         }
     }
     
-    func append(section:Int,
+    public func append(section:Int,
                 headerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
                 footerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
                 cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
@@ -75,15 +75,15 @@ extension FeedView:FeedViewOperation {
         }
     }
     
-    func append(section:Int, cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
+    public func append(section:Int, cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
         self.append(section: section, headerViewModel: nil, footerViewModel: nil, cellViewModels: cellViewModels, reload: reload)
     }
     
-    func append(cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
+    public func append(cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
         self.append(section: 0, cellViewModels: cellViewModels, reload: reload)
     }
     
-    func insert(newElement: FeedViewSectionViewModel, section: Int, reload:Bool = false) {
+    public func insert(newElement: FeedViewSectionViewModel, section: Int, reload:Bool = false) {
         guard section <= self.sectionViewModels.count else {
             assert(section <= self.sectionViewModels.count, "下标越界...")
             return
@@ -94,7 +94,7 @@ extension FeedView:FeedViewOperation {
         }
     }
     
-    func insert(contentsOf: [FeedViewSectionViewModel], section: Int, reload:Bool = false) {
+    public func insert(contentsOf: [FeedViewSectionViewModel], section: Int, reload:Bool = false) {
         guard section <= self.sectionViewModels.count else {
             assert(section <= self.sectionViewModels.count, "下标越界...")
             return
@@ -105,7 +105,7 @@ extension FeedView:FeedViewOperation {
         }
     }
     
-    func insert(newElement: FeedViewCellViewModel, at: Int, section: Int, reload:Bool = false) {
+    public func insert(newElement: FeedViewCellViewModel, at: Int, section: Int, reload:Bool = false) {
         guard
             section <= self.sectionViewModels.count
         else {
@@ -126,7 +126,7 @@ extension FeedView:FeedViewOperation {
         }
     }
     
-    func insert(contentsOf: [FeedViewCellViewModel], at: Int, section: Int, reload:Bool = false) {
+    public func insert(contentsOf: [FeedViewCellViewModel], at: Int, section: Int, reload:Bool = false) {
         guard
             section <= self.sectionViewModels.count
             else {
@@ -147,7 +147,7 @@ extension FeedView:FeedViewOperation {
         }
     }
     
-    func remove(section:Int, at:Int, reload:Bool = false) {
+    public func remove(section:Int, at:Int, reload:Bool = false) {
         guard section <= self.sectionViewModels.count else {
             assert(section <= self.sectionViewModels.count, "下标越界...")
             return
@@ -162,7 +162,7 @@ extension FeedView:FeedViewOperation {
         }
     }
     
-    func remove(section:Int, reload:Bool = false) {
+    public func remove(section:Int, reload:Bool = false) {
         guard section <= self.sectionViewModels.count else {
             assert(section <= self.sectionViewModels.count, "下标越界...")
             return

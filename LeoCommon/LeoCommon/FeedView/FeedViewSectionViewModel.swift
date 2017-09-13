@@ -15,21 +15,21 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-protocol FeedViewSectionHeaderOrFooterViewModel {
+public protocol FeedViewSectionHeaderOrFooterViewModel {
     func sectionClass(_ context:Dictionary<String, Any>?) -> FeedViewSectionHeaderOrFooter.Type
 }
 
-class FeedViewSectionViewModel {
-    var columnCount:Int = 1
-    var sectionInset:UIEdgeInsets = .zero
-    var minimumInteritemSpacing:CGFloat = 0
-    var minimumLineSpacing:CGFloat = 0
+open class FeedViewSectionViewModel {
+    public var columnCount:Int = 1
+    public var sectionInset:UIEdgeInsets = .zero
+    public var minimumInteritemSpacing:CGFloat = 0
+    public var minimumLineSpacing:CGFloat = 0
     
-    var header:FeedViewSectionHeaderOrFooterViewModel?
-    var footer:FeedViewSectionHeaderOrFooterViewModel?
-    var items:[FeedViewCellViewModel] = []
+    public var header:FeedViewSectionHeaderOrFooterViewModel?
+    public var footer:FeedViewSectionHeaderOrFooterViewModel?
+    public var items:[FeedViewCellViewModel] = []
     
-    init(header:FeedViewSectionHeaderOrFooterViewModel? = nil,
+    public init(header:FeedViewSectionHeaderOrFooterViewModel? = nil,
          footer:FeedViewSectionHeaderOrFooterViewModel? = nil,
          items:[FeedViewCellViewModel] = []) {
         self.header = header

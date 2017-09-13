@@ -15,19 +15,21 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-protocol FeedViewCellViewModelProtocol {
+public protocol FeedViewCellViewModelProtocol {
     //context用来传递一些上下文信息，可以用于区分返回不同的视图类型
     func cellClass(_ context:Dictionary<String, Any>?) -> FeedViewCell.Type
 }
 
-class FeedViewCellViewModel:FeedViewCellViewModelProtocol {
-    func cellClass(_ context:Dictionary<String, Any>?) -> FeedViewCell.Type {
+open class FeedViewCellViewModel:FeedViewCellViewModelProtocol {
+    public init() {}
+    
+    open func cellClass(_ context:Dictionary<String, Any>?) -> FeedViewCell.Type {
         return FeedViewCell.self
     }
 }
 
 extension FeedViewCellViewModel: Equatable {
-    static func ==(lhs: FeedViewCellViewModel, rhs: FeedViewCellViewModel) -> Bool {
+    open static func ==(lhs: FeedViewCellViewModel, rhs: FeedViewCellViewModel) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 }

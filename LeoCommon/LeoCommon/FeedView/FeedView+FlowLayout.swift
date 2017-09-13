@@ -15,7 +15,7 @@ import ObjectMapper
 
 extension FeedView:UICollectionViewDelegateFlowLayout  {
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section > self.sectionViewModels.count - 1  {
             return .zero
         }
@@ -25,7 +25,7 @@ extension FeedView:UICollectionViewDelegateFlowLayout  {
         return size
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section > self.sectionViewModels.count - 1 {
             return .zero
         }
@@ -33,7 +33,7 @@ extension FeedView:UICollectionViewDelegateFlowLayout  {
         return sectionVM.sectionInset
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if section > self.sectionViewModels.count - 1 {
             return 0
         }
@@ -41,7 +41,7 @@ extension FeedView:UICollectionViewDelegateFlowLayout  {
         return sectionVM.minimumLineSpacing
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if section > self.sectionViewModels.count - 1 {
             return 0
         }
@@ -49,7 +49,7 @@ extension FeedView:UICollectionViewDelegateFlowLayout  {
         return sectionVM.minimumInteritemSpacing
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section > self.sectionViewModels.count - 1 {
             return .zero
         }
@@ -62,7 +62,7 @@ extension FeedView:UICollectionViewDelegateFlowLayout  {
         return .zero
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if section > self.sectionViewModels.count - 1 {
             return .zero
         }

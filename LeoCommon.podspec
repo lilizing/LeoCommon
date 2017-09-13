@@ -144,5 +144,5 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftRichString'
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
-  #s.dependency 'Presentr'
+  s.dependency 'RxGesture'
 end

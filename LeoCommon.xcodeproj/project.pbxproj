@@ -17,26 +17,6 @@
 		221EAE351F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE2E1F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift */; };
 		221EAE3B1F678F7800FEDC08 /* SYDRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE381F678F7800FEDC08 /* SYDRefreshFooter.m */; };
 		221EAE3C1F678F7800FEDC08 /* SYDRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE3A1F678F7800FEDC08 /* SYDRefreshHeader.m */; };
-		221EAE6C1F678FE100FEDC08 /* LEORefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE401F678FE000FEDC08 /* LEORefreshAutoFooter.m */; };
-		221EAE6D1F678FE100FEDC08 /* LEORefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE421F678FE000FEDC08 /* LEORefreshBackFooter.m */; };
-		221EAE6E1F678FE100FEDC08 /* LEORefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE441F678FE000FEDC08 /* LEORefreshComponent.m */; };
-		221EAE6F1F678FE100FEDC08 /* LEORefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE461F678FE000FEDC08 /* LEORefreshFooter.m */; };
-		221EAE701F678FE100FEDC08 /* LEORefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE481F678FE000FEDC08 /* LEORefreshHeader.m */; };
-		221EAE711F678FE100FEDC08 /* LEORefreshAutoGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE4D1F678FE000FEDC08 /* LEORefreshAutoGifFooter.m */; };
-		221EAE721F678FE100FEDC08 /* LEORefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE4F1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.m */; };
-		221EAE731F678FE100FEDC08 /* LEORefreshAutoStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE511F678FE000FEDC08 /* LEORefreshAutoStateFooter.m */; };
-		221EAE741F678FE100FEDC08 /* LEORefreshBackGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE541F678FE000FEDC08 /* LEORefreshBackGifFooter.m */; };
-		221EAE751F678FE100FEDC08 /* LEORefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE561F678FE000FEDC08 /* LEORefreshBackNormalFooter.m */; };
-		221EAE761F678FE100FEDC08 /* LEORefreshBackStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE581F678FE000FEDC08 /* LEORefreshBackStateFooter.m */; };
-		221EAE771F678FE100FEDC08 /* LEORefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE5B1F678FE000FEDC08 /* LEORefreshGifHeader.m */; };
-		221EAE781F678FE100FEDC08 /* LEORefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE5D1F678FE000FEDC08 /* LEORefreshNormalHeader.m */; };
-		221EAE791F678FE100FEDC08 /* LEORefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE5F1F678FE000FEDC08 /* LEORefreshStateHeader.m */; };
-		221EAE7A1F678FE100FEDC08 /* LEORefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 221EAE601F678FE000FEDC08 /* LEORefresh.bundle */; };
-		221EAE7B1F678FE100FEDC08 /* LEORefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE631F678FE000FEDC08 /* LEORefreshConst.m */; };
-		221EAE7C1F678FE100FEDC08 /* NSBundle+LEORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE651F678FE100FEDC08 /* NSBundle+LEORefresh.m */; };
-		221EAE7D1F678FE100FEDC08 /* UIScrollView+LEOExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE671F678FE100FEDC08 /* UIScrollView+LEOExtension.m */; };
-		221EAE7E1F678FE100FEDC08 /* UIScrollView+LEORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE691F678FE100FEDC08 /* UIScrollView+LEORefresh.m */; };
-		221EAE7F1F678FE100FEDC08 /* UIView+LEOExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE6B1F678FE100FEDC08 /* UIView+LEOExtension.m */; };
 		221EAE901F67935400FEDC08 /* DemoCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE851F67935400FEDC08 /* DemoCellThree.swift */; };
 		221EAE911F67935400FEDC08 /* DemoFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE861F67935400FEDC08 /* DemoFeedVC.swift */; };
 		221EAE921F67935400FEDC08 /* DemoOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE871F67935400FEDC08 /* DemoOneCell.swift */; };
@@ -67,6 +47,26 @@
 		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
 		22B573B41F68E081007F28D8 /* DemoPageTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B573B31F68E081007F28D8 /* DemoPageTabItemView.swift */; };
 		22B573B61F692E15007F28D8 /* PageTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B573B51F692E15007F28D8 /* PageTabVC.swift */; };
+		22B573E81F693C3C007F28D8 /* LEORefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573BC1F693C3C007F28D8 /* LEORefreshAutoFooter.m */; };
+		22B573E91F693C3C007F28D8 /* LEORefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573BE1F693C3C007F28D8 /* LEORefreshBackFooter.m */; };
+		22B573EA1F693C3C007F28D8 /* LEORefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573C01F693C3C007F28D8 /* LEORefreshComponent.m */; };
+		22B573EB1F693C3C007F28D8 /* LEORefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573C21F693C3C007F28D8 /* LEORefreshFooter.m */; };
+		22B573EC1F693C3C007F28D8 /* LEORefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573C41F693C3C007F28D8 /* LEORefreshHeader.m */; };
+		22B573ED1F693C3C007F28D8 /* LEORefreshAutoGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573C91F693C3C007F28D8 /* LEORefreshAutoGifFooter.m */; };
+		22B573EE1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573CB1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.m */; };
+		22B573EF1F693C3C007F28D8 /* LEORefreshAutoStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573CD1F693C3C007F28D8 /* LEORefreshAutoStateFooter.m */; };
+		22B573F01F693C3C007F28D8 /* LEORefreshBackGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573D01F693C3C007F28D8 /* LEORefreshBackGifFooter.m */; };
+		22B573F11F693C3C007F28D8 /* LEORefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573D21F693C3C007F28D8 /* LEORefreshBackNormalFooter.m */; };
+		22B573F21F693C3C007F28D8 /* LEORefreshBackStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573D41F693C3C007F28D8 /* LEORefreshBackStateFooter.m */; };
+		22B573F31F693C3C007F28D8 /* LEORefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573D71F693C3C007F28D8 /* LEORefreshGifHeader.m */; };
+		22B573F41F693C3C007F28D8 /* LEORefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573D91F693C3C007F28D8 /* LEORefreshNormalHeader.m */; };
+		22B573F51F693C3C007F28D8 /* LEORefreshStateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573DB1F693C3C007F28D8 /* LEORefreshStateHeader.m */; };
+		22B573F61F693C3C007F28D8 /* LEORefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22B573DC1F693C3C007F28D8 /* LEORefresh.bundle */; };
+		22B573F71F693C3C007F28D8 /* LEORefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573DF1F693C3C007F28D8 /* LEORefreshConst.m */; };
+		22B573F81F693C3D007F28D8 /* NSBundle+LEORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573E11F693C3C007F28D8 /* NSBundle+LEORefresh.m */; };
+		22B573F91F693C3D007F28D8 /* UIScrollView+LEOExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573E31F693C3C007F28D8 /* UIScrollView+LEOExtension.m */; };
+		22B573FA1F693C3D007F28D8 /* UIScrollView+LEORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573E51F693C3C007F28D8 /* UIScrollView+LEORefresh.m */; };
+		22B573FB1F693C3D007F28D8 /* UIView+LEOExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573E71F693C3C007F28D8 /* UIView+LEOExtension.m */; };
 		22B5C4CD1F3B125000C89688 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C41F3B125000C89688 /* API.swift */; };
 		22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C51F3B125000C89688 /* API+Cache.swift */; };
 		22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5C4C81F3B125000C89688 /* Button.Ext.swift */; };
@@ -96,46 +96,6 @@
 		221EAE381F678F7800FEDC08 /* SYDRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDRefreshFooter.m; sourceTree = "<group>"; };
 		221EAE391F678F7800FEDC08 /* SYDRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDRefreshHeader.h; sourceTree = "<group>"; };
 		221EAE3A1F678F7800FEDC08 /* SYDRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDRefreshHeader.m; sourceTree = "<group>"; };
-		221EAE3F1F678FE000FEDC08 /* LEORefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoFooter.h; sourceTree = "<group>"; };
-		221EAE401F678FE000FEDC08 /* LEORefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoFooter.m; sourceTree = "<group>"; };
-		221EAE411F678FE000FEDC08 /* LEORefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackFooter.h; sourceTree = "<group>"; };
-		221EAE421F678FE000FEDC08 /* LEORefreshBackFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackFooter.m; sourceTree = "<group>"; };
-		221EAE431F678FE000FEDC08 /* LEORefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshComponent.h; sourceTree = "<group>"; };
-		221EAE441F678FE000FEDC08 /* LEORefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshComponent.m; sourceTree = "<group>"; };
-		221EAE451F678FE000FEDC08 /* LEORefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshFooter.h; sourceTree = "<group>"; };
-		221EAE461F678FE000FEDC08 /* LEORefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshFooter.m; sourceTree = "<group>"; };
-		221EAE471F678FE000FEDC08 /* LEORefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshHeader.h; sourceTree = "<group>"; };
-		221EAE481F678FE000FEDC08 /* LEORefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshHeader.m; sourceTree = "<group>"; };
-		221EAE4C1F678FE000FEDC08 /* LEORefreshAutoGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoGifFooter.h; sourceTree = "<group>"; };
-		221EAE4D1F678FE000FEDC08 /* LEORefreshAutoGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoGifFooter.m; sourceTree = "<group>"; };
-		221EAE4E1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoNormalFooter.h; sourceTree = "<group>"; };
-		221EAE4F1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoNormalFooter.m; sourceTree = "<group>"; };
-		221EAE501F678FE000FEDC08 /* LEORefreshAutoStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoStateFooter.h; sourceTree = "<group>"; };
-		221EAE511F678FE000FEDC08 /* LEORefreshAutoStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoStateFooter.m; sourceTree = "<group>"; };
-		221EAE531F678FE000FEDC08 /* LEORefreshBackGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackGifFooter.h; sourceTree = "<group>"; };
-		221EAE541F678FE000FEDC08 /* LEORefreshBackGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackGifFooter.m; sourceTree = "<group>"; };
-		221EAE551F678FE000FEDC08 /* LEORefreshBackNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackNormalFooter.h; sourceTree = "<group>"; };
-		221EAE561F678FE000FEDC08 /* LEORefreshBackNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackNormalFooter.m; sourceTree = "<group>"; };
-		221EAE571F678FE000FEDC08 /* LEORefreshBackStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackStateFooter.h; sourceTree = "<group>"; };
-		221EAE581F678FE000FEDC08 /* LEORefreshBackStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackStateFooter.m; sourceTree = "<group>"; };
-		221EAE5A1F678FE000FEDC08 /* LEORefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshGifHeader.h; sourceTree = "<group>"; };
-		221EAE5B1F678FE000FEDC08 /* LEORefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshGifHeader.m; sourceTree = "<group>"; };
-		221EAE5C1F678FE000FEDC08 /* LEORefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshNormalHeader.h; sourceTree = "<group>"; };
-		221EAE5D1F678FE000FEDC08 /* LEORefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshNormalHeader.m; sourceTree = "<group>"; };
-		221EAE5E1F678FE000FEDC08 /* LEORefreshStateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshStateHeader.h; sourceTree = "<group>"; };
-		221EAE5F1F678FE000FEDC08 /* LEORefreshStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshStateHeader.m; sourceTree = "<group>"; };
-		221EAE601F678FE000FEDC08 /* LEORefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LEORefresh.bundle; sourceTree = "<group>"; };
-		221EAE611F678FE000FEDC08 /* LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefresh.h; sourceTree = "<group>"; };
-		221EAE621F678FE000FEDC08 /* LEORefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshConst.h; sourceTree = "<group>"; };
-		221EAE631F678FE000FEDC08 /* LEORefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshConst.m; sourceTree = "<group>"; };
-		221EAE641F678FE000FEDC08 /* NSBundle+LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LEORefresh.h"; sourceTree = "<group>"; };
-		221EAE651F678FE100FEDC08 /* NSBundle+LEORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LEORefresh.m"; sourceTree = "<group>"; };
-		221EAE661F678FE100FEDC08 /* UIScrollView+LEOExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LEOExtension.h"; sourceTree = "<group>"; };
-		221EAE671F678FE100FEDC08 /* UIScrollView+LEOExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LEOExtension.m"; sourceTree = "<group>"; };
-		221EAE681F678FE100FEDC08 /* UIScrollView+LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LEORefresh.h"; sourceTree = "<group>"; };
-		221EAE691F678FE100FEDC08 /* UIScrollView+LEORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LEORefresh.m"; sourceTree = "<group>"; };
-		221EAE6A1F678FE100FEDC08 /* UIView+LEOExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LEOExtension.h"; sourceTree = "<group>"; };
-		221EAE6B1F678FE100FEDC08 /* UIView+LEOExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LEOExtension.m"; sourceTree = "<group>"; };
 		221EAE831F67903D00FEDC08 /* LeoCommon-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LeoCommon-Bridge-Header.h"; sourceTree = "<group>"; };
 		221EAE851F67935400FEDC08 /* DemoCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCellThree.swift; sourceTree = "<group>"; };
 		221EAE861F67935400FEDC08 /* DemoFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedVC.swift; sourceTree = "<group>"; };
@@ -189,6 +149,46 @@
 		22AD6D9D1F000C1500BA0892 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		22B573B31F68E081007F28D8 /* DemoPageTabItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPageTabItemView.swift; sourceTree = "<group>"; };
 		22B573B51F692E15007F28D8 /* PageTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTabVC.swift; sourceTree = "<group>"; };
+		22B573BB1F693C3C007F28D8 /* LEORefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoFooter.h; sourceTree = "<group>"; };
+		22B573BC1F693C3C007F28D8 /* LEORefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoFooter.m; sourceTree = "<group>"; };
+		22B573BD1F693C3C007F28D8 /* LEORefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackFooter.h; sourceTree = "<group>"; };
+		22B573BE1F693C3C007F28D8 /* LEORefreshBackFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackFooter.m; sourceTree = "<group>"; };
+		22B573BF1F693C3C007F28D8 /* LEORefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshComponent.h; sourceTree = "<group>"; };
+		22B573C01F693C3C007F28D8 /* LEORefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshComponent.m; sourceTree = "<group>"; };
+		22B573C11F693C3C007F28D8 /* LEORefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshFooter.h; sourceTree = "<group>"; };
+		22B573C21F693C3C007F28D8 /* LEORefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshFooter.m; sourceTree = "<group>"; };
+		22B573C31F693C3C007F28D8 /* LEORefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshHeader.h; sourceTree = "<group>"; };
+		22B573C41F693C3C007F28D8 /* LEORefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshHeader.m; sourceTree = "<group>"; };
+		22B573C81F693C3C007F28D8 /* LEORefreshAutoGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoGifFooter.h; sourceTree = "<group>"; };
+		22B573C91F693C3C007F28D8 /* LEORefreshAutoGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoGifFooter.m; sourceTree = "<group>"; };
+		22B573CA1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoNormalFooter.h; sourceTree = "<group>"; };
+		22B573CB1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoNormalFooter.m; sourceTree = "<group>"; };
+		22B573CC1F693C3C007F28D8 /* LEORefreshAutoStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoStateFooter.h; sourceTree = "<group>"; };
+		22B573CD1F693C3C007F28D8 /* LEORefreshAutoStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshAutoStateFooter.m; sourceTree = "<group>"; };
+		22B573CF1F693C3C007F28D8 /* LEORefreshBackGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackGifFooter.h; sourceTree = "<group>"; };
+		22B573D01F693C3C007F28D8 /* LEORefreshBackGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackGifFooter.m; sourceTree = "<group>"; };
+		22B573D11F693C3C007F28D8 /* LEORefreshBackNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackNormalFooter.h; sourceTree = "<group>"; };
+		22B573D21F693C3C007F28D8 /* LEORefreshBackNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackNormalFooter.m; sourceTree = "<group>"; };
+		22B573D31F693C3C007F28D8 /* LEORefreshBackStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshBackStateFooter.h; sourceTree = "<group>"; };
+		22B573D41F693C3C007F28D8 /* LEORefreshBackStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshBackStateFooter.m; sourceTree = "<group>"; };
+		22B573D61F693C3C007F28D8 /* LEORefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshGifHeader.h; sourceTree = "<group>"; };
+		22B573D71F693C3C007F28D8 /* LEORefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshGifHeader.m; sourceTree = "<group>"; };
+		22B573D81F693C3C007F28D8 /* LEORefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshNormalHeader.h; sourceTree = "<group>"; };
+		22B573D91F693C3C007F28D8 /* LEORefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshNormalHeader.m; sourceTree = "<group>"; };
+		22B573DA1F693C3C007F28D8 /* LEORefreshStateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshStateHeader.h; sourceTree = "<group>"; };
+		22B573DB1F693C3C007F28D8 /* LEORefreshStateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshStateHeader.m; sourceTree = "<group>"; };
+		22B573DC1F693C3C007F28D8 /* LEORefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LEORefresh.bundle; sourceTree = "<group>"; };
+		22B573DD1F693C3C007F28D8 /* LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefresh.h; sourceTree = "<group>"; };
+		22B573DE1F693C3C007F28D8 /* LEORefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshConst.h; sourceTree = "<group>"; };
+		22B573DF1F693C3C007F28D8 /* LEORefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEORefreshConst.m; sourceTree = "<group>"; };
+		22B573E01F693C3C007F28D8 /* NSBundle+LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LEORefresh.h"; sourceTree = "<group>"; };
+		22B573E11F693C3C007F28D8 /* NSBundle+LEORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LEORefresh.m"; sourceTree = "<group>"; };
+		22B573E21F693C3C007F28D8 /* UIScrollView+LEOExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LEOExtension.h"; sourceTree = "<group>"; };
+		22B573E31F693C3C007F28D8 /* UIScrollView+LEOExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LEOExtension.m"; sourceTree = "<group>"; };
+		22B573E41F693C3C007F28D8 /* UIScrollView+LEORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LEORefresh.h"; sourceTree = "<group>"; };
+		22B573E51F693C3C007F28D8 /* UIScrollView+LEORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LEORefresh.m"; sourceTree = "<group>"; };
+		22B573E61F693C3C007F28D8 /* UIView+LEOExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LEOExtension.h"; sourceTree = "<group>"; };
+		22B573E71F693C3C007F28D8 /* UIView+LEOExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LEOExtension.m"; sourceTree = "<group>"; };
 		22B5C4C41F3B125000C89688 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		22B5C4C51F3B125000C89688 /* API+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Cache.swift"; sourceTree = "<group>"; };
 		22B5C4C81F3B125000C89688 /* Button.Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.Ext.swift; sourceTree = "<group>"; };
@@ -250,101 +250,6 @@
 				221EAE9B1F67A16E00FEDC08 /* FeedView+SYD.swift */,
 			);
 			path = Demo;
-			sourceTree = "<group>";
-		};
-		221EAE3D1F678FE000FEDC08 /* LEORefresh */ = {
-			isa = PBXGroup;
-			children = (
-				221EAE3E1F678FE000FEDC08 /* Base */,
-				221EAE491F678FE000FEDC08 /* Custom */,
-				221EAE601F678FE000FEDC08 /* LEORefresh.bundle */,
-				221EAE611F678FE000FEDC08 /* LEORefresh.h */,
-				221EAE621F678FE000FEDC08 /* LEORefreshConst.h */,
-				221EAE631F678FE000FEDC08 /* LEORefreshConst.m */,
-				221EAE641F678FE000FEDC08 /* NSBundle+LEORefresh.h */,
-				221EAE651F678FE100FEDC08 /* NSBundle+LEORefresh.m */,
-				221EAE661F678FE100FEDC08 /* UIScrollView+LEOExtension.h */,
-				221EAE671F678FE100FEDC08 /* UIScrollView+LEOExtension.m */,
-				221EAE681F678FE100FEDC08 /* UIScrollView+LEORefresh.h */,
-				221EAE691F678FE100FEDC08 /* UIScrollView+LEORefresh.m */,
-				221EAE6A1F678FE100FEDC08 /* UIView+LEOExtension.h */,
-				221EAE6B1F678FE100FEDC08 /* UIView+LEOExtension.m */,
-			);
-			path = LEORefresh;
-			sourceTree = "<group>";
-		};
-		221EAE3E1F678FE000FEDC08 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				221EAE3F1F678FE000FEDC08 /* LEORefreshAutoFooter.h */,
-				221EAE401F678FE000FEDC08 /* LEORefreshAutoFooter.m */,
-				221EAE411F678FE000FEDC08 /* LEORefreshBackFooter.h */,
-				221EAE421F678FE000FEDC08 /* LEORefreshBackFooter.m */,
-				221EAE431F678FE000FEDC08 /* LEORefreshComponent.h */,
-				221EAE441F678FE000FEDC08 /* LEORefreshComponent.m */,
-				221EAE451F678FE000FEDC08 /* LEORefreshFooter.h */,
-				221EAE461F678FE000FEDC08 /* LEORefreshFooter.m */,
-				221EAE471F678FE000FEDC08 /* LEORefreshHeader.h */,
-				221EAE481F678FE000FEDC08 /* LEORefreshHeader.m */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		221EAE491F678FE000FEDC08 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				221EAE4A1F678FE000FEDC08 /* Footer */,
-				221EAE591F678FE000FEDC08 /* Header */,
-			);
-			path = Custom;
-			sourceTree = "<group>";
-		};
-		221EAE4A1F678FE000FEDC08 /* Footer */ = {
-			isa = PBXGroup;
-			children = (
-				221EAE4B1F678FE000FEDC08 /* Auto */,
-				221EAE521F678FE000FEDC08 /* Back */,
-			);
-			path = Footer;
-			sourceTree = "<group>";
-		};
-		221EAE4B1F678FE000FEDC08 /* Auto */ = {
-			isa = PBXGroup;
-			children = (
-				221EAE4C1F678FE000FEDC08 /* LEORefreshAutoGifFooter.h */,
-				221EAE4D1F678FE000FEDC08 /* LEORefreshAutoGifFooter.m */,
-				221EAE4E1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.h */,
-				221EAE4F1F678FE000FEDC08 /* LEORefreshAutoNormalFooter.m */,
-				221EAE501F678FE000FEDC08 /* LEORefreshAutoStateFooter.h */,
-				221EAE511F678FE000FEDC08 /* LEORefreshAutoStateFooter.m */,
-			);
-			path = Auto;
-			sourceTree = "<group>";
-		};
-		221EAE521F678FE000FEDC08 /* Back */ = {
-			isa = PBXGroup;
-			children = (
-				221EAE531F678FE000FEDC08 /* LEORefreshBackGifFooter.h */,
-				221EAE541F678FE000FEDC08 /* LEORefreshBackGifFooter.m */,
-				221EAE551F678FE000FEDC08 /* LEORefreshBackNormalFooter.h */,
-				221EAE561F678FE000FEDC08 /* LEORefreshBackNormalFooter.m */,
-				221EAE571F678FE000FEDC08 /* LEORefreshBackStateFooter.h */,
-				221EAE581F678FE000FEDC08 /* LEORefreshBackStateFooter.m */,
-			);
-			path = Back;
-			sourceTree = "<group>";
-		};
-		221EAE591F678FE000FEDC08 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				221EAE5A1F678FE000FEDC08 /* LEORefreshGifHeader.h */,
-				221EAE5B1F678FE000FEDC08 /* LEORefreshGifHeader.m */,
-				221EAE5C1F678FE000FEDC08 /* LEORefreshNormalHeader.h */,
-				221EAE5D1F678FE000FEDC08 /* LEORefreshNormalHeader.m */,
-				221EAE5E1F678FE000FEDC08 /* LEORefreshStateHeader.h */,
-				221EAE5F1F678FE000FEDC08 /* LEORefreshStateHeader.m */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		221EAE841F67935400FEDC08 /* demo */ = {
@@ -467,6 +372,101 @@
 			path = Docs;
 			sourceTree = SOURCE_ROOT;
 		};
+		22B573B91F693C3C007F28D8 /* LEORefresh */ = {
+			isa = PBXGroup;
+			children = (
+				22B573BA1F693C3C007F28D8 /* Base */,
+				22B573C51F693C3C007F28D8 /* Custom */,
+				22B573DC1F693C3C007F28D8 /* LEORefresh.bundle */,
+				22B573DD1F693C3C007F28D8 /* LEORefresh.h */,
+				22B573DE1F693C3C007F28D8 /* LEORefreshConst.h */,
+				22B573DF1F693C3C007F28D8 /* LEORefreshConst.m */,
+				22B573E01F693C3C007F28D8 /* NSBundle+LEORefresh.h */,
+				22B573E11F693C3C007F28D8 /* NSBundle+LEORefresh.m */,
+				22B573E21F693C3C007F28D8 /* UIScrollView+LEOExtension.h */,
+				22B573E31F693C3C007F28D8 /* UIScrollView+LEOExtension.m */,
+				22B573E41F693C3C007F28D8 /* UIScrollView+LEORefresh.h */,
+				22B573E51F693C3C007F28D8 /* UIScrollView+LEORefresh.m */,
+				22B573E61F693C3C007F28D8 /* UIView+LEOExtension.h */,
+				22B573E71F693C3C007F28D8 /* UIView+LEOExtension.m */,
+			);
+			path = LEORefresh;
+			sourceTree = "<group>";
+		};
+		22B573BA1F693C3C007F28D8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				22B573BB1F693C3C007F28D8 /* LEORefreshAutoFooter.h */,
+				22B573BC1F693C3C007F28D8 /* LEORefreshAutoFooter.m */,
+				22B573BD1F693C3C007F28D8 /* LEORefreshBackFooter.h */,
+				22B573BE1F693C3C007F28D8 /* LEORefreshBackFooter.m */,
+				22B573BF1F693C3C007F28D8 /* LEORefreshComponent.h */,
+				22B573C01F693C3C007F28D8 /* LEORefreshComponent.m */,
+				22B573C11F693C3C007F28D8 /* LEORefreshFooter.h */,
+				22B573C21F693C3C007F28D8 /* LEORefreshFooter.m */,
+				22B573C31F693C3C007F28D8 /* LEORefreshHeader.h */,
+				22B573C41F693C3C007F28D8 /* LEORefreshHeader.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		22B573C51F693C3C007F28D8 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				22B573C61F693C3C007F28D8 /* Footer */,
+				22B573D51F693C3C007F28D8 /* Header */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		22B573C61F693C3C007F28D8 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				22B573C71F693C3C007F28D8 /* Auto */,
+				22B573CE1F693C3C007F28D8 /* Back */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		22B573C71F693C3C007F28D8 /* Auto */ = {
+			isa = PBXGroup;
+			children = (
+				22B573C81F693C3C007F28D8 /* LEORefreshAutoGifFooter.h */,
+				22B573C91F693C3C007F28D8 /* LEORefreshAutoGifFooter.m */,
+				22B573CA1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.h */,
+				22B573CB1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.m */,
+				22B573CC1F693C3C007F28D8 /* LEORefreshAutoStateFooter.h */,
+				22B573CD1F693C3C007F28D8 /* LEORefreshAutoStateFooter.m */,
+			);
+			path = Auto;
+			sourceTree = "<group>";
+		};
+		22B573CE1F693C3C007F28D8 /* Back */ = {
+			isa = PBXGroup;
+			children = (
+				22B573CF1F693C3C007F28D8 /* LEORefreshBackGifFooter.h */,
+				22B573D01F693C3C007F28D8 /* LEORefreshBackGifFooter.m */,
+				22B573D11F693C3C007F28D8 /* LEORefreshBackNormalFooter.h */,
+				22B573D21F693C3C007F28D8 /* LEORefreshBackNormalFooter.m */,
+				22B573D31F693C3C007F28D8 /* LEORefreshBackStateFooter.h */,
+				22B573D41F693C3C007F28D8 /* LEORefreshBackStateFooter.m */,
+			);
+			path = Back;
+			sourceTree = "<group>";
+		};
+		22B573D51F693C3C007F28D8 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				22B573D61F693C3C007F28D8 /* LEORefreshGifHeader.h */,
+				22B573D71F693C3C007F28D8 /* LEORefreshGifHeader.m */,
+				22B573D81F693C3C007F28D8 /* LEORefreshNormalHeader.h */,
+				22B573D91F693C3C007F28D8 /* LEORefreshNormalHeader.m */,
+				22B573DA1F693C3C007F28D8 /* LEORefreshStateHeader.h */,
+				22B573DB1F693C3C007F28D8 /* LEORefreshStateHeader.m */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		22C251061EE50054007A46BC = {
 			isa = PBXGroup;
 			children = (
@@ -489,7 +489,6 @@
 		22C251111EE50054007A46BC /* LeoCommon */ = {
 			isa = PBXGroup;
 			children = (
-				221EAE3D1F678FE000FEDC08 /* LEORefresh */,
 				221EAE361F678F7000FEDC08 /* Demo */,
 				22C251241EE501D6007A46BC /* LeoCommon */,
 				22C251121EE50054007A46BC /* AppDelegate.swift */,
@@ -507,6 +506,7 @@
 		22C251241EE501D6007A46BC /* LeoCommon */ = {
 			isa = PBXGroup;
 			children = (
+				22B573B91F693C3C007F28D8 /* LEORefresh */,
 				221EAE9D1F67A28E00FEDC08 /* FeedPageView */,
 				221EAE9F1F67A28E00FEDC08 /* PageView */,
 				221EAE271F678E1E00FEDC08 /* FeedView */,
@@ -612,7 +612,7 @@
 				22C2511A1EE50054007A46BC /* Assets.xcassets in Resources */,
 				22C251181EE50054007A46BC /* Main.storyboard in Resources */,
 				22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */,
-				221EAE7A1F678FE100FEDC08 /* LEORefresh.bundle in Resources */,
+				22B573F61F693C3C007F28D8 /* LEORefresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,69 +672,69 @@
 			buildActionMask = 2147483647;
 			files = (
 				221EAEA41F67A2D300FEDC08 /* PageTabView.swift in Sources */,
+				22B573F01F693C3C007F28D8 /* LEORefreshBackGifFooter.m in Sources */,
 				221EAEA81F67A83200FEDC08 /* FeedView+DataSource.swift in Sources */,
+				22B573FA1F693C3D007F28D8 /* UIScrollView+LEORefresh.m in Sources */,
 				223090C81F67DBA60047DA96 /* PageView+Scroll.swift in Sources */,
+				22B573F31F693C3C007F28D8 /* LEORefreshGifHeader.m in Sources */,
 				223090CA1F67DF7A0047DA96 /* Number+Ext.swift in Sources */,
 				221EAE931F67935400FEDC08 /* DemoOneCellViewModel.swift in Sources */,
-				221EAE7D1F678FE100FEDC08 /* UIScrollView+LEOExtension.m in Sources */,
+				22B573F11F693C3C007F28D8 /* LEORefreshBackNormalFooter.m in Sources */,
 				221EAE3B1F678F7800FEDC08 /* SYDRefreshFooter.m in Sources */,
-				221EAE711F678FE100FEDC08 /* LEORefreshAutoGifFooter.m in Sources */,
 				221EAE941F67935400FEDC08 /* DemoSectionFooter.swift in Sources */,
-				221EAE6F1F678FE100FEDC08 /* LEORefreshFooter.m in Sources */,
 				221EAE981F67935400FEDC08 /* DemoThreeCellViewModel.swift in Sources */,
 				221EAE341F678E4200FEDC08 /* FeedViewSectionViewModel.swift in Sources */,
-				221EAE751F678FE100FEDC08 /* LEORefreshBackNormalFooter.m in Sources */,
 				22B5C4D41F3B125000C89688 /* Object+Ext.swift in Sources */,
-				221EAE781F678FE100FEDC08 /* LEORefreshNormalHeader.m in Sources */,
-				221EAE771F678FE100FEDC08 /* LEORefreshGifHeader.m in Sources */,
-				221EAE761F678FE100FEDC08 /* LEORefreshBackStateFooter.m in Sources */,
 				221EAE351F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift in Sources */,
 				221EAE9A1F67935400FEDC08 /* DemoTwoCellViewModel.swift in Sources */,
 				22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */,
 				221EAE911F67935400FEDC08 /* DemoFeedVC.swift in Sources */,
 				221EAE961F67935400FEDC08 /* DemoSectionHeader.swift in Sources */,
 				22C251151EE50054007A46BC /* ViewController.swift in Sources */,
-				221EAE731F678FE100FEDC08 /* LEORefreshAutoStateFooter.m in Sources */,
 				221EAEA61F67A7CA00FEDC08 /* FeedView+Operation.swift in Sources */,
 				223090CC1F67E0430047DA96 /* PageVC.swift in Sources */,
 				221EAE331F678E4200FEDC08 /* FeedViewSection.swift in Sources */,
 				22B573B41F68E081007F28D8 /* DemoPageTabItemView.swift in Sources */,
-				221EAE6C1F678FE100FEDC08 /* LEORefreshAutoFooter.m in Sources */,
+				22B573F21F693C3C007F28D8 /* LEORefreshBackStateFooter.m in Sources */,
 				221EAE951F67935400FEDC08 /* DemoSectionFooterViewModel.swift in Sources */,
 				221EAE921F67935400FEDC08 /* DemoOneCell.swift in Sources */,
+				22B573EB1F693C3C007F28D8 /* LEORefreshFooter.m in Sources */,
 				22B5C4CD1F3B125000C89688 /* API.swift in Sources */,
-				221EAE6E1F678FE100FEDC08 /* LEORefreshComponent.m in Sources */,
 				223090CF1F67E6F60047DA96 /* UIView+Ext.swift in Sources */,
+				22B573E81F693C3C007F28D8 /* LEORefreshAutoFooter.m in Sources */,
 				22B5C4D31F3B125000C89688 /* Dictionary+Ext.swift in Sources */,
+				22B573EF1F693C3C007F28D8 /* LEORefreshAutoStateFooter.m in Sources */,
+				22B573EE1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.m in Sources */,
 				22C251131EE50054007A46BC /* AppDelegate.swift in Sources */,
 				221EAEAA1F67A85C00FEDC08 /* FeedView+FlowLayout.swift in Sources */,
+				22B573F51F693C3C007F28D8 /* LEORefreshStateHeader.m in Sources */,
+				22B573EA1F693C3C007F28D8 /* LEORefreshComponent.m in Sources */,
 				22B5C4D21F3B125000C89688 /* Const.swift in Sources */,
+				22B573F91F693C3D007F28D8 /* UIScrollView+LEOExtension.m in Sources */,
 				221EAE311F678E4200FEDC08 /* FeedViewCell.swift in Sources */,
+				22B573E91F693C3C007F28D8 /* LEORefreshBackFooter.m in Sources */,
 				22B573B61F692E15007F28D8 /* PageTabVC.swift in Sources */,
 				221EAE2F1F678E4200FEDC08 /* FeedView.swift in Sources */,
+				22B573ED1F693C3C007F28D8 /* LEORefreshAutoGifFooter.m in Sources */,
 				22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */,
-				221EAE7C1F678FE100FEDC08 /* NSBundle+LEORefresh.m in Sources */,
+				22B573F71F693C3C007F28D8 /* LEORefreshConst.m in Sources */,
 				221EAEAE1F67B40B00FEDC08 /* DemoPageVC.swift in Sources */,
-				221EAE721F678FE100FEDC08 /* LEORefreshAutoNormalFooter.m in Sources */,
-				221EAE741F678FE100FEDC08 /* LEORefreshBackGifFooter.m in Sources */,
+				22B573F41F693C3C007F28D8 /* LEORefreshNormalHeader.m in Sources */,
 				220BD2BF1F5D4C0400FCB3B4 /* ObservableArray.swift in Sources */,
-				221EAE7E1F678FE100FEDC08 /* UIScrollView+LEORefresh.m in Sources */,
 				221EAEA01F67A28E00FEDC08 /* FeedPageView.swift in Sources */,
+				22B573FB1F693C3D007F28D8 /* UIView+LEOExtension.m in Sources */,
 				221EAE971F67935400FEDC08 /* DemoSectionHeaderViewModel.swift in Sources */,
 				221EAE9C1F67A16E00FEDC08 /* FeedView+SYD.swift in Sources */,
 				22B5C4D71F3B129D00C89688 /* API+Rx.swift in Sources */,
-				221EAE6D1F678FE100FEDC08 /* LEORefreshBackFooter.m in Sources */,
 				22B5C4D51F3B125000C89688 /* String+Ext.swift in Sources */,
 				221EAEA21F67A2BD00FEDC08 /* PageView.swift in Sources */,
 				221EAE991F67935400FEDC08 /* DemoTwoCell.swift in Sources */,
-				221EAE7F1F678FE100FEDC08 /* UIView+LEOExtension.m in Sources */,
 				223090D01F67E6F60047DA96 /* Utils.swift in Sources */,
-				221EAE7B1F678FE100FEDC08 /* LEORefreshConst.m in Sources */,
 				221EAE3C1F678F7800FEDC08 /* SYDRefreshHeader.m in Sources */,
-				221EAE791F678FE100FEDC08 /* LEORefreshStateHeader.m in Sources */,
-				221EAE701F678FE100FEDC08 /* LEORefreshHeader.m in Sources */,
 				221EAE301F678E4200FEDC08 /* FeedView+Refresh.swift in Sources */,
 				221EAE321F678E4200FEDC08 /* FeedViewCellViewModel.swift in Sources */,
+				22B573EC1F693C3C007F28D8 /* LEORefreshHeader.m in Sources */,
+				22B573F81F693C3D007F28D8 /* NSBundle+LEORefresh.m in Sources */,
 				221EAE901F67935400FEDC08 /* DemoCellThree.swift in Sources */,
 				221EAEAC1F67A87D00FEDC08 /* FeedView+WaterfallLayout.swift in Sources */,
 			);

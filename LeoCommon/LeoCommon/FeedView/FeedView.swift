@@ -13,26 +13,26 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-enum FeedViewLayoutType {
+public enum FeedViewLayoutType {
     case flow, water
 }
 
-class FeedView:UIView {
+open class FeedView:UIView {
     
-    var collectionView:UICollectionView!
+    public var collectionView:UICollectionView!
     
-    var registerDict:[String: String] = [:]
+    public var registerDict:[String: String] = [:]
     
     fileprivate var disposeBag = DisposeBag()
     fileprivate var sectionInnerDisposeBag = DisposeBag()
     
-    var sectionViewModels:[FeedViewSectionViewModel] = []
+    public var sectionViewModels:[FeedViewSectionViewModel] = []
     
-    var layoutType:FeedViewLayoutType = .flow
-    var scrollDirection:UICollectionViewScrollDirection = .vertical
+    public var layoutType:FeedViewLayoutType = .flow
+    public var scrollDirection:UICollectionViewScrollDirection = .vertical
     
     //加载器，即：你的业务处理逻辑
-    var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
+    public var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
     
     func reloadData() {
         self.collectionView.reloadData()
@@ -58,14 +58,14 @@ class FeedView:UIView {
         }
     }
     
-    init(frame: CGRect, layoutType:FeedViewLayoutType = .flow, scrollDirection:UICollectionViewScrollDirection = .vertical) {
+    public init(frame: CGRect, layoutType:FeedViewLayoutType = .flow, scrollDirection:UICollectionViewScrollDirection = .vertical) {
         super.init(frame: frame)
         self.scrollDirection = scrollDirection
         self.layoutType = layoutType
         self.initCollectionView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

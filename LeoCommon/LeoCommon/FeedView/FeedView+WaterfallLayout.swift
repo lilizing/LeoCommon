@@ -15,7 +15,7 @@ import ObjectMapper
 
 extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
     
-    func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    open func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                              sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         if indexPath.section > self.sectionViewModels.count - 1 {
             return .zero
@@ -26,7 +26,7 @@ extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
         return size
     }
     
-    func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    open func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                              heightForHeaderInSection section: Int) -> CGFloat {
         if section > self.sectionViewModels.count - 1 {
             return 0
@@ -40,7 +40,7 @@ extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
         return 0
     }
     
-    func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    open func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                              heightForFooterInSection section: Int) -> CGFloat {
         if section > self.sectionViewModels.count - 1 {
             return 0
@@ -54,7 +54,7 @@ extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
         return 0
     }
     
-    func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    open func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                              insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         if section > self.sectionViewModels.count - 1 {
             return .zero
@@ -63,7 +63,7 @@ extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
         return sectionVM.sectionInset
     }
     
-    func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    open func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                              minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         if section > self.sectionViewModels.count - 1 {
             return 0
@@ -72,7 +72,7 @@ extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
         return sectionVM.minimumInteritemSpacing
     }
     
-    func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    open func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                              columnCountForSection section: Int) -> Int {
         if section > self.sectionViewModels.count - 1 {
             return 0

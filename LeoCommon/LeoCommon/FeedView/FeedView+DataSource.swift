@@ -14,14 +14,14 @@ import SnapKit
 import ObjectMapper
 
 extension FeedView:UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.sectionViewModels.count == 0 {
             return 0
         }
         return self.sectionViewModels[section].items.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellVM = self.sectionViewModels[indexPath.section].items[indexPath.row]
         let reuseIdentifier = String(describing: cellVM.cellClass(nil))
         
@@ -35,11 +35,11 @@ extension FeedView:UICollectionViewDataSource {
         return cell
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.sectionViewModels.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionVM = self.sectionViewModels[indexPath.section]
         if (kind == UICollectionElementKindSectionHeader || kind == LEOCollectionElementKindSectionHeader), let header = sectionVM.header {
             

@@ -13,15 +13,15 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-class PageTabVC:UIViewController {
-    var tabView:PageTabView = PageTabView()
-    var pageVC:PageVC = PageVC()
+open class PageTabVC:UIViewController {
+    public var tabView:PageTabView = PageTabView()
+    public var pageVC:PageVC = PageVC()
     
-    var tabHeight:CGFloat = 44
+    public var tabHeight:CGFloat = 44
     
-    var disposeBag = DisposeBag()
+    public var disposeBag = DisposeBag()
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         self.view.addSubview(self.tabView)
         self.tabView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(0)
@@ -62,22 +62,22 @@ class PageTabVC:UIViewController {
         }.addDisposableTo(self.disposeBag)
     }
     
-    func show(at index:Int) {
+    public func show(at index:Int) {
         self.tabView.show(at: index)
         self.pageVC.show(at: index)
     }
     
-    func remove(at index:Int) {
+    public func remove(at index:Int) {
         self.tabView.remove(at: index)
         self.pageVC.remove(at: index)
     }
     
-    func insert(tab: PageTabItemView, vc: UIViewController, at: Int) {
+    public func insert(tab: PageTabItemView, vc: UIViewController, at: Int) {
         self.tabView.insert(newElement: tab, at: at)
         self.pageVC.insert(newElement: vc, at: at)
     }
     
-    func insert(tabs: [PageTabItemView], vcs: [UIViewController], at: Int) {
+    public func insert(tabs: [PageTabItemView], vcs: [UIViewController], at: Int) {
         self.tabView.insert(contentsOf: tabs, at: at)
         self.pageVC.insert(contentsOf: vcs, at: at)
     }

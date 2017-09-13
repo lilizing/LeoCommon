@@ -14,7 +14,7 @@ import RxCocoa
 import RxGesture
 
 extension UIView {
-    func tapGesture() -> Observable<UITapGestureRecognizer> {
+    public func tapGesture() -> Observable<UITapGestureRecognizer> {
         let result = self.rx.tapGesture{ (gestureRecognizer, delegate) in
             delegate.simultaneousRecognitionPolicy = .never
         }.when(UIGestureRecognizerState.recognized)

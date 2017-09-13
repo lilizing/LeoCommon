@@ -13,21 +13,21 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-class PageView:UIView {
-    var feedView:FeedViewForPage!
+open class PageView:UIView {
+    public var feedView:FeedViewForPage!
     
-    var items:[UIView] = []
+    public var items:[UIView] = []
     
-    var toIndex:Int = -1
+    public var toIndex:Int = -1
     
     private var _innerSelectedIndexObservable:Variable<Int> = Variable(-1)
-    var selectedIndexObservable:Variable<Int> {
+    public var selectedIndexObservable:Variable<Int> {
         get {
             return _innerSelectedIndexObservable
         }
     }
     
-    var selectedIndex:Int = -1 {
+    public var selectedIndex:Int = -1 {
         didSet {
             Utils.debugLog("Page - 选中索引：\(selectedIndex)")
             
@@ -35,11 +35,11 @@ class PageView:UIView {
         }
     }
     
-    var isMoving:Bool = false
+    public var isMoving:Bool = false
     
-    weak var viewController:PageVC?
+    public weak var viewController:PageVC?
     
-    func show(at index:Int) {
+    public func show(at index:Int) {
         guard index < items.count else { return }
         
         self.selectedIndex = index
@@ -53,7 +53,7 @@ class PageView:UIView {
         }
     }
     
-    func remove(at index: Int) {
+    public func remove(at index: Int) {
         guard index < items.count && self.feedView.sectionViewModels.count > 0 else { return }
         
         self.items.remove(at: index)
@@ -81,7 +81,7 @@ class PageView:UIView {
         }
     }
     
-    func insert(newElement: UIView, at: Int) {
+    public func insert(newElement: UIView, at: Int) {
         guard at <= items.count else { return }
         
         self.items.insert(newElement, at: at)
@@ -106,7 +106,7 @@ class PageView:UIView {
         }
     }
     
-    func insert(contentsOf: [UIView], at: Int) {
+    public func insert(contentsOf: [UIView], at: Int) {
         guard at <= items.count else { return }
         
         self.items.insert(contentsOf: contentsOf, at: at)
@@ -134,7 +134,7 @@ class PageView:UIView {
         }
     }
     
-    override init(frame: CGRect) {
+    override public  init(frame: CGRect) {
         super.init(frame: frame)
         
         self.feedView = FeedViewForPage.init(frame: .zero, layoutType: .flow, scrollDirection: .horizontal)
@@ -147,27 +147,27 @@ class PageView:UIView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension PageView:FeedViewForPageDataSource {
-    func feedView(viewForCellAt index: Int) -> UIView {
+    public func feedView(viewForCellAt index: Int) -> UIView {
         return self.items[index]
     }
 }
 
 private let FeedPageCellViewTag = 1000
 
-protocol FeedViewForPageDataSource:class {
+public protocol FeedViewForPageDataSource:class {
     func feedView(viewForCellAt index: Int) -> UIView
 }
 
-class FeedViewForPage:FeedView {
-    weak var dataSource:PageView!
+public class FeedViewForPage:FeedView {
+    public weak var dataSource:PageView!
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellVM = self.sectionViewModels[indexPath.section].items[indexPath.row]
         let reuseIdentifier = String(describing: cellVM.cellClass(nil))
         
@@ -199,7 +199,7 @@ class FeedViewForPage:FeedView {
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.bounds.size
     }
 }
