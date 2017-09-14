@@ -92,23 +92,7 @@ public extension PageVC {
     }
     
     public func insert(newElement: UIViewController, at: Int) {
-        guard at <= viewControllers.count else { return }
-        
-        let flag = self.viewControllers.count == 0
-        
-        self.viewControllers.insert(newElement, at: at)
-        
-        if flag {
-            self.addChildViewController(newElement)
-        }
-        
-        self.pageView.insert(newElement: newElement.view, at: at)
-        
-        if flag {
-            newElement.didMove(toParentViewController: self)
-            newElement.beginAppearanceTransition(true, animated: true)
-            newElement.endAppearanceTransition()
-        }
+        self.insert(contentsOf: [newElement], at: at)
     }
     
     public func insert(contentsOf: [UIViewController], at: Int) {
@@ -116,11 +100,11 @@ public extension PageVC {
         
         let flag = self.viewControllers.count == 0
         
+        self.viewControllers.insert(contentsOf: contentsOf, at: at)
+        
         if flag {
             self.addChildViewController(contentsOf[0])
         }
-        
-        self.viewControllers.insert(contentsOf: contentsOf, at: at)
         
         var views: [UIView] = []
         for vc in contentsOf {

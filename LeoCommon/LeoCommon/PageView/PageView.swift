@@ -82,28 +82,7 @@ open class PageView:UIView {
     }
     
     public func insert(newElement: UIView, at: Int) {
-        guard at <= items.count else { return }
-        
-        self.items.insert(newElement, at: at)
-        
-        let cellVM = FeedViewCellViewModel.init()
-        
-        self.feedView.insert(newElement: cellVM, at: at, section: 0, reload:true)
-        
-        if self.items.count == 1 {
-            self.selectedIndex = 0
-        }
-        
-        if (at <= self.selectedIndex && self.items.count > 1) {
-            self.selectedIndex += 1;
-            if #available(iOS 9, *) {
-                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-            } else {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
-                    self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-                })
-            }
-        }
+        self.insert(contentsOf: [newElement], at: at)
     }
     
     public func insert(contentsOf: [UIView], at: Int) {
@@ -111,12 +90,12 @@ open class PageView:UIView {
         
         self.items.insert(contentsOf: contentsOf, at: at)
         
+        var cellVMS:[FeedViewCellViewModel] = []
         for _ in contentsOf {
             let cellVM = FeedViewCellViewModel.init()
-            self.feedView.insert(newElement: cellVM, at: at, section: 0)
+            cellVMS.append(cellVM)
         }
-        
-        self.feedView.reloadData()
+        self.feedView.insert(contentsOf: cellVMS, at: at, section: 0, reload:true)
         
         if self.items.count == contentsOf.count {
             self.selectedIndex = 0

@@ -117,29 +117,7 @@ open class PageTabView:UIView {
     }
     
     public func insert(newElement: PageTabItemView, at: Int) {
-        guard at <= items.count else { return }
-        
-        self.items.insert(newElement, at: at)
-        
-        let cellVM = FeedViewCellViewModel.init()
-        
-        self.feedView.insert(newElement: cellVM, at: at, section: 0, reload:true)
-        
-        if self.items.count == 1 {
-            self.selectedIndex = 0
-        }
-        
-        if (at <= self.selectedIndex && self.items.count > 1) {
-            self.selectedIndex += 1;
-        }
-        
-        newElement.tapGesture().bind { [weak self, weak newElement] (_) in
-            guard let sSelf = self, let sEle = newElement else { return }
-            
-            if let index = sSelf.items.index(of: sEle) {
-                sSelf.selectedIndex = index
-            }
-        }.addDisposableTo(self.disposeBag)
+        self.insert(contentsOf: [newElement], at: at)
     }
     
     public func insert(contentsOf: [PageTabItemView], at: Int) {
@@ -147,12 +125,20 @@ open class PageTabView:UIView {
         
         self.items.insert(contentsOf: contentsOf, at: at)
         
-        for _ in contentsOf {
+        var cellVMS:[FeedViewCellViewModel] = []
+        for view in contentsOf {
             let cellVM = FeedViewCellViewModel.init()
-            self.feedView.insert(newElement: cellVM, at: at, section: 0)
+            cellVMS.append(cellVM)
+            
+            view.tapGesture().takeUntil(view.rx.deallocated).bind { [weak self, weak view] (_) in
+                guard let sSelf = self, let sEle = view else { return }
+                
+                if let index = sSelf.items.index(of: sEle) {
+                    sSelf.selectedIndex = index
+                }
+            }.addDisposableTo(self.disposeBag)
         }
-        
-        self.feedView.reloadData()
+        self.feedView.insert(contentsOf: cellVMS, at: at, section: 0, reload:true)
         
         if self.items.count == contentsOf.count {
             self.selectedIndex = 0

@@ -31,15 +31,22 @@ class DemoPageVC:UIViewController {
         
         _ = view.tapGesture().bind { (_) in
             
-            let tab = DemoPageTabItemView()
-            tab.text = "Tab - \(self.pageTabVC.pageVC.viewControllers.count)"
+            var tabs:[DemoPageTabItemView] = []
+            var vcs:[DemoFeedVC] = []
             
+            for i in 0..<3 {
+                let tab = DemoPageTabItemView()
+                tab.text = "\(i)-\(self.pageTabVC.pageVC.viewControllers.count)"
+                
+                let vc = DemoFeedVC()
+                vc.name = "\(i)-\(self.pageTabVC.pageVC.viewControllers.count)"
+                vc.view.backgroundColor = generateRandomColor()
+                
+                tabs.append(tab)
+                vcs.append(vc)
+            }
             
-            let vc = DemoFeedVC()
-            vc.name = "页面 - \(self.pageTabVC.pageVC.viewControllers.count)"
-            vc.view.backgroundColor = generateRandomColor()
-            
-            self.pageTabVC.insert(tab: tab, vc:vc, at: max(0, self.pageTabVC.pageVC.viewControllers.count - 1))
+            self.pageTabVC.insert(tabs: tabs, vcs:vcs, at: max(0, self.pageTabVC.pageVC.viewControllers.count - 1))
             
 //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
 //                self.pageTabView.show(at: max(0, self.pageVC.viewControllers.count - 2))
