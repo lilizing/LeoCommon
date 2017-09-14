@@ -17,7 +17,7 @@ import ObjectMapper
 open class PageTabItemView:UIView {
     public var selected:Bool = false {
         didSet {
-            self.backgroundColor = self.selected ? .black : .orange
+            //TODO:
         }
     }
     
