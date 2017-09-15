@@ -36,7 +36,7 @@ open class FeedView:UIView {
     //加载器，即：你的业务处理逻辑
     public var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
     
-    func reloadData() {
+    public func reloadData() {
         self.collectionView.reloadData()
     }
     
