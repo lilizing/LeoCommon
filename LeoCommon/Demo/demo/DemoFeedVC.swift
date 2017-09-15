@@ -20,7 +20,7 @@ class DemoFeedVC:UIViewController {
     private var maxPage:Int = 5
     
     override func viewDidLoad() {
-        self.feedView = FeedView.init(frame: .zero, layoutType: .sticky)
+        self.feedView = FeedView.init(frame: .zero, layoutType: .flow, sticky: true)
         self.view.addSubview(self.feedView)
         self.feedView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
@@ -62,7 +62,10 @@ class DemoFeedVC:UIViewController {
                         
                         self.feedView.stopLoading(page, callback: {
                             self.feedView.clear()
-                            self.feedView.append(section: 0, headerViewModel: headerVM, footerViewModel: footerVM, cellViewModels: items)
+                            
+                            let sectionVM = FeedViewSectionViewModel.init(header: headerVM, footer: footerVM, items: items)
+                            sectionVM.headerSticky = false
+                            self.feedView.append(sectionViewModels: [sectionVM])
                         })
                     } else {
                         
@@ -80,10 +83,9 @@ class DemoFeedVC:UIViewController {
                                 headerVM.text = "我是第【二】个Section的【头部】"
                                 
                                 let sectionVM = FeedViewSectionViewModel.init(header: headerVM, footer: nil, items: items)
-                                sectionVM.headerSticky = true
 //                                sectionVM.columnCount = 2
-//                                sectionVM.minimumInteritemSpacing = 5
-//                                sectionVM.minimumLineSpacing = 5
+                                sectionVM.minimumInteritemSpacing = 5
+                                sectionVM.minimumLineSpacing = 5
                                 
                                 //self.feedView.append(section: 1, headerViewModel: headerVM, footerViewModel: nil, cellViewModels: items)
                                 self.feedView.append(sectionViewModels: [sectionVM])

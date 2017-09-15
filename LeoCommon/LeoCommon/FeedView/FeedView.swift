@@ -14,7 +14,7 @@ import SnapKit
 import ObjectMapper
 
 public enum FeedViewLayoutType {
-    case flow, sticky, water
+    case flow, water
 }
 
 open class FeedView:UIView {
@@ -31,6 +31,8 @@ open class FeedView:UIView {
     public var layoutType:FeedViewLayoutType = .flow
     public var scrollDirection:UICollectionViewScrollDirection = .vertical
     
+    public var sticky:Bool = false
+    
     //加载器，即：你的业务处理逻辑
     public var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
     
@@ -43,14 +45,13 @@ open class FeedView:UIView {
             let layout = LEOCollectionViewWaterfallLayout()
             layout.itemRenderDirection = .leoCollectionViewWaterfallLayoutItemRenderDirectionLeftToRight
             self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-        } else if self.layoutType == .sticky {
-            let layout = FeedViewStickyHeaderViewFlowLayout()
-            layout.feedView = self
-            self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         } else {
-            let layout = UICollectionViewFlowLayout()
-            layout.sectionHeadersPinToVisibleBounds = true
-            layout.sectionFootersPinToVisibleBounds = true
+            var layout = UICollectionViewFlowLayout()
+            if self.sticky {
+                let tLayout = FeedViewStickyHeaderViewFlowLayout()
+                tLayout.feedView = self
+                layout = tLayout
+            }
             layout.scrollDirection = self.scrollDirection
             self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         }
@@ -64,8 +65,9 @@ open class FeedView:UIView {
         }
     }
     
-    public init(frame: CGRect, layoutType:FeedViewLayoutType = .flow, scrollDirection:UICollectionViewScrollDirection = .vertical) {
+    public init(frame: CGRect, layoutType:FeedViewLayoutType = .flow, scrollDirection:UICollectionViewScrollDirection = .vertical, sticky:Bool = false) {
         super.init(frame: frame)
+        self.sticky = sticky
         self.scrollDirection = scrollDirection
         self.layoutType = layoutType
         self.initCollectionView()

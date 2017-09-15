@@ -39,8 +39,6 @@ class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
                 if representedElementKind == UICollectionElementKindSectionHeader {
                     let section = layoutAttributes.indexPath.section
                     
-                    
-                    
                     let numberOfItemsInSection = collectionView.numberOfItems(inSection: section)
                     
                     let firstCellIndexPath = IndexPath(item: 0, section: section)
