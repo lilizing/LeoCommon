@@ -20,7 +20,7 @@ class DemoFeedVC:UIViewController {
     private var maxPage:Int = 5
     
     override func viewDidLoad() {
-        self.feedView = FeedView.init(frame: .zero, layoutType: .water)
+        self.feedView = FeedView.init(frame: .zero, layoutType: .sticky)
         self.view.addSubview(self.feedView)
         self.feedView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
@@ -39,7 +39,7 @@ class DemoFeedVC:UIViewController {
                     var items:[FeedViewCellViewModel] = []
                     
                     if page == 1 {
-                        for i in 1..<3 {
+                        for i in 1..<8 {
                             if i % 2 == 0 {
                                 let vm = DemoOneCellViewModel()
                                 vm.model = "我是第【一】个Section第【一】种Cell \(i)"
@@ -67,7 +67,7 @@ class DemoFeedVC:UIViewController {
                     } else {
                         
                         for i in 1..<5 {
-                            let vm = DemoThreeCellViewModel()
+                            let vm = DemoTwoCellViewModel()
                             vm.model = "我是第【二】个Section瀑布流Cell \(i)"
                             items.append(vm)
                         }
@@ -80,9 +80,10 @@ class DemoFeedVC:UIViewController {
                                 headerVM.text = "我是第【二】个Section的【头部】"
                                 
                                 let sectionVM = FeedViewSectionViewModel.init(header: headerVM, footer: nil, items: items)
-                                sectionVM.columnCount = 2
-                                sectionVM.minimumInteritemSpacing = 5
-                                sectionVM.minimumLineSpacing = 5
+                                sectionVM.headerSticky = true
+//                                sectionVM.columnCount = 2
+//                                sectionVM.minimumInteritemSpacing = 5
+//                                sectionVM.minimumLineSpacing = 5
                                 
                                 //self.feedView.append(section: 1, headerViewModel: headerVM, footerViewModel: nil, cellViewModels: items)
                                 self.feedView.append(sectionViewModels: [sectionVM])

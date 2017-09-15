@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220BD2BF1F5D4C0400FCB3B4 /* ObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220BD2BE1F5D4C0400FCB3B4 /* ObservableArray.swift */; };
+		221673BC1F6B7A19007980A1 /* FeedViewStickyHeaderViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221673BB1F6B7A19007980A1 /* FeedViewStickyHeaderViewFlowLayout.swift */; };
 		221EAE2F1F678E4200FEDC08 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE281F678E4200FEDC08 /* FeedView.swift */; };
 		221EAE301F678E4200FEDC08 /* FeedView+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE291F678E4200FEDC08 /* FeedView+Refresh.swift */; };
 		221EAE311F678E4200FEDC08 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EAE2A1F678E4200FEDC08 /* FeedViewCell.swift */; };
@@ -85,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		220BD2BE1F5D4C0400FCB3B4 /* ObservableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableArray.swift; sourceTree = "<group>"; };
+		221673BB1F6B7A19007980A1 /* FeedViewStickyHeaderViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewStickyHeaderViewFlowLayout.swift; sourceTree = "<group>"; };
 		221EAE281F678E4200FEDC08 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		221EAE291F678E4200FEDC08 /* FeedView+Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedView+Refresh.swift"; sourceTree = "<group>"; };
 		221EAE2A1F678E4200FEDC08 /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				221EAE2C1F678E4200FEDC08 /* FeedViewSection.swift */,
 				221EAE2D1F678E4200FEDC08 /* FeedViewSectionViewModel.swift */,
 				221EAE2E1F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift */,
+				221673BB1F6B7A19007980A1 /* FeedViewStickyHeaderViewFlowLayout.swift */,
 			);
 			path = FeedView;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				221EAE3C1F678F7800FEDC08 /* SYDRefreshHeader.m in Sources */,
 				221EAE301F678E4200FEDC08 /* FeedView+Refresh.swift in Sources */,
 				221EAE321F678E4200FEDC08 /* FeedViewCellViewModel.swift in Sources */,
+				221673BC1F6B7A19007980A1 /* FeedViewStickyHeaderViewFlowLayout.swift in Sources */,
 				22B573EC1F693C3C007F28D8 /* LEORefreshHeader.m in Sources */,
 				22B573F81F693C3D007F28D8 /* NSBundle+LEORefresh.m in Sources */,
 				221EAE901F67935400FEDC08 /* DemoCellThree.swift in Sources */,

@@ -14,7 +14,7 @@ import SnapKit
 import ObjectMapper
 
 public enum FeedViewLayoutType {
-    case flow, water
+    case flow, sticky, water
 }
 
 open class FeedView:UIView {
@@ -43,8 +43,14 @@ open class FeedView:UIView {
             let layout = LEOCollectionViewWaterfallLayout()
             layout.itemRenderDirection = .leoCollectionViewWaterfallLayoutItemRenderDirectionLeftToRight
             self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
+        } else if self.layoutType == .sticky {
+            let layout = FeedViewStickyHeaderViewFlowLayout()
+            layout.feedView = self
+            self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         } else {
             let layout = UICollectionViewFlowLayout()
+            layout.sectionHeadersPinToVisibleBounds = true
+            layout.sectionFootersPinToVisibleBounds = true
             layout.scrollDirection = self.scrollDirection
             self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         }

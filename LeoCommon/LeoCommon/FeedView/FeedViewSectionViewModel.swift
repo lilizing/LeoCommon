@@ -24,6 +24,7 @@ open class FeedViewSectionViewModel {
     public var sectionInset:UIEdgeInsets = .zero
     public var minimumInteritemSpacing:CGFloat = 0
     public var minimumLineSpacing:CGFloat = 0
+    public var headerSticky:Bool = false //是否固定头部
     
     public var header:FeedViewSectionHeaderOrFooterViewModel?
     public var footer:FeedViewSectionHeaderOrFooterViewModel?

@@ -66,8 +66,8 @@ extension FeedView:FeedViewOperation {
             self.sectionViewModels.append(sectionVM)
         } else {
             let sectionVM = self.sectionViewModels[section]
-            sectionVM.header = headerViewModel
-            sectionVM.footer = footerViewModel
+            sectionVM.header = headerViewModel ?? sectionVM.header
+            sectionVM.footer = footerViewModel ?? sectionVM.footer
             sectionVM.items.append(contentsOf: cellViewModels)
         }
         if reload {

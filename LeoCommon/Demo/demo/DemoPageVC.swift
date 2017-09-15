@@ -34,7 +34,7 @@ class DemoPageVC:UIViewController {
             var tabs:[DemoPageTabItemView] = []
             var vcs:[DemoFeedVC] = []
             
-            for i in 0..<3 {
+            for i in 0..<1 {
                 let tab = DemoPageTabItemView()
                 tab.text = "\(i)-\(self.pageTabVC.pageVC.viewControllers.count)"
                 
