@@ -44,15 +44,17 @@ class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
                     let firstCellIndexPath = IndexPath(item: 0, section: section)
                     let lastCellIndexPath = IndexPath(item: max(0, (numberOfItemsInSection - 1)), section: section)
                     
-                    let cellAttributes:(first: UICollectionViewLayoutAttributes, last: UICollectionViewLayoutAttributes) = {
+                    let cellAttributes:(first: UICollectionViewLayoutAttributes?, last: UICollectionViewLayoutAttributes?) = {
                         if (collectionView.numberOfItems(inSection: section) > 0) {
                             return (
-                                self.layoutAttributesForItem(at: firstCellIndexPath)!,
-                                self.layoutAttributesForItem(at: lastCellIndexPath)!)
+                                self.layoutAttributesForItem(at: firstCellIndexPath),
+                                self.layoutAttributesForItem(at: lastCellIndexPath)
+                            )
                         } else {
                             return (
-                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: firstCellIndexPath)!,
-                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: lastCellIndexPath)!)
+                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: firstCellIndexPath),
+                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: lastCellIndexPath)
+                            )
                         }
                     }()
                     
@@ -69,7 +71,13 @@ class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
                     //                    origin.y = min(contentOffset.y, cellAttributes.last.frame.maxY - headerHeight)
                     // Uncomment this line for normal behaviour:
                     if self.stickySectionIndexs.contains(section) || headerSticky {
-                        origin.y = min(max(contentOffset.y, cellAttributes.first.frame.minY - headerHeight), cellAttributes.last.frame.maxY - headerHeight)
+                        origin.y = contentOffset.y
+                        if let first = cellAttributes.first {
+                            origin.y = max(origin.y, first.frame.minY - headerHeight)
+                        }
+                        if let last = cellAttributes.last {
+                            origin.y = min(origin.y, last.frame.maxY - headerHeight)
+                        }
                     }
                     
                     layoutAttributes.zIndex = 1024
