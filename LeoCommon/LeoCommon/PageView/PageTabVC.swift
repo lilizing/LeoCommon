@@ -14,7 +14,7 @@ import SnapKit
 import ObjectMapper
 
 open class PageTabVC:UIViewController {
-    public var tabView:PageTabView = PageTabView()
+    public var pageTab:PageTabView = PageTabView()
     public var pageVC:PageVC = PageVC()
     
     public var tabHeight:CGFloat = 44
@@ -22,8 +22,8 @@ open class PageTabVC:UIViewController {
     public var disposeBag = DisposeBag()
     
     override open func viewDidLoad() {
-        self.view.addSubview(self.tabView)
-        self.tabView.snp.makeConstraints { (make) in
+        self.view.addSubview(self.pageTab)
+        self.pageTab.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(0)
             make.height.equalTo(self.tabHeight)
         }
@@ -31,12 +31,12 @@ open class PageTabVC:UIViewController {
         self.addChildViewController(self.pageVC)
         self.view.addSubview(self.pageVC.view)
         self.pageVC.view.snp.makeConstraints { (make) in
-            make.top.equalTo(self.tabView.snp.bottom)
+            make.top.equalTo(self.pageTab.snp.bottom)
             make.left.right.bottom.equalTo(0)
         }
         self.pageVC.didMove(toParentViewController: self)
         
-        self.tabView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
+        self.pageTab.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
             guard
                 let sSelf = self,
                 index > -1,
@@ -53,32 +53,32 @@ open class PageTabVC:UIViewController {
             guard
                 let sSelf = self,
                 index > -1,
-                sSelf.tabView.items.count > index
+                sSelf.pageTab.items.count > index
                 else {
                     return
             }
             
-            sSelf.tabView.show(at: index)
+            sSelf.pageTab.show(at: index)
         }.addDisposableTo(self.disposeBag)
     }
     
     public func show(at index:Int) {
-        self.tabView.show(at: index)
+        self.pageTab.show(at: index)
         self.pageVC.show(at: index)
     }
     
     public func remove(at index:Int) {
-        self.tabView.remove(at: index)
+        self.pageTab.remove(at: index)
         self.pageVC.remove(at: index)
     }
     
     public func insert(tab: PageTabItemView, vc: UIViewController, at: Int) {
-        self.tabView.insert(newElement: tab, at: at)
+        self.pageTab.insert(newElement: tab, at: at)
         self.pageVC.insert(newElement: vc, at: at)
     }
     
     public func insert(tabs: [PageTabItemView], vcs: [UIViewController], at: Int) {
-        self.tabView.insert(contentsOf: tabs, at: at)
+        self.pageTab.insert(contentsOf: tabs, at: at)
         self.pageVC.insert(contentsOf: vcs, at: at)
     }
 }

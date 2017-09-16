@@ -17,9 +17,17 @@ public enum FeedViewLayoutType {
     case flow, water
 }
 
+open class FeedCollectionView:UICollectionView {
+    public var simultaneously:Bool = false //是否支持滑动共存
+    
+    func gestureRecognizer(_: UIGestureRecognizer,shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
+        return self.simultaneously
+    }
+}
+
 open class FeedView:UIView {
     
-    public var collectionView:UICollectionView!
+    public var collectionView:FeedCollectionView!
     
     public var registerDict:[String: String] = [:]
     
@@ -33,6 +41,8 @@ open class FeedView:UIView {
     
     public var sticky:Bool = false
     
+    public var layout:UICollectionViewLayout!
+    
     //加载器，即：你的业务处理逻辑
     public var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
     
@@ -44,7 +54,7 @@ open class FeedView:UIView {
         if self.layoutType == .water {
             let layout = LEOCollectionViewWaterfallLayout()
             layout.itemRenderDirection = .leoCollectionViewWaterfallLayoutItemRenderDirectionLeftToRight
-            self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
+            self.layout = layout
         } else {
             var layout = UICollectionViewFlowLayout()
             if self.sticky {
@@ -53,9 +63,10 @@ open class FeedView:UIView {
                 layout = tLayout
             }
             layout.scrollDirection = self.scrollDirection
-            self.collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
+            self.layout = layout
         }
         
+        self.collectionView = FeedCollectionView.init(frame: .zero, collectionViewLayout: self.layout)
         self.collectionView.backgroundColor = .white
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -65,7 +76,10 @@ open class FeedView:UIView {
         }
     }
     
-    public init(frame: CGRect, layoutType:FeedViewLayoutType = .flow, scrollDirection:UICollectionViewScrollDirection = .vertical, sticky:Bool = false) {
+    public init(frame: CGRect,
+                layoutType:FeedViewLayoutType = .flow,
+                scrollDirection:UICollectionViewScrollDirection = .vertical,
+                sticky:Bool = false) {
         super.init(frame: frame)
         self.sticky = sticky
         self.scrollDirection = scrollDirection

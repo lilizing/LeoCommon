@@ -69,9 +69,9 @@ class DemoPageVC:UIViewController {
         
         
         self.pageTabVC = PageTabVC()
-        self.pageTabVC.tabView.lineView.backgroundColor = .red
-        self.pageTabVC.tabView.lineHeight = 2
-        self.pageTabVC.tabView.lineSpacing = 20
+        self.pageTabVC.pageTab.lineView.backgroundColor = .red
+        self.pageTabVC.pageTab.lineHeight = 2
+        self.pageTabVC.pageTab.lineSpacing = 20
         
         self.addChildViewController(self.pageTabVC)
         self.view.addSubview(self.pageTabVC.view)

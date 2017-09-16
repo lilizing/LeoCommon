@@ -33,3 +33,4 @@ extension FeedViewCellViewModel: Equatable {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 }
+

@@ -18,6 +18,7 @@ open class PageTabItemView:UIView {
     public var selected:Bool = false {
         didSet {
             //TODO:
+            self.backgroundColor = selected ? .black : .orange
         }
     }
     
@@ -149,7 +150,7 @@ open class PageTabView:UIView {
         }
     }
     
-    override public  init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         self.feedView = FeedViewForPageTab.init(frame: .zero, layoutType: .flow, scrollDirection: .horizontal)

@@ -43,6 +43,11 @@
 		223090CC1F67E0430047DA96 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223090CB1F67E0430047DA96 /* PageVC.swift */; };
 		223090CF1F67E6F60047DA96 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223090CD1F67E6F60047DA96 /* UIView+Ext.swift */; };
 		223090D01F67E6F60047DA96 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223090CE1F67E6F60047DA96 /* Utils.swift */; };
+		2281F0F51F6D12CA00A81238 /* FeedPageView+FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0F41F6D12CA00A81238 /* FeedPageView+FlowLayout.swift */; };
+		2281F0F71F6D130000A81238 /* FeedPageView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0F61F6D130000A81238 /* FeedPageView+DataSource.swift */; };
+		2281F0F91F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0F81F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift */; };
+		2281F0FB1F6D27F000A81238 /* DemoFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0FA1F6D27F000A81238 /* DemoFeedView.swift */; };
+		2281F0FD1F6D432500A81238 /* DemoFeedPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0FC1F6D432500A81238 /* DemoFeedPageVC.swift */; };
 		22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D621F0007A700BA0892 /* debug.xcconfig */; };
 		22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D631F0007A700BA0892 /* release.xcconfig */; };
 		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
@@ -124,6 +129,11 @@
 		223090CB1F67E0430047DA96 /* PageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		223090CD1F67E6F60047DA96 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		223090CE1F67E6F60047DA96 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2281F0F41F6D12CA00A81238 /* FeedPageView+FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedPageView+FlowLayout.swift"; sourceTree = "<group>"; };
+		2281F0F61F6D130000A81238 /* FeedPageView+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedPageView+DataSource.swift"; sourceTree = "<group>"; };
+		2281F0F81F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedPageView+WaterfallLayout.swift"; sourceTree = "<group>"; };
+		2281F0FA1F6D27F000A81238 /* DemoFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedView.swift; sourceTree = "<group>"; };
+		2281F0FC1F6D432500A81238 /* DemoFeedPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedPageVC.swift; sourceTree = "<group>"; };
 		22AD6D621F0007A700BA0892 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		22AD6D631F0007A700BA0892 /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
 		22AD6D641F0007A700BA0892 /* common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
@@ -258,8 +268,10 @@
 		221EAE841F67935400FEDC08 /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				2281F0FC1F6D432500A81238 /* DemoFeedPageVC.swift */,
 				221EAEAD1F67B40B00FEDC08 /* DemoPageVC.swift */,
 				221EAE861F67935400FEDC08 /* DemoFeedVC.swift */,
+				2281F0FA1F6D27F000A81238 /* DemoFeedView.swift */,
 				221EAE851F67935400FEDC08 /* DemoCellThree.swift */,
 				221EAE871F67935400FEDC08 /* DemoOneCell.swift */,
 				221EAE881F67935400FEDC08 /* DemoOneCellViewModel.swift */,
@@ -279,6 +291,9 @@
 			isa = PBXGroup;
 			children = (
 				221EAE9E1F67A28E00FEDC08 /* FeedPageView.swift */,
+				2281F0F41F6D12CA00A81238 /* FeedPageView+FlowLayout.swift */,
+				2281F0F61F6D130000A81238 /* FeedPageView+DataSource.swift */,
+				2281F0F81F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift */,
 			);
 			path = FeedPageView;
 			sourceTree = "<group>";
@@ -687,9 +702,11 @@
 				221EAE941F67935400FEDC08 /* DemoSectionFooter.swift in Sources */,
 				221EAE981F67935400FEDC08 /* DemoThreeCellViewModel.swift in Sources */,
 				221EAE341F678E4200FEDC08 /* FeedViewSectionViewModel.swift in Sources */,
+				2281F0F51F6D12CA00A81238 /* FeedPageView+FlowLayout.swift in Sources */,
 				22B5C4D41F3B125000C89688 /* Object+Ext.swift in Sources */,
 				221EAE351F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift in Sources */,
 				221EAE9A1F67935400FEDC08 /* DemoTwoCellViewModel.swift in Sources */,
+				2281F0FB1F6D27F000A81238 /* DemoFeedView.swift in Sources */,
 				22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */,
 				221EAE911F67935400FEDC08 /* DemoFeedVC.swift in Sources */,
 				221EAE961F67935400FEDC08 /* DemoSectionHeader.swift in Sources */,
@@ -710,6 +727,7 @@
 				22B573EE1F693C3C007F28D8 /* LEORefreshAutoNormalFooter.m in Sources */,
 				22C251131EE50054007A46BC /* AppDelegate.swift in Sources */,
 				221EAEAA1F67A85C00FEDC08 /* FeedView+FlowLayout.swift in Sources */,
+				2281F0FD1F6D432500A81238 /* DemoFeedPageVC.swift in Sources */,
 				22B573F51F693C3C007F28D8 /* LEORefreshStateHeader.m in Sources */,
 				22B573EA1F693C3C007F28D8 /* LEORefreshComponent.m in Sources */,
 				22B5C4D21F3B125000C89688 /* Const.swift in Sources */,
@@ -724,6 +742,7 @@
 				221EAEAE1F67B40B00FEDC08 /* DemoPageVC.swift in Sources */,
 				22B573F41F693C3C007F28D8 /* LEORefreshNormalHeader.m in Sources */,
 				220BD2BF1F5D4C0400FCB3B4 /* ObservableArray.swift in Sources */,
+				2281F0F71F6D130000A81238 /* FeedPageView+DataSource.swift in Sources */,
 				221EAEA01F67A28E00FEDC08 /* FeedPageView.swift in Sources */,
 				22B573FB1F693C3D007F28D8 /* UIView+LEOExtension.m in Sources */,
 				221EAE971F67935400FEDC08 /* DemoSectionHeaderViewModel.swift in Sources */,
@@ -740,6 +759,7 @@
 				22B573EC1F693C3C007F28D8 /* LEORefreshHeader.m in Sources */,
 				22B573F81F693C3D007F28D8 /* NSBundle+LEORefresh.m in Sources */,
 				221EAE901F67935400FEDC08 /* DemoCellThree.swift in Sources */,
+				2281F0F91F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift in Sources */,
 				221EAEAC1F67A87D00FEDC08 /* FeedView+WaterfallLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
