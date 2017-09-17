@@ -30,9 +30,19 @@ open class FeedPageView:FeedView {
         }
     }
     
-    public var pageTab:PageTabView = PageTabView()
-    //public var pageViewController:PageVC = PageVC()
-    public var pageView:PageView = PageView()
+    private var pgTab:PageTabView = PageTabView()
+    public var pageTab:PageTabView {
+        get {
+            return self.pgTab
+        }
+    }
+    
+    private var pgView:PageView = PageView()
+    public var pageView:PageView {
+        get {
+            return self.pgView
+        }
+    }
     
     public init(frame: CGRect,
                 layoutType:FeedViewLayoutType = .flow,
