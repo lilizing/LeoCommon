@@ -13,16 +13,14 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-
 open class PageTabItemView:UIView {
-    public var selected:Bool = false {
+    open var isSelected:Bool = false {
         didSet {
             //TODO:
-            self.backgroundColor = selected ? .black : .orange
         }
     }
     
-    public func width() -> CGFloat {
+    open func width() -> CGFloat {
         return 0
     }
 }
@@ -34,7 +32,7 @@ open class PageTabView:UIView {
     public var lineView:UIView!
     
     public var lineHeight:CGFloat = 2
-    var lineBottomOffset:CGFloat = 0
+    public var lineBottomOffset:CGFloat = 0
     public var lineSpacing:CGFloat = 0
     public var lineMinWidth:CGFloat = 10
     
@@ -44,7 +42,17 @@ open class PageTabView:UIView {
     
     public var selectedIndexObservable:Variable<Int> = Variable(-1)
     
-    private var selectedIndex:Int = -1 {
+    var currentIndex:Int {
+        get {
+            return self.selectedIndex
+        }
+        set {
+            self.selectedIndex = newValue
+            self.selectedIndexObservable.value = self.selectedIndex
+        }
+    }
+    
+    var selectedIndex:Int = -1 {
         didSet {
             Utils.debugLog("Tab - 选中索引：\(selectedIndex)")
             
@@ -62,7 +70,7 @@ open class PageTabView:UIView {
                     selectedTabLeft = width
                     selectedTab = tab
                 }
-                tab.selected = index == self.selectedIndex
+                tab.isSelected = index == self.selectedIndex
                 width += tab.width()
                 index += 1
             }
@@ -77,7 +85,7 @@ open class PageTabView:UIView {
             self.feedView.collectionView.setContentOffset(.init(x: contentOffsetX, y: 0), animated: true)
             self.lineScrollView.contentSize = .init(width: self.feedView.collectionView.contentSize.width, height: self.lineHeight)
             
-            self.layoutIfNeeded()
+            self.layoutIfNeeded() //因自动布局的延后性，可能这个时候某些视图的bounds还是.zero，影响计算，所以这里做一下强制布局，提前完成布局工作，即可拿到正确的尺寸
             UIView.animate(withDuration: 0.3, animations: { 
                 self.lineView.snp.remakeConstraints { (make) in
                     make.centerX.equalTo(selectedTabCenterX)
@@ -87,8 +95,6 @@ open class PageTabView:UIView {
                 }
                 self.layoutIfNeeded()
             })
-            
-            self.selectedIndexObservable.value = self.selectedIndex
         }
     }
     
@@ -130,12 +136,12 @@ open class PageTabView:UIView {
         for view in contentsOf {
             let cellVM = FeedViewCellViewModel.init()
             cellVMS.append(cellVM)
-            
+
             view.tapGesture().takeUntil(view.rx.deallocated).bind { [weak self, weak view] (_) in
                 guard let sSelf = self, let sEle = view else { return }
                 
                 if let index = sSelf.items.index(of: sEle) {
-                    sSelf.selectedIndex = index
+                    sSelf.currentIndex = index
                 }
             }.addDisposableTo(self.disposeBag)
         }

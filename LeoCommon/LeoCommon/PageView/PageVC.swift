@@ -132,12 +132,21 @@ extension PageVC {
 }
 
 open class PageVC:UIViewController {
-    var viewControllers:[UIViewController] = []
-    var selectedViewController:UIViewController!
+    public var viewControllers:[UIViewController] = []
+    public var selectedViewController:UIViewController!
     
-    var selectedIndexObservable:Variable<Int> {
+    public var selectedIndexObservable:Variable<Int> {
         get {
             return self.pageView.selectedIndexObservable
+        }
+    }
+    
+    var currentIndex:Int {
+        get {
+            return self.pageView.currentIndex
+        }
+        set {
+            self.pageView.currentIndex = newValue
         }
     }
     
@@ -171,9 +180,11 @@ open class PageVC:UIViewController {
             make.edges.equalTo(self.view)
         }
     }
-    
+}
+
+extension PageVC {
     func startMoving(index:Int) {
-        self.selectedViewController = self.viewControllers[self.pageView.selectedIndex];
+        self.selectedViewController = self.viewControllers[self.pageView.currentIndex];
         let toViewController = self.viewControllers[index];
         
         if toViewController.parent == nil {
@@ -193,7 +204,7 @@ open class PageVC:UIViewController {
         
         let toViewController = self.viewControllers[self.pageView.toIndex];
         
-        if (self.pageView.toIndex > self.pageView.selectedIndex) {
+        if (self.pageView.toIndex > self.pageView.currentIndex) {
             if (offsetX >=~ CGFloat(self.pageView.toIndex) * contentWidth) {
                 
                 Utils.debugLog("[翻页 - 向右] - 成功");
@@ -203,7 +214,7 @@ open class PageVC:UIViewController {
                 self.selectedViewController = toViewController
                 
                 
-                self.pageView.selectedIndex = self.pageView.toIndex;
+                self.pageView.currentIndex = self.pageView.toIndex;
             } else { //回弹
                 
                 Utils.debugLog("[翻页 - 向右] - 失败，回弹");
@@ -228,7 +239,7 @@ open class PageVC:UIViewController {
                 
                 self.selectedViewController = toViewController
                 
-                self.pageView.selectedIndex = self.pageView.toIndex;
+                self.pageView.currentIndex = self.pageView.toIndex;
             } else { //回弹
                 
                 Utils.debugLog("[翻页 - 向左] - 失败，回弹");

@@ -45,8 +45,7 @@ open class PageTabVC:UIViewController {
                     return
             }
             
-            sSelf.pageVC.show(at: index)
-            
+            sSelf.pageVC.currentIndex = index
         }.addDisposableTo(self.disposeBag)
         
         self.pageVC.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
@@ -58,7 +57,7 @@ open class PageTabVC:UIViewController {
                     return
             }
             
-            sSelf.pageTab.show(at: index)
+            sSelf.pageTab.currentIndex = index
         }.addDisposableTo(self.disposeBag)
     }
     

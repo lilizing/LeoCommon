@@ -27,11 +27,29 @@ open class PageView:UIView {
         }
     }
     
-    public var selectedIndex:Int = -1 {
+    var currentIndex:Int {
+        get {
+            return self.selectedIndex
+        }
+        set {
+            self.selectedIndex = newValue
+            self.selectedIndexObservable.value = self.selectedIndex
+        }
+    }
+    
+    var selectedIndex:Int = -1 {
         didSet {
             Utils.debugLog("Page - 选中索引：\(selectedIndex)")
             
-            _innerSelectedIndexObservable.value = self.selectedIndex
+            self.layoutIfNeeded() //因自动布局的延后性，可能这个时候某些视图的bounds还是.zero，影响计算，所以这里做一下强制布局，提前完成布局工作，即可拿到正确的尺寸
+            
+            if #available(iOS 9, *) {
+                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
+                    self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
+                })
+            }
         }
     }
     
@@ -43,14 +61,6 @@ open class PageView:UIView {
         guard index < items.count else { return }
         
         self.selectedIndex = index
-        
-        if #available(iOS 9, *) {
-            self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
-                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-            })
-        }
     }
     
     public func remove(at index: Int) {
@@ -67,18 +77,6 @@ open class PageView:UIView {
         }
         
         self.feedView.remove(section: 0, at: index, reload:true)
-        
-        guard self.selectedIndex > -1 else {
-            return
-        }
-        
-        if #available(iOS 9, *) {
-            self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
-                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-            })
-        }
     }
     
     public func insert(newElement: UIView, at: Int) {
@@ -103,13 +101,6 @@ open class PageView:UIView {
         
         if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
             self.selectedIndex += 1;
-            if #available(iOS 9, *) {
-                self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-            } else {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
-                    self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
-                })
-            }
         }
     }
     
