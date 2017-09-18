@@ -43,10 +43,31 @@ open class FeedView:UIView {
     
     public var layout:UICollectionViewLayout!
     
+    public var emptyCellViewModel:FeedViewCellViewModel?
+    
     //加载器，即：你的业务处理逻辑
     public var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
     
+    private var footer:LEORefreshFooter?
+    
     public func reloadData() {
+        if self.sectionViewModels.count == 0 {
+            guard let cellVM = self.emptyCellViewModel else {
+                self.collectionView.reloadData()
+                return
+            }
+            self.append(cellViewModels: [cellVM])
+            if self.showFooter, let footer = self.collectionView.leo_footer {
+                footer.endRefreshingWithNoMoreData()
+                self.footer = footer
+                self.collectionView.leo_footer.removeFromSuperview()
+                self.collectionView.leo_footer = nil
+            }
+        } else {
+            if self.showFooter, let ft = self.footer {
+                self.collectionView.leo_footer = ft
+            }
+        }
         self.collectionView.reloadData()
     }
     

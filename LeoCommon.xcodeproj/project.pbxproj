@@ -48,6 +48,8 @@
 		2281F0F91F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0F81F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift */; };
 		2281F0FB1F6D27F000A81238 /* DemoFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0FA1F6D27F000A81238 /* DemoFeedView.swift */; };
 		2281F0FD1F6D432500A81238 /* DemoFeedPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0FC1F6D432500A81238 /* DemoFeedPageVC.swift */; };
+		228D7F601F6FCFFA00E67158 /* FeedViewEmptyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D7F5F1F6FCFFA00E67158 /* FeedViewEmptyCellViewModel.swift */; };
+		228D7F621F6FCFFD00E67158 /* FeedViewEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D7F611F6FCFFD00E67158 /* FeedViewEmptyCell.swift */; };
 		22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D621F0007A700BA0892 /* debug.xcconfig */; };
 		22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D631F0007A700BA0892 /* release.xcconfig */; };
 		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
@@ -135,6 +137,8 @@
 		2281F0F81F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedPageView+WaterfallLayout.swift"; sourceTree = "<group>"; };
 		2281F0FA1F6D27F000A81238 /* DemoFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedView.swift; sourceTree = "<group>"; };
 		2281F0FC1F6D432500A81238 /* DemoFeedPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedPageVC.swift; sourceTree = "<group>"; };
+		228D7F5F1F6FCFFA00E67158 /* FeedViewEmptyCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewEmptyCellViewModel.swift; sourceTree = "<group>"; };
+		228D7F611F6FCFFD00E67158 /* FeedViewEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewEmptyCell.swift; sourceTree = "<group>"; };
 		22AD6D621F0007A700BA0892 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		22AD6D631F0007A700BA0892 /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
 		22AD6D641F0007A700BA0892 /* common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 		221EAE271F678E1E00FEDC08 /* FeedView */ = {
 			isa = PBXGroup;
 			children = (
+				228D7F611F6FCFFD00E67158 /* FeedViewEmptyCell.swift */,
+				228D7F5F1F6FCFFA00E67158 /* FeedViewEmptyCellViewModel.swift */,
 				221EAE281F678E4200FEDC08 /* FeedView.swift */,
 				221EAEA51F67A7CA00FEDC08 /* FeedView+Operation.swift */,
 				221EAE291F678E4200FEDC08 /* FeedView+Refresh.swift */,
@@ -739,6 +745,7 @@
 				221EAE311F678E4200FEDC08 /* FeedViewCell.swift in Sources */,
 				22B573E91F693C3C007F28D8 /* LEORefreshBackFooter.m in Sources */,
 				22B573B61F692E15007F28D8 /* PageTabVC.swift in Sources */,
+				228D7F601F6FCFFA00E67158 /* FeedViewEmptyCellViewModel.swift in Sources */,
 				221EAE2F1F678E4200FEDC08 /* FeedView.swift in Sources */,
 				22B573ED1F693C3C007F28D8 /* LEORefreshAutoGifFooter.m in Sources */,
 				22B5C4CE1F3B125000C89688 /* API+Cache.swift in Sources */,
@@ -748,6 +755,7 @@
 				220BD2BF1F5D4C0400FCB3B4 /* ObservableArray.swift in Sources */,
 				2281F0F71F6D130000A81238 /* FeedPageView+DataSource.swift in Sources */,
 				221EAEA01F67A28E00FEDC08 /* FeedPageView.swift in Sources */,
+				228D7F621F6FCFFD00E67158 /* FeedViewEmptyCell.swift in Sources */,
 				22B573FB1F693C3D007F28D8 /* UIView+LEOExtension.m in Sources */,
 				221EAE971F67935400FEDC08 /* DemoSectionHeaderViewModel.swift in Sources */,
 				221EAE9C1F67A16E00FEDC08 /* FeedView+SYD.swift in Sources */,

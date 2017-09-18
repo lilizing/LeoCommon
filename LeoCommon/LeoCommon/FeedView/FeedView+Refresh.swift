@@ -42,7 +42,7 @@ extension FeedView:FeedViewPage {
         static var FeedShowFooterKey = "leo.feedview.showFooter"
     }
     
-    private var showHeader: Bool {
+    var showHeader: Bool {
         get {
             if let value = objc_getAssociatedObject(self, &AssociatedKeys.FeedShowHeaderKey) {
                 return value as! Bool
@@ -59,7 +59,7 @@ extension FeedView:FeedViewPage {
         }
     }
     
-    private var showFooter: Bool {
+    var showFooter: Bool {
         get {
             if let value = objc_getAssociatedObject(self, &AssociatedKeys.FeedShowFooterKey) {
                 return value as! Bool
@@ -185,7 +185,7 @@ extension FeedView:FeedViewPage {
             if self.showHeader && self.collectionView.leo_header.isRefreshing() {
                 self.collectionView.leo_header.endRefreshing()
             }
-            if self.showFooter && self.collectionView.leo_footer.isRefreshing() {
+            if self.showFooter, self.collectionView.leo_footer != nil, self.collectionView.leo_footer.isRefreshing() {
                 self.collectionView.leo_footer.endRefreshingWithNoMoreData()
             }
             return
@@ -201,7 +201,7 @@ extension FeedView:FeedViewPage {
             self.collectionView.leo_header.endRefreshing()
         }
         self.hasMore = hasMore()
-        if self.showFooter {
+        if self.showFooter, self.collectionView.leo_footer != nil {
             if self.hasMore {
                 self.collectionView.leo_footer.endRefreshing()
             } else {
