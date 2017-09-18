@@ -168,12 +168,16 @@ open class PageVC:UIViewController {
         }
     }
     
-    var pageView:PageView!
+    private var pgView = PageView()
+    public var pageView:PageView {
+        get {
+            return self.pgView
+        }
+    }
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pageView = PageView()
         self.pageView.viewController = self
         self.view.addSubview(self.pageView)
         self.pageView.snp.makeConstraints { (make) in

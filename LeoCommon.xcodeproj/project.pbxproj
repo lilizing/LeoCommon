@@ -51,6 +51,7 @@
 		22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D621F0007A700BA0892 /* debug.xcconfig */; };
 		22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D631F0007A700BA0892 /* release.xcconfig */; };
 		22AD6D671F0007A700BA0892 /* common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D641F0007A700BA0892 /* common.xcconfig */; };
+		22AE3D6A1F6F7C080068A34C /* FeedViewAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE3D691F6F7C080068A34C /* FeedViewAlignFlowLayout.swift */; };
 		22B573B41F68E081007F28D8 /* DemoPageTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B573B31F68E081007F28D8 /* DemoPageTabItemView.swift */; };
 		22B573B61F692E15007F28D8 /* PageTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B573B51F692E15007F28D8 /* PageTabVC.swift */; };
 		22B573E81F693C3C007F28D8 /* LEORefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B573BC1F693C3C007F28D8 /* LEORefreshAutoFooter.m */; };
@@ -159,6 +160,7 @@
 		22AD6D8B1F00091A00BA0892 /* UIColor_Hex_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIColor_Hex_Swift.podspec; sourceTree = "<group>"; };
 		22AD6D9B1F0009AF00BA0892 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = SOURCE_ROOT; };
 		22AD6D9D1F000C1500BA0892 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		22AE3D691F6F7C080068A34C /* FeedViewAlignFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewAlignFlowLayout.swift; sourceTree = "<group>"; };
 		22B573B31F68E081007F28D8 /* DemoPageTabItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPageTabItemView.swift; sourceTree = "<group>"; };
 		22B573B51F692E15007F28D8 /* PageTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTabVC.swift; sourceTree = "<group>"; };
 		22B573BB1F693C3C007F28D8 /* LEORefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEORefreshAutoFooter.h; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				221EAE2D1F678E4200FEDC08 /* FeedViewSectionViewModel.swift */,
 				221EAE2E1F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift */,
 				221673BB1F6B7A19007980A1 /* FeedViewStickyHeaderViewFlowLayout.swift */,
+				22AE3D691F6F7C080068A34C /* FeedViewAlignFlowLayout.swift */,
 			);
 			path = FeedView;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				2281F0F51F6D12CA00A81238 /* FeedPageView+FlowLayout.swift in Sources */,
 				22B5C4D41F3B125000C89688 /* Object+Ext.swift in Sources */,
 				221EAE351F678E4200FEDC08 /* LEOCollectionViewDelegateWaterfallLayout.swift in Sources */,
+				22AE3D6A1F6F7C080068A34C /* FeedViewAlignFlowLayout.swift in Sources */,
 				221EAE9A1F67935400FEDC08 /* DemoTwoCellViewModel.swift in Sources */,
 				2281F0FB1F6D27F000A81238 /* DemoFeedView.swift in Sources */,
 				22B5C4D11F3B125000C89688 /* Button.Ext.swift in Sources */,
