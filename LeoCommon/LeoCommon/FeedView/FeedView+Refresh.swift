@@ -201,11 +201,13 @@ extension FeedView:FeedViewPage {
             self.collectionView.leo_header.endRefreshing()
         }
         self.hasMore = hasMore()
-        if self.showFooter, self.collectionView.leo_footer != nil {
+        
+        if self.showFooter, let footer = (self.footer ?? self.collectionView.leo_footer) {
             if self.hasMore {
-                self.collectionView.leo_footer.endRefreshing()
+                footer.resetNoMoreData()
+                footer.endRefreshing()
             } else {
-                self.collectionView.leo_footer.endRefreshingWithNoMoreData()
+                footer.endRefreshingWithNoMoreData()
             }
         }
         
