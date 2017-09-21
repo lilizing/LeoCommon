@@ -26,8 +26,8 @@ extension FeedView:UICollectionViewDataSource {
         let reuseIdentifier = String(describing: cellVM.cellClass(nil))
         
         if self.registerDict[reuseIdentifier] == nil {
-            self.registerDict[reuseIdentifier] = reuseIdentifier
             collectionView.register(cellVM.cellClass(nil), forCellWithReuseIdentifier: reuseIdentifier)
+            self.registerDict[reuseIdentifier] = reuseIdentifier
         }
         
         let cell:FeedViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedViewCell
@@ -46,8 +46,8 @@ extension FeedView:UICollectionViewDataSource {
             let reuseIdentifier = String(describing: header.sectionClass(nil))
             
             if self.registerDict[reuseIdentifier] == nil {
-                self.registerDict[reuseIdentifier] = reuseIdentifier
                 collectionView.register(header.sectionClass(nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
+                self.registerDict[reuseIdentifier] = reuseIdentifier
             }
             
             let view:FeedViewSectionHeaderOrFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedViewSectionHeaderOrFooter
@@ -57,8 +57,8 @@ extension FeedView:UICollectionViewDataSource {
             let reuseIdentifier = String(describing: footer.sectionClass(nil))
             
             if self.registerDict[reuseIdentifier] == nil {
-                self.registerDict[reuseIdentifier] = reuseIdentifier
                 collectionView.register(footer.sectionClass(nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
+                self.registerDict[reuseIdentifier] = reuseIdentifier
             }
             
             let view:FeedViewSectionHeaderOrFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedViewSectionHeaderOrFooter
