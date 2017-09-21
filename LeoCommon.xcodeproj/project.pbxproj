@@ -142,7 +142,7 @@
 		22AD6D691F0007D000BA0892 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = SOURCE_ROOT; };
 		22AD6D6A1F0007D000BA0892 /* cpod.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = cpod.sh; sourceTree = SOURCE_ROOT; };
 		22AD6D6B1F0007D000BA0892 /* LeoCommon.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LeoCommon.podspec; sourceTree = SOURCE_ROOT; };
-		22AD6D6C1F0007D000BA0892 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		22AD6D6C1F0007D000BA0892 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		22AD6D6F1F0007D000BA0892 /* upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = upload.sh; sourceTree = SOURCE_ROOT; };
 		22AD6D7E1F00091A00BA0892 /* Alamofire.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Alamofire.podspec; sourceTree = "<group>"; };
 		22AD6D7F1F00091A00BA0892 /* AlamofireURLCache.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AlamofireURLCache.podspec; sourceTree = "<group>"; };

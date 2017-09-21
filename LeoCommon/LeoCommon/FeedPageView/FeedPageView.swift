@@ -16,8 +16,6 @@ open class FeedPageView:FeedView {
     var canScroll = true
     var contentOffset:CGPoint = .zero
     
-    var disposeBag = DisposeBag()
-    
     public var pageTabHeight:CGFloat = 0 {
         didSet {
             self.sectionHeaderViewModelForPage.height = pageTabHeight
@@ -174,7 +172,6 @@ extension FeedPageView {
 open class FeedPageInnerFeedView:FeedView {
     var canScroll = true
     var contentOffset:CGPoint = .zero
-    var disposeBag = DisposeBag()
     
     public override init(frame: CGRect,
                 layoutType:FeedViewLayoutType = .flow,

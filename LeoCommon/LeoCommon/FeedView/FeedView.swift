@@ -26,24 +26,77 @@ open class FeedCollectionView:UICollectionView {
 }
 
 open class FeedView:UIView {
+    var sticky:Bool = false
+    var disposeBag = DisposeBag()
+    var registerDict:[String: String] = [:]
     
-    public var collectionView:FeedCollectionView!
+    var _layout:UICollectionViewLayout!
+    var _layoutType:FeedViewLayoutType = .flow
+    var _scrollDirection:UICollectionViewScrollDirection = .vertical
     
-    public var registerDict:[String: String] = [:]
+    var _collectionView:FeedCollectionView!
+    var _sectionViewModels:[FeedViewSectionViewModel] = []
     
-    fileprivate var disposeBag = DisposeBag()
-    fileprivate var sectionInnerDisposeBag = DisposeBag()
-    
-    public var sectionViewModels:[FeedViewSectionViewModel] = []
-    
-    public var layoutType:FeedViewLayoutType = .flow
-    public var scrollDirection:UICollectionViewScrollDirection = .vertical
-    
-    public var sticky:Bool = false
-    
-    public var layout:UICollectionViewLayout!
+    var _didScrollSignal = PublishSubject<UIScrollView>()
+    var _didEndDraggingSignal = PublishSubject<(UIScrollView, Bool)>()
+    var _didEndDeceleratingSignal = PublishSubject<UIScrollView>()
+    var _didEndScrollingAnimation = PublishSubject<UIScrollView>()
     
     public var emptyView:UIView?
+    
+    public var sectionViewModels:[FeedViewSectionViewModel] {
+        get {
+            return self._sectionViewModels
+        }
+    }
+    
+    public var layout:UICollectionViewLayout {
+        get {
+            return self._layout
+        }
+    }
+    
+    public var layoutType:FeedViewLayoutType {
+        get {
+            return self._layoutType
+        }
+    }
+    
+    public var scrollDirection:UICollectionViewScrollDirection {
+        get {
+            return self._scrollDirection
+        }
+    }
+    
+    public var collectionView:FeedCollectionView {
+        get {
+            return self._collectionView
+        }
+    }
+    
+    public var didScrollSignal:PublishSubject<UIScrollView> {
+        get {
+            return self._didScrollSignal
+        }
+    }
+    
+    public var didEndDraggingSignal:PublishSubject<(UIScrollView, Bool)> {
+        get {
+            return self._didEndDraggingSignal
+        }
+    }
+    
+    public var didEndDeceleratingSignal:PublishSubject<UIScrollView> {
+        get {
+            return self._didEndDeceleratingSignal
+        }
+    }
+    
+    public var didEndScrollingAnimation:PublishSubject<UIScrollView> {
+        get {
+            return self._didEndScrollingAnimation
+        }
+    }
     
     //加载器，即：你的业务处理逻辑
     public var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
@@ -81,17 +134,17 @@ open class FeedView:UIView {
         if self.layoutType == .water {
             let layout = LEOCollectionViewWaterfallLayout()
             layout.itemRenderDirection = .leoCollectionViewWaterfallLayoutItemRenderDirectionLeftToRight
-            self.layout = layout
+            self._layout = layout
         } else if self.layoutType == .flowLeft {
             let layout = FeedViewAlignFlowLayout()
             layout.align = .left
             layout.delegate = self
-            self.layout = layout
+            self._layout = layout
         } else if self.layoutType == .flowRight {
             let layout = FeedViewAlignFlowLayout()
             layout.align = .right
             layout.delegate = self
-            self.layout = layout
+            self._layout = layout
         } else {
             var layout = UICollectionViewFlowLayout()
             if self.sticky {
@@ -100,10 +153,10 @@ open class FeedView:UIView {
                 layout = tLayout
             }
             layout.scrollDirection = self.scrollDirection
-            self.layout = layout
+            self._layout = layout
         }
         
-        self.collectionView = FeedCollectionView.init(frame: .zero, collectionViewLayout: self.layout)
+        self._collectionView = FeedCollectionView.init(frame: .zero, collectionViewLayout: self.layout)
         self.collectionView.backgroundColor = .white
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -119,8 +172,8 @@ open class FeedView:UIView {
                 sticky:Bool = false) {
         super.init(frame: frame)
         self.sticky = sticky
-        self.scrollDirection = scrollDirection
-        self.layoutType = layoutType
+        self._scrollDirection = scrollDirection
+        self._layoutType = layoutType
         self.initCollectionView()
     }
     
