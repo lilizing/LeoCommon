@@ -104,7 +104,7 @@ let FeedPageViewInnerCanScroll = "FeedPageViewInnerCanScroll"
 let FeedPageViewOuterCanScroll = "FeedPageViewOuterCanScroll"
 
 extension FeedPageView {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !self.canScroll {
             self.collectionView.showsVerticalScrollIndicator = false
             scrollView.contentOffset = self.contentOffset
@@ -195,7 +195,7 @@ open class FeedPageInnerFeedView:FeedView {
         }.addDisposableTo(self.disposeBag)
     }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !self.canScroll {
             self.collectionView.showsVerticalScrollIndicator = false
             scrollView.contentOffset = .init(x:0, y:0)

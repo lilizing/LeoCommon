@@ -57,7 +57,7 @@ extension FeedViewForPage {
         self.dataSource.isMoving = false;
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         super.scrollViewDidScroll(scrollView)
         guard scrollView.isDragging else { return }
         let offsetX = scrollView.contentOffset.x;
@@ -79,19 +79,19 @@ extension FeedViewForPage {
         }
     }
     
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    override public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         super.scrollViewDidEndDragging(scrollView, willDecelerate: decelerate)
         if !decelerate {
             self.endMoving(scrollView)
         }
     }
     
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    override public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         super.scrollViewDidEndDecelerating(scrollView)
         self.endMoving(scrollView)
     }
     
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    override public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         super.scrollViewDidEndScrollingAnimation(scrollView)
         self.endMoving(scrollView)
     }

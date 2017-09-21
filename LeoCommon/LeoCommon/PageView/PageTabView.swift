@@ -240,7 +240,8 @@ open class FeedViewForPageTab:FeedView {
         return CGSize.init(width: view.width(), height: self.bounds.size.height)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        super.scrollViewDidScroll(scrollView)
         self.dataSource.lineScrollView.contentSize = .init(width: scrollView.contentSize.width, height: self.dataSource.lineHeight)
         self.dataSource.lineScrollView.contentOffset = scrollView.contentOffset
     }
