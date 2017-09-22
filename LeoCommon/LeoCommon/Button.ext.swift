@@ -115,6 +115,6 @@ extension UIButton {
         if rect.equalTo(self.bounds) {
             return super.point(inside: point, with: event)
         }
-        return (!self.isHidden && rect.contains(point)) ? true : false
+        return (!self.isHidden && self.alpha > 0.01 && rect.contains(point)) ? true : false
     }
 }
