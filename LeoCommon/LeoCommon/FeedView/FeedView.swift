@@ -122,9 +122,9 @@ open class FeedView:UIView {
         } else {
             if self.showFooter, let ft = self.footer {
                 self.collectionView.leo_footer = ft
-                if let emptyView = self.emptyView {
-                    emptyView.removeFromSuperview()
-                }
+            }
+            if let emptyView = self.emptyView {
+                emptyView.removeFromSuperview()
             }
         }
         self.collectionView.reloadData()
