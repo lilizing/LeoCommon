@@ -112,17 +112,16 @@ open class FeedView:UIView {
                     make.edges.equalTo(self)
                 })
             }
-            
-            if self.showFooter, let footer = self.collectionView.leo_footer {
-                self.footer = footer
-                footer.removeFromSuperview()
-                footer.endRefreshingWithNoMoreData()
-                self.collectionView.leo_footer = nil
-            }
+            //            if self.showFooter, let footer = self.collectionView.leo_footer {
+            //                self.footer = footer
+            //                footer.removeFromSuperview()
+            //                footer.endRefreshingWithNoMoreData()
+            //                self.collectionView.leo_footer = nil
+            //            }
         } else {
-            if self.showFooter, let ft = self.footer {
-                self.collectionView.leo_footer = ft
-            }
+            //            if self.showFooter, let ft = self.footer {
+            //                self.collectionView.leo_footer = ft
+            //            }
             if let emptyView = self.emptyView {
                 emptyView.removeFromSuperview()
             }
