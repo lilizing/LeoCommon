@@ -133,7 +133,7 @@ public protocol FeedViewForPageDataSource:class {
 }
 
 public class FeedViewForPage:FeedView {
-    public weak var dataSource:PageView!
+    weak var dataSource:PageView!
     
     override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellVM = self.sectionViewModels[indexPath.section].items[indexPath.row]

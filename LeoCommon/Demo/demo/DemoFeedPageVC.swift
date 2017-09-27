@@ -14,33 +14,39 @@ import SnapKit
 
 class DemoFeedPageVC:UIViewController {
     
-    var feedPageView:FeedPageView!
+    var feedPageVC:FeedPageVC!
     
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.initActionView()
         
-        self.feedPageView = FeedPageView.init(frame: .zero, layoutType: .flow, sticky: true)
-        self.feedPageView.pageTabHeight = 44
-        self.feedPageView.pageViewHeight = SCREEN_HEIGHT - 108
-        self.feedPageView.pageTab.lineHeight = 5
-        self.feedPageView.pageTab.lineSpacing = 10
-        self.feedPageView.pageTab.lineView.backgroundColor = .green
-        self.view.addSubview(self.feedPageView)
-        self.feedPageView.snp.makeConstraints { (make) in
+        self.feedPageVC = FeedPageVC.init(layoutType: .flow, sticky: true)
+        self.feedPageVC.pageTabHeight = 44
+        self.feedPageVC.pageViewHeight = SCREEN_HEIGHT - 108
+        self.feedPageVC.pageTab.lineHeight = 5
+        self.feedPageVC.pageTab.lineSpacing = 10
+        self.feedPageVC.pageTab.lineView.backgroundColor = .green
+        
+        //注意不要遗漏这个
+        self.addChildViewController(self.feedPageVC)
+        
+        self.view.addSubview(self.feedPageVC.view)
+        self.feedPageVC.view.snp.makeConstraints { (make) in
             make.top.equalTo(64)
             make.left.right.bottom.equalTo(self.view)
         }
         
+        //注意不要遗漏这个
+        self.feedPageVC.didMove(toParentViewController: self)
         
         self.appendSection()
         
         self.appendTabView()
-        self.feedPageView.reloadData()
+        
+        self.feedPageVC.reloadData()
     }
     
     func initActionView() {
@@ -56,7 +62,7 @@ class DemoFeedPageVC:UIViewController {
         _ = view.tapGesture().bind { (_) in
             
             self.appendTabView()
-            self.feedPageView.reloadData()
+            self.feedPageVC.reloadData()
             
         }.addDisposableTo(self.disposeBag)
         
@@ -72,8 +78,7 @@ class DemoFeedPageVC:UIViewController {
         
         _ = view2.tapGesture().bind { (_) in
             
-            self.feedPageView.pageTab.remove(at: 0)
-            self.feedPageView.pageView.remove(at: 0)
+            self.feedPageVC.removeForPage(at: 0)
             
         }.addDisposableTo(self.disposeBag)
     }
@@ -102,30 +107,28 @@ class DemoFeedPageVC:UIViewController {
         let sectionVM = FeedViewSectionViewModel.init(header: headerVM, footer: footerVM, items: items)
         sectionVM.headerSticky = false
         
-        self.feedPageView.append(sectionViewModels: [sectionVM])
+        self.feedPageVC.feedPageView.append(sectionViewModels: [sectionVM])
     }
     
     func appendTabView() {
         var tabs:[DemoPageTabItemView] = []
-        var vcs:[DemoFeedView] = []
+        var vcs:[DemoFeedVC] = []
         
         for i in 0..<1 {
             let tab = DemoPageTabItemView()
-            tab.text = "\(i)-\(self.feedPageView.pageTab.items.count)"
+            tab.text = "\(i)-\(self.feedPageVC.pageTab.items.count)"
             
-            let vc = DemoFeedView()
-            vc.name = "\(i)-\(self.feedPageView.pageView.items.count)"
-            vc.backgroundColor = generateRandomColor()
+            let vc = DemoFeedVC()
+            vc.name = "\(i)-\(self.feedPageVC.pageVC.viewControllers.count)"
+            vc.view.backgroundColor = generateRandomColor()
             
             tabs.append(tab)
             vcs.append(vc)
         }
-        
-        self.feedPageView.pageTab.insert(contentsOf: tabs, at: 0)
-        self.feedPageView.pageView.insert(contentsOf: vcs, at: 0)
+        self.feedPageVC.insertForPage(tabs: tabs, vcs: vcs, at: 0)
         
         //可以指定显示哪一页
-        //self.feedPageView.show(at: 0)
+        //self.feedPageVC.show(at: 0)
     }
     
     func bind() {

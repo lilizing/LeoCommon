@@ -62,7 +62,7 @@ open class PageTabVC:UIViewController {
     }
     
     public func show(at index:Int) {
-        //这里做个演示处理，解决无限联动问题
+        //这里做个延迟处理，解决无限联动问题
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
             self.pageTab.show(at: index)
         }

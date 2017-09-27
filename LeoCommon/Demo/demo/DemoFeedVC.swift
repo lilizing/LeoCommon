@@ -15,12 +15,12 @@ import SnapKit
 class DemoFeedVC:UIViewController {
     var name:String!
     
-    private var feedView:FeedView!
+    private var feedView:FeedPageInnerFeedView!
     
     private var maxPage:Int = 5
     
     override func viewDidLoad() {
-        self.feedView = FeedView.init(frame: .zero, layoutType: .flow, sticky: true)
+        self.feedView = FeedPageInnerFeedView.init(frame: .zero, layoutType: .flow, sticky: true)
         self.view.addSubview(self.feedView)
         self.feedView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)

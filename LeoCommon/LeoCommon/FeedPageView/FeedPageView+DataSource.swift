@@ -38,11 +38,19 @@ extension FeedPageView {
             
             let subView = cell.viewWithTag(FeedPageViewTabViewTag)
             if subView == nil {
-                self.pageView.tag = FeedPageViewTabViewTag
-                cell.addSubview(self.pageView)
-                self.pageView.snp.remakeConstraints({ (make) in
-                    make.edges.equalTo(cell)
-                })
+                if let vc = self.viewController {
+                    vc.pageVC.view.tag = FeedPageViewTabViewTag
+                    cell.addSubview(vc.pageVC.view)
+                    vc.pageVC.view.snp.remakeConstraints({ (make) in
+                        make.edges.equalTo(cell)
+                    })
+                } else {
+                    self.pageView.tag = FeedPageViewTabViewTag
+                    cell.addSubview(self.pageView)
+                    self.pageView.snp.remakeConstraints({ (make) in
+                        make.edges.equalTo(cell)
+                    })
+                }
             }
             
             return cell

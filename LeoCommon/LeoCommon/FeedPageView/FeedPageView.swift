@@ -15,17 +15,18 @@ import SnapKit
 open class FeedPageView:FeedView {
     var canScroll = true
     var contentOffset:CGPoint = .zero
-    var pageTabInsets:UIEdgeInsets = .zero
+    
+    public var pageTabInsets:UIEdgeInsets = .zero
     
     public var pageTabHeight:CGFloat = 0 {
         didSet {
-            self.sectionHeaderViewModelForPage.height = pageTabHeight
+            self.sectionHeaderViewModelForPage.height = self.pageTabHeight
         }
     }
     
     public var pageViewHeight:CGFloat = 0 {
         didSet {
-            self.cellViewModelForPage.height = pageViewHeight
+            self.cellViewModelForPage.height = self.pageViewHeight
         }
     }
     
@@ -36,17 +37,16 @@ open class FeedPageView:FeedView {
         }
     }
     
-    private var pgView:PageView = PageView()
+    var pgView:PageView = PageView()
     public var pageView:PageView {
         get {
             return self.pgView
         }
     }
     
-    public func show(at index:Int) {
-        //这里做个演示处理，解决无限联动问题
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-            self.pageTab.show(at: index)
+    weak var viewController: FeedPageVC? {
+        didSet {
+            self.bind()
         }
     }
     
@@ -62,7 +62,16 @@ open class FeedPageView:FeedView {
         self.bind()
     }
     
+    public func show(at index:Int) {
+        //这里做个演示处理，解决无限联动问题
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+            self.pageTab.show(at: index)
+        }
+    }
+    
     func bind() {
+        self.disposeBag = DisposeBag()
+        
         NotificationCenter.default.rx.notification(NSNotification.Name(rawValue: FeedPageViewOuterCanScroll)).bind { [weak self] (notification) in
             guard let sSelf = self,let canScroll = notification.object as? Bool else { return }
             
@@ -75,27 +84,41 @@ open class FeedPageView:FeedView {
         self.pageTab.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
             guard
                 let sSelf = self,
-                index > -1,
-                sSelf.pageView.items.count > index
+                index > -1
                 else {
                     return
             }
             
-            sSelf.pageView.show(at: index)
-            
+            if let vc = sSelf.viewController {
+                vc.pageVC.show(at: index)
+            } else {
+                sSelf.pageView.show(at: index)
+            }
         }.addDisposableTo(self.disposeBag)
         
-        self.pageView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
-            guard
-                let sSelf = self,
-                index > -1,
-                sSelf.pageTab.items.count > index
-                else {
-                    return
-            }
-            
-            sSelf.pageTab.show(at: index)
-        }.addDisposableTo(self.disposeBag)
+        if let vc = self.viewController {
+            vc.pageVC.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
+                guard
+                    let sSelf = self,
+                    index > -1
+                    else {
+                        return
+                }
+                
+                sSelf.pageTab.show(at: index)
+            }.addDisposableTo(self.disposeBag)
+        } else {
+            self.pageView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
+                guard
+                    let sSelf = self,
+                    index > -1
+                    else {
+                        return
+                }
+                
+                sSelf.pageTab.show(at: index)
+            }.addDisposableTo(self.disposeBag)
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -118,7 +141,7 @@ extension FeedPageView {
             scrollView.contentOffset = self.contentOffset
             return
         }
-        self.collectionView.showsVerticalScrollIndicator = true
+        self.collectionView.showsVerticalScrollIndicator = false
         //        DispatchQueue.global().async {
         var tabHasShow = false
         for cell in self.collectionView.visibleCells {
@@ -207,7 +230,7 @@ open class FeedPageInnerFeedView:FeedView {
             scrollView.contentOffset = .init(x:0, y:0)
             return
         }
-        self.collectionView.showsVerticalScrollIndicator = true
+        self.collectionView.showsVerticalScrollIndicator = false
         //        DispatchQueue.global().async {
         let point = scrollView.contentOffset
         // Utils.debugLog("内部 - 位置：\(point.x) - \(point.y)")
