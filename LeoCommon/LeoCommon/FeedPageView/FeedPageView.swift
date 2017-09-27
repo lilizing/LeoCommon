@@ -15,6 +15,7 @@ import SnapKit
 open class FeedPageView:FeedView {
     var canScroll = true
     var contentOffset:CGPoint = .zero
+    var pageTabInsets:UIEdgeInsets = .zero
     
     public var pageTabHeight:CGFloat = 0 {
         didSet {
@@ -106,36 +107,34 @@ let FeedPageViewOuterCanScroll = "FeedPageViewOuterCanScroll"
 extension FeedPageView {
     public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !self.canScroll {
-            self.collectionView.showsVerticalScrollIndicator = false
+            //            self.collectionView.showsVerticalScrollIndicator = false
             scrollView.contentOffset = self.contentOffset
             return
         }
         self.collectionView.showsVerticalScrollIndicator = true
-        DispatchQueue.global().async {
-        
-            var tabHasShow = false
-            for cell in self.collectionView.visibleCells {
-                let indexPath = self.collectionView.indexPath(for: cell)
-                if let id = indexPath?.section, id == self.sectionViewModels.count {
-                    tabHasShow = true
-                    break
-                }
-            }
-            
-            if tabHasShow {
-                let point = self.pageTab.convert(self.pageTab.frame.origin, to: self)
-                //Utils.debugLog("外部 位置：\(point.x) - \(point.y)")
-                if point.y <= 0 {
-                    self.canScroll = false
-                    
-                    let height = self.heightForAllSections()
-                    
-                    self.contentOffset = .init(x:0, y:height)
-                    
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewInnerCanScroll), object: true)
-                }
+        //        DispatchQueue.global().async {
+        var tabHasShow = false
+        for cell in self.collectionView.visibleCells {
+            let indexPath = self.collectionView.indexPath(for: cell)
+            if let id = indexPath?.section, id == self.sectionViewModels.count {
+                tabHasShow = true
+                break
             }
         }
+        
+        if tabHasShow {
+            //let point = self.pageTab.convert(self.pageTab.frame.origin, to: self)
+            //Utils.debugLog("外部 位置：\(point.x) - \(point.y)")
+            let height = self.heightForAllSections()
+            if scrollView.contentOffset.y >= height {
+                self.canScroll = false
+                
+                self.contentOffset = .init(x:0, y:height)
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewInnerCanScroll), object: true)
+            }
+        }
+        //        }
     }
     
     func heightForAllSections() -> CGFloat {
@@ -197,21 +196,21 @@ open class FeedPageInnerFeedView:FeedView {
     
     public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !self.canScroll {
-            self.collectionView.showsVerticalScrollIndicator = false
+            //            self.collectionView.showsVerticalScrollIndicator = false
             scrollView.contentOffset = .init(x:0, y:0)
             return
         }
         self.collectionView.showsVerticalScrollIndicator = true
-        DispatchQueue.global().async {
-            let point = scrollView.contentOffset
-            // Utils.debugLog("内部 - 位置：\(point.x) - \(point.y)")
-            if point.y < 0 {
-                self.canScroll = false
-                self.contentOffset = scrollView.contentOffset
-                
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
-            }
+        //        DispatchQueue.global().async {
+        let point = scrollView.contentOffset
+        // Utils.debugLog("内部 - 位置：\(point.x) - \(point.y)")
+        if point.y < 0 {
+            self.canScroll = false
+            self.contentOffset = scrollView.contentOffset
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
         }
+        //        }
     }
 }
 

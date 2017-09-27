@@ -22,15 +22,15 @@ public protocol FeedViewPage {
     var isLoading:Bool { get }
     var hasMore:Bool { get set }
     
-    func addRefreshHeader(_ refreshHeaderType:LEORefreshHeader.Type, callback:(LEORefreshHeader?) -> (Void))
-    func addRefreshFooter(_ refreshFooterType:LEORefreshFooter.Type, callback:(LEORefreshFooter?) -> (Void))
+    func addRefreshHeader(_ refreshHeaderType:LEORefreshHeader.Type, callback:(LEORefreshHeader?) -> ())
+    func addRefreshFooter(_ refreshFooterType:LEORefreshFooter.Type, callback:(LEORefreshFooter?) -> ())
     
     func headerBeginRefreshing()
     func footerBeginRefreshing()
     
     func refresh()
     func loadMore(_ page:Int)
-    func stopLoading(_ page:Int?, hasMore: (Void) -> (Bool), callback: @escaping (Void)->(Void))
+    func stopLoading(_ page:Int?, hasMore: () -> (Bool), callback: @escaping ()->())
 }
 
 extension FeedView:FeedViewPage {
@@ -141,7 +141,7 @@ extension FeedView:FeedViewPage {
         }
     }
     
-    open func addRefreshHeader(_ refreshHeaderType:LEORefreshHeader.Type = LEORefreshHeader.self, callback:(LEORefreshHeader?) -> (Void) = { _ in }) {
+    open func addRefreshHeader(_ refreshHeaderType:LEORefreshHeader.Type = LEORefreshHeader.self, callback:(LEORefreshHeader?) -> () = { _ in }) {
         let header = refreshHeaderType.init { [weak self] in
             guard let sSelf = self else { return }
             sSelf.refresh()
@@ -154,7 +154,7 @@ extension FeedView:FeedViewPage {
         self.showHeader = true
     }
     
-    open func addRefreshFooter(_ refreshFooterType:LEORefreshFooter.Type = LEORefreshFooter.self, callback:(LEORefreshFooter?) -> (Void) = { _ in }) {
+    open func addRefreshFooter(_ refreshFooterType:LEORefreshFooter.Type = LEORefreshFooter.self, callback:(LEORefreshFooter?) -> () = { _ in }) {
         let footer = refreshFooterType.init { [weak self] in
             guard let sSelf = self else { return }
             sSelf.loadMore(sSelf.page + 1)
