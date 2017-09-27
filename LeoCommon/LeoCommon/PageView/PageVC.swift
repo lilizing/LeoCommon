@@ -141,15 +141,6 @@ open class PageVC:UIViewController {
         }
     }
     
-    var currentIndex:Int {
-        get {
-            return self.pageView.currentIndex
-        }
-        set {
-            self.pageView.currentIndex = newValue
-        }
-    }
-    
     var selectedIndex:Int {
         get {
             return self.pageView.selectedIndex
@@ -188,7 +179,7 @@ open class PageVC:UIViewController {
 
 extension PageVC {
     func startMoving(index:Int) {
-        self.selectedViewController = self.viewControllers[self.pageView.currentIndex];
+        self.selectedViewController = self.viewControllers[self.pageView.selectedIndex];
         let toViewController = self.viewControllers[index];
         
         if toViewController.parent == nil {
@@ -208,7 +199,7 @@ extension PageVC {
         
         let toViewController = self.viewControllers[self.pageView.toIndex];
         
-        if (self.pageView.toIndex > self.pageView.currentIndex) {
+        if (self.pageView.toIndex > self.pageView.selectedIndex) {
             if (offsetX >=~ CGFloat(self.pageView.toIndex) * contentWidth) {
                 
                 Utils.debugLog("[翻页 - 向右] - 成功");
@@ -218,7 +209,7 @@ extension PageVC {
                 self.selectedViewController = toViewController
                 
                 
-                self.pageView.currentIndex = self.pageView.toIndex;
+                self.pageView.selectedIndex = self.pageView.toIndex;
             } else { //回弹
                 
                 Utils.debugLog("[翻页 - 向右] - 失败，回弹");
@@ -243,7 +234,7 @@ extension PageVC {
                 
                 self.selectedViewController = toViewController
                 
-                self.pageView.currentIndex = self.pageView.toIndex;
+                self.pageView.selectedIndex = self.pageView.toIndex;
             } else { //回弹
                 
                 Utils.debugLog("[翻页 - 向左] - 失败，回弹");

@@ -27,19 +27,15 @@ open class PageView:UIView {
         }
     }
     
-    var currentIndex:Int {
-        get {
-            return self.selectedIndex
-        }
-        set {
-            self.selectedIndex = newValue
-            self.selectedIndexObservable.value = self.selectedIndex
-        }
-    }
-    
     var selectedIndex:Int = -1 {
         didSet {
-            Utils.debugLog("Page - 选中索引：\(selectedIndex)")
+            
+            if oldValue == selectedIndex {
+                Utils.debugLog("Page - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
+                return;
+            }
+            
+            Utils.debugLog("Page - 改变选中索引：\(selectedIndex)")
             
             self.layoutIfNeeded() //因自动布局的延后性，可能这个时候某些视图的bounds还是.zero，影响计算，所以这里做一下强制布局，提前完成布局工作，即可拿到正确的尺寸
             
@@ -50,6 +46,8 @@ open class PageView:UIView {
                     self.feedView.collectionView.setContentOffset(CGPoint.init(x: CGFloat(self.selectedIndex) * self.feedView.collectionView.bounds.size.width, y: 0), animated: false)
                 })
             }
+            
+            self.selectedIndexObservable.value = self.selectedIndex
         }
     }
     

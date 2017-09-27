@@ -123,6 +123,9 @@ class DemoFeedPageVC:UIViewController {
         
         self.feedPageView.pageTab.insert(contentsOf: tabs, at: 0)
         self.feedPageView.pageView.insert(contentsOf: vcs, at: 0)
+        
+        //可以指定显示哪一页
+        //self.feedPageView.show(at: 0)
     }
     
     func bind() {

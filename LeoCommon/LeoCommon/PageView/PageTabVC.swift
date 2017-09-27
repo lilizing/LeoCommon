@@ -45,7 +45,7 @@ open class PageTabVC:UIViewController {
                     return
             }
             
-            sSelf.pageVC.currentIndex = index
+            sSelf.pageVC.selectedIndex = index
         }.addDisposableTo(self.disposeBag)
         
         self.pageVC.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
@@ -57,13 +57,15 @@ open class PageTabVC:UIViewController {
                     return
             }
             
-            sSelf.pageTab.currentIndex = index
+            sSelf.pageTab.selectedIndex = index
         }.addDisposableTo(self.disposeBag)
     }
     
     public func show(at index:Int) {
-        self.pageTab.show(at: index)
-        self.pageVC.show(at: index)
+        //这里做个演示处理，解决无限联动问题
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+            self.pageTab.show(at: index)
+        }
     }
     
     public func remove(at index:Int) {

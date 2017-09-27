@@ -42,19 +42,14 @@ open class PageTabView:UIView {
     
     public var selectedIndexObservable:Variable<Int> = Variable(-1)
     
-    var currentIndex:Int {
-        get {
-            return self.selectedIndex
-        }
-        set {
-            self.selectedIndex = newValue
-            self.selectedIndexObservable.value = self.selectedIndex
-        }
-    }
-    
     var selectedIndex:Int = -1 {
         didSet {
-            Utils.debugLog("Tab - 选中索引：\(selectedIndex)")
+            if oldValue == selectedIndex {
+                Utils.debugLog("Tab - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
+                return;
+            }
+            
+            Utils.debugLog("Tab - 改变选中索引：\(selectedIndex)")
             
             self.lineView.isHidden = self.selectedIndex < 0
             
@@ -95,6 +90,8 @@ open class PageTabView:UIView {
                 }
                 self.layoutIfNeeded()
             })
+            
+            self.selectedIndexObservable.value = self.selectedIndex
         }
     }
     
@@ -141,7 +138,7 @@ open class PageTabView:UIView {
                 guard let sSelf = self, let sEle = view else { return }
                 
                 if let index = sSelf.items.index(of: sEle) {
-                    sSelf.currentIndex = index
+                    sSelf.selectedIndex = index
                 }
             }.addDisposableTo(self.disposeBag)
         }

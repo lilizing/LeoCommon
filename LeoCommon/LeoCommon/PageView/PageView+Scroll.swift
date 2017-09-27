@@ -35,11 +35,11 @@ extension FeedViewForPage {
         let offsetX = scrollView.contentOffset.x;
         let contentWidth = scrollView.bounds.size.width;
         
-        if (self.dataSource.toIndex > self.dataSource.currentIndex) {
+        if (self.dataSource.toIndex > self.dataSource.selectedIndex) {
             if (offsetX >=~ CGFloat(self.dataSource.toIndex) * contentWidth) {
                 Utils.debugLog("[翻页 - 向右] - 成功");
                 
-                self.dataSource.currentIndex = self.dataSource.toIndex;
+                self.dataSource.selectedIndex = self.dataSource.toIndex;
             } else { //回弹
                 Utils.debugLog("[翻页 - 向右] - 失败，回弹");
             }
@@ -47,7 +47,7 @@ extension FeedViewForPage {
             if (offsetX <=~ CGFloat(self.dataSource.toIndex) * contentWidth) {
                 Utils.debugLog("[翻页 - 向左] - 成功");
                 
-                self.dataSource.currentIndex = self.dataSource.toIndex;
+                self.dataSource.selectedIndex = self.dataSource.toIndex;
             } else { //回弹
                 Utils.debugLog("[翻页 - 向左] - 失败，回弹");
             }
@@ -69,10 +69,10 @@ extension FeedViewForPage {
             return
         }
         
-        if (offsetX >=~ CGFloat(self.dataSource.currentIndex) * contentWidth) {
-            self.dataSource.toIndex = self.dataSource.currentIndex + 1;
+        if (offsetX >=~ CGFloat(self.dataSource.selectedIndex) * contentWidth) {
+            self.dataSource.toIndex = self.dataSource.selectedIndex + 1;
         } else {
-            self.dataSource.toIndex = self.dataSource.currentIndex - 1;
+            self.dataSource.toIndex = self.dataSource.selectedIndex - 1;
         }
         if (self.dataSource.toIndex > -1 && self.dataSource.toIndex < self.dataSource.items.count) {
             self.startMoving(index: self.dataSource.toIndex)
