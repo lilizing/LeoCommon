@@ -163,6 +163,10 @@ open class FeedView:UIView {
         self.collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
+        
+        if #available(iOS 11.0, *) { //解决安全区域问题，兼容iOS11
+            self.collectionView.contentInsetAdjustmentBehavior = .never
+        }
     }
     
     public init(frame: CGRect,
