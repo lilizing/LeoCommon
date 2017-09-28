@@ -40,6 +40,9 @@ open class FeedPageView:FeedView {
     var pgView:PageView = PageView()
     public var pageView:PageView {
         get {
+            if let vc = self.viewController {
+                return vc.pageVC.pageView
+            }
             return self.pgView
         }
     }
@@ -96,29 +99,16 @@ open class FeedPageView:FeedView {
             }
         }.addDisposableTo(self.disposeBag)
         
-        if let vc = self.viewController {
-            vc.pageVC.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
-                guard
-                    let sSelf = self,
-                    index > -1
-                    else {
-                        return
-                }
-                
-                sSelf.pageTab.show(at: index)
-            }.addDisposableTo(self.disposeBag)
-        } else {
-            self.pageView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
-                guard
-                    let sSelf = self,
-                    index > -1
-                    else {
-                        return
-                }
-                
-                sSelf.pageTab.show(at: index)
-            }.addDisposableTo(self.disposeBag)
-        }
+        self.pageView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
+            guard
+                let sSelf = self,
+                index > -1
+                else {
+                    return
+            }
+            
+            sSelf.pageTab.show(at: index)
+        }.addDisposableTo(self.disposeBag)
     }
     
     required public init?(coder aDecoder: NSCoder) {

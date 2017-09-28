@@ -36,23 +36,19 @@ extension FeedPageView {
             let cell:FeedViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedViewCell
             cell.viewModel = cellVM
             
-            let subView = cell.viewWithTag(FeedPageViewTabViewTag)
+            var subView = cell.viewWithTag(FeedPageViewTabViewTag)
             if subView == nil {
                 if let vc = self.viewController {
-                    vc.pageVC.view.tag = FeedPageViewTabViewTag
-                    cell.addSubview(vc.pageVC.view)
-                    vc.pageVC.view.snp.remakeConstraints({ (make) in
-                        make.edges.equalTo(cell)
-                    })
+                    subView = vc.pageVC.view
                 } else {
-                    self.pageView.tag = FeedPageViewTabViewTag
-                    cell.addSubview(self.pageView)
-                    self.pageView.snp.remakeConstraints({ (make) in
-                        make.edges.equalTo(cell)
-                    })
+                    subView = self.pageView
                 }
+                subView!.tag = FeedPageViewTabViewTag
+                cell.addSubview(subView!)
+                subView!.snp.remakeConstraints({ (make) in
+                    make.edges.equalTo(cell)
+                })
             }
-            
             return cell
         } else {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
