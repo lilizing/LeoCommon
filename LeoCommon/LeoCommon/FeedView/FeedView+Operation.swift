@@ -85,7 +85,6 @@ extension FeedView:FeedViewOperation {
     
     public func insert(newElement: FeedViewSectionViewModel, section: Int, reload:Bool = false) {
         guard section <= self._sectionViewModels.count else {
-            assert(section <= self._sectionViewModels.count, "下标越界...")
             return
         }
         self._sectionViewModels.insert(newElement, at: section)
@@ -96,7 +95,6 @@ extension FeedView:FeedViewOperation {
     
     public func insert(contentsOf: [FeedViewSectionViewModel], section: Int, reload:Bool = false) {
         guard section <= self._sectionViewModels.count else {
-            assert(section <= self._sectionViewModels.count, "下标越界...")
             return
         }
         self._sectionViewModels.insert(contentsOf: contentsOf, at: section)
@@ -109,14 +107,12 @@ extension FeedView:FeedViewOperation {
         guard
             section <= self._sectionViewModels.count
         else {
-            assert(section <= self._sectionViewModels.count, "下标越界...")
             return
         }
         if section == self._sectionViewModels.count {
             self.append(section: section, cellViewModels: [newElement])
         } else {
             guard at <= self._sectionViewModels[section].items.count else {
-                assert(at <= self._sectionViewModels[section].items.count, "下标越界...")
                 return
             }
             self._sectionViewModels[section].items.insert(newElement, at: at)
@@ -130,14 +126,12 @@ extension FeedView:FeedViewOperation {
         guard
             section <= self._sectionViewModels.count
             else {
-                assert(section <= self._sectionViewModels.count, "下标越界...")
                 return
         }
         if section == self._sectionViewModels.count {
             self.append(section: section, cellViewModels: contentsOf)
         } else {
             guard at <= self._sectionViewModels[section].items.count else {
-                assert(at <= self._sectionViewModels[section].items.count, "下标越界...")
                 return
             }
             self._sectionViewModels[section].items.insert(contentsOf: contentsOf, at: at)
@@ -148,12 +142,10 @@ extension FeedView:FeedViewOperation {
     }
     
     public func remove(section:Int, at:Int, reload:Bool = false) {
-        guard section <= self._sectionViewModels.count else {
-            assert(section <= self._sectionViewModels.count, "下标越界...")
+        guard section < self._sectionViewModels.count else {
             return
         }
-        guard at <= self._sectionViewModels[section].items.count else {
-            assert(at <= self._sectionViewModels[section].items.count, "下标越界...")
+        guard at < self._sectionViewModels[section].items.count else {
             return
         }
         self._sectionViewModels[section].items.remove(at: at)
@@ -163,8 +155,7 @@ extension FeedView:FeedViewOperation {
     }
     
     public func remove(section:Int, reload:Bool = false) {
-        guard section <= self._sectionViewModels.count else {
-            assert(section <= self._sectionViewModels.count, "下标越界...")
+        guard section < self._sectionViewModels.count else {
             return
         }
         self._sectionViewModels.remove(at: section)
