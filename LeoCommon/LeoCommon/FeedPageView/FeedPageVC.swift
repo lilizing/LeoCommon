@@ -110,7 +110,7 @@ extension FeedPageVC {
 }
 
 extension FeedPageVC {
-    public func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool) {
+    public func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool = false) {
         self.feedPageView.append(sectionViewModels: sectionViewModels, reload:reload)
     }
     
@@ -122,35 +122,35 @@ extension FeedPageVC {
         self.feedPageView.append(section: section, headerViewModel: headerViewModel, footerViewModel: footerViewModel, cellViewModels: cellViewModels, reload: reload)
     }
     
-    public func append(section:Int, cellViewModels:[FeedViewCellViewModel], reload:Bool) {
+    public func append(section:Int, cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
         self.feedPageView.append(section: section, cellViewModels: cellViewModels, reload:reload)
     }
     
-    public func append(cellViewModels:[FeedViewCellViewModel], reload:Bool) {
+    public func append(cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
         self.feedPageView.append(cellViewModels: cellViewModels, reload: reload)
     }
     
-    public func insert(newElement: FeedViewSectionViewModel, section: Int, reload:Bool) {
+    public func insert(newElement: FeedViewSectionViewModel, section: Int, reload:Bool = false) {
         self.feedPageView.insert(newElement: newElement, section: section, reload:reload)
     }
     
-    public func insert(contentsOf: [FeedViewSectionViewModel], section: Int, reload:Bool) {
+    public func insert(contentsOf: [FeedViewSectionViewModel], section: Int, reload:Bool = false) {
         self.feedPageView.insert(contentsOf: contentsOf, section: section, reload:reload)
     }
     
-    public func insert(newElement: FeedViewCellViewModel, at: Int, section: Int, reload:Bool) {
+    public func insert(newElement: FeedViewCellViewModel, at: Int, section: Int, reload:Bool = false) {
         self.feedPageView.insert(newElement: newElement, at: at, section:section, reload:reload)
     }
     
-    public func insert(contentsOf: [FeedViewCellViewModel], at: Int, section: Int, reload:Bool) {
+    public func insert(contentsOf: [FeedViewCellViewModel], at: Int, section: Int, reload:Bool = false) {
         self.feedPageView.insert(contentsOf: contentsOf, at: at, section:section, reload:reload)
     }
     
-    public func remove(section:Int, at:Int, reload:Bool) {
+    public func remove(section:Int, at:Int, reload:Bool = false) {
         self.feedPageView.remove(section: section, at: at, reload:reload)
     }
     
-    public func remove(section:Int, reload:Bool) {
+    public func remove(section:Int, reload:Bool = false) {
         self.feedPageView.remove(section: section, reload:reload)
     }
 }

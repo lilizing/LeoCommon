@@ -107,7 +107,7 @@ class DemoFeedPageVC:UIViewController {
         let sectionVM = FeedViewSectionViewModel.init(header: headerVM, footer: footerVM, items: items)
         sectionVM.headerSticky = false
         
-        self.feedPageVC.feedPageView.append(sectionViewModels: [sectionVM])
+        self.feedPageVC.append(sectionViewModels: [sectionVM])
     }
     
     func appendTabView() {
