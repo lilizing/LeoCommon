@@ -256,5 +256,6 @@ open class FeedViewForPageTab:FeedView {
         super.scrollViewDidScroll(scrollView)
         self.dataSource.lineScrollView.contentSize = .init(width: scrollView.contentSize.width, height: self.dataSource.lineHeight)
         self.dataSource.lineScrollView.contentOffset = scrollView.contentOffset
+        self.dataSource.lineScrollView.contentInset = UIEdgeInsets.init(top: 0, left: scrollView.contentInset.left, bottom: 0, right: scrollView.contentInset.right)
     }
 }

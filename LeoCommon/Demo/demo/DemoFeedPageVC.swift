@@ -24,6 +24,7 @@ class DemoFeedPageVC:UIViewController {
         self.initActionView()
         
         self.feedPageVC = FeedPageVC.init(layoutType: .flow, sticky: true)
+        self.feedPageVC.pageTabInsets = .init(top: 0, left: 0, bottom: 0, right: 50)
         self.feedPageVC.topOffset = 100
         self.feedPageVC.pageTabHeight = 44
         self.feedPageVC.pageViewHeight = SCREEN_HEIGHT - 108

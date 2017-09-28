@@ -80,10 +80,7 @@ extension FeedPageView {
                     self.pageTab.tag = FeedPageViewTabViewTag
                     view.addSubview(self.pageTab)
                     self.pageTab.snp.remakeConstraints({ (make) in
-                        make.top.equalTo(view).offset(self.pageTabInsets.top)
-                        make.left.equalTo(view).offset(self.pageTabInsets.left)
-                        make.bottom.equalTo(view).offset(-self.pageTabInsets.bottom)
-                        make.right.equalTo(view).offset(-self.pageTabInsets.right)
+                        make.edges.equalTo(view)
                     })
                 }
                 

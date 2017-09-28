@@ -18,7 +18,11 @@ open class FeedPageView:FeedView {
     
     public var topOffset:CGFloat = 0
     
-    public var pageTabInsets:UIEdgeInsets = .zero
+    public var pageTabInsets:UIEdgeInsets = .zero {
+        didSet {
+            self.pageTab.feedView.collectionView.contentInset = pageTabInsets
+        }
+    }
     
     public var pageTabHeight:CGFloat = 0 {
         didSet {
