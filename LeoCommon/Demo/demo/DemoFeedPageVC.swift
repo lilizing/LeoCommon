@@ -29,6 +29,7 @@ class DemoFeedPageVC:UIViewController {
         self.feedPageVC.pageViewHeight = SCREEN_HEIGHT - 108
         self.feedPageVC.pageTab.lineHeight = 5
         self.feedPageVC.pageTab.lineSpacing = 10
+        self.feedPageVC.pageTab.lineWidth = 12
         self.feedPageVC.pageTab.lineView.backgroundColor = .green
         
         //注意不要遗漏这个

@@ -36,6 +36,8 @@ open class PageTabView:UIView {
     public var lineSpacing:CGFloat = 0
     public var lineMinWidth:CGFloat = 10
     
+    public var lineWidth:CGFloat?
+    
     public var disposeBag = DisposeBag()
     
     public var items:[PageTabItemView] = []
@@ -86,7 +88,11 @@ open class PageTabView:UIView {
                     make.centerX.equalTo(selectedTabCenterX)
                     make.top.equalTo(0)
                     make.height.equalTo(self.lineHeight)
-                    make.width.equalTo(max(self.lineMinWidth, selectedTab.width() - self.lineSpacing * 2))
+                    if let width = self.lineWidth {
+                        make.width.equalTo(width)
+                    } else {
+                        make.width.equalTo(max(self.lineMinWidth, selectedTab.width() - self.lineSpacing * 2))
+                    }
                 }
                 self.layoutIfNeeded()
             })
@@ -164,7 +170,7 @@ open class PageTabView:UIView {
         
         self.feedView = FeedViewForPageTab.init(frame: .zero, layoutType: .flow, scrollDirection: .horizontal)
         self.feedView.dataSource = self
-        self.feedView.collectionView.isPagingEnabled = true
+        self.feedView.collectionView.isPagingEnabled = false
         self.feedView.collectionView.showsHorizontalScrollIndicator = false
         self.addSubview(self.feedView)
         self.feedView.snp.makeConstraints { (make) in
@@ -221,12 +227,15 @@ open class FeedViewForPageTab:FeedView {
             guard view != tView else { return cell }
             
             view.removeFromSuperview()
+            
+            tView.tag = FeedPageCellViewTag
             cell.addSubview(tView)
             tView.snp.makeConstraints { (make) in
                 make.edges.equalTo(cell)
             }
         } else {
             let view = self.dataSource.feedView(viewForCellAt: indexPath.row)
+            
             view.tag = FeedPageCellViewTag
             cell.addSubview(view)
             view.snp.makeConstraints { (make) in
