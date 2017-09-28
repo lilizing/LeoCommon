@@ -16,6 +16,8 @@ open class FeedPageView:FeedView {
     var canScroll = true
     var contentOffset:CGPoint = .zero
     
+    public var topOffset:CGFloat = 0
+    
     public var pageTabInsets:UIEdgeInsets = .zero
     
     public var pageTabHeight:CGFloat = 0 {
@@ -146,10 +148,10 @@ extension FeedPageView {
             //let point = self.pageTab.convert(self.pageTab.frame.origin, to: self)
             //Utils.debugLog("外部 位置：\(point.x) - \(point.y)")
             let height = self.heightForAllSections()
-            if scrollView.contentOffset.y >= height {
+            if scrollView.contentOffset.y >= height - topOffset {
                 self.canScroll = false
                 
-                self.contentOffset = .init(x:0, y:height)
+                self.contentOffset = .init(x:0, y:height - topOffset)
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewInnerCanScroll), object: true)
             }

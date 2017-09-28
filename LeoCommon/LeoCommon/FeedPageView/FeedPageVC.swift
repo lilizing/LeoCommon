@@ -15,12 +15,21 @@ import SnapKit
 open class FeedPageVC:UIViewController {
     var _feedPageView:FeedPageView!
     
+    public var topOffset:CGFloat {
+        get {
+            return self.feedPageView.topOffset
+        }
+        set {
+            self.feedPageView.topOffset = newValue
+        }
+    }
+    
     public var pageTabInsets:UIEdgeInsets {
         get {
             return self.feedPageView.pageTabInsets
         }
         set {
-            self.feedPageView.pageTabInsets = self.pageTabInsets
+            self.feedPageView.pageTabInsets = newValue
         }
     }
     
