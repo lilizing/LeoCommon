@@ -92,6 +92,15 @@ extension FeedPageVC {
             self.feedPageView.show(at: index)
         }
     }
+    
+    public func removeAllForPage() {
+        self.pageTab.removeAll()
+        self.pageVC.removeAll()
+        self.pageTabHeight = 0
+        self.pageViewHeight = 0
+        self.feedPageView.reloadData()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+    }
 
     public func removeForPage(at index:Int) {
         self.pageTab.remove(at: index)
@@ -110,6 +119,16 @@ extension FeedPageVC {
 }
 
 extension FeedPageVC {
+    public func clear() {
+        self.feedPageView.clear()
+        self.pageTab.removeAll()
+        self.pageVC.removeAll()
+        self.pageTabHeight = 0
+        self.pageViewHeight = 0
+        self.feedPageView.reloadData()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+    }
+    
     public func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool = false) {
         self.feedPageView.append(sectionViewModels: sectionViewModels, reload:reload)
     }

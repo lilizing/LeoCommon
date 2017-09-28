@@ -72,13 +72,29 @@ class DemoFeedPageVC:UIViewController {
         self.view.addSubview(view2)
         view2.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(20)
-            make.right.equalTo(self.view).offset(-20)
+            make.centerX.equalTo(self.view)
             make.height.equalTo(34)
         }
         
         _ = view2.tapGesture().bind { (_) in
             
             self.feedPageVC.removeForPage(at: 0)
+            
+        }.addDisposableTo(self.disposeBag)
+        
+        let view3 = UILabel()
+        view3.text = "删除所有"
+        view3.backgroundColor = .blue
+        self.view.addSubview(view3)
+        view3.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(20)
+            make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(34)
+        }
+        
+        _ = view3.tapGesture().bind { (_) in
+            
+            self.feedPageVC.removeAllForPage()
             
         }.addDisposableTo(self.disposeBag)
     }
@@ -125,6 +141,9 @@ class DemoFeedPageVC:UIViewController {
             tabs.append(tab)
             vcs.append(vc)
         }
+        
+        self.feedPageVC.pageTabHeight = 44
+        self.feedPageVC.pageViewHeight = SCREEN_HEIGHT - 108
         self.feedPageVC.insertForPage(tabs: tabs, vcs: vcs, at: 0)
         
         //可以指定显示哪一页

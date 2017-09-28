@@ -120,6 +120,12 @@ open class PageTabView:UIView {
         }
     }
     
+    public func removeAll() {
+        self.items.removeAll()
+        self.feedView.remove(section: 0, reload:true)
+        self.selectedIndex = -1
+    }
+    
     public func insert(newElement: PageTabItemView, at: Int) {
         self.insert(contentsOf: [newElement], at: at)
     }

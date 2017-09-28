@@ -38,6 +38,17 @@ public extension PageVC {
         toVC.endAppearanceTransition()
     }
     
+    public func removeAll() {
+        self.pageView.removeAll()
+        for vc in self.viewControllers {
+            vc.willMove(toParentViewController: nil)
+            vc.beginAppearanceTransition(false, animated: true)
+            vc.endAppearanceTransition()
+            vc.removeFromParentViewController()
+        }
+        self.viewControllers.removeAll()
+    }
+    
     public func remove(at index:Int) {
         guard index < self.viewControllers.count && self.viewControllers.count > 0 else { return }
         

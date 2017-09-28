@@ -77,6 +77,12 @@ open class PageView:UIView {
         self.feedView.remove(section: 0, at: index, reload:true)
     }
     
+    public func removeAll() {
+        self.items.removeAll()
+        self.feedView.remove(section: 0, reload:true)
+        self.selectedIndex = -1
+    }
+    
     public func insert(newElement: UIView, at: Int) {
         self.insert(contentsOf: [newElement], at: at)
     }
