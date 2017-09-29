@@ -3,7 +3,7 @@
 #import <UIKit/UIKit.h>
 
 const CGFloat LEORefreshLabelLeftInset = 25;
-const CGFloat LEORefreshHeaderHeight = 64.0;
+const CGFloat LEORefreshHeaderHeight = 96.0;
 const CGFloat LEORefreshFooterHeight = 44.0;
 const CGFloat LEORefreshFastAnimationDuration = 0.25;
 const CGFloat LEORefreshSlowAnimationDuration = 0.4;
