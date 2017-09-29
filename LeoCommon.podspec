@@ -143,7 +143,7 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '~> 4.5.1'
   s.dependency 'SnapKit', '~> 3.2.0'
   s.dependency 'SwiftRichString', '0.9.10'
-  s.dependency 'RxSwift'
-  s.dependency 'RxCocoa'
+  s.dependency 'RxSwift', '3.6.1'
+  s.dependency 'RxCocoa', '3.6.1'
   s.dependency 'RxGesture'
 end
