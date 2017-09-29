@@ -196,7 +196,7 @@ extension FeedPageView {
 }
 
 open class FeedPageInnerFeedView:FeedView {
-    var canScroll = true
+    var canScroll = false
     var contentOffset:CGPoint = .zero
     
     public override init(frame: CGRect,
