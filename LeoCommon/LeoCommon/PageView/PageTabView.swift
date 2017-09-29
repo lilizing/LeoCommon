@@ -74,9 +74,9 @@ open class PageTabView:UIView {
             
             let selectedTabCenterX = selectedTabLeft + selectedTab.width() / 2
             
-            var contentOffsetX:CGFloat = 0
+            var contentOffsetX:CGFloat = -self.feedView.collectionView.contentInset.left
             if self.feedView.collectionView.contentSize.width > self.bounds.size.width {
-                contentOffsetX = min(max(selectedTabCenterX - self.bounds.size.width / 2, 0), self.feedView.collectionView.contentSize.width - self.bounds.size.width)
+                contentOffsetX = min(max(selectedTabCenterX - self.bounds.size.width / 2, -self.feedView.collectionView.contentInset.left), self.feedView.collectionView.contentSize.width - self.bounds.size.width + self.feedView.collectionView.contentInset.right)
             }
             
             self.feedView.collectionView.setContentOffset(.init(x: contentOffsetX, y: 0), animated: true)
