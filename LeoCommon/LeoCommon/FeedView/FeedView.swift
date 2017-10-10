@@ -18,10 +18,16 @@ public enum FeedViewLayoutType {
 }
 
 open class FeedCollectionView:UICollectionView {
-    public var simultaneously:Bool = false //是否支持滑动共存
+    public var simultaneously:Bool? //是否支持滑动共存
     
     func gestureRecognizer(_: UIGestureRecognizer,shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
-        return self.simultaneously
+        if let sim = self.simultaneously {
+            return sim
+        }
+        if let view = shouldRecognizeSimultaneouslyWithGestureRecognizer.view, (view.superview?.isKind(of: FeedPageInnerFeedView.self)) ?? false {
+            return true
+        }
+        return false
     }
 }
 

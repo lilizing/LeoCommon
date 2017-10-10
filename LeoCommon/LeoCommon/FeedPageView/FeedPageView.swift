@@ -65,7 +65,6 @@ open class FeedPageView:FeedView {
         
         super.init(frame: frame, layoutType: layoutType, scrollDirection: .vertical, sticky: sticky)
         
-        self.collectionView.simultaneously = true
         self.sectionViewModelForPage.header = self.sectionHeaderViewModelForPage
         self.sectionViewModelForPage.items = [self.cellViewModelForPage]
         self.bind()

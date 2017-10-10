@@ -18,7 +18,9 @@ open class PageView:UIView {
     
     public var items:[UIView] = []
     
-    public var toIndex:Int = -1
+    var toIndex:Int = -1
+    
+    var toIndexSignal = PublishSubject<Int>()
     
     private var _innerSelectedIndexObservable:Variable<Int> = Variable(-1)
     public var selectedIndexObservable:Variable<Int> {
@@ -113,6 +115,7 @@ open class PageView:UIView {
         
         self.feedView = FeedViewForPage.init(frame: .zero, layoutType: .flow, scrollDirection: .horizontal)
         self.feedView.dataSource = self
+        self.feedView.collectionView.simultaneously = false
         self.feedView.collectionView.isPagingEnabled = true
         self.feedView.collectionView.showsHorizontalScrollIndicator = false
         self.addSubview(self.feedView)
@@ -139,7 +142,18 @@ public protocol FeedViewForPageDataSource:class {
 }
 
 public class FeedViewForPage:FeedView {
-    weak var dataSource:PageView!
+    private var dsDisposeBag = DisposeBag()
+    weak var dataSource:PageView! {
+        didSet {
+            dsDisposeBag = DisposeBag()
+            self.dataSource.toIndexSignal.distinctUntilChanged().bind { (toIndex) in
+                if (toIndex > -1 && toIndex < self.dataSource.items.count) {
+                    Utils.debugLog("翻页 toIndex: \(toIndex)")
+                    self.startMoving(index: toIndex)
+                }
+                }.addDisposableTo(self.dsDisposeBag)
+        }
+    }
     
     override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellVM = self.sectionViewModels[indexPath.section].items[indexPath.row]
