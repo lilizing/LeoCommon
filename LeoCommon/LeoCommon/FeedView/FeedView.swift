@@ -41,6 +41,7 @@ open class FeedView:UIView {
     var _didEndDraggingSignal = PublishSubject<(UIScrollView, Bool)>()
     var _didEndDeceleratingSignal = PublishSubject<UIScrollView>()
     var _didEndScrollingAnimation = PublishSubject<UIScrollView>()
+    var _willBeginDragging = PublishSubject<UIScrollView>()
     
     public var emptyView:UIView?
     
@@ -95,6 +96,12 @@ open class FeedView:UIView {
     public var didEndScrollingAnimation:PublishSubject<UIScrollView> {
         get {
             return self._didEndScrollingAnimation
+        }
+    }
+    
+    public var willBeginDragging:PublishSubject<UIScrollView> {
+        get {
+            return self._willBeginDragging
         }
     }
     

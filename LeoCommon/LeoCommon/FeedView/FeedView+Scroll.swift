@@ -34,4 +34,8 @@ extension FeedView {
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.didEndScrollingAnimation.onNext(scrollView)
     }
+    
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.willBeginDragging.onNext(scrollView)
+    }
 }

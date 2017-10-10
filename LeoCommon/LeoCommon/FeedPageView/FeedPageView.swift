@@ -88,6 +88,8 @@ open class FeedPageView:FeedView {
             
             sSelf.canScroll = canScroll
             
+            sSelf.collectionView.scrollsToTop = canScroll
+            
         }.addDisposableTo(self.disposeBag)
         
         self.pageTab.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
@@ -159,6 +161,8 @@ extension FeedPageView {
                 self.contentOffset = .init(x:0, y:height - topOffset)
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewInnerCanScroll), object: true)
+                
+                self.collectionView.scrollsToTop = false
             }
         }
         //        }
@@ -218,6 +222,8 @@ open class FeedPageInnerFeedView:FeedView {
             Utils.debugLog("内部 - 切换 - \(canScroll)")
             sSelf.canScroll = canScroll
             
+            sSelf.collectionView.scrollsToTop = canScroll
+            
         }.addDisposableTo(self.disposeBag)
     }
     
@@ -237,6 +243,8 @@ open class FeedPageInnerFeedView:FeedView {
             self.contentOffset = scrollView.contentOffset
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+            
+            self.collectionView.scrollsToTop = false
         }
         //        }
     }
