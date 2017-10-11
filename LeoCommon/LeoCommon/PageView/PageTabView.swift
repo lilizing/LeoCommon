@@ -81,6 +81,10 @@ open class PageTabView:UIView {
             self.feedView.collectionView.setContentOffset(.init(x: contentOffsetX, y: 0), animated: true)
             self.lineScrollView.contentSize = .init(width: self.feedView.collectionView.contentSize.width, height: self.lineHeight)
             
+            self.lineScrollView.snp.updateConstraints { (make) in
+                make.height.equalTo(self.lineHeight)
+            }
+            
             self.layoutIfNeeded() //因自动布局的延后性，可能这个时候某些视图的bounds还是.zero，影响计算，所以这里做一下强制布局，提前完成布局工作，即可拿到正确的尺寸
             UIView.animate(withDuration: 0.3, animations: { 
                 self.lineView.snp.remakeConstraints { (make) in
