@@ -85,11 +85,11 @@ open class PageView:UIView {
         self.selectedIndex = -1
     }
     
-    public func insert(newElement: UIView, at: Int) {
-        self.insert(contentsOf: [newElement], at: at)
+    public func insert(newElement: UIView, at: Int, show: Int = 0) {
+        self.insert(contentsOf: [newElement], at: at, show: show)
     }
     
-    public func insert(contentsOf: [UIView], at: Int) {
+    public func insert(contentsOf: [UIView], at: Int, show: Int = 0) {
         guard at <= items.count else { return }
         
         self.items.insert(contentsOf: contentsOf, at: at)
@@ -101,13 +101,15 @@ open class PageView:UIView {
         }
         self.feedView.insert(contentsOf: cellVMS, at: at, section: 0, reload:true)
         
-        if self.items.count == contentsOf.count {
-            self.selectedIndex = 0
-        }
+        self.selectedIndex = show
         
-        if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
-            self.selectedIndex += 1;
-        }
+        //        if self.items.count == contentsOf.count {
+        //            self.selectedIndex = 0
+        //        }
+        //
+        //        if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
+        //            self.selectedIndex += 1;
+        //        }
     }
     
     override public  init(frame: CGRect) {

@@ -46,17 +46,6 @@ open class PageTabView:UIView {
     
     var selectedIndex:Int = -1 {
         didSet {
-            if oldValue == selectedIndex {
-                Utils.debugLog("Tab - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
-                return;
-            }
-            
-            Utils.debugLog("Tab - 改变选中索引：\(selectedIndex)")
-            
-            self.lineView.isHidden = self.selectedIndex < 0
-            
-            guard self.selectedIndex > -1 else { return }
-            
             var width:CGFloat = 0
             var index = 0
             var selectedTab:PageTabItemView!
@@ -71,6 +60,16 @@ open class PageTabView:UIView {
                 width += tab.width()
                 index += 1
             }
+            
+            if oldValue == selectedIndex {
+                Utils.debugLog("Tab - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
+                return;
+            }
+            Utils.debugLog("Tab - 改变选中索引：\(selectedIndex)")
+            
+            self.lineView.isHidden = self.selectedIndex < 0
+            
+            guard self.selectedIndex > -1 else { return }
             
             let selectedTabCenterX = selectedTabLeft + selectedTab.width() / 2
             
@@ -132,11 +131,11 @@ open class PageTabView:UIView {
         self.selectedIndex = -1
     }
     
-    public func insert(newElement: PageTabItemView, at: Int) {
+    public func insert(newElement: PageTabItemView, at: Int, show: Int = 0) {
         self.insert(contentsOf: [newElement], at: at)
     }
     
-    public func insert(contentsOf: [PageTabItemView], at: Int) {
+    public func insert(contentsOf: [PageTabItemView], at: Int, show: Int = 0) {
         guard at <= items.count else { return }
         
         self.items.insert(contentsOf: contentsOf, at: at)
@@ -156,13 +155,15 @@ open class PageTabView:UIView {
         }
         self.feedView.insert(contentsOf: cellVMS, at: at, section: 0, reload:true)
         
-        if self.items.count == contentsOf.count {
-            self.selectedIndex = 0
-        }
+        self.selectedIndex = show
         
-        if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
-            self.selectedIndex += 1;
-        }
+        //        if self.items.count == contentsOf.count {
+        //            self.selectedIndex = 0
+        //        }
+        //
+        //        if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
+        //            self.selectedIndex += 1;
+        //        }
     }
     
     override public init(frame: CGRect) {
