@@ -128,13 +128,15 @@ extension FeedPageVC {
 }
 
 extension FeedPageVC {
-    public func clear() {
+    public func clear(reload:Bool = false) {
         self.feedPageView.clear()
         self.pageTab.removeAll()
         self.pageVC.removeAll()
-        self.pageTabHeight = 0
-        self.pageViewHeight = 0
-        self.feedPageView.reloadData()
+        if reload {
+           self.pageTabHeight = 0
+           self.pageViewHeight = 0
+           self.feedPageView.reloadData()
+        }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
     }
     
