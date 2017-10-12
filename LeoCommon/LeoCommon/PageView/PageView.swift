@@ -172,23 +172,22 @@ public class FeedViewForPage:FeedView {
         let cell:FeedViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedViewCell
         cell.viewModel = cellVM
         
-        if let view = cell.viewWithTag(FeedPageCellViewTag) {
-            let tView = self.dataSource.feedView(viewForCellAt: indexPath.row)
-            guard view != tView else { return cell }
-            
-            view.removeFromSuperview()
-            cell.addSubview(tView)
-            tView.snp.makeConstraints { (make) in
-                make.edges.equalTo(cell)
-            }
-        } else {
-            let view = self.dataSource.feedView(viewForCellAt: indexPath.row)
-            view.tag = FeedPageCellViewTag
-            cell.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.edges.equalTo(cell)
+        let nextView = self.dataSource.feedView(viewForCellAt: indexPath.row)
+        
+        if let preView = cell.viewWithTag(FeedPageCellViewTag) {
+            if preView == nextView {
+                return cell
+            } else {
+                preView.removeFromSuperview()
             }
         }
+        
+        nextView.tag = FeedPageCellViewTag
+        cell.addSubview(nextView)
+        nextView.snp.makeConstraints { (make) in
+            make.edges.equalTo(cell)
+        }
+        
         return cell
     }
     
