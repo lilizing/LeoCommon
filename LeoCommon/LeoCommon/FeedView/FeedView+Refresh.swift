@@ -30,7 +30,7 @@ public protocol FeedViewPage {
     
     func refresh()
     func loadMore(_ page:Int)
-    func stopLoading(_ page:Int?, hasMore: () -> (Bool), callback: @escaping ()->())
+    func stopLoading(_ page:Int?, hasMore: () -> (Bool), reloadDelay: Int, callback: @escaping ()->())
 }
 
 extension FeedView:FeedViewPage {
@@ -195,8 +195,9 @@ extension FeedView:FeedViewPage {
     }
     
     open func stopLoading(_ page:Int? = nil,
-                     hasMore: (Void) -> (Bool) = { return true },
-                     callback: @escaping (Void)->(Void) = {}) {
+                     hasMore: () -> (Bool) = { return true },
+                     reloadDelay: Int = 0,
+                     callback: @escaping ()->() = {}) {
         if self.showHeader && self.collectionView.leo_header.isRefreshing() {
             self.collectionView.leo_header.endRefreshing()
         }
