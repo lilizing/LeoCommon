@@ -25,17 +25,17 @@ class DemoFeedVC:UIViewController {
         self.feedView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
-        self.feedView.addRefreshHeader()
+//        self.feedView.addRefreshHeader()
         self.feedView.addRefreshFooter()
         
         self.feedView.loader = { page, pageSize in
             print("加载数据...")
             
-            let delay = DispatchTime.now() + .milliseconds( page == 1 ? 1000 : 200)
-            DispatchQueue.global().asyncAfter(deadline: delay, execute: {
-                
-                DispatchQueue.main.async {
-                    
+//            let delay = DispatchTime.now() + .milliseconds( page == 1 ? 1000 : 200)
+//            DispatchQueue.global().asyncAfter(deadline: delay, execute: {
+//
+//                DispatchQueue.main.async {
+            
                     var items:[FeedViewCellViewModel] = []
                     
                     if page == 1 {
@@ -95,16 +95,17 @@ class DemoFeedVC:UIViewController {
                         })
                     }
                     
-                }
-                
-            })
+//                }
+            
+//            })
         }
     }
     
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)
         if parent != nil {
-            self.feedView.headerBeginRefreshing()
+//            self.feedView.headerBeginRefreshing()
+            self.feedView.refresh()
         }
         
         if parent != nil {

@@ -33,6 +33,21 @@ class DemoFeedPageVC:UIViewController {
         self.feedPageVC.pageTab.lineWidth = 12
         self.feedPageVC.pageTab.lineView.backgroundColor = .green
         
+        self.feedPageVC.feedPageView.addRefreshHeader()
+        
+        self.feedPageVC.feedPageView.loader = { page, pageSize in
+            self.feedPageVC.clear()
+            
+            self.appendSection()
+            
+            self.appendTabView()
+            
+            self.feedPageVC.reloadData()
+            
+            self.feedPageVC.feedPageView.stopLoading {
+                
+            }
+        }
         //注意不要遗漏这个
         self.addChildViewController(self.feedPageVC)
         
@@ -44,12 +59,6 @@ class DemoFeedPageVC:UIViewController {
         
         //注意不要遗漏这个
         self.feedPageVC.didMove(toParentViewController: self)
-        
-        self.appendSection()
-        
-        self.appendTabView()
-        
-        self.feedPageVC.reloadData()
     }
     
     func initActionView() {
@@ -104,7 +113,7 @@ class DemoFeedPageVC:UIViewController {
     
     func appendSection() {
         var items:[FeedViewCellViewModel] = []
-        for i in 1..<8 {
+        for i in 1..<2 {
             if i % 2 == 0 {
                 let vm = DemoOneCellViewModel()
                 vm.model = "Style One Cell \(i)"
@@ -133,7 +142,7 @@ class DemoFeedPageVC:UIViewController {
         var tabs:[DemoPageTabItemView] = []
         var vcs:[DemoFeedVC] = []
         
-        for i in 0..<1 {
+        for i in 0..<3 {
             let tab = DemoPageTabItemView()
             tab.text = "\(i)-\(self.feedPageVC.pageTab.items.count)"
             

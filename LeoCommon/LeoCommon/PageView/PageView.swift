@@ -145,6 +145,9 @@ public protocol FeedViewForPageDataSource:class {
 
 public class FeedViewForPage:FeedView {
     private var dsDisposeBag = DisposeBag()
+    
+    var dragPointX:CGFloat = 0
+    
     weak var dataSource:PageView! {
         didSet {
             dsDisposeBag = DisposeBag()
