@@ -16,7 +16,6 @@ import ObjectMapper
 extension FeedViewForPage {
     
     func startMoving(index:Int) {
-        self.dataSource.isMoving = true;
         if let vc = self.dataSource.viewController {
             vc.startMoving(index: index)
         }
@@ -65,8 +64,16 @@ extension FeedViewForPage {
         if (offsetX < 0 || offsetX > CGFloat(self.dataSource.items.count - 1) * contentWidth) {
             return
         }
-        self.dataSource.toIndex = Int(offsetX / contentWidth)
+        if offsetX > self.dragPointX {
+            self.dataSource.toIndex = self.dataSource.selectedIndex + 1
+        } else if offsetX < self.dragPointX {
+            self.dataSource.toIndex = self.dataSource.selectedIndex - 1
+        } else {
+            self.dataSource.toIndex = self.dataSource.selectedIndex
+        }
+        
         if (self.dataSource.toIndex > -1 && self.dataSource.toIndex < self.dataSource.items.count) {
+            self.dataSource.isMoving = true
             self.dataSource.toIndexSignal.onNext(self.dataSource.toIndex)
         }
     }
