@@ -193,11 +193,6 @@ extension PageVC {
         self.selectedViewController = self.viewControllers[self.pageView.selectedIndex];
         let toViewController = self.viewControllers[index];
         
-        if toViewController.parent == nil {
-            self.addChildViewController(toViewController)
-            toViewController.didMove(toParentViewController: self)
-        }
-        
         self.selectedViewController.beginAppearanceTransition(false, animated: true)
         toViewController.beginAppearanceTransition(true, animated: true)
     }
@@ -209,6 +204,11 @@ extension PageVC {
         let contentWidth = scrollView.bounds.size.width;
         
         let toViewController = self.viewControllers[self.pageView.toIndex];
+        
+        if toViewController.parent == nil {
+            self.addChildViewController(toViewController)
+            toViewController.didMove(toParentViewController: self)
+        }
         
         if (self.pageView.toIndex > self.pageView.selectedIndex) {
             if (offsetX >=~ CGFloat(self.pageView.toIndex) * contentWidth) {
