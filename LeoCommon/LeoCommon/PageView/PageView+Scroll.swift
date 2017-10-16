@@ -56,6 +56,11 @@ extension FeedViewForPage {
         self.dataSource.isMoving = false;
     }
     
+    override public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        super.scrollViewWillBeginDragging(scrollView)
+        self.dragPointX = scrollView.contentOffset.x
+    }
+    
     override public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         super.scrollViewDidScroll(scrollView)
         guard scrollView.isDragging else { return }

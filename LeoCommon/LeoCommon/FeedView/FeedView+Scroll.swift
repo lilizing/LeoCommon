@@ -14,13 +14,6 @@ import RxCocoa
 extension FeedView {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.didScrollSignal.onNext(scrollView)
-        if let emptyView = self.emptyView, emptyView.superview != nil {
-            emptyView.snp.remakeConstraints({ (make) in
-                make.left.right.equalTo(self)
-                make.top.bottom.equalTo(self).offset(-scrollView.contentOffset.y)
-            })
-            self.layoutIfNeeded()
-        }
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -39,3 +32,4 @@ extension FeedView {
         self.willBeginDragging.onNext(scrollView)
     }
 }
+

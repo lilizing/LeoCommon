@@ -42,6 +42,7 @@ open class FeedView:UIView {
     
     var _collectionView:FeedCollectionView!
     var _sectionViewModels:[FeedViewSectionViewModel] = []
+    var tempSectionViewModel:FeedViewSectionViewModel = FeedViewSectionViewModel.init()
     
     var _didScrollSignal = PublishSubject<UIScrollView>()
     var _didEndDraggingSignal = PublishSubject<(UIScrollView, Bool)>()
@@ -50,6 +51,9 @@ open class FeedView:UIView {
     var _willBeginDragging = PublishSubject<UIScrollView>()
     
     public var emptyView:UIView?
+    
+    public var loadingViewModel:FeedViewCellViewModel? //用来处理加载中
+    public var noDataViewModel:FeedViewCellViewModel? //用来处理无数据、网络异常
     
     public var sectionViewModels:[FeedViewSectionViewModel] {
         get {
@@ -117,26 +121,37 @@ open class FeedView:UIView {
     var footer:LEORefreshFooter?
     
     public func reloadData() {
-        if self.sectionViewModels.count == 0 {
-            
-            if let emptyView = self.emptyView {
-                self.addSubview(emptyView)
-                emptyView.snp.remakeConstraints({ (make) in
-                    make.edges.equalTo(self)
-                })
+        var flag = true
+        
+        for (index, sectionVM) in self._sectionViewModels.enumerated() {
+            if sectionVM == self.tempSectionViewModel {
+                self._sectionViewModels.remove(at: index)
+                break
             }
-            //            if self.showFooter, let footer = self.collectionView.leo_footer {
-            //                self.footer = footer
-            //                footer.removeFromSuperview()
-            //                footer.endRefreshingWithNoMoreData()
-            //                self.collectionView.leo_footer = nil
-            //            }
-        } else {
-            //            if self.showFooter, let ft = self.footer {
-            //                self.collectionView.leo_footer = ft
-            //            }
-            if let emptyView = self.emptyView {
-                emptyView.removeFromSuperview()
+        }
+        
+        for (_, sectionVM) in self._sectionViewModels.enumerated() {
+            if sectionVM.items.count > 0 {
+                flag = false
+            }
+        }
+        
+        if flag {
+            if
+                self.isLoading,
+                let vm = self.loadingViewModel
+            {
+                if !self.showHeader || !self.collectionView.leo_header.isRefreshing() {
+                    self.tempSectionViewModel.items = [vm]
+                    self._sectionViewModels.append(self.tempSectionViewModel)
+                }
+            }
+            if
+                !self.isLoading,
+                let vm = self.noDataViewModel
+            {
+                self.tempSectionViewModel.items = [vm]
+                self._sectionViewModels.append(self.tempSectionViewModel)
             }
         }
         self.collectionView.reloadData()
@@ -172,6 +187,8 @@ open class FeedView:UIView {
         self.collectionView.backgroundColor = .white
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.showsVerticalScrollIndicator = false
+        self.collectionView.showsHorizontalScrollIndicator = false
         self.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
@@ -201,3 +218,4 @@ open class FeedView:UIView {
 extension FeedView:UICollectionViewDelegate {
     
 }
+

@@ -42,8 +42,9 @@ class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
                     let numberOfItemsInSection = collectionView.numberOfItems(inSection: section)
                     
                     let firstCellIndexPath = IndexPath(item: 0, section: section)
-                    let lastCellIndexPath = IndexPath(item: max(0, (numberOfItemsInSection - 1)), section: section)
+                    var lastCellIndexPath = IndexPath(item: max(0, (numberOfItemsInSection - 1)), section: section)
                     
+                    var noCell = false
                     let cellAttributes:(first: UICollectionViewLayoutAttributes?, last: UICollectionViewLayoutAttributes?) = {
                         if (collectionView.numberOfItems(inSection: section) > 0) {
                             return (
@@ -51,9 +52,25 @@ class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
                                 self.layoutAttributesForItem(at: lastCellIndexPath)
                             )
                         } else {
+                            noCell = true
+                            
+                            let nums = collectionView.numberOfItems(inSection: max(0, section - 1))
+                            lastCellIndexPath = IndexPath(item: max(0, (nums - 1)), section: max(0, section - 1))
+                            var last:UICollectionViewLayoutAttributes? = nil
+                            if let header = self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: lastCellIndexPath) {
+                                last = header
+                            }
+                            if nums > 0, let cell = self.layoutAttributesForItem(at: lastCellIndexPath) {
+                                last = cell
+                            }
+                            if let footer = self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: lastCellIndexPath) {
+                                last = footer
+                            }
                             return (
-                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: firstCellIndexPath),
-                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: lastCellIndexPath)
+                                nil,
+                                last
+                                //                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: firstCellIndexPath)
+                                //                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: lastCellIndexPath)
                             )
                         }
                     }()
@@ -68,15 +85,21 @@ class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
                     let headerHeight = layoutAttributes.frame.height
                     var origin = layoutAttributes.frame.origin
                     // This line makes only one header visible fixed at the top
-                    //                    origin.y = min(contentOffset.y, cellAttributes.last.frame.maxY - headerHeight)
+                    //                    origin.y = min(contentOffset/Users/lili/space/projects/CYZS/Pods/LeoCommon/LeoCommon/LeoCommon/FeedView/FeedViewStickyHeaderViewFlowLayout.swift.y, cellAttributes.last.frame.maxY - headerHeight)
                     // Uncomment this line for normal behaviour:
-                    if self.stickySectionIndexs.contains(section) || headerSticky {
+                    if (self.stickySectionIndexs.contains(section) || headerSticky) {
                         origin.y = contentOffset.y
-                        if let first = cellAttributes.first {
-                            origin.y = max(origin.y, first.frame.minY - headerHeight)
-                        }
-                        if let last = cellAttributes.last {
-                            origin.y = min(origin.y, last.frame.maxY - headerHeight)
+                        if noCell {
+                            if let last = cellAttributes.last {
+                                origin.y = max(origin.y, last.frame.maxY)
+                            }
+                        } else {
+                            if let first = cellAttributes.first {
+                                origin.y = max(origin.y, first.frame.minY - headerHeight)
+                            }
+                            if let last = cellAttributes.last {
+                                origin.y = min(origin.y, last.frame.maxY - headerHeight)
+                            }
                         }
                     }
                     
@@ -93,3 +116,4 @@ class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
         return true
     }
 }
+

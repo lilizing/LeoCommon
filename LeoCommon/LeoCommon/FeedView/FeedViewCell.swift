@@ -26,6 +26,7 @@ public protocol FeedViewCellProtocol {
 }
 
 open class FeedViewCell: UICollectionViewCell, FeedViewCellProtocol {
+    public weak var parentFeedView:FeedView?
     
     public var disposeBag: DisposeBag = DisposeBag()
     
@@ -56,3 +57,4 @@ open class FeedViewCell: UICollectionViewCell, FeedViewCellProtocol {
         return .zero
     }
 }
+

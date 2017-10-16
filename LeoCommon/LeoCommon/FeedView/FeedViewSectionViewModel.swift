@@ -19,7 +19,7 @@ public protocol FeedViewSectionHeaderOrFooterViewModel {
     func sectionClass(_ context:Dictionary<String, Any>?) -> FeedViewSectionHeaderOrFooter.Type
 }
 
-open class FeedViewSectionViewModel {
+open class FeedViewSectionViewModel:NSObject {
     public var columnCount:Int = 1
     public var sectionInset:UIEdgeInsets = .zero
     public var minimumInteritemSpacing:CGFloat = 0
@@ -31,11 +31,10 @@ open class FeedViewSectionViewModel {
     public var items:[FeedViewCellViewModel] = []
     
     public init(header:FeedViewSectionHeaderOrFooterViewModel? = nil,
-         footer:FeedViewSectionHeaderOrFooterViewModel? = nil,
-         items:[FeedViewCellViewModel] = []) {
+                footer:FeedViewSectionHeaderOrFooterViewModel? = nil,
+                items:[FeedViewCellViewModel] = []) {
         self.header = header
         self.footer = footer
         self.items.append(contentsOf: items)
     }
 }
-

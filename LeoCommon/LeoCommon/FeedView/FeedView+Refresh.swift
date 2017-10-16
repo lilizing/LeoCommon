@@ -15,29 +15,12 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-public protocol FeedViewPage {
-    
-    var page:Int { get set }
-    var pageSize:Int { get set }
-    var isLoading:Bool { get }
-    var hasMore:Bool { get set }
-    
-    func addRefreshHeader(_ refreshHeaderType:LEORefreshHeader.Type, callback:(LEORefreshHeader?) -> ())
-    func addRefreshFooter(_ refreshFooterType:LEORefreshFooter.Type, callback:(LEORefreshFooter?) -> ())
-    
-    func headerBeginRefreshing()
-    func footerBeginRefreshing()
-    
-    func refresh()
-    func loadMore(_ page:Int)
-    func stopLoading(_ page:Int?, hasMore: () -> (Bool), reloadDelay: Int, callback: @escaping ()->())
-}
-
-extension FeedView:FeedViewPage {
+extension FeedView {
     private struct AssociatedKeys {
         static var FeedPageKey = "leo.feedview.page"
         static var FeedPageSizeKey = "leo.feedview.pageSize"
         static var FeedHasMoreKey = "leo.feedview.hasMore"
+        static var FeedIsLoadingKey = "leo.feedview.isLoading"
         static var FeedShowHeaderKey = "leo.feedview.showHeader"
         static var FeedShowFooterKey = "leo.feedview.showFooter"
     }
@@ -95,16 +78,30 @@ extension FeedView:FeedViewPage {
     
     public var isLoading: Bool {
         get {
-            if self.showHeader && self.showFooter {
-                return self.collectionView.leo_header.isRefreshing() || self.collectionView.leo_footer.isRefreshing()
-            } else if self.showHeader {
-                return self.collectionView.leo_header.isRefreshing()
-            } else if self.showFooter {
-                return self.collectionView.leo_footer.isRefreshing()
-            } else {
-                return false
+            if let value = objc_getAssociatedObject(self, &AssociatedKeys.FeedIsLoadingKey) {
+                return value as! Bool
             }
+            return true
         }
+        set {
+            objc_setAssociatedObject(
+                self,
+                &AssociatedKeys.FeedIsLoadingKey,
+                newValue,
+                .OBJC_ASSOCIATION_COPY
+            )
+        }
+        //        get {
+        //            if self.showHeader && self.showFooter {
+        //                return self.collectionView.leo_header.isRefreshing() || self.collectionView.leo_footer.isRefreshing()
+        //            } else if self.showHeader {
+        //                return self.collectionView.leo_header.isRefreshing()
+        //            } else if self.showFooter {
+        //                return self.collectionView.leo_footer.isRefreshing()
+        //            } else {
+        //                return false
+        //            }
+        //        }
     }
     
     public var pageSize: Int {
@@ -190,14 +187,21 @@ extension FeedView:FeedViewPage {
             }
             return
         }
+        
+        self.isLoading = true
+        
+        if let _ = self.loadingViewModel, page == 1 {
+            self.reloadData()
+        }
+        
         //执行业务逻辑
         self.loader(page, self.pageSize)
     }
     
     open func stopLoading(_ page:Int? = nil,
-                     hasMore: () -> (Bool) = { return true },
-                     reloadDelay: Int = 0,
-                     callback: @escaping ()->() = {}) {
+                          hasMore: (Void) -> (Bool) = { return true },
+                          reloadDelay: Int = 0,
+                          callback: @escaping (Void)->(Void) = {}) {
         if self.showHeader && self.collectionView.leo_header.isRefreshing() {
             self.collectionView.leo_header.endRefreshing()
         }
@@ -218,7 +222,15 @@ extension FeedView:FeedViewPage {
         
         callback()
         
-        self.reloadData()
+        self.isLoading = false
+        
+        if reloadDelay > 0 {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(reloadDelay), execute: {
+                self.reloadData()
+            })
+        } else {
+            self.reloadData()
+        }
     }
 }
 

@@ -32,6 +32,7 @@ extension FeedView:UICollectionViewDataSource {
         
         let cell:FeedViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedViewCell
         cell.viewModel = cellVM
+        cell.parentFeedView = self
         return cell
     }
     
@@ -68,3 +69,4 @@ extension FeedView:UICollectionViewDataSource {
         return UICollectionReusableView.init()
     }
 }
+

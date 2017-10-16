@@ -13,33 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-public protocol FeedViewOperation {
-    
-    func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool)
-    
-    func append(section:Int,
-                headerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
-                footerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
-                cellViewModels:[FeedViewCellViewModel], reload:Bool)
-    
-    func append(section:Int, cellViewModels:[FeedViewCellViewModel], reload:Bool)
-    
-    func append(cellViewModels:[FeedViewCellViewModel], reload:Bool)
-    
-    func insert(newElement: FeedViewSectionViewModel, section: Int, reload:Bool)
-    
-    func insert(contentsOf: [FeedViewSectionViewModel], section: Int, reload:Bool)
-    
-    func insert(newElement: FeedViewCellViewModel, at: Int, section: Int, reload:Bool)
-    
-    func insert(contentsOf: [FeedViewCellViewModel], at: Int, section: Int, reload:Bool)
-    
-    func remove(section:Int, at:Int, reload:Bool)
-    
-    func remove(section:Int, reload:Bool)
-}
-
-extension FeedView:FeedViewOperation {
+extension FeedView {
     
     public func clear(reload:Bool = false) {
         self._sectionViewModels.removeAll()
@@ -56,9 +30,9 @@ extension FeedView:FeedViewOperation {
     }
     
     public func append(section:Int,
-                headerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
-                footerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
-                cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
+                       headerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
+                       footerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
+                       cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
         guard section <= self._sectionViewModels.count else { return }
         
         if section == self._sectionViewModels.count {
@@ -106,8 +80,8 @@ extension FeedView:FeedViewOperation {
     public func insert(newElement: FeedViewCellViewModel, at: Int, section: Int, reload:Bool = false) {
         guard
             section <= self._sectionViewModels.count
-        else {
-            return
+            else {
+                return
         }
         if section == self._sectionViewModels.count {
             self.append(section: section, cellViewModels: [newElement])
@@ -163,4 +137,13 @@ extension FeedView:FeedViewOperation {
             self.reloadData()
         }
     }
+    
+    public func setupLoadingViewModel(cellViewModel:FeedViewCellViewModel) {
+        
+    }
+    
+    public func setupNoDataViewModel(cellViewModel:FeedViewCellViewModel) {
+        
+    }
 }
+
