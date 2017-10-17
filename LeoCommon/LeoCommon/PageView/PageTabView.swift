@@ -227,24 +227,24 @@ open class FeedViewForPageTab:FeedView {
         let cell:FeedViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedViewCell
         cell.viewModel = cellVM
         
-        if let view = cell.viewWithTag(FeedPageCellViewTag) {
+        if let view = cell.contentView.viewWithTag(FeedPageCellViewTag) {
             let tView = self.dataSource.feedView(viewForCellAt: indexPath.row)
             guard view != tView else { return cell }
             
             view.removeFromSuperview()
             
             tView.tag = FeedPageCellViewTag
-            cell.addSubview(tView)
+            cell.contentView.addSubview(tView)
             tView.snp.makeConstraints { (make) in
-                make.edges.equalTo(cell)
+                make.edges.equalTo(cell.contentView)
             }
         } else {
             let view = self.dataSource.feedView(viewForCellAt: indexPath.row)
             
             view.tag = FeedPageCellViewTag
-            cell.addSubview(view)
+            cell.contentView.addSubview(view)
             view.snp.makeConstraints { (make) in
-                make.edges.equalTo(cell)
+                make.edges.equalTo(cell.contentView)
             }
         }
         self.dataSource.lineScrollView.contentSize = .init(width: collectionView.contentSize.width, height: self.dataSource.lineHeight)

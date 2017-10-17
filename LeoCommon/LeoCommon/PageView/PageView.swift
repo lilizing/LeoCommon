@@ -174,7 +174,7 @@ public class FeedViewForPage:FeedView {
         
         let nextView = self.dataSource.feedView(viewForCellAt: indexPath.row)
         
-        if let preView = cell.viewWithTag(FeedPageCellViewTag) {
+        if let preView = cell.contentView.viewWithTag(FeedPageCellViewTag) {
             if preView == nextView {
                 return cell
             } else {
@@ -183,9 +183,9 @@ public class FeedViewForPage:FeedView {
         }
         
         nextView.tag = FeedPageCellViewTag
-        cell.addSubview(nextView)
+        cell.contentView.addSubview(nextView)
         nextView.snp.makeConstraints { (make) in
-            make.edges.equalTo(cell)
+            make.edges.equalTo(cell.contentView)
         }
         
         return cell

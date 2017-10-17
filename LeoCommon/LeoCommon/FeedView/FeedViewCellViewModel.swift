@@ -20,17 +20,12 @@ public protocol FeedViewCellViewModelProtocol {
     func cellClass(_ context:Dictionary<String, Any>?) -> FeedViewCell.Type
 }
 
-open class FeedViewCellViewModel:FeedViewCellViewModelProtocol {
-    public init() {}
+open class FeedViewCellViewModel:NSObject, FeedViewCellViewModelProtocol {
+    public var staticsContext: [String: Any] = [:]
+    
+    public override init() {}
     
     open func cellClass(_ context:Dictionary<String, Any>?) -> FeedViewCell.Type {
         return FeedViewCell.self
     }
 }
-
-extension FeedViewCellViewModel: Equatable {
-    open static func ==(lhs: FeedViewCellViewModel, rhs: FeedViewCellViewModel) -> Bool {
-        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
-    }
-}
-
