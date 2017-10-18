@@ -69,12 +69,16 @@ extension FeedViewForPage {
         if (offsetX < 0 || offsetX > CGFloat(self.dataSource.items.count - 1) * contentWidth) {
             return
         }
+        
         if offsetX > self.dragPointX {
-            self.dataSource.toIndex = self.dataSource.selectedIndex + 1
+            //            self.dataSource.toIndex = self.dataSource.selectedIndex + 1
+            self.dataSource.toIndex = max(Int(offsetX / contentWidth), self.dataSource.selectedIndex + 1)
         } else if offsetX < self.dragPointX {
-            self.dataSource.toIndex = self.dataSource.selectedIndex - 1
+            //            self.dataSource.toIndex = self.dataSource.selectedIndex - 1
+            self.dataSource.toIndex = min(Int(offsetX / contentWidth), self.dataSource.selectedIndex - 1)
         } else {
-            self.dataSource.toIndex = self.dataSource.selectedIndex
+            //            self.dataSource.toIndex = self.dataSource.selectedIndex
+            self.dataSource.toIndex = Int(offsetX / contentWidth)
         }
         
         if (self.dataSource.toIndex > -1 && self.dataSource.toIndex < self.dataSource.items.count) {
