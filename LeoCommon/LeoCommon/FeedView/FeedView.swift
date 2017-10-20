@@ -131,9 +131,7 @@ open class FeedView:UIView {
         }
         
         for (_, sectionVM) in self._sectionViewModels.enumerated() {
-            if sectionVM.items.count > 0 {
-                flag = false
-            }
+            flag = false
         }
         
         if flag {
