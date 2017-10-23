@@ -199,9 +199,9 @@ extension FeedView {
     }
     
     open func stopLoading(_ page:Int? = nil,
-                          hasMore: (Void) -> (Bool) = { return true },
+                          hasMore: () -> (Bool) = { return true },
                           reloadDelay: Int = 0,
-                          callback: @escaping (Void)->(Void) = {}) {
+                          callback: @escaping ()->() = {}) {
         if self.showHeader && self.collectionView.leo_header.isRefreshing() {
             self.collectionView.leo_header.endRefreshing()
         }

@@ -35,7 +35,7 @@ class DemoFeedPageVC:UIViewController {
         
         self.feedPageVC.feedPageView.addRefreshHeader()
         
-        self.feedPageVC.feedPageView.loader = { page, pageSize in
+        self.feedPageVC.feedPageView.loader = { [unowned self] page, pageSize in
             self.feedPageVC.clear()
             
             self.appendSection()
@@ -71,7 +71,7 @@ class DemoFeedPageVC:UIViewController {
             make.height.equalTo(34)
         }
         
-        _ = view.tapGesture().bind { (_) in
+        _ = view.tapGesture().bind { [unowned self] (_) in
             
             self.appendTabView()
             self.feedPageVC.reloadData()
@@ -88,7 +88,7 @@ class DemoFeedPageVC:UIViewController {
             make.height.equalTo(34)
         }
         
-        _ = view2.tapGesture().bind { (_) in
+        _ = view2.tapGesture().bind {[unowned self]  (_) in
             
             self.feedPageVC.removeForPage(at: 0)
             
@@ -104,7 +104,7 @@ class DemoFeedPageVC:UIViewController {
             make.height.equalTo(34)
         }
         
-        _ = view3.tapGesture().bind { (_) in
+        _ = view3.tapGesture().bind {[unowned self]  (_) in
             
             self.feedPageVC.removeAllForPage()
             
@@ -165,5 +165,9 @@ class DemoFeedPageVC:UIViewController {
     
     func bind() {
         
+    }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }

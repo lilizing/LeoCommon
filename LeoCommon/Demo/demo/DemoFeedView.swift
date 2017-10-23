@@ -23,7 +23,10 @@ class DemoFeedView:UIView {
         //        self.feedView.addRefreshHeader()
         self.feedView.addRefreshFooter()
         
-        self.feedView.loader = { page, pageSize in
+        self.feedView.loader = { [weak self] page, pageSize in
+            
+            guard let sSelf = self else { return }
+            
             print("加载数据...")
             
             let delay = DispatchTime.now() // + .milliseconds( page == 1 ? 1000 : 200)
@@ -49,18 +52,18 @@ class DemoFeedView:UIView {
                         }
                         
                         let headerVM = DemoSectionHeaderViewModel()
-                        headerVM.text  = "------页面【\(String(describing: self.name))】-------"
+                        headerVM.text  = "------页面【\(String(describing: sSelf.name))】-------"
                         //                        headerVM.text = "我是第【一】个Section的【头部】"
                         
                         let footerVM = DemoSectionFooterViewModel()
                         footerVM.text = "我是第【一】个Section的【尾部】"
                         
-                        self.feedView.stopLoading(page, callback: {
-                            self.feedView.clear()
+                        sSelf.feedView.stopLoading(page, callback: {
+                            sSelf.feedView.clear()
                             
                             let sectionVM = FeedViewSectionViewModel.init(header: headerVM, footer: footerVM, items: items)
                             sectionVM.headerSticky = false
-                            self.feedView.append(sectionViewModels: [sectionVM])
+                            sSelf.feedView.append(sectionViewModels: [sectionVM])
                         })
                     } else {
                         
@@ -70,8 +73,8 @@ class DemoFeedView:UIView {
                             items.append(vm)
                         }
                         
-                        self.feedView.stopLoading(page, hasMore: {
-                            return page < self.maxPage
+                        sSelf.feedView.stopLoading(page, hasMore: {
+                            return page < sSelf.maxPage
                         }, callback: {
                             if (page == 2) {
                                 let headerVM = DemoSectionHeaderViewModel()
@@ -83,9 +86,9 @@ class DemoFeedView:UIView {
                                 sectionVM.minimumLineSpacing = 5
                                 
                                 //self.feedView.append(section: 1, headerViewModel: headerVM, footerViewModel: nil, cellViewModels: items)
-                                self.feedView.append(sectionViewModels: [sectionVM])
+                                sSelf.feedView.append(sectionViewModels: [sectionVM])
                             } else {
-                                self.feedView.append(section: 1, cellViewModels: items)
+                                sSelf.feedView.append(section: 1, cellViewModels: items)
                             }
                         })
                     }
@@ -100,5 +103,9 @@ class DemoFeedView:UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }

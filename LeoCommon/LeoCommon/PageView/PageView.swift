@@ -129,6 +129,10 @@ open class PageView:UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }
 
 extension PageView:FeedViewForPageDataSource {
@@ -151,12 +155,13 @@ public class FeedViewForPage:FeedView {
     weak var dataSource:PageView! {
         didSet {
             dsDisposeBag = DisposeBag()
-            self.dataSource.toIndexSignal.distinctUntilChanged().bind { (toIndex) in
-                if (toIndex > -1 && toIndex < self.dataSource.items.count) {
+            self.dataSource.toIndexSignal.distinctUntilChanged().bind { [weak self] (toIndex) in
+                guard let sSelf = self else { return }
+                if (toIndex > -1 && toIndex < sSelf.dataSource.items.count) {
                     Utils.debugLog("翻页 toIndex: \(toIndex)")
-                    self.startMoving(index: toIndex)
+                    sSelf.startMoving(index: toIndex)
                 }
-                }.addDisposableTo(self.dsDisposeBag)
+            }.addDisposableTo(self.dsDisposeBag)
         }
     }
     

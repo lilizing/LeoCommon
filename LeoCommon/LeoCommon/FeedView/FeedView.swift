@@ -130,7 +130,7 @@ open class FeedView:UIView {
             }
         }
         
-        for (_, sectionVM) in self._sectionViewModels.enumerated() {
+        if self._sectionViewModels.count > 0 {
             flag = false
         }
         
@@ -210,6 +210,10 @@ open class FeedView:UIView {
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 

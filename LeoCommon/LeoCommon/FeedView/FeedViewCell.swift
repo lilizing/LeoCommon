@@ -56,5 +56,9 @@ open class FeedViewCell: UICollectionViewCell, FeedViewCellProtocol {
     open class func sizeThatFits(_ viewModel:FeedViewCellViewModelProtocol?, size: CGSize = .zero) -> CGSize {
         return .zero
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }
 

@@ -122,6 +122,10 @@ open class FeedPageView:FeedView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
+    
     //以下变量为辅助变量，框架外不可访问
     var sectionViewModelForPage:FeedViewSectionViewModel = FeedViewSectionViewModel()
     var sectionHeaderViewModelForPage:FeedViewPageSectionHeaderViewModel = FeedViewPageSectionHeaderViewModel()

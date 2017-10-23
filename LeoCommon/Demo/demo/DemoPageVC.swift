@@ -29,7 +29,7 @@ class DemoPageVC:UIViewController {
             make.height.equalTo(34)
         }
         
-        _ = view.tapGesture().bind { (_) in
+        _ = view.tapGesture().bind { [unowned self] (_) in
             
             var tabs:[DemoPageTabItemView] = []
             var vcs:[DemoFeedVC] = []
@@ -63,7 +63,7 @@ class DemoPageVC:UIViewController {
             make.height.equalTo(34)
         }
         
-        _ = view2.tapGesture().bind { (_) in
+        _ = view2.tapGesture().bind { [unowned self] (_) in
             self.pageTabVC.remove(at: max(0, self.pageTabVC.pageVC.viewControllers.count - 2))
         }.addDisposableTo(self.disposeBag)
         
@@ -85,6 +85,10 @@ class DemoPageVC:UIViewController {
     func bind() {
         
     }
+    
+//    deinit {
+//        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+//    }
 }
 
 func generateRandomColor() -> UIColor {

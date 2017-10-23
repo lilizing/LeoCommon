@@ -52,4 +52,8 @@ open class FeedViewSectionHeaderOrFooter:UICollectionReusableView, FeedViewSecti
     open class func sizeThatFits(_ viewModel:FeedViewSectionHeaderOrFooterViewModel?, size: CGSize = .zero) -> CGSize {
         return .zero
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }

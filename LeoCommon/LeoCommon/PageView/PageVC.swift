@@ -47,6 +47,7 @@ public extension PageVC {
             vc.removeFromParentViewController()
         }
         self.viewControllers.removeAll()
+        self.selectedViewController = nil
     }
     
     public func remove(at index:Int) {
@@ -186,13 +187,16 @@ open class PageVC:UIViewController {
             make.edges.equalTo(self.view)
         }
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }
 
 extension PageVC {
     func startMoving(index:Int) {
         self.selectedViewController = self.viewControllers[self.pageView.selectedIndex];
         let toViewController = self.viewControllers[index];
-        
         self.selectedViewController.beginAppearanceTransition(false, animated: true)
         toViewController.beginAppearanceTransition(true, animated: true)
     }

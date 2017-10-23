@@ -82,4 +82,8 @@ open class PageTabVC:UIViewController {
         self.pageTab.insert(contentsOf: tabs, at: at)
         self.pageVC.insert(contentsOf: vcs, at: at)
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }

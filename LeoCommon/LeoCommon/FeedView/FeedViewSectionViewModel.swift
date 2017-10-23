@@ -37,4 +37,8 @@ open class FeedViewSectionViewModel:NSObject {
         self.footer = footer
         self.items.append(contentsOf: items)
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }

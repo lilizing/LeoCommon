@@ -28,4 +28,8 @@ open class FeedViewCellViewModel:NSObject, FeedViewCellViewModelProtocol {
     open func cellClass(_ context:Dictionary<String, Any>?) -> FeedViewCell.Type {
         return FeedViewCell.self
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }

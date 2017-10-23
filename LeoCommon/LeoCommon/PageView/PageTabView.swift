@@ -12,8 +12,11 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import ObjectMapper
+import RxGesture
 
 open class PageTabItemView:UIView {
+    public var disposeBag = DisposeBag()
+    
     open var isSelected:Bool = false {
         didSet {
             //TODO:
@@ -22,6 +25,10 @@ open class PageTabItemView:UIView {
     
     open func width() -> CGFloat {
         return 0
+    }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 
@@ -139,6 +146,13 @@ open class PageTabView:UIView {
         self.insert(contentsOf: [newElement], at: at)
     }
     
+    func tap(tap: UITapGestureRecognizer) {
+        if let tView = tap.view as? PageTabItemView,
+            let index = self.items.index(of: tView) {
+            self.selectedIndex = index
+        }
+    }
+    
     public func insert(contentsOf: [PageTabItemView], at: Int, show: Int = 0) {
         guard at <= items.count else { return }
         
@@ -148,14 +162,9 @@ open class PageTabView:UIView {
         for view in contentsOf {
             let cellVM = FeedViewCellViewModel.init()
             cellVMS.append(cellVM)
-
-            view.tapGesture().takeUntil(view.rx.deallocated).bind { [weak self, weak view] (_) in
-                guard let sSelf = self, let sEle = view else { return }
-                
-                if let index = sSelf.items.index(of: sEle) {
-                    sSelf.selectedIndex = index
-                }
-            }.addDisposableTo(self.disposeBag)
+            
+            let tap = UITapGestureRecognizer.init(target: self, action: #selector(self.tap(tap:)))
+            view.addGestureRecognizer(tap)
         }
         self.feedView.insert(contentsOf: cellVMS, at: at, section: 0, reload:true)
         
@@ -197,6 +206,10 @@ open class PageTabView:UIView {
     
     required public  init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 

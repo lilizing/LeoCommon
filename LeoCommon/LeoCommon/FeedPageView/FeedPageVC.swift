@@ -88,6 +88,10 @@ open class FeedPageVC:UIViewController {
         }
         self.pageVC.didMove(toParentViewController: self)
     }
+    
+    deinit {
+        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+    }
 }
 
 extension FeedPageVC {
