@@ -123,6 +123,7 @@ open class PageTabView:UIView {
     public func remove(at index: Int) {
         guard index < items.count && self.feedView.sectionViewModels.count > 0 else { return }
         
+        self.items[index].removeFromSuperview()
         self.items.remove(at: index)
         
         self.feedView.remove(section: 0, at: index, reload:true)
@@ -137,8 +138,11 @@ open class PageTabView:UIView {
     }
     
     public func removeAll() {
-        self.items.removeAll()
         self.feedView.remove(section: 0, reload:true)
+        for view in self.items {
+            view.removeFromSuperview()
+        }
+        self.items.removeAll()
         self.selectedIndex = -1
     }
     

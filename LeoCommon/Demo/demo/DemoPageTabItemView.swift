@@ -42,8 +42,4 @@ class DemoPageTabItemView:PageTabItemView {
     override func width() -> CGFloat {
         return 80
     }
-    
-    deinit {
-        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
-    }
 }
