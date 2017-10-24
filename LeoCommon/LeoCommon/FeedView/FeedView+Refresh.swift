@@ -192,6 +192,8 @@ extension FeedView {
         
         if let _ = self.loadingViewModel, page == 1 {
             self.reloadData()
+        } else if self.loadingView != nil, page == 1 {
+            self.reloadData()
         }
         
         //执行业务逻辑

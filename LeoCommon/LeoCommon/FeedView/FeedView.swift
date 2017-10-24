@@ -50,10 +50,8 @@ open class FeedView:UIView {
     var _didEndScrollingAnimation = PublishSubject<UIScrollView>()
     var _willBeginDragging = PublishSubject<UIScrollView>()
     
-    var _willDisplayingSignal = PublishSubject<(UIScrollView, IndexPath)>()
-    var _didEndDisplayingSignal = PublishSubject<(UIScrollView, IndexPath)>()
-    
     public var emptyView:UIView?
+    public var loadingView:UIView?
     
     public var loadingViewModel:FeedViewCellViewModel? //用来处理加载中
     public var noDataViewModel:FeedViewCellViewModel? //用来处理无数据、网络异常
@@ -118,18 +116,6 @@ open class FeedView:UIView {
         }
     }
     
-    public var willDisplayingSignal:PublishSubject<(UIScrollView, IndexPath)> {
-        get {
-            return self._willDisplayingSignal
-        }
-    }
-    
-    public var didEndDisplayingSignal:PublishSubject<(UIScrollView, IndexPath)> {
-        get {
-            return self._didEndDisplayingSignal
-        }
-    }
-    
     //加载器，即：你的业务处理逻辑
     public var loader:(_ page:Int, _ pageSize:Int)->(Void) = { _,_ in }
     
@@ -150,21 +136,43 @@ open class FeedView:UIView {
         }
         
         if flag {
-            if
-                self.isLoading,
-                let vm = self.loadingViewModel
-            {
+            if self.isLoading {
                 if !self.showHeader || !self.collectionView.leo_header.isRefreshing() {
+                    if let loadingView = self.loadingView {
+                        self.collectionView.addSubview(loadingView)
+                        loadingView.snp.remakeConstraints({ (make) in
+                            make.top.left.equalTo(0)
+                            make.size.equalTo(self.collectionView.bounds.size)
+                        })
+                        if let emptyView = self.emptyView {
+                            emptyView.removeFromSuperview()
+                        }
+                    } else if let vm = self.loadingViewModel {
+                        self.tempSectionViewModel.items = [vm]
+                        self._sectionViewModels.append(self.tempSectionViewModel)
+                    }
+                }
+            } else {
+                if let emptyView = self.emptyView {
+                    self.collectionView.addSubview(emptyView)
+                    emptyView.snp.remakeConstraints({ (make) in
+                        make.top.left.equalTo(0)
+                        make.size.equalTo(self.collectionView.bounds.size)
+                    })
+                    if let loadingView = self.loadingView {
+                        loadingView.removeFromSuperview()
+                    }
+                } else if let vm = self.noDataViewModel {
                     self.tempSectionViewModel.items = [vm]
                     self._sectionViewModels.append(self.tempSectionViewModel)
                 }
             }
-            if
-                !self.isLoading,
-                let vm = self.noDataViewModel
-            {
-                self.tempSectionViewModel.items = [vm]
-                self._sectionViewModels.append(self.tempSectionViewModel)
+        } else {
+            if let emptyView = self.emptyView {
+                emptyView.removeFromSuperview()
+            }
+            if let loadingView = self.loadingView {
+                loadingView.removeFromSuperview()
             }
         }
         self.collectionView.reloadData()
