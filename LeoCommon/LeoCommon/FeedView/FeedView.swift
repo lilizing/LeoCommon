@@ -50,6 +50,9 @@ open class FeedView:UIView {
     var _didEndScrollingAnimation = PublishSubject<UIScrollView>()
     var _willBeginDragging = PublishSubject<UIScrollView>()
     
+    var _willDisplayingSignal = PublishSubject<(UIScrollView, IndexPath)>()
+    var _didEndDisplayingSignal = PublishSubject<(UIScrollView, IndexPath)>()
+    
     public var emptyView:UIView?
     
     public var loadingViewModel:FeedViewCellViewModel? //用来处理加载中
@@ -112,6 +115,18 @@ open class FeedView:UIView {
     public var willBeginDragging:PublishSubject<UIScrollView> {
         get {
             return self._willBeginDragging
+        }
+    }
+    
+    public var willDisplayingSignal:PublishSubject<(UIScrollView, IndexPath)> {
+        get {
+            return self._willDisplayingSignal
+        }
+    }
+    
+    public var didEndDisplayingSignal:PublishSubject<(UIScrollView, IndexPath)> {
+        get {
+            return self._didEndDisplayingSignal
         }
     }
     

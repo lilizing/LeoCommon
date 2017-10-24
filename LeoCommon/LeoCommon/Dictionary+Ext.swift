@@ -25,8 +25,12 @@ extension Dictionary {
         dict.merge(with: dictionary)
         return dict
     }
-    
-    public static func +=(lhs: inout [String: Any], rhs: [String: Any]) {
-        rhs.forEach({ lhs[$0] = $1})
+}
+
+public func += <K, V> (left: inout [K:V], right: [K:V]) {
+    for (k, v) in right {
+        left[k] = v
     }
 }
+
+

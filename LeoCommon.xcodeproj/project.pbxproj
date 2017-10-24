@@ -49,6 +49,7 @@
 		2281F0F91F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0F81F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift */; };
 		2281F0FB1F6D27F000A81238 /* DemoFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0FA1F6D27F000A81238 /* DemoFeedView.swift */; };
 		2281F0FD1F6D432500A81238 /* DemoFeedPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281F0FC1F6D432500A81238 /* DemoFeedPageVC.swift */; };
+		229962981F9ED42700AC469C /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229962971F9ED42700AC469C /* UIFont+Ext.swift */; };
 		229F1A331F7BB0190073F097 /* FeedPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229F1A321F7BB0180073F097 /* FeedPageVC.swift */; };
 		22AD6D651F0007A700BA0892 /* debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D621F0007A700BA0892 /* debug.xcconfig */; };
 		22AD6D661F0007A700BA0892 /* release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 22AD6D631F0007A700BA0892 /* release.xcconfig */; };
@@ -138,6 +139,7 @@
 		2281F0F81F6D1D1300A81238 /* FeedPageView+WaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedPageView+WaterfallLayout.swift"; sourceTree = "<group>"; };
 		2281F0FA1F6D27F000A81238 /* DemoFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedView.swift; sourceTree = "<group>"; };
 		2281F0FC1F6D432500A81238 /* DemoFeedPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeedPageVC.swift; sourceTree = "<group>"; };
+		229962971F9ED42700AC469C /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		229F1A321F7BB0180073F097 /* FeedPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPageVC.swift; sourceTree = "<group>"; };
 		22AD6D621F0007A700BA0892 /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		22AD6D631F0007A700BA0892 /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 				22B5C4CA1F3B125000C89688 /* Dictionary+Ext.swift */,
 				22B5C4CB1F3B125000C89688 /* Object+Ext.swift */,
 				22B5C4CC1F3B125000C89688 /* String+Ext.swift */,
+				229962971F9ED42700AC469C /* UIFont+Ext.swift */,
 				223090CD1F67E6F60047DA96 /* UIView+Ext.swift */,
 				223090CE1F67E6F60047DA96 /* Utils.swift */,
 				223090C91F67DF7A0047DA96 /* Number+Ext.swift */,
@@ -726,6 +729,7 @@
 				223090CC1F67E0430047DA96 /* PageVC.swift in Sources */,
 				221EAE331F678E4200FEDC08 /* FeedViewSection.swift in Sources */,
 				22B573B41F68E081007F28D8 /* DemoPageTabItemView.swift in Sources */,
+				229962981F9ED42700AC469C /* UIFont+Ext.swift in Sources */,
 				22B573F21F693C3C007F28D8 /* LEORefreshBackStateFooter.m in Sources */,
 				221EAE951F67935400FEDC08 /* DemoSectionFooterViewModel.swift in Sources */,
 				221EAE921F67935400FEDC08 /* DemoOneCell.swift in Sources */,

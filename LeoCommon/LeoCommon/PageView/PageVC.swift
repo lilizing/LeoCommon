@@ -15,92 +15,57 @@ import ObjectMapper
 
 public extension PageVC {
     public func show(at index:Int) {
-        guard index < self.viewControllers.count && self.viewControllers.count > 1 else { return }
+        guard index > -1,
+            index < self.viewControllers.count,
+            self.viewControllers.count > 0,
+            index != self.selectedIndex
+            else { return }
         
-        let toVC = self.viewControllers[index]
-        let flag = toVC.parent == nil
-        
-        let fromVC = self.viewControllers[self.selectedIndex]
-        fromVC.beginAppearanceTransition(false, animated: true)
-        
-        if flag {
-            self.addChildViewController(toVC)
+        if !self.pageView.isMoving {
+            if let fromVC = self.selectedViewController {
+                fromVC.beginAppearanceTransition(false, animated: false)
+                fromVC.endAppearanceTransition()
+            }
+            
+            let toVC = self.viewControllers[index]
+            if toVC.parent == nil {
+                self.addChildViewController(toVC)
+                toVC.didMove(toParentViewController: self)
+            }
+            toVC.beginAppearanceTransition(true, animated: false)
+            toVC.endAppearanceTransition()
+            self.selectedViewController = toVC
         }
         
         self.pageView.show(at: index)
-        
-        if flag {
-            toVC.didMove(toParentViewController: self)
-        }
-        
-        toVC.beginAppearanceTransition(true, animated: true)
-        fromVC.endAppearanceTransition()
-        toVC.endAppearanceTransition()
     }
     
     public func removeAll() {
-        self.pageView.removeAll()
         for vc in self.viewControllers {
             vc.willMove(toParentViewController: nil)
-            vc.beginAppearanceTransition(false, animated: true)
-            vc.endAppearanceTransition()
             vc.removeFromParentViewController()
+            vc.beginAppearanceTransition(false, animated: false)
+            vc.endAppearanceTransition()
         }
-        self.viewControllers.removeAll()
         self.selectedViewController = nil
+        self.viewControllers.removeAll()
+        
+        self.pageView.removeAll()
     }
     
     public func remove(at index:Int) {
-        guard index < self.viewControllers.count && self.viewControllers.count > 0 else { return }
+        guard index > -1, index < self.viewControllers.count, self.viewControllers.count > 0 else { return }
         
         let removeVC = self.viewControllers[index]
-        let flag = removeVC.parent == nil
-        
-        let currentIndex = self.selectedIndex
-        var nextIndex = currentIndex
-        
-        if (index <= currentIndex) {
-            nextIndex -= 1;
+        if let _ = removeVC.parent {
+            removeVC.willMove(toParentViewController: nil)
+            removeVC.removeFromParentViewController()
+            removeVC.beginAppearanceTransition(false, animated: false)
+            removeVC.endAppearanceTransition()
         }
-        
-        var nextVC:UIViewController?
-        if nextIndex > -1 {
-            nextVC = self.viewControllers[nextIndex]
-        }
-        
-        var nextFlag = false
-        
-        if !flag {
-            if index == currentIndex {
-                removeVC.willMove(toParentViewController: nil)
-                removeVC.beginAppearanceTransition(false, animated: true)
-                if let vc = nextVC {
-                    if vc.parent == nil {
-                        nextFlag = true
-                        self.addChildViewController(vc)
-                    }
-                }
-            }
-        }
+        self.viewControllers.remove(at: index)
         
         self.pageView.remove(at: index)
-        
-        if !flag {
-            if index == currentIndex {
-                removeVC.endAppearanceTransition()
-            }
-            removeVC.removeFromParentViewController()
-        }
-        
-        if let vc = nextVC {
-            if nextFlag {
-                vc.didMove(toParentViewController: self)
-            }
-            vc.beginAppearanceTransition(true, animated: true)
-            vc.endAppearanceTransition()
-        }
-        
-        self.viewControllers.remove(at: index)
     }
     
     public func insert(newElement: UIViewController, at: Int) {
@@ -110,26 +75,13 @@ public extension PageVC {
     public func insert(contentsOf: [UIViewController], at: Int) {
         guard at <= viewControllers.count, contentsOf.count > 0 else { return }
         
-        let flag = self.viewControllers.count == 0
-        
         self.viewControllers.insert(contentsOf: contentsOf, at: at)
-        
-        if flag {
-            self.addChildViewController(contentsOf[0])
-        }
         
         var views: [UIView] = []
         for vc in contentsOf {
             views.append(vc.view)
         }
-        
         self.pageView.insert(contentsOf: views, at: at)
-        
-        if flag {
-            contentsOf[0].didMove(toParentViewController: self)
-            contentsOf[0].beginAppearanceTransition(true, animated: true)
-            contentsOf[0].endAppearanceTransition()
-        }
     }
 }
 
@@ -144,6 +96,8 @@ extension PageVC {
 }
 
 open class PageVC:UIViewController {
+    public var disposeBag = DisposeBag()
+    
     public var viewControllers:[UIViewController] = []
     public var selectedViewController:UIViewController!
     
@@ -194,12 +148,7 @@ open class PageVC:UIViewController {
 }
 
 extension PageVC {
-    func startMoving(index:Int) {
-        self.selectedViewController = self.viewControllers[self.pageView.selectedIndex];
-        let toViewController = self.viewControllers[index];
-        self.selectedViewController.beginAppearanceTransition(false, animated: true)
-        toViewController.beginAppearanceTransition(true, animated: true)
-    }
+    func startMoving(index:Int) {}
     
     func endMoving(_ scrollView: UIScrollView) {
         guard self.pageView.isMoving else { return }
@@ -207,12 +156,16 @@ extension PageVC {
         let offsetX = scrollView.contentOffset.x;
         let contentWidth = scrollView.bounds.size.width;
         
+        self.selectedViewController = self.viewControllers[self.pageView.selectedIndex];
         let toViewController = self.viewControllers[self.pageView.toIndex];
         
         if toViewController.parent == nil {
             self.addChildViewController(toViewController)
             toViewController.didMove(toParentViewController: self)
         }
+        
+        self.selectedViewController.beginAppearanceTransition(false, animated: true)
+        toViewController.beginAppearanceTransition(true, animated: true)
         
         if (self.pageView.toIndex > self.pageView.selectedIndex) {
             if (offsetX >=~ CGFloat(self.pageView.toIndex) * contentWidth) {
@@ -221,8 +174,8 @@ extension PageVC {
                 
                 self.selectedViewController.endAppearanceTransition()
                 toViewController.endAppearanceTransition()
-                self.selectedViewController = toViewController
                 
+                self.selectedViewController = toViewController
                 
                 self.pageView.selectedIndex = self.pageView.toIndex;
             } else { //回弹
@@ -237,7 +190,6 @@ extension PageVC {
                 
                 toViewController.endAppearanceTransition()
                 self.selectedViewController.endAppearanceTransition()
-                
             }
         } else {
             if (offsetX <=~ CGFloat(self.pageView.toIndex) * contentWidth) {

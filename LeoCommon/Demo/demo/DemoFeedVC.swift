@@ -22,6 +22,10 @@ class DemoFeedVC:UIViewController {
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Utils.debugLog(self.name + " - &完成加载&")
+        
         self.feedView = FeedPageInnerFeedView.init(frame: .zero, layoutType: .flow, sticky: true)
         self.view.addSubview(self.feedView)
         self.feedView.snp.makeConstraints { (make) in
@@ -118,20 +122,20 @@ class DemoFeedVC:UIViewController {
         }
         
         if parent != nil {
-            Utils.debugLog(self.name + " - /添加/")
+            Utils.debugLog(self.name + " - $添加$")
         } else {
-            Utils.debugLog(self.name + " - /移除/")
+            Utils.debugLog(self.name + " - @移除@")
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Utils.debugLog(self.name + " - *将要显示*")
+        Utils.debugLog(self.name + " - %将要显示%")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Utils.debugLog(self.name + " - /显示/")
+        Utils.debugLog(self.name + " - %显示%")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -141,18 +145,26 @@ class DemoFeedVC:UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        Utils.debugLog(self.name + " - /消失/")
+        Utils.debugLog(self.name + " - *消失*")
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
         
         if parent != nil {
-            Utils.debugLog(self.name + " - *将要添加*")
+            Utils.debugLog(self.name + " - $将要添加$")
         } else {
-            Utils.debugLog(self.name + " - *将要移除*")
+            Utils.debugLog(self.name + " - @将要移除@")
         }
     }
+    
+//    override var shouldAutomaticallyForwardAppearanceMethods: Bool {
+//        return false
+//    }
+//
+//    override func shouldAutomaticallyForwardRotationMethods() -> Bool {
+//        return false
+//    }
     
     deinit {
         Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")

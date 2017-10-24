@@ -18,6 +18,9 @@ class DemoFeedPageVC:UIViewController {
     
     var disposeBag = DisposeBag()
     
+    var max = 20
+    var current = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,7 +77,6 @@ class DemoFeedPageVC:UIViewController {
         _ = view.tapGesture().bind { [unowned self] (_) in
             
             self.appendTabView()
-            self.feedPageVC.reloadData()
             
         }.addDisposableTo(self.disposeBag)
         
@@ -91,6 +93,7 @@ class DemoFeedPageVC:UIViewController {
         _ = view2.tapGesture().bind {[unowned self]  (_) in
             
             self.feedPageVC.removeForPage(at: 0)
+            self.feedPageVC.showPage(at: 0)
             
         }.addDisposableTo(self.disposeBag)
         
@@ -142,25 +145,23 @@ class DemoFeedPageVC:UIViewController {
         var tabs:[DemoPageTabItemView] = []
         var vcs:[DemoFeedVC] = []
         
-        for i in 0..<3 {
+        for i in current..<max {
             let tab = DemoPageTabItemView()
-            tab.text = "\(i)-\(self.feedPageVC.pageTab.items.count)"
+            tab.text = "\(i)"
             
             let vc = DemoFeedVC()
-            vc.name = "\(i)-\(self.feedPageVC.pageVC.viewControllers.count)"
+            vc.name = "\(i)"
             vc.view.backgroundColor = generateRandomColor()
             
-            tabs.append(tab)
-            vcs.append(vc)
+            tabs.insert(tab, at: 0)
+            vcs.insert(vc, at: 0)
         }
         
         self.feedPageVC.topOffset = 100
         self.feedPageVC.pageTabHeight = 44
         self.feedPageVC.pageViewHeight = SCREEN_HEIGHT - 108
         self.feedPageVC.insertForPage(tabs: tabs, vcs: vcs, at: 0)
-        
-        //可以指定显示哪一页
-        //self.feedPageVC.show(at: 0)
+        self.feedPageVC.showPage(at: 0)
     }
     
     func bind() {

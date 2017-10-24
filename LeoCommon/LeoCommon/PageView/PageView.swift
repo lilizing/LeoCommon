@@ -64,18 +64,10 @@ open class PageView:UIView {
     }
     
     public func remove(at index: Int) {
-        guard index < items.count && self.feedView.sectionViewModels.count > 0 else { return }
+        guard index > -1, index < items.count, self.feedView.sectionViewModels.count > 0 else { return }
         
         self.items[index].removeFromSuperview()
         self.items.remove(at: index)
-        
-        if self.items.count == 0 {
-            self.selectedIndex = -1
-        }  else if self.items.count == 1 {
-            self.selectedIndex = 0
-        } else if (index <= self.selectedIndex && self.selectedIndex > 0) {
-            self.selectedIndex -= 1;
-        }
         
         self.feedView.remove(section: 0, at: index, reload:true)
     }
@@ -89,11 +81,11 @@ open class PageView:UIView {
         self.selectedIndex = -1
     }
     
-    public func insert(newElement: UIView, at: Int, show: Int = 0) {
-        self.insert(contentsOf: [newElement], at: at, show: show)
+    public func insert(newElement: UIView, at: Int) {
+        self.insert(contentsOf: [newElement], at: at)
     }
     
-    public func insert(contentsOf: [UIView], at: Int, show: Int = 0) {
+    public func insert(contentsOf: [UIView], at: Int) {
         guard at <= items.count else { return }
         
         self.items.insert(contentsOf: contentsOf, at: at)
@@ -104,16 +96,6 @@ open class PageView:UIView {
             cellVMS.append(cellVM)
         }
         self.feedView.insert(contentsOf: cellVMS, at: at, section: 0, reload:true)
-        
-        self.selectedIndex = show
-        
-        //        if self.items.count == contentsOf.count {
-        //            self.selectedIndex = 0
-        //        }
-        //
-        //        if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
-        //            self.selectedIndex += 1;
-        //        }
     }
     
     override public  init(frame: CGRect) {

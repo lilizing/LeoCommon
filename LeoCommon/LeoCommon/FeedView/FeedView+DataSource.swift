@@ -68,5 +68,14 @@ extension FeedView:UICollectionViewDataSource {
         }
         return UICollectionReusableView.init()
     }
+    
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.willDisplayingSignal.onNext((collectionView, indexPath))
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.didEndDisplayingSignal.onNext((collectionView, indexPath))
+    }
+
 }
 

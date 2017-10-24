@@ -127,14 +127,6 @@ open class PageTabView:UIView {
         self.items.remove(at: index)
         
         self.feedView.remove(section: 0, at: index, reload:true)
-        
-        if self.items.count == 0 {
-            self.selectedIndex = -1
-        } else if self.items.count == 1 {
-            self.selectedIndex = 0
-        } else if (index <= self.selectedIndex && self.selectedIndex > 0) {
-            self.selectedIndex -= 1;
-        }
     }
     
     public func removeAll() {
@@ -146,7 +138,7 @@ open class PageTabView:UIView {
         self.selectedIndex = -1
     }
     
-    public func insert(newElement: PageTabItemView, at: Int, show: Int = 0) {
+    public func insert(newElement: PageTabItemView, at: Int) {
         self.insert(contentsOf: [newElement], at: at)
     }
     
@@ -157,7 +149,7 @@ open class PageTabView:UIView {
         }
     }
     
-    public func insert(contentsOf: [PageTabItemView], at: Int, show: Int = 0) {
+    public func insert(contentsOf: [PageTabItemView], at: Int) {
         guard at <= items.count else { return }
         
         self.items.insert(contentsOf: contentsOf, at: at)
@@ -171,16 +163,6 @@ open class PageTabView:UIView {
             view.addGestureRecognizer(tap)
         }
         self.feedView.insert(contentsOf: cellVMS, at: at, section: 0, reload:true)
-        
-        self.selectedIndex = show
-        
-        //        if self.items.count == contentsOf.count {
-        //            self.selectedIndex = 0
-        //        }
-        //
-        //        if (at <= self.selectedIndex && self.items.count > contentsOf.count) {
-        //            self.selectedIndex += 1;
-        //        }
     }
     
     override public init(frame: CGRect) {
