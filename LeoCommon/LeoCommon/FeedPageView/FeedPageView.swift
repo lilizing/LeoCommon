@@ -83,7 +83,7 @@ open class FeedPageView:FeedView {
         NotificationCenter.default.rx.notification(NSNotification.Name(rawValue: FeedPageViewOuterCanScroll)).bind { [weak self] (notification) in
             guard let sSelf = self,let canScroll = notification.object as? Bool else { return }
             
-            Utils.debugLog("外部 - 切换 - \(canScroll)")
+            Utils.commonLog("外部 - 切换 - \(canScroll)")
             
             sSelf.canScroll = canScroll
             
@@ -123,7 +123,7 @@ open class FeedPageView:FeedView {
     }
     
     deinit {
-        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+        Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }
     
     //以下变量为辅助变量，框架外不可访问
@@ -156,7 +156,7 @@ extension FeedPageView {
         
         if tabHasShow {
             //let point = self.pageTab.convert(self.pageTab.frame.origin, to: self)
-            //Utils.debugLog("外部 位置：\(point.x) - \(point.y)")
+            //Utils.commonLog("外部 位置：\(point.x) - \(point.y)")
             let height = self.heightForAllSections()
             if scrollView.contentOffset.y >= height - topOffset {
                 self.canScroll = false
@@ -222,7 +222,7 @@ open class FeedPageInnerFeedView:FeedView {
         NotificationCenter.default.rx.notification(NSNotification.Name(rawValue: FeedPageViewInnerCanScroll)).bind { [weak self] (notification) in
             guard let sSelf = self,let canScroll = notification.object as? Bool else { return }
             
-            Utils.debugLog("内部 - 切换 - \(canScroll)")
+            Utils.commonLog("内部 - 切换 - \(canScroll)")
             sSelf.canScroll = canScroll
             
             sSelf.collectionView.scrollsToTop = canScroll
@@ -240,7 +240,7 @@ open class FeedPageInnerFeedView:FeedView {
         self.collectionView.showsVerticalScrollIndicator = false
         //        DispatchQueue.global().async {
         let point = scrollView.contentOffset
-        // Utils.debugLog("内部 - 位置：\(point.x) - \(point.y)")
+        // Utils.commonLog("内部 - 位置：\(point.x) - \(point.y)")
         if point.y < 0 {
             self.canScroll = false
             self.contentOffset = scrollView.contentOffset

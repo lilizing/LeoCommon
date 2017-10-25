@@ -28,7 +28,7 @@ open class PageTabItemView:UIView {
     }
     
     deinit {
-        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+        Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 
@@ -69,10 +69,10 @@ open class PageTabView:UIView {
             }
             
             if oldValue == selectedIndex {
-                Utils.debugLog("Tab - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
+                Utils.commonLog("Tab - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
                 return;
             }
-            Utils.debugLog("Tab - 改变选中索引：\(selectedIndex)")
+            Utils.commonLog("Tab - 改变选中索引：\(selectedIndex)")
             
             self.lineView.isHidden = self.selectedIndex < 0
             
@@ -195,7 +195,7 @@ open class PageTabView:UIView {
     }
     
     deinit {
-        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+        Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 

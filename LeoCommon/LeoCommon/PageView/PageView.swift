@@ -33,11 +33,11 @@ open class PageView:UIView {
         didSet {
             
             if oldValue == selectedIndex {
-                Utils.debugLog("Page - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
+                Utils.commonLog("Page - 选中索引未发生改变，这里直接返回，不执行任何动作：\(selectedIndex)")
                 return;
             }
             
-            Utils.debugLog("Page - 改变选中索引：\(selectedIndex)")
+            Utils.commonLog("Page - 改变选中索引：\(selectedIndex)")
             
             self.layoutIfNeeded() //因自动布局的延后性，可能这个时候某些视图的bounds还是.zero，影响计算，所以这里做一下强制布局，提前完成布局工作，即可拿到正确的尺寸
             
@@ -117,7 +117,7 @@ open class PageView:UIView {
     }
     
     deinit {
-        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+        Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 
@@ -144,7 +144,7 @@ public class FeedViewForPage:FeedView {
             self.dataSource.toIndexSignal.distinctUntilChanged().bind { [weak self] (toIndex) in
                 guard let sSelf = self else { return }
                 if (toIndex > -1 && toIndex < sSelf.dataSource.items.count) {
-                    Utils.debugLog("翻页 toIndex: \(toIndex)")
+                    Utils.commonLog("翻页 toIndex: \(toIndex)")
                     sSelf.startMoving(index: toIndex)
                 }
             }.addDisposableTo(self.dsDisposeBag)

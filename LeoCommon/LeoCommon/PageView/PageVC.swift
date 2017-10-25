@@ -143,7 +143,7 @@ open class PageVC:UIViewController {
     }
     
     deinit {
-        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+        Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 
@@ -170,7 +170,7 @@ extension PageVC {
         if (self.pageView.toIndex > self.pageView.selectedIndex) {
             if (offsetX >=~ CGFloat(self.pageView.toIndex) * contentWidth) {
                 
-                Utils.debugLog("[翻页 - 向右] - 成功");
+                Utils.commonLog("[翻页 - 向右] - 成功");
                 
                 self.selectedViewController.endAppearanceTransition()
                 toViewController.endAppearanceTransition()
@@ -180,7 +180,7 @@ extension PageVC {
                 self.pageView.selectedIndex = self.pageView.toIndex;
             } else { //回弹
                 
-                Utils.debugLog("[翻页 - 向右] - 失败，回弹");
+                Utils.commonLog("[翻页 - 向右] - 失败，回弹");
                 
                 self.selectedViewController.endAppearanceTransition()
                 toViewController.endAppearanceTransition()
@@ -194,7 +194,7 @@ extension PageVC {
         } else {
             if (offsetX <=~ CGFloat(self.pageView.toIndex) * contentWidth) {
                 
-                Utils.debugLog("[翻页 - 向左] - 成功");
+                Utils.commonLog("[翻页 - 向左] - 成功");
                 
                 self.selectedViewController.endAppearanceTransition()
                 toViewController.endAppearanceTransition()
@@ -204,7 +204,7 @@ extension PageVC {
                 self.pageView.selectedIndex = self.pageView.toIndex;
             } else { //回弹
                 
-                Utils.debugLog("[翻页 - 向左] - 失败，回弹");
+                Utils.commonLog("[翻页 - 向左] - 失败，回弹");
                 
                 self.selectedViewController.endAppearanceTransition()
                 toViewController.endAppearanceTransition()

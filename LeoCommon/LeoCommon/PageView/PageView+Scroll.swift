@@ -36,19 +36,19 @@ extension FeedViewForPage {
         
         if (self.dataSource.toIndex > self.dataSource.selectedIndex) {
             if (offsetX >=~ CGFloat(self.dataSource.toIndex) * contentWidth) {
-                Utils.debugLog("[翻页 - 向右] - 成功");
+                Utils.commonLog("[翻页 - 向右] - 成功");
                 
                 self.dataSource.selectedIndex = self.dataSource.toIndex;
             } else { //回弹
-                Utils.debugLog("[翻页 - 向右] - 失败，回弹");
+                Utils.commonLog("[翻页 - 向右] - 失败，回弹");
             }
         } else {
             if (offsetX <=~ CGFloat(self.dataSource.toIndex) * contentWidth) {
-                Utils.debugLog("[翻页 - 向左] - 成功");
+                Utils.commonLog("[翻页 - 向左] - 成功");
                 
                 self.dataSource.selectedIndex = self.dataSource.toIndex;
             } else { //回弹
-                Utils.debugLog("[翻页 - 向左] - 失败，回弹");
+                Utils.commonLog("[翻页 - 向左] - 失败，回弹");
             }
         }
         

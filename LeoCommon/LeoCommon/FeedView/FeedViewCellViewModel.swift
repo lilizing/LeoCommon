@@ -30,6 +30,6 @@ open class FeedViewCellViewModel:NSObject, FeedViewCellViewModelProtocol {
     }
     
     deinit {
-        Utils.debugLog("【内存释放】\(String(describing: self)) dealloc")
+        Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
