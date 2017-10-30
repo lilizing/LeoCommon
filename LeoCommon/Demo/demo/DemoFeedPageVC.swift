@@ -47,9 +47,7 @@ class DemoFeedPageVC:UIViewController {
             
             self.feedPageVC.reloadData()
             
-            self.feedPageVC.feedPageView.stopLoading {
-                
-            }
+            self.feedPageVC.feedPageView.stopLoading(nil)
         }
         //注意不要遗漏这个
         self.addChildViewController(self.feedPageVC)

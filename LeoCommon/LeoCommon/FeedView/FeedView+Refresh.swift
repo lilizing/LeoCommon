@@ -200,7 +200,7 @@ extension FeedView {
         self.loader(page, self.pageSize)
     }
     
-    open func stopLoading(_ page:Int? = nil,
+    open func stopLoading(_ page:Int?,
                           hasMore: () -> (Bool) = { return true },
                           reloadDelay: Int = 0,
                           callback: @escaping ()->() = {}) {
