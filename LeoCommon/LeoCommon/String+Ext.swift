@@ -49,11 +49,11 @@ extension NSString {
 }
 
 extension String {
-    func size(font:UIFont, color:UIColor, fixHeight:CGFloat) -> CGSize {
+    public func size(font:UIFont, color:UIColor, fixHeight:CGFloat) -> CGSize {
         return self.string(font:font, color:color, lineBreak:.byWordWrapping).size(fixHeight: fixHeight)
     }
     
-    func size(font:UIFont, color:UIColor, fixWidth:CGFloat) -> CGSize {
+    public func size(font:UIFont, color:UIColor, fixWidth:CGFloat) -> CGSize {
         return self.string(font:font, color:color, lineBreak:.byWordWrapping).size(fixWidth: fixWidth)
     }
 }
