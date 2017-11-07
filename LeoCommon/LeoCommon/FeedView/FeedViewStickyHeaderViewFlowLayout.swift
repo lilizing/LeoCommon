@@ -9,111 +9,114 @@
 import UIKit
 
 class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
-    var stickySectionIndexs:[Int] = []
     weak var feedView:FeedView?
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard var superAttributes = super.layoutAttributesForElements(in: rect), let collectionView = collectionView else {
-            return super.layoutAttributesForElements(in: rect)
-        }
-        
-        let collectionViewTopY = collectionView.contentOffset.y + collectionView.contentInset.top
-        let contentOffset = CGPoint(x: 0, y: collectionViewTopY)
-        let missingSections = NSMutableIndexSet()
-        
-        superAttributes.forEach { layoutAttributes in
-            if layoutAttributes.representedElementCategory == .cell && layoutAttributes.representedElementKind != UICollectionElementKindSectionHeader {
-                missingSections.add(layoutAttributes.indexPath.section)
-            }
-        }
-        
-        missingSections.enumerate(using: { idx, stop in
-            let indexPath = IndexPath(item: 0, section: idx)
-            if let layoutAttributes = self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: indexPath) {
-                superAttributes.append(layoutAttributes)
-            }
-        })
-        
-        for layoutAttributes in superAttributes {
-            if let representedElementKind = layoutAttributes.representedElementKind {
-                if representedElementKind == UICollectionElementKindSectionHeader {
-                    let section = layoutAttributes.indexPath.section
-                    
-                    let numberOfItemsInSection = collectionView.numberOfItems(inSection: section)
-                    
-                    let firstCellIndexPath = IndexPath(item: 0, section: section)
-                    var lastCellIndexPath = IndexPath(item: max(0, (numberOfItemsInSection - 1)), section: section)
-                    
-                    var noCell = false
-                    let cellAttributes:(first: UICollectionViewLayoutAttributes?, last: UICollectionViewLayoutAttributes?) = {
-                        if (collectionView.numberOfItems(inSection: section) > 0) {
-                            return (
-                                self.layoutAttributesForItem(at: firstCellIndexPath),
-                                self.layoutAttributesForItem(at: lastCellIndexPath)
-                            )
-                        } else {
-                            noCell = true
-                            
-                            let nums = collectionView.numberOfItems(inSection: max(0, section - 1))
-                            lastCellIndexPath = IndexPath(item: max(0, (nums - 1)), section: max(0, section - 1))
-                            var last:UICollectionViewLayoutAttributes? = nil
-                            if let header = self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: lastCellIndexPath) {
-                                last = header
-                            }
-                            if nums > 0, let cell = self.layoutAttributesForItem(at: lastCellIndexPath) {
-                                last = cell
-                            }
-                            if let footer = self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: lastCellIndexPath) {
-                                last = footer
-                            }
-                            return (
-                                nil,
-                                last
-                                //                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: firstCellIndexPath)
-                                //                                self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: lastCellIndexPath)
-                            )
-                        }
-                    }()
-                    
-                    var headerSticky = false
-                    if
-                        let fv = self.feedView,
-                        fv.sectionViewModels.count > section {
-                        headerSticky = fv.sectionViewModels[section].headerSticky
-                    }
-                    
-                    let headerHeight = layoutAttributes.frame.height
-                    var origin = layoutAttributes.frame.origin
-                    // This line makes only one header visible fixed at the top
-                    //                    origin.y = min(contentOffset/Users/lili/space/projects/CYZS/Pods/LeoCommon/LeoCommon/LeoCommon/FeedView/FeedViewStickyHeaderViewFlowLayout.swift.y, cellAttributes.last.frame.maxY - headerHeight)
-                    // Uncomment this line for normal behaviour:
-                    if (self.stickySectionIndexs.contains(section) || headerSticky) {
-                        origin.y = contentOffset.y
-                        if noCell {
-                            if let last = cellAttributes.last {
-                                origin.y = max(origin.y, last.frame.maxY)
-                            }
-                        } else {
-                            if let first = cellAttributes.first {
-                                origin.y = max(origin.y, first.frame.minY - headerHeight)
-                            }
-                            if let last = cellAttributes.last {
-                                origin.y = min(origin.y, last.frame.maxY - headerHeight)
-                            }
-                        }
-                    }
-                    
-                    layoutAttributes.zIndex = 1024
-                    layoutAttributes.frame = CGRect(origin: origin, size: layoutAttributes.frame.size)
-                }
-            }
-        }
-        
-        return superAttributes
-    }
-    
+    // MARK: - Collection View Flow Layout Methods
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        guard let layoutAttributes = super.layoutAttributesForElements(in: rect) else { return nil }
+        
+        // Helpers
+        let sectionsToAdd = NSMutableIndexSet()
+        var newLayoutAttributes = [UICollectionViewLayoutAttributes]()
+        
+        for layoutAttributesSet in layoutAttributes {
+            if layoutAttributesSet.representedElementCategory == .cell {
+                // Add Layout Attributes
+                newLayoutAttributes.append(layoutAttributesSet)
+                
+                // Update Sections to Add
+                sectionsToAdd.add(layoutAttributesSet.indexPath.section)
+                
+            } else if layoutAttributesSet.representedElementCategory == .supplementaryView {
+                // Update Sections to Add
+                sectionsToAdd.add(layoutAttributesSet.indexPath.section)
+            }
+        }
+        
+        for section in sectionsToAdd {
+            let indexPath = IndexPath(item: 0, section: section)
+            
+            if let sectionAttributes = self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: indexPath) {
+                newLayoutAttributes.append(sectionAttributes)
+            }
+        }
+        
+        return newLayoutAttributes
+    }
+    
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let layoutAttributes = super.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath) else { return nil }
+        guard let collectionView = collectionView else {
+            return layoutAttributes
+        }
+        
+        var headerSticky = false
+        if
+            let fv = self.feedView,
+            fv.sectionViewModels.count > indexPath.section {
+            headerSticky = fv.sectionViewModels[indexPath.section].headerSticky
+        }
+        
+        let contentOffsetY = collectionView.contentOffset.y
+        
+        guard let boundaries = boundaries(forSection: indexPath.section), headerSticky else {
+            return layoutAttributes
+        }
+        
+        // Helpers
+        var frameForSupplementaryView = layoutAttributes.frame
+        
+        let minimum = boundaries.minimum - frameForSupplementaryView.height
+        let maximum = boundaries.maximum - frameForSupplementaryView.height
+        
+        if contentOffsetY < minimum {
+            frameForSupplementaryView.origin.y = minimum
+        } else if contentOffsetY > maximum {
+            frameForSupplementaryView.origin.y = maximum
+        } else {
+            frameForSupplementaryView.origin.y = contentOffsetY
+        }
+        
+        layoutAttributes.frame = frameForSupplementaryView
+        
+        return layoutAttributes
+    }
+    
+    // MARK: - Helper Methods
+    func boundaries(forSection section: Int) -> (minimum: CGFloat, maximum: CGFloat)? {
+        // Helpers
+        var result = (minimum: CGFloat(0.0), maximum: CGFloat(0.0))
+        
+        // Exit Early
+        guard let collectionView = collectionView else { return result }
+        
+        // Fetch Number of Items for Section
+        let numberOfItems = collectionView.numberOfItems(inSection: section)
+        
+        // Exit Early
+        guard numberOfItems > 0 else {
+            return nil
+        }
+        
+        if let firstItem = layoutAttributesForItem(at: IndexPath(item: 0, section: section)),
+            let lastItem = layoutAttributesForItem(at: IndexPath(item: (numberOfItems - 1), section: section)) {
+            result.minimum = firstItem.frame.minY
+            result.maximum = lastItem.frame.maxY
+            
+            // Take Header Size Into Account
+            result.minimum -= headerReferenceSize.height
+            result.maximum -= headerReferenceSize.height
+            
+            // Take Section Inset Into Account
+            result.minimum -= sectionInset.top
+            result.maximum += (sectionInset.top + sectionInset.bottom)
+        }
+        
+        return result
     }
 }
 
