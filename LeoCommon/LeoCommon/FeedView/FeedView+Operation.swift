@@ -44,7 +44,32 @@ extension FeedView {
             let sectionVM = self._sectionViewModels[section]
             sectionVM.header = headerViewModel ?? sectionVM.header
             sectionVM.footer = footerViewModel ?? sectionVM.footer
-            sectionVM.items.append(contentsOf: cellViewModels)
+            if sectionVM.repetitionExclusion {  //排重
+                var tempItem = [FeedViewCellViewModel]()
+                var isEqual = false
+                for tempVm in cellViewModels {
+                    isEqual = false
+                    for vm in sectionVM.items {
+                        if tempVm.isEqual(other: vm) {
+                            isEqual = true
+                            break
+                        }
+                    }
+                    if (!isEqual) {
+                        tempItem.append(tempVm)
+                    }
+                }
+                if (tempItem.count == 0) {
+                    self.collectionView.leo_footer.endRefreshing()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.milliseconds(10), execute: {
+                        self.footerBeginRefreshing()
+                    })
+                    return
+                }
+                sectionVM.items.append(contentsOf: tempItem)
+            } else {
+                sectionVM.items.append(contentsOf: cellViewModels)
+            }
         }
         if reload {
             self.reloadData()

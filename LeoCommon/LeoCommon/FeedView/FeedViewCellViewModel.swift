@@ -29,6 +29,10 @@ open class FeedViewCellViewModel:NSObject, FeedViewCellViewModelProtocol {
         return FeedViewCell.self
     }
     
+    open func isEqual(other:FeedViewCellViewModel) -> Bool {
+        return false
+    }
+    
     deinit {
         Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }

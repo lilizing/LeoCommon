@@ -25,6 +25,7 @@ open class FeedViewSectionViewModel:NSObject {
     public var minimumInteritemSpacing:CGFloat = 0
     public var minimumLineSpacing:CGFloat = 0
     public var headerSticky:Bool = true //是否固定头部
+    public var repetitionExclusion:Bool = false //是否排重
     
     public var header:FeedViewSectionHeaderOrFooterViewModel?
     public var footer:FeedViewSectionHeaderOrFooterViewModel?
