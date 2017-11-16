@@ -149,7 +149,12 @@ extension FeedView {
         guard at < self._sectionViewModels[section].items.count else {
             return
         }
-        self._sectionViewModels[section].items.remove(at: at)
+        let sectionVM = self._sectionViewModels[section]
+        sectionVM.items.remove(at: at)
+        
+        if sectionVM.header == nil && sectionVM.footer == nil && sectionVM.items.count == 0 {
+            self._sectionViewModels.remove(at: section)
+        }
         if reload {
             self.reloadData()
         }
