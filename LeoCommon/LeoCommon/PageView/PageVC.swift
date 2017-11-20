@@ -80,6 +80,14 @@ public extension PageVC {
         var views: [UIView] = []
         for vc in contentsOf {
             views.append(vc.view)
+            for subView in vc.view.subviews {
+                if let subView = subView as? FeedPageInnerFeedView {
+                    subView.outerFeedPageView = self.feedPageVC?.feedPageView
+                    if subView.delayBindBlock != nil {
+                        subView.delayBindBlock!()
+                    }
+                }
+            }
         }
         self.pageView.insert(contentsOf: views, at: at)
     }
@@ -148,6 +156,8 @@ open class PageVC:UIViewController {
 }
 
 extension PageVC {
+    weak var feedPageVC: FeedPageVC?
+    
     func startMoving(index:Int) {}
     
     func endMoving(_ scrollView: UIScrollView) {

@@ -11,16 +11,16 @@ abstract_target 'Leo' do
   use_frameworks!
   
   #  pod 'ReactiveCocoa', '~> 5.0.0'
-  pod 'UIColor_Hex_Swift', '~> 3.0.2'
+  pod 'UIColor_Hex_Swift', '3.0.2'
   pod 'SwiftRichString', '0.9.10'
-  pod 'SnapKit', '~> 3.2.0'
-  pod 'Alamofire', '~> 4.5'
-  pod 'ObjectMapper', '~> 2.2'
+  pod 'SnapKit', '3.2.0'
+  pod 'Alamofire', '4.5.1'
+  pod 'ObjectMapper', '2.2'
   #  pod 'Presentr'
   #  pod 'Result', '~> 3.0.0'
 
-  pod 'RxSwift',    '~> 3.0'
-  pod 'RxCocoa',    '~> 3.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   
   pod 'RxGesture', :git=>'https://github.com/RxSwiftCommunity/RxGesture.git'
 

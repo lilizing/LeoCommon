@@ -59,6 +59,9 @@ open class FeedPageView:FeedView {
         }
     }
     
+    public let feedPageViewInnerCanScrollSignal = PublishSubject<Bool>()
+    public let feedPageViewOuterCanScrollSignal = PublishSubject<Bool>()
+    
     public init(frame: CGRect,
                 layoutType:FeedViewLayoutType = .flow,
                 sticky:Bool = true) {
@@ -80,16 +83,14 @@ open class FeedPageView:FeedView {
     func bind() {
         self.disposeBag = DisposeBag()
         
-        NotificationCenter.default.rx.notification(NSNotification.Name(rawValue: FeedPageViewOuterCanScroll)).bind { [weak self] (notification) in
-            guard let sSelf = self,let canScroll = notification.object as? Bool else { return }
-            
+        self.feedPageViewOuterCanScrollSignal.bind { [weak self] (value) in
+            guard let sSelf = self,let canScroll = value as? Bool else { return }
             Utils.commonLog("外部 - 切换 - \(canScroll)")
             
             sSelf.canScroll = canScroll
             
             sSelf.collectionView.scrollsToTop = canScroll
-            
-        }.addDisposableTo(self.disposeBag)
+            }.addDisposableTo(self.disposeBag)
         
         self.pageTab.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
             guard
@@ -104,7 +105,7 @@ open class FeedPageView:FeedView {
             } else {
                 sSelf.pageView.show(at: index)
             }
-        }.addDisposableTo(self.disposeBag)
+            }.addDisposableTo(self.disposeBag)
         
         self.pageView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
             guard
@@ -115,7 +116,7 @@ open class FeedPageView:FeedView {
             }
             
             sSelf.pageTab.show(at: index)
-        }.addDisposableTo(self.disposeBag)
+            }.addDisposableTo(self.disposeBag)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -163,8 +164,8 @@ extension FeedPageView {
                 
                 self.contentOffset = .init(x:0, y:height - topOffset)
                 
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewInnerCanScroll), object: true)
-                
+                //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewInnerCanScroll), object: true)
+                self.feedPageViewInnerCanScrollSignal.onNext(true)
                 self.collectionView.scrollsToTop = false
             }
         }
@@ -206,12 +207,31 @@ open class FeedPageInnerFeedView:FeedView {
     var canScroll = false
     var contentOffset:CGPoint = .zero
     
+    public weak var outerFeedPageView:FeedPageView? {
+        didSet {
+            self.bind()
+        }
+    }
+    
+    public var delayBindBlock:(() -> ())?
+    
+    public var feedPageViewInnerCanScrollSignal:PublishSubject<Bool>? {
+        get {
+            return self.outerFeedPageView?.feedPageViewInnerCanScrollSignal
+        }
+    }
+    
+    public var feedPageViewOuterCanScrollSignal:PublishSubject<Bool>? {
+        get {
+            return self.outerFeedPageView?.feedPageViewOuterCanScrollSignal
+        }
+    }
+    
     public override init(frame: CGRect,
-                layoutType:FeedViewLayoutType = .flow,
-                scrollDirection:UICollectionViewScrollDirection = .vertical,
-                sticky:Bool = false) {
+                         layoutType:FeedViewLayoutType = .flow,
+                         scrollDirection:UICollectionViewScrollDirection = .vertical,
+                         sticky:Bool = false) {
         super.init(frame: frame, layoutType: layoutType, scrollDirection: scrollDirection, sticky: sticky)
-        self.bind()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -219,15 +239,16 @@ open class FeedPageInnerFeedView:FeedView {
     }
     
     func bind() {
-        NotificationCenter.default.rx.notification(NSNotification.Name(rawValue: FeedPageViewInnerCanScroll)).bind { [weak self] (notification) in
-            guard let sSelf = self,let canScroll = notification.object as? Bool else { return }
+        self.disposeBag = DisposeBag()
+        
+        self.feedPageViewInnerCanScrollSignal?.bind { [weak self] (value) in
+            guard let sSelf = self,let canScroll = value as? Bool else { return }
             
             Utils.commonLog("内部 - 切换 - \(canScroll)")
             sSelf.canScroll = canScroll
             
             sSelf.collectionView.scrollsToTop = canScroll
-            
-        }.addDisposableTo(self.disposeBag)
+            }.addDisposableTo(self.disposeBag)
     }
     
     public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -245,8 +266,8 @@ open class FeedPageInnerFeedView:FeedView {
             self.canScroll = false
             self.contentOffset = scrollView.contentOffset
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
-            
+            //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+            self.feedPageViewOuterCanScrollSignal?.onNext(true)
             self.collectionView.scrollsToTop = false
         }
         //        }
@@ -292,3 +313,4 @@ class FeedViewPageSectionHeader:FeedViewSectionHeaderOrFooter {
         return .init(width: size.width, height: vm.height)
     }
 }
+
