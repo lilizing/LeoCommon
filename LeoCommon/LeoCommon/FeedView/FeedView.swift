@@ -196,7 +196,7 @@ open class FeedView:UIView {
         } else {
             var layout = UICollectionViewFlowLayout()
             if self.sticky {
-                let tLayout = FeedViewStickyHeaderViewFlowLayout()
+                let tLayout = FeedViewFloatingHeaderViewFlowLayout()
                 tLayout.feedView = self
                 layout = tLayout
             }

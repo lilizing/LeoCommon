@@ -109,6 +109,8 @@ open class PageVC:UIViewController {
     public var viewControllers:[UIViewController] = []
     public var selectedViewController:UIViewController!
     
+    weak var feedPageVC: FeedPageVC?
+    
     public var selectedIndexObservable:Variable<Int> {
         get {
             return self.pageView.selectedIndexObservable
@@ -156,7 +158,6 @@ open class PageVC:UIViewController {
 }
 
 extension PageVC {
-    weak var feedPageVC: FeedPageVC?
     
     func startMoving(index:Int) {}
     

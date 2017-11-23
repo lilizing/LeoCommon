@@ -8,6 +8,84 @@
 
 import UIKit
 
+class FeedViewFloatingHeaderViewFlowLayout: UICollectionViewFlowLayout {
+    weak var feedView:FeedView?
+    
+    func headerSticky(section:Int) -> Bool {
+        var headerSticky = false
+        if
+            let fv = self.feedView,
+            fv.sectionViewModels.count > section {
+            headerSticky = fv.sectionViewModels[section].headerSticky
+        }
+        return headerSticky
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        guard var attributes = super.layoutAttributesForElements(in: rect) else { return nil }
+        var visibleSectionsWithoutHeader:[Int] = []
+        
+        for itemAttributes in attributes {
+            if !visibleSectionsWithoutHeader.contains(itemAttributes.indexPath.section) {
+                visibleSectionsWithoutHeader.append(itemAttributes.indexPath.section)
+            }
+            
+            if itemAttributes.representedElementKind == UICollectionElementKindSectionHeader {
+                let indexOfSectionObject = visibleSectionsWithoutHeader.index(of: itemAttributes.indexPath.section)
+                if let indexOfSectionObject = indexOfSectionObject, indexOfSectionObject != NSNotFound {
+                    visibleSectionsWithoutHeader.remove(at: indexOfSectionObject)
+                }
+            }
+        }
+        
+        for sectionNumber in visibleSectionsWithoutHeader {
+            let headerSticky = self.headerSticky(section: sectionNumber)
+            
+            if headerSticky {
+                if let headerAttributes = self.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: IndexPath.init(item: 0, section: sectionNumber)),
+                    headerAttributes.frame.size.width > 0 && headerAttributes.frame.size.height > 0 {
+                    attributes.append(headerAttributes)
+                }
+            }
+        }
+        
+        for itemAttributes in attributes {
+            if itemAttributes.representedElementKind == UICollectionElementKindSectionHeader {
+                let headerAttributes = itemAttributes;
+                if self.headerSticky(section: headerAttributes.indexPath.section) {
+                    let contentOffset = self.collectionView!.contentOffset
+                    var originInCollectionView = CGPoint.init(x: headerAttributes.frame.origin.x - contentOffset.x,
+                                                              y: headerAttributes.frame.origin.y - contentOffset.y)
+                    originInCollectionView.y -= self.collectionView!.contentInset.top
+                    var frame = headerAttributes.frame
+                    if originInCollectionView.y < 0 {
+                        frame.origin.y += (originInCollectionView.y * -1)
+                    }
+                    var numberOfSections = 1
+                    if let num = self.collectionView?.dataSource?.numberOfSections?(in:self.collectionView!) {
+                        numberOfSections = num
+                    }
+                    if numberOfSections > headerAttributes.indexPath.section + 1 {
+                        if let nextHeaderAttributes = self .layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: IndexPath.init(item: 0, section: headerAttributes.indexPath.section + 1)) {
+                            let maxY = nextHeaderAttributes.frame.origin.y
+                            if frame.maxY >= maxY {
+                                frame.origin.y = maxY - frame.size.height
+                            }
+                        }
+                    }
+                    headerAttributes.frame = frame
+                }
+                headerAttributes.zIndex = 1024
+            }
+        }
+        return attributes
+    }
+}
+
 class FeedViewStickyHeaderViewFlowLayout: UICollectionViewFlowLayout {
     weak var feedView:FeedView?
     
