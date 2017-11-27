@@ -112,8 +112,7 @@ extension FeedPageVC {
         self.pageTabHeight = 0
         self.pageViewHeight = 0
         self.feedPageView.reloadData()
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
-        self.feedPageView.feedPageViewOuterCanScrollSignal.onNext(true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
     }
 
     public func removeForPage(at index:Int) {
@@ -142,8 +141,7 @@ extension FeedPageVC {
            self.pageViewHeight = 0
            self.feedPageView.reloadData()
         }
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
-        self.feedPageView.feedPageViewOuterCanScrollSignal.onNext(true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
     }
     
     public func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool = false) {
