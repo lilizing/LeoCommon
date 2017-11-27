@@ -22,7 +22,7 @@ public enum APICachePolicy {
     case local(maxAge:Int)
 }
 
-public func responseMap<T:BaseMappable>(json:[String: Any]) -> Result<T> {
+internal func responseMap<T:BaseMappable>(json:[String: Any]) -> Result<T> {
     do {
         let data = try JSONSerialization.data(withJSONObject: json)
         let JSONString = String(data: data, encoding: .utf8)
@@ -33,7 +33,7 @@ public func responseMap<T:BaseMappable>(json:[String: Any]) -> Result<T> {
     }
 }
 
-public func errorHandler<T:BaseMappable>(result: Result<T>) -> Result<T> {
+internal func errorHandler<T:BaseMappable>(result: Result<T>) -> Result<T> {
     return result
 }
 

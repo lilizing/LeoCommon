@@ -142,7 +142,7 @@ open class PageTabView:UIView {
         self.insert(contentsOf: [newElement], at: at)
     }
     
-    @objc func tap(tap: UITapGestureRecognizer) {
+    func tap(tap: UITapGestureRecognizer) {
         if let tView = tap.view as? PageTabItemView,
             let index = self.items.index(of: tView) {
             self.selectedIndex = index

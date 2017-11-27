@@ -51,7 +51,7 @@ class DemoPageVC:UIViewController {
 //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(0), execute: {
 //                self.pageTabView.show(at: max(0, self.pageVC.viewControllers.count - 2))
 //            })
-            }.disposed(by: self.disposeBag)
+        }.addDisposableTo(self.disposeBag)
         
         let view2 = UILabel()
         view2.text = "删除"
@@ -65,7 +65,7 @@ class DemoPageVC:UIViewController {
         
         _ = view2.tapGesture().bind { [unowned self] (_) in
             self.pageTabVC.remove(at: max(0, self.pageTabVC.pageVC.viewControllers.count - 2))
-        }.disposed(by: self.disposeBag)
+        }.addDisposableTo(self.disposeBag)
         
         
         self.pageTabVC = PageTabVC()

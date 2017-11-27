@@ -147,7 +147,7 @@ public class FeedViewForPage:FeedView {
                     Utils.commonLog("翻页 toIndex: \(toIndex)")
                     sSelf.startMoving(index: toIndex)
                 }
-            }.disposed(by: self.dsDisposeBag)
+            }.addDisposableTo(self.dsDisposeBag)
         }
     }
     
