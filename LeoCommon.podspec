@@ -136,14 +136,13 @@ Pod::Spec.new do |s|
   # s.dependency "BLNetworking"
   # s.dependency "BLAPIManagers"
   # s.dependency "BLMediator"
-  # s.dependency 'ReactiveCocoa', '~> 5.0.0'
 
-  s.dependency 'UIColor_Hex_Swift', '~> 3.0.2'
-  s.dependency 'ObjectMapper', '~> 2.2'
-  s.dependency 'Alamofire', '~> 4.5.1'
-  s.dependency 'SnapKit', '~> 3.2.0'
-  s.dependency 'SwiftRichString', '0.9.10'
-  s.dependency 'RxSwift', '3.6.1'
-  s.dependency 'RxCocoa', '3.6.1'
-  s.dependency 'RxGesture'
+  s.dependency 'UIColor_Hex_Swift'
+  s.dependency 'ObjectMapper'
+  s.dependency 'Alamofire', '4.5.1'
+  s.dependency 'SnapKit', '4.0.0'
+  s.dependency 'SwiftRichString', '1.0.1'
+  s.dependency 'RxSwift', '4.0.0'
+  s.dependency 'RxCocoa', '4.0.0'
+  s.dependency 'RxGesture', '~> 1.2'
 end

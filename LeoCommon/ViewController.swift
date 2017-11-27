@@ -95,11 +95,11 @@ class ViewController: UIViewController, APIDelegate, UIGestureRecognizerDelegate
             for sectionVM in sectionVMS {
                 sectionVM.items.rx_elements().skip(1).bind(onNext: { (cellVMS) in
                     print("某个Section发生改变...")
-                }).addDisposableTo(self.sectionInnerDisposeBag)
+                }).disposed(by: self.sectionInnerDisposeBag)
             }
             
             print("发生改变...")
-        }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
         
         let view = UIView()
         view.backgroundColor = .red

@@ -83,14 +83,14 @@ open class FeedPageView:FeedView {
     func bind() {
         self.disposeBag = DisposeBag()
         
-        self.feedPageViewOuterCanScrollSignal.bind { [weak self] (value) in
-            guard let sSelf = self,let canScroll = value as? Bool else { return }
+        self.feedPageViewOuterCanScrollSignal.bind { [weak self] (canScroll) in
+            guard let sSelf = self else { return }
             Utils.commonLog("外部 - 切换 - \(canScroll)")
             
             sSelf.canScroll = canScroll
             
             sSelf.collectionView.scrollsToTop = canScroll
-            }.addDisposableTo(self.disposeBag)
+            }.disposed(by: self.disposeBag)
         
         self.pageTab.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
             guard
@@ -105,7 +105,7 @@ open class FeedPageView:FeedView {
             } else {
                 sSelf.pageView.show(at: index)
             }
-            }.addDisposableTo(self.disposeBag)
+            }.disposed(by: self.disposeBag)
         
         self.pageView.selectedIndexObservable.asObservable().observeOn(MainScheduler.asyncInstance).distinctUntilChanged().bind { [weak self] (index) in
             guard
@@ -116,7 +116,7 @@ open class FeedPageView:FeedView {
             }
             
             sSelf.pageTab.show(at: index)
-            }.addDisposableTo(self.disposeBag)
+            }.disposed(by: self.disposeBag)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -241,14 +241,14 @@ open class FeedPageInnerFeedView:FeedView {
     func bind() {
         self.disposeBag = DisposeBag()
         
-        self.feedPageViewInnerCanScrollSignal?.bind { [weak self] (value) in
-            guard let sSelf = self,let canScroll = value as? Bool else { return }
+        self.feedPageViewInnerCanScrollSignal?.bind { [weak self] (canScroll) in
+            guard let sSelf = self else { return }
             
             Utils.commonLog("内部 - 切换 - \(canScroll)")
             sSelf.canScroll = canScroll
             
             sSelf.collectionView.scrollsToTop = canScroll
-            }.addDisposableTo(self.disposeBag)
+            }.disposed(by: self.disposeBag)
     }
     
     public override func scrollViewDidScroll(_ scrollView: UIScrollView) {

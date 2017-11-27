@@ -76,7 +76,7 @@ class DemoFeedPageVC:UIViewController {
             
             self.appendTabView()
             
-        }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
         
         let view2 = UILabel()
         view2.text = "删除"
@@ -93,7 +93,7 @@ class DemoFeedPageVC:UIViewController {
             self.feedPageVC.removeForPage(at: 0)
             self.feedPageVC.showPage(at: 0)
             
-        }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
         
         let view3 = UILabel()
         view3.text = "删除所有"
@@ -109,7 +109,7 @@ class DemoFeedPageVC:UIViewController {
             
             self.feedPageVC.removeAllForPage()
             
-        }.addDisposableTo(self.disposeBag)
+        }.disposed(by: self.disposeBag)
     }
     
     func appendSection() {
