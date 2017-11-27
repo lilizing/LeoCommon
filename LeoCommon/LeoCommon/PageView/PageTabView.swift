@@ -23,7 +23,7 @@ open class PageTabItemView:UIView {
         }
     }
     
-    open func width() -> CGFloat {
+    open func tabWidth() -> CGFloat {
         return 0
     }
     
@@ -64,7 +64,7 @@ open class PageTabView:UIView {
                     selectedTab = tab
                 }
                 tab.isSelected = index == self.selectedIndex
-                width += tab.width()
+                width += tab.tabWidth()
                 index += 1
             }
             
@@ -78,7 +78,7 @@ open class PageTabView:UIView {
             
             guard self.selectedIndex > -1 else { return }
             
-            let selectedTabCenterX = selectedTabLeft + selectedTab.width() / 2
+            let selectedTabCenterX = selectedTabLeft + selectedTab.tabWidth() / 2
             
             var contentOffsetX:CGFloat = -self.feedView.collectionView.contentInset.left
             if self.feedView.collectionView.contentSize.width > self.bounds.size.width {
@@ -101,7 +101,7 @@ open class PageTabView:UIView {
                     if let width = self.lineWidth {
                         make.width.equalTo(width)
                     } else {
-                        make.width.equalTo(max(self.lineMinWidth, selectedTab.width() - self.lineSpacing * 2))
+                        make.width.equalTo(max(self.lineMinWidth, selectedTab.tabWidth() - self.lineSpacing * 2))
                     }
                 }
                 self.layoutIfNeeded()
@@ -142,7 +142,7 @@ open class PageTabView:UIView {
         self.insert(contentsOf: [newElement], at: at)
     }
     
-    func tap(tap: UITapGestureRecognizer) {
+    @objc func tap(tap: UITapGestureRecognizer) {
         if let tView = tap.view as? PageTabItemView,
             let index = self.items.index(of: tView) {
             self.selectedIndex = index
@@ -253,7 +253,7 @@ open class FeedViewForPageTab:FeedView {
     override open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         self.dataSource.lineScrollView.contentSize = .init(width: collectionView.contentSize.width, height: self.dataSource.lineHeight)
         let view = self.dataSource.items[indexPath.row]
-        return CGSize.init(width: view.width(), height: self.bounds.size.height)
+        return CGSize.init(width: view.tabWidth(), height: self.bounds.size.height)
     }
     
     override public func scrollViewDidScroll(_ scrollView: UIScrollView) {

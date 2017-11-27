@@ -9,13 +9,13 @@
 import Foundation
 import SwiftRichString
 
-public enum UIFontWeightType {
+@objc public enum UIFontWeightType:Int {
     case regular
     case medium
     case semibold
 }
 
-extension UIFont {
+@objc extension UIFont {
     public class func font(bold: Bool = false, size: CGFloat) -> UIFont {
         if #available(iOS 9, *) {
             return UIFont.init(name: bold ? FontName.PingFangSC_Medium.rawValue : FontName.PingFangSC_Regular.rawValue, size: size)!
