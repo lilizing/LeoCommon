@@ -15,17 +15,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-public protocol FeedViewCellProtocol {
-    var viewModel: FeedViewCellViewModelProtocol? { get set }
-    var disposeBag: DisposeBag { get set }
-    
-    func set()
-    func bind()
-    func layout()
-    
-}
-
-open class FeedViewCell: UICollectionViewCell, FeedViewCellProtocol {
+open class FeedViewCell: UICollectionViewCell {
     public weak var parentFeedView:FeedView?
     
     public var disposeBag: DisposeBag = DisposeBag()

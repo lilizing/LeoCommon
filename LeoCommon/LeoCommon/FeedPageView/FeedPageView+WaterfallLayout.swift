@@ -13,7 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-extension FeedPageView {
+@objc extension FeedPageView {
     
     open override func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                                   sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {

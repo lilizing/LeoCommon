@@ -13,7 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-extension FeedView:UICollectionViewDelegateFlowLayout  {
+@objc extension FeedView:UICollectionViewDelegateFlowLayout  {
     
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section > self.sectionViewModels.count - 1  {

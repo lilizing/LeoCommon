@@ -13,7 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-extension FeedView {
+@objc extension FeedView {
     
     public func clear(reload:Bool = false) {
         self._sectionViewModels.removeAll()

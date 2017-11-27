@@ -15,12 +15,12 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-public protocol FeedViewCellViewModelProtocol {
+@objc public protocol FeedViewCellViewModelProtocol {
     //context用来传递一些上下文信息，可以用于区分返回不同的视图类型
     func cellClass(_ context:Dictionary<String, Any>?) -> FeedViewCell.Type
 }
 
-open class FeedViewCellViewModel:NSObject, FeedViewCellViewModelProtocol {
+@objc open class FeedViewCellViewModel:NSObject, FeedViewCellViewModelProtocol {
     public var staticsContext: [String: Any] = [:]
     
     public override init() {}

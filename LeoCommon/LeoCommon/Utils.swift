@@ -12,7 +12,7 @@ import Foundation
 
 let CommonLogEnabled = false
 
-open class Utils {
+@objc open class Utils:NSObject {
     public static func line(value: CGFloat) -> CGFloat {
         return value / UIScreen.main.scale
     }

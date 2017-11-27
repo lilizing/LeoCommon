@@ -15,7 +15,7 @@ import ObjectMapper
 
 private let FeedPageViewTabViewTag = 1111
 
-extension FeedPageView {
+@objc extension FeedPageView {
     open override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == self.sectionViewModels.count {
             return 1

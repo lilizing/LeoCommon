@@ -15,11 +15,11 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-public protocol FeedViewSectionHeaderOrFooterViewModel {
+@objc public protocol FeedViewSectionHeaderOrFooterViewModel {
     func sectionClass(_ context:Dictionary<String, Any>?) -> FeedViewSectionHeaderOrFooter.Type
 }
 
-open class FeedViewSectionViewModel:NSObject {
+@objc open class FeedViewSectionViewModel:NSObject {
     public var columnCount:Int = 1
     public var sectionInset:UIEdgeInsets = .zero
     public var minimumInteritemSpacing:CGFloat = 0

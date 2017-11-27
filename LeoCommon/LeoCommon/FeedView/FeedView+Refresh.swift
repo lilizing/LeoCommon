@@ -15,7 +15,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-extension FeedView {
+@objc extension FeedView {
     private struct AssociatedKeys {
         static var FeedPageKey = "leo.feedview.page"
         static var FeedPageSizeKey = "leo.feedview.pageSize"
@@ -200,7 +200,7 @@ extension FeedView {
         self.loader(page, self.pageSize)
     }
     
-    open func stopLoading(_ page:Int?,
+    @nonobjc open func stopLoading(_ page:Int?,
                           hasMore: () -> (Bool) = { return true },
                           reloadDelay: Int = 0,
                           callback: @escaping ()->() = {}) {

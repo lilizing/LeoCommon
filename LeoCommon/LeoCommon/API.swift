@@ -42,7 +42,7 @@ public func errorHandler<T:BaseMappable>(result: Result<T>) -> Result<T> {
     @objc optional func defaultParameters() -> Parameters?
 }
 
-open class API: NSObject {
+@objc open class API: NSObject {
     
     static public let shared:API = API(basePath: "", delegate: nil)
     

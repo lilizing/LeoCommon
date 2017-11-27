@@ -13,7 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-extension FeedViewForPage {
+@objc extension FeedViewForPage {
     
     func startMoving(index:Int) {
         if let vc = self.dataSource.viewController {
