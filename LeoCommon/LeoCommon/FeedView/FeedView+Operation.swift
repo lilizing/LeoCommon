@@ -34,9 +34,9 @@ import ObjectMapper
                        footerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
                        cellViewModels:[FeedViewCellViewModel], reload:Bool = false) {
         guard section <= self._sectionViewModels.count else { return }
-        guard (cellViewModels.count > 0 || headerViewModel != nil || footerViewModel != nil) else {
-            return
-        }
+//        guard (cellViewModels.count > 0 || headerViewModel != nil || footerViewModel != nil) else {
+//            return
+//        }
         if section == self._sectionViewModels.count {
             let sectionVM = FeedViewSectionViewModel.init(header:headerViewModel, footer:footerViewModel, items: cellViewModels)
             self._sectionViewModels.append(sectionVM)

@@ -74,8 +74,8 @@ open class FeedPageVC:UIViewController {
                             sticky:Bool = false) {
         self.init()
         self._feedPageView = FeedPageView.init(frame: .zero,
-                                              layoutType: layoutType,
-                                              sticky: sticky)
+                                               layoutType: layoutType,
+                                               sticky: sticky)
         self.feedPageView.viewController = self
     }
     
@@ -87,6 +87,7 @@ open class FeedPageVC:UIViewController {
             make.edges.equalTo(self.view)
         }
         self.pageVC.didMove(toParentViewController: self)
+        self.pageVC.viewController = self
     }
     
     deinit {
@@ -98,7 +99,7 @@ extension FeedPageVC {
     public func reloadData() {
         self.feedPageView.reloadData()
     }
-
+    
     public func showPage(at index:Int) {
         //这里做个延迟处理，解决无限联动问题
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
@@ -112,19 +113,20 @@ extension FeedPageVC {
         self.pageTabHeight = 0
         self.pageViewHeight = 0
         self.feedPageView.reloadData()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+        self.feedPageView.feedPageViewOuterCanScrollSignal.onNext(true)
     }
-
+    
     public func removeForPage(at index:Int) {
         self.pageTab.remove(at: index)
         self.pageVC.remove(at: index)
     }
-
+    
     public func insertForPage(tab: PageTabItemView, vc: UIViewController, at: Int) {
         self.pageTab.insert(newElement: tab, at: at)
         self.pageVC.insert(newElement: vc, at: at)
     }
-
+    
     public func insertForPage(tabs: [PageTabItemView], vcs: [UIViewController], at: Int) {
         self.pageTab.insert(contentsOf: tabs, at: at)
         self.pageVC.insert(contentsOf: vcs, at: at)
@@ -137,11 +139,12 @@ extension FeedPageVC {
         self.pageTab.removeAll()
         self.pageVC.removeAll()
         if reload {
-           self.pageTabHeight = 0
-           self.pageViewHeight = 0
-           self.feedPageView.reloadData()
+            self.pageTabHeight = 0
+            self.pageViewHeight = 0
+            self.feedPageView.reloadData()
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: FeedPageViewOuterCanScroll), object: true)
+        self.feedPageView.feedPageViewOuterCanScrollSignal.onNext(true)
     }
     
     public func append(sectionViewModels:[FeedViewSectionViewModel], reload:Bool = false) {
@@ -149,10 +152,10 @@ extension FeedPageVC {
     }
     
     public func append(section:Int,
-                headerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
-                footerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
-                cellViewModels:[FeedViewCellViewModel],
-                reload:Bool) {
+                       headerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
+                       footerViewModel:FeedViewSectionHeaderOrFooterViewModel?,
+                       cellViewModels:[FeedViewCellViewModel],
+                       reload:Bool) {
         self.feedPageView.append(section: section, headerViewModel: headerViewModel, footerViewModel: footerViewModel, cellViewModels: cellViewModels, reload: reload)
     }
     
@@ -188,4 +191,3 @@ extension FeedPageVC {
         self.feedPageView.remove(section: section, reload:reload)
     }
 }
-

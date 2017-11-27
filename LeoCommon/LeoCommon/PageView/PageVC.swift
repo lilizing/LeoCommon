@@ -82,7 +82,7 @@ public extension PageVC {
             views.append(vc.view)
             for subView in vc.view.subviews {
                 if let subView = subView as? FeedPageInnerFeedView {
-                    subView.outerFeedPageView = self.feedPageVC?.feedPageView
+                    subView.outerFeedPageView = self.viewController?.feedPageView
                     if subView.delayBindBlock != nil {
                         subView.delayBindBlock!()
                     }
@@ -108,8 +108,6 @@ open class PageVC:UIViewController {
     
     public var viewControllers:[UIViewController] = []
     public var selectedViewController:UIViewController!
-    
-    weak var feedPageVC: FeedPageVC?
     
     public var selectedIndexObservable:Variable<Int> {
         get {
@@ -152,13 +150,14 @@ open class PageVC:UIViewController {
         }
     }
     
+    weak var viewController: FeedPageVC?
+    
     deinit {
         Utils.commonLog("【内存释放】\(String(describing: self)) dealloc")
     }
 }
 
 extension PageVC {
-    
     func startMoving(index:Int) {}
     
     func endMoving(_ scrollView: UIScrollView) {
@@ -232,3 +231,4 @@ extension PageVC {
         self.pageView.isMoving = false;
     }
 }
+
