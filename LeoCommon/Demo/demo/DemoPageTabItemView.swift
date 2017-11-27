@@ -39,7 +39,7 @@ class DemoPageTabItemView:PageTabItemView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func tabWidth() -> CGFloat {
+    override func width() -> CGFloat {
         return 80
     }
 }

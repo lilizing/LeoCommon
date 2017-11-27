@@ -13,7 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-@objc extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
+extension FeedView:LEOCollectionViewDelegateWaterfallLayout {
     
     open func leo_collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                              sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {

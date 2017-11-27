@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc extension FeedPageView  {
+extension FeedPageView  {
     
     open override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section > self.sectionViewModels.count  {

@@ -20,7 +20,7 @@ extension String {
     }
 }
 
-@objc extension NSAttributedString {
+extension NSAttributedString {
     public func size(fixHeight:CGFloat) -> CGSize {
         return self.boundingRect(with: .init(width: CGFloat.greatestFiniteMagnitude, height: fixHeight), options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil).size
     }
@@ -29,14 +29,14 @@ extension String {
         return self.boundingRect(with: .init(width: fixWidth, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil).size
     }
     
-    @nonobjc static public func += (left: inout NSAttributedString, right: NSAttributedString) {
+    static public func += (left: inout NSAttributedString, right: NSAttributedString) {
         let ns = left is NSMutableAttributedString ? (left as! NSMutableAttributedString) : NSMutableAttributedString(attributedString: left)
         ns.append(right)
         left = ns
     }
 }
 
-@objc extension NSString {
+extension NSString {
     public func size(font:UIFont, color:UIColor, fixHeight:CGFloat) -> CGSize {
         let sVal = self as String
         return sVal.size(font:font, color:color, fixHeight:fixHeight)
@@ -58,7 +58,7 @@ extension String {
     }
 }
 
-@objc extension NSString {
+extension NSString {
     public func trim() -> String {
         let sVal = self as String
         return sVal.trimmingCharacters(in: .whitespaces)
@@ -80,7 +80,7 @@ extension String {
     }
 }
 
-@objc extension NSString {
+extension NSString {
     public func string(bold:Bool, size:CGFloat, hex:String) -> NSMutableAttributedString {
         let sVal = self as String
         return sVal.string(font: UIFont.font(bold:bold, size:size), hex: hex)

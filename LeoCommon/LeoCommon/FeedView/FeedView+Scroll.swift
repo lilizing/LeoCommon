@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-@objc extension FeedView {
+extension FeedView {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.didScrollSignal.onNext(scrollView)
     }

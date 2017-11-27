@@ -13,7 +13,7 @@ import RxCocoa
 import SnapKit
 import ObjectMapper
 
-@objc extension FeedView:UICollectionViewDataSource {
+extension FeedView:UICollectionViewDataSource {
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.sectionViewModels.count == 0 {
             return 0
