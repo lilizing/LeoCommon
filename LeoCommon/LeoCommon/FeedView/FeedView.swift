@@ -17,10 +17,10 @@ public enum FeedViewLayoutType {
     case flow, water, flowLeft, flowRight
 }
 
-open class FeedCollectionView:UICollectionView {
+open class FeedCollectionView:UICollectionView, UIGestureRecognizerDelegate {
     public var simultaneously:Bool? //是否支持滑动共存
     
-    func gestureRecognizer(_: UIGestureRecognizer,shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_: UIGestureRecognizer,shouldRecognizeSimultaneouslyWith shouldRecognizeSimultaneouslyWithGestureRecognizer:UIGestureRecognizer) -> Bool {
         if let sim = self.simultaneously {
             return sim
         }
