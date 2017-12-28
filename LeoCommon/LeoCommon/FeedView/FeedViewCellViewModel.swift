@@ -29,7 +29,7 @@ import ObjectMapper
         return FeedViewCell.self
     }
     
-    @objc open func isEqual(other:FeedViewCellViewModel) -> Bool {
+    @objc open func isRepeat(other:FeedViewCellViewModel) -> Bool {
         return false
     }
     

@@ -50,7 +50,7 @@ extension FeedView {
                 for tempVm in cellViewModels {
                     isEqual = false
                     for vm in sectionVM.items {
-                        if tempVm.isEqual(other: vm) {
+                        if tempVm.isRepeat(other: vm) {
                             isEqual = true
                             break
                         }
