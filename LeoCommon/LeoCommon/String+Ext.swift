@@ -140,6 +140,18 @@ extension String {
         return self.set(style: style)
     }
     
+    public func string(font:UIFont, color:UIColor = .black, lineSpace: Float?) -> NSMutableAttributedString {
+        let style = Style.init { style in
+            style.font = FontAttribute.init(font: font)
+            style.color = color
+            style.lineBreak = .byTruncatingTail
+            if let ls = lineSpace {
+                style.paragraphSpacing = ls
+            }
+        }
+        return self.set(style: style)
+    }
+    
     public func string(font:UIFont, hex:String, lineBreak: NSLineBreakMode) -> NSMutableAttributedString {
         let style = Style.init { style in
             style.font = FontAttribute.init(font: font)
