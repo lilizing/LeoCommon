@@ -152,6 +152,18 @@ extension String {
         return self.set(style: style)
     }
     
+    public func string(font:UIFont, color:UIColor = .black, strickColor: UIColor?) -> NSMutableAttributedString {
+        let style = Style.init { style in
+            style.font = FontAttribute.init(font: font)
+            style.color = color
+            style.lineBreak = .byTruncatingTail
+            if let stColor = strickColor {
+                style.strike = StrikeAttribute(color: stColor, style: NSUnderlineStyle.styleSingle)
+            }
+        }
+        return self.set(style: style)
+    }
+    
     public func string(font:UIFont, hex:String, lineBreak: NSLineBreakMode) -> NSMutableAttributedString {
         let style = Style.init { style in
             style.font = FontAttribute.init(font: font)
