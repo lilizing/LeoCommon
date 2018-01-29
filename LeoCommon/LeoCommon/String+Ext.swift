@@ -110,6 +110,17 @@ extension String {
         let sVal = self as String
         return sVal.string(font:font, color:color, lineBreak:lineBreak)
     }
+    
+    public func string(font:UIFont, color:UIColor = .black, strickColor: UIColor) -> NSMutableAttributedString {
+        let sVal = self as String
+        let style = Style.init { style in
+            style.font = FontAttribute.init(font: font)
+            style.color = color
+            style.lineBreak = .byTruncatingTail
+            style.strike = StrikeAttribute(color: strickColor, style: NSUnderlineStyle.styleSingle)
+        }
+        return sVal.set(style: style)
+    }
 }
 
 extension String {
