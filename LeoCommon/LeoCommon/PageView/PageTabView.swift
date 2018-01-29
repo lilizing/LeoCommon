@@ -14,7 +14,7 @@ import SnapKit
 import ObjectMapper
 import RxGesture
 
-open class PageTabItemView:UIView {
+@objc open class PageTabItemView:UIView {
     public var disposeBag = DisposeBag()
     
     open var isSelected:Bool = false {
@@ -32,22 +32,24 @@ open class PageTabItemView:UIView {
     }
 }
 
-open class PageTabView:UIView {
-    public var feedView:FeedViewForPageTab!
+@objc open class PageTabView:UIView {
+    @objc public var feedView:FeedViewForPageTab!
     
-    public var lineScrollView:UIScrollView!
-    public var lineView:UIView!
+    @objc public var lineScrollView:UIScrollView!
+    @objc public var lineView:UIView!
     
-    public var lineHeight:CGFloat = 2
-    public var lineBottomOffset:CGFloat = 0
-    public var lineSpacing:CGFloat = 0
-    public var lineMinWidth:CGFloat = 10
+    @objc public var lineHeight:CGFloat = 2
+    @objc public var lineBottomOffset:CGFloat = 0
+    @objc public var lineSpacing:CGFloat = 0
+    @objc public var lineMinWidth:CGFloat = 10
     
-    public var lineWidth:CGFloat?
+    @objc public var lineWidth:CGFloat = 0
     
     public var disposeBag = DisposeBag()
     
-    public var items:[PageTabItemView] = []
+    @objc public var items:[PageTabItemView] = []
+    
+    @objc public var selectedChangeBlock: (Int) -> () = { _ in }
     
     public var selectedIndexObservable:Variable<Int> = Variable(-1)
     
@@ -98,8 +100,8 @@ open class PageTabView:UIView {
                     make.centerX.equalTo(selectedTabCenterX)
                     make.top.equalTo(0)
                     make.height.equalTo(self.lineHeight)
-                    if let width = self.lineWidth {
-                        make.width.equalTo(width)
+                    if self.lineWidth > 0 {
+                        make.width.equalTo(self.lineWidth)
                     } else {
                         make.width.equalTo(max(self.lineMinWidth, selectedTab.tabWidth() - self.lineSpacing * 2))
                     }
@@ -108,19 +110,20 @@ open class PageTabView:UIView {
             })
             
             self.selectedIndexObservable.value = self.selectedIndex
+            self.selectedChangeBlock(self.selectedIndex)
         }
     }
     
-    public var isMoving:Bool = false
+    @objc public var isMoving:Bool = false
     
     public weak var viewController:PageVC?
     
-    public func show(at index:Int) {
+    @objc public func show(at index:Int) {
         guard index < items.count else { return }
         self.selectedIndex = index
     }
     
-    public func remove(at index: Int) {
+    @objc public func remove(at index: Int) {
         guard index < items.count && self.feedView.sectionViewModels.count > 0 else { return }
         
         self.items[index].removeFromSuperview()
@@ -129,7 +132,7 @@ open class PageTabView:UIView {
         self.feedView.remove(section: 0, at: index, reload:true)
     }
     
-    public func removeAll() {
+    @objc public func removeAll() {
         self.feedView.remove(section: 0, reload:true)
         for view in self.items {
             view.removeFromSuperview()
@@ -138,7 +141,7 @@ open class PageTabView:UIView {
         self.selectedIndex = -1
     }
     
-    public func insert(newElement: PageTabItemView, at: Int) {
+    @objc public func insert(newElement: PageTabItemView, at: Int) {
         self.insert(contentsOf: [newElement], at: at)
     }
     
@@ -149,7 +152,7 @@ open class PageTabView:UIView {
         }
     }
     
-    public func insert(contentsOf: [PageTabItemView], at: Int) {
+    @objc public func insert(contentsOf: [PageTabItemView], at: Int) {
         guard at <= items.count else { return }
         
         self.items.insert(contentsOf: contentsOf, at: at)
